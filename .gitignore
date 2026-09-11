@@ -1,0 +1,28 @@
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+
+# VS Code
+.vscode/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# Runtime artifacts
+runs/
+evidence/
+
+# Playwright
+playwright-report/
+test-results/
+
+# JMeter
+*.jtl
+
+# OS
+.DS_Store
+Thumbs.db
