@@ -1,0 +1,14 @@
+{
+  "artifact_id": "TC-REQ-ACO-03-01",
+  "latest_version": 1,
+  "latest_path": "testcases\\generated\\TC-REQ-ACO-03-01\\v1.json",
+  "content_hash": "a21d2d32eca8bf37f93ecd9d8208c99827b9fe5e64e6bef60330d5bd3f7a566b",
+  "updated_at": "2026-09-14T18:15:51.106952+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "testcases\\generated\\TC-REQ-ACO-03-01\\v1.json",
+      "generated_at": "2026-09-14T18:15:51.106952+00:00"
+    }
+  ]
+}

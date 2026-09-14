@@ -1,0 +1,156 @@
+# CR-001 — Canonical Repository State Reconciliation
+
+## STOP — Governance Documentation Commit Verification
+
+Di has independently checked the current `main` branch after the governance reconciliation.
+
+There is a repository-state contradiction that must be resolved before Di can issue the CR-001 final gate.
+
+### Actual current repository state
+
+The canonical files currently visible on `main` still contain the old PROPOSED state:
+
+1. `docs/CP-MVP2-CR-001-PERSISTENT-LIFECYCLE-v1.0.md`
+
+still states:
+
+`Status: PROPOSED — PENDING HUMAN + DI REVIEW. NOT APPROVED. NOT IMPLEMENTED.`
+
+2. `docs/CP-MVP2-CR-001-ARCHITECTURE-IMPACT-ASSESSMENT-v1.0.md`
+
+still states:
+
+`Status: PROPOSED — PENDING REVIEW. Design/analysis only; nothing in this document has been implemented.`
+
+The Architecture document also still contains the old proposed-state wording such as:
+
+* RBTP pending definition approval
+* proposed artifact contracts
+* "None of these artifacts exist yet"
+* proposed persistence paths
+
+This contradicts your governance reconciliation report, which states that both documents were edited in place and reconciled.
+
+---
+
+## REQUIRED ACTION
+
+Do NOT perform any implementation.
+
+Do NOT modify:
+
+* CP-MVP2-01 through CP-MVP2-06 frozen artifacts
+* Approved SRS
+* `llm/client.py`
+* Batch 1 implementation
+* tests
+* persistence architecture
+* RBTP implementation
+* CP-06 implementation
+
+Do NOT regenerate Batch 1 evidence.
+
+Do NOT change any test result.
+
+### Only reconcile the two canonical CR-001 governance documents
+
+Update the actual files on the current working branch so that they accurately reflect the already-completed Batch 1 state documented in the reconciliation report.
+
+The canonical documents must consistently establish:
+
+### CR-001
+
+Status:
+
+**BATCH 1 IMPLEMENTATION AUTHORIZED AND COMPLETE — AWAITING DI FINAL GATE**
+
+Do not state that Di has approved the final CR-001 gate.
+
+### Architecture Impact Assessment
+
+Status:
+
+**BATCH 1 IMPLEMENTATION AUTHORIZED AND COMPLETE — AWAITING DI FINAL GATE**
+
+Do not state that Di has approved the final CR-001 gate.
+
+---
+
+## RBTP
+
+Ensure both canonical documents consistently define:
+
+**RBTP = Risk-Based Test Prioritization**
+
+and NOT Requirement-Based Test Plan.
+
+Use:
+
+> What should we test first, and why?
+
+Keep RBTP distinct from the Dependency/Reusability Matrix.
+
+---
+
+## IMPORTANT
+
+The reconciliation report already contains the intended reconciled content.
+
+Use the report:
+
+`docs/claude-execution-reports/CP-MVP2-CR-001/CP-MVP2-CR-001-GOVERNANCE-RECONCILIATION-20260914-184306-D7F734.md`
+
+as the evidence/reference for the intended reconciliation.
+
+Do not invent a new architecture or new decisions.
+
+---
+
+## VERIFY BEFORE COMMIT
+
+After editing:
+
+1. `git diff`
+2. Confirm ONLY the two canonical CR-001 governance documents changed.
+3. Confirm no frozen CP-01–06 files changed.
+4. Confirm Approved SRS unchanged.
+5. Confirm implementation unchanged.
+6. Confirm tests unchanged.
+7. Run the existing regression suite.
+
+Expected:
+
+**249 passed, 0 failed**
+
+If anything differs:
+
+**STOP — REPORT — DO NOT COMMIT.**
+
+---
+
+## COMMIT
+
+If and only if the above checks pass:
+
+1. Commit the two canonical-document corrections in ONE commit.
+2. Push to `origin/main`.
+3. Confirm `HEAD == origin/main`.
+4. Report the full commit hash.
+5. Report the exact two files changed.
+6. Report the regression result.
+
+Do not create another reconciliation report unless necessary.
+
+Do not declare Di's gate.
+
+Final response:
+
+**"Canonical CR-001 governance documents reconciled and committed. Awaiting Di's independent final gate."**
+
+---
+
+### GOVERNANCE RULE
+
+This is a **documentation-state correction only**.
+
+No implementation changes are authorized.

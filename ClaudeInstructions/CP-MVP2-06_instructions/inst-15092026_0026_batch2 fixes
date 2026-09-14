@@ -1,0 +1,869 @@
+# CP-MVP2 — BATCH 2 EXECUTION INSTRUCTION
+
+## Persistent Lifecycle Integration with CP-06 Real Browser Execution
+
+**Repository:** `agentic-qe-mvp2`
+**Branch:** `main`
+**Phase:** MVP2
+**Batch:** Batch 2
+**Scope:** Integrate the Batch-1 persistent lifecycle with frozen CP-MVP2-06 execution.
+
+---
+
+# 1. EXECUTION MODE
+
+This is a **governed implementation task**, not a specification-design exercise.
+
+Follow:
+
+**VERIFY → IMPLEMENT → TEST → EXECUTE → EVIDENCE → REPORT → COMMIT**
+
+Do NOT ask for intermediate approval unless a genuine governance conflict, frozen-spec conflict, missing prerequisite, or safety-critical ambiguity is encountered.
+
+Complete the authorized Batch 2 work continuously as one consolidated execution.
+
+At the end, produce:
+
+1. implementation commit
+2. evidence/report commit if separate
+3. one comprehensive execution report
+4. one concise summary
+5. final repository state
+6. exact test counts
+7. exact execution results
+8. limitations/advisories
+9. explicit statement of whether Batch 2 is ready for Human + Di final gate
+
+---
+
+# 2. MANDATORY PREFLIGHT — VERIFY GOVERNANCE STATE
+
+Before modifying anything, inspect the actual repository state.
+
+Verify:
+
+* current branch
+* current HEAD
+* `origin/main`
+* CP-MVP2-03 frozen state
+* CP-MVP2-04 frozen state
+* CP-MVP2-05 frozen state
+* CP-MVP2-06 frozen state
+* CR-001 canonical documents
+* Batch-1 implementation
+* Batch-1 evidence/report
+
+In particular verify the CR-001 governance reconciliation associated with:
+
+`1bc2a9eccf3a03e146cc0ba5620e2821f7e97b7d`
+
+Inspect the actual contents of:
+
+`docs/CP-MVP2-CR-001-PERSISTENT-LIFECYCLE-v1.0.md`
+
+`docs/CP-MVP2-CR-001-ARCHITECTURE-IMPACT-ASSESSMENT-v1.0.md`
+
+Confirm that the repository itself reflects:
+
+**BATCH 1 IMPLEMENTATION AUTHORIZED AND COMPLETE**
+
+and that the documents do NOT falsely claim that Batch 2, CP-07, or any later work has already been approved/completed.
+
+Also inspect:
+
+`docs/claude-execution-reports/CP-MVP2-CR-001/CP-MVP2-CR-001-BATCH1-EXEC-20260914-181806-695036.md`
+
+and the Batch-1 summary.
+
+### HARD STOP
+
+If the actual repository state contradicts the authorized CR-001 Batch-1 state:
+
+**STOP → REPORT → DO NOT IMPLEMENT.**
+
+Do not repair governance documents and implementation in the same Batch-2 task.
+
+---
+
+# 3. FROZEN BOUNDARIES
+
+The following remain frozen unless an explicit CR is required:
+
+* CP-MVP2-01
+* CP-MVP2-02
+* CP-MVP2-03
+* CP-MVP2-04
+* CP-MVP2-05
+* CP-MVP2-06 specification
+* Approved SRS v1.0
+* existing CP-03 testcase-generation semantics
+* existing CP-04 test-data semantics
+* existing CP-05 Playwright-generation semantics
+* existing CP-06 execution semantics
+* existing governance rules
+* existing evidence hierarchy
+
+Do NOT redesign these specifications.
+
+Do NOT silently change:
+
+* requirement meaning
+* testcase meaning
+* test-data meaning
+* locator rules
+* browser intent
+* execution statuses
+* assertion semantics
+* coverage semantics
+* retry policy
+* self-healing policy
+* RCA/replanning responsibilities
+* performance responsibilities
+* security scope
+
+If implementation requires a change to any frozen specification:
+
+**STOP → REPORT THE CONFLICT → DO NOT MODIFY THE SPECIFICATION.**
+
+---
+
+# 4. BATCH 2 OBJECTIVE
+
+Integrate the persistent lifecycle created in Batch 1 into CP-MVP2-06.
+
+The intended lifecycle is now:
+
+**APPROVED SRS**
+→ **PERSISTED TESTCASES**
+→ **REQ↔TC TRACEABILITY**
+→ **RBTP**
+→ **DEPENDENCY / REUSABILITY MATRIX**
+→ **PERSISTED TEST DATA**
+→ **TC↔DATA TRACEABILITY**
+→ **PERSISTED PLAYWRIGHT AUTOMATION**
+→ **AUTOMATION↔TC TRACEABILITY**
+→ **REUSABLE COMPONENTS**
+→ **CP-06 EXECUTION**
+→ **TIMESTAMPED EXECUTION LOG**
+→ **EXECUTION SUMMARY**
+→ **EVIDENCE**
+→ **CP-07**
+
+Batch 2 specifically owns the integration between the persisted lifecycle and CP-06 execution.
+
+---
+
+# 5. PRIMARY REQUIREMENT
+
+CP-06 must be capable of consuming **persisted, governed Playwright automation artifacts and their associated persisted test data**, rather than depending exclusively on in-memory upstream Python objects.
+
+The persisted artifacts created by Batch 1 become the durable lifecycle handoff.
+
+Do not remove the existing in-memory interfaces if doing so would unnecessarily break frozen compatibility.
+
+Where practical:
+
+**persisted artifact → validated load → CP-06 execution**
+
+should become the authoritative lifecycle path.
+
+---
+
+# 6. PERSISTED ARTIFACT INPUTS
+
+Use the actual Batch-1 persistence implementation.
+
+Do not invent a parallel persistence framework.
+
+Inspect and reuse:
+
+* `persistence/envelope.py`
+* `testcases/persist.py`
+* `testdata/persist.py`
+* `automation/persist.py`
+* `traceability/req_testcase.py`
+* `traceability/testcase_testdata.py`
+* `traceability/automation.py`
+* RBTP persistence
+* dependency persistence
+* existing automation component persistence/metadata where applicable
+
+Determine the actual canonical persisted artifact locations from the repository.
+
+Do not assume paths from this instruction if the implementation defines them differently.
+
+---
+
+# 7. CP-06 PERSISTED-LIFECYCLE INPUT CONTRACT
+
+Implement deterministic loading and validation of persisted CP-05 automation artifacts.
+
+For each execution candidate:
+
+1. load persisted automation artifact
+2. validate persistence envelope
+3. validate artifact schema
+4. validate automation ID
+5. validate testcase ID
+6. validate requirement IDs
+7. validate test-data reference
+8. resolve persisted testcase
+9. resolve persisted test data
+10. validate traceability
+11. validate CP-06 execution eligibility
+12. execute only if eligible
+
+The execution engine must not invent missing upstream information.
+
+If an artifact cannot be resolved or validated:
+
+**BLOCK / NOT_EXECUTED / ERROR as appropriate to the frozen CP-06 contract.**
+
+Do not silently reconstruct missing artifacts.
+
+---
+
+# 8. TRACEABILITY REQUIREMENT
+
+Preserve the complete chain:
+
+**Execution**
+→ Automation
+→ Testcase
+→ Requirement
+→ Approved SRS
+
+and:
+
+**Execution**
+→ Automation
+→ Testcase
+→ Test Data
+
+Where RBTP/dependency information is available, preserve those references as lifecycle metadata, but do not change CP-06's frozen execution semantics.
+
+Every execution result must be independently traceable.
+
+No orphan execution results.
+
+No execution result based on an unknown testcase.
+
+No execution result based on unknown test data.
+
+No fabricated IDs.
+
+---
+
+# 9. EXECUTION LOG PERSISTENCE
+
+Implement the Batch-1 agreed timestamped execution structure.
+
+Preferred structure:
+
+`runs/YYYY/MM/DD/<execution_id>/`
+
+Use the repository's actual Batch-1 persistence implementation if it already establishes the exact contract.
+
+Each execution must have a unique execution ID.
+
+Persist sufficient metadata to establish:
+
+* execution ID
+* timestamp
+* automation ID
+* testcase ID
+* requirement IDs
+* test-data-set ID
+* browser intent
+* execution status
+* assertion results
+* evidence locations
+* diagnostics
+* environment/runtime metadata
+* source artifact/version references
+
+Actual execution timestamps must be recorded.
+
+Do NOT fabricate timestamps.
+
+---
+
+# 10. BACKWARD COMPATIBILITY
+
+The existing CP-06 evidence convention:
+
+`runs/cp_mvp2_06/<execution_id>/`
+
+must remain usable unless the frozen CP-06 contract explicitly permits otherwise.
+
+Do not delete or rewrite historical CP-06 evidence.
+
+Where practical, maintain compatibility between:
+
+**legacy CP-06 evidence path**
+
+and:
+
+**new timestamped lifecycle path**
+
+without duplicating authoritative results or creating ambiguity.
+
+If compatibility requires a design decision not covered by CR-001:
+
+**STOP → REPORT.**
+
+Do not silently choose.
+
+---
+
+# 11. EXECUTION SUMMARY
+
+For every Batch-2 execution run, persist a machine-readable and human-readable execution summary.
+
+The summary must distinguish:
+
+### Execution result
+
+* PASS
+* FAIL
+* BLOCKED
+* NOT_EXECUTED
+* ERROR
+
+from:
+
+### Coverage
+
+* execution coverage
+* eligible automation count
+* executed count
+* blocked/not-executed count
+* testcase coverage
+* requirement coverage where applicable
+
+Do not report "100% coverage" merely because all eligible files were processed.
+
+Maintain the frozen CP-06 distinction between execution coverage and requirement/testcase coverage.
+
+---
+
+# 12. REAL BROWSER EXECUTION
+
+Perform a genuine CP-06 real-browser execution where an eligible persisted automation artifact exists.
+
+Use:
+
+**Chromium headless**
+
+as required by the frozen CP-06 specification.
+
+Use the actual Demo Web Shop SUT.
+
+Do not create a synthetic "successful" browser result merely to demonstrate the persistence path.
+
+If no persisted automation artifact is eligible:
+
+the correct governed outcome is:
+
+**NOT_EXECUTED / BLOCKED**
+
+with evidence explaining why.
+
+This is acceptable and must be reported honestly.
+
+---
+
+# 13. IMPORTANT AUTOMATION-ID COLLISION ADVISORY
+
+Batch 1 identified:
+
+`AUTOMATION_ID_COLLISION_ADVISORY`
+
+because the frozen CP-05 automation ID convention:
+
+`PW-{testcase_id}-01`
+
+does not include the dataset ID.
+
+Do NOT fix this in Batch 2 unless the fix is explicitly authorized by an applicable CR.
+
+Do not change the CP-05 frozen specification.
+
+Do not silently rename existing automation IDs.
+
+If this causes ambiguity during execution:
+
+* detect it deterministically
+* report it
+* prevent unsafe execution where necessary
+* preserve all persisted versions
+* do not invent a winner
+
+Record it as an advisory / governance finding.
+
+A future CP-05-scoped CR may address the ID model.
+
+---
+
+# 14. DATA-OQ-01
+
+Preserve the existing deterministic DATA-OQ-01 governance block.
+
+Do not weaken it merely to enable execution.
+
+If DATA-OQ-01 prevents a valid real execution:
+
+report the exact reason and produce the governed status required by CP-06.
+
+Do not modify the requirement or data contract.
+
+---
+
+# 15. CP-06 RESPONSIBILITY BOUNDARY
+
+CP-06 must continue NOT to own:
+
+* requirements generation
+* testcase generation
+* RBTP generation
+* test-data generation
+* Playwright generation
+* locator invention
+* self-healing
+* requirement modification
+* test-data modification
+* browser-grid orchestration
+* RCA
+* replanning
+* performance testing
+* security/penetration testing
+* final unified reporting
+
+Those remain outside Batch 2.
+
+Batch 2 is an **integration and persistence-consumption task**, not a scope expansion.
+
+---
+
+# 16. SELF-HEALING
+
+Do NOT introduce self-healing in Batch 2.
+
+Frozen CP-06 explicitly defers self-healing to CP-07.
+
+If an automation fails because of locator/environment/application behavior:
+
+capture the failure faithfully.
+
+Do not modify the automation during execution.
+
+Do not retry automatically unless already permitted by the frozen CP-06 contract.
+
+---
+
+# 17. SECURITY / PENETRATION TESTING
+
+Security and penetration testing remain:
+
+**POST-MVP / PARKED**
+
+Do not implement security testing in Batch 2.
+
+Do not silently expand the scope.
+
+The previously established security boundary/document may remain as design-only architecture.
+
+---
+
+# 18. TESTING REQUIREMENTS
+
+Add comprehensive tests for:
+
+### Persistence loading
+
+* valid persisted automation
+* missing automation
+* malformed automation
+* invalid envelope
+* version mismatch
+* missing testcase
+* missing test data
+* invalid requirement reference
+* broken traceability
+* unsupported automation
+* duplicate/possible-duplicate handling
+
+### CP-06 integration
+
+* eligible ACCEPTED automation
+* eligible POSSIBLE_DUPLICATE automation
+* ineligible automation
+* persisted-to-execution handoff
+* deterministic BLOCKED/NOT_EXECUTED behavior
+* execution result persistence
+* execution summary persistence
+
+### Traceability
+
+Verify:
+
+`execution → automation → testcase → requirement`
+
+and:
+
+`execution → automation → testcase → test data`
+
+### Timestamping
+
+Verify:
+
+* actual execution ID
+* actual timestamp
+* correct directory
+* deterministic metadata
+* no fabricated timestamps
+
+### Backward compatibility
+
+Verify existing CP-06 tests/evidence conventions remain valid.
+
+### Regression
+
+Run the complete existing test suite.
+
+No regression failures may be hidden or ignored.
+
+---
+
+# 19. REAL EXECUTION MATRIX
+
+Attempt real execution only from actual governed persisted artifacts.
+
+For every candidate record:
+
+| Stage                           | Evidence Required                    |
+| ------------------------------- | ------------------------------------ |
+| persisted automation discovered | artifact path + ID                   |
+| eligibility validated           | validation result                    |
+| testcase resolved               | testcase ID                          |
+| test data resolved              | dataset ID                           |
+| traceability validated          | links                                |
+| browser launched                | runtime evidence                     |
+| navigation/action executed      | step evidence                        |
+| assertions evaluated            | assertion evidence                   |
+| final status                    | PASS/FAIL/BLOCKED/NOT_EXECUTED/ERROR |
+| execution persisted             | execution path                       |
+| summary persisted               | summary path                         |
+
+Do not fabricate any row.
+
+---
+
+# 20. IF REAL EXECUTION IS POSSIBLE
+
+At least one real execution should be attempted using an actual persisted CP-05 artifact.
+
+Prefer an artifact with the strongest evidence-backed locator coverage.
+
+Do not generate a new Playwright artifact merely to manufacture an eligible execution.
+
+The purpose of Batch 2 is to prove that:
+
+**persisted lifecycle artifact → governed CP-06 execution**
+
+actually works.
+
+---
+
+# 21. IF NO ELIGIBLE ARTIFACT EXISTS
+
+Do not manufacture one.
+
+Produce:
+
+**Governed NOT_EXECUTED / BLOCKED**
+
+with:
+
+* number of persisted automation artifacts examined
+* number accepted
+* number possible duplicate
+* number unsupported
+* number rejected
+* reason for non-execution
+* evidence
+
+This must not be treated as an implementation failure if the upstream governance correctly prevents unsafe execution.
+
+---
+
+# 22. DO NOT REGENERATE UPSTREAM ARTIFACTS UNNECESSARILY
+
+Use the persisted Batch-1 artifacts.
+
+Do not regenerate:
+
+* SRS
+* RAG
+* testcase
+* RBTP
+* dependency matrix
+* test data
+* Playwright automation
+
+merely to make Batch 2 easier.
+
+If a fresh artifact is genuinely required for a test, clearly label it as a test fixture and do not overwrite the authoritative persisted artifact.
+
+---
+
+# 23. FROZEN ARTIFACT INTEGRITY CHECK
+
+Before final commit compare/check that these remain unchanged unless explicitly required by the authorized integration:
+
+* Approved SRS
+* CP-03 specification
+* CP-04 specification
+* CP-05 specification
+* CP-06 specification
+
+Also verify no accidental modification of frozen implementation artifacts.
+
+If any frozen artifact changed unexpectedly:
+
+**STOP → REPORT → DO NOT COMMIT THE CHANGE.**
+
+---
+
+# 24. REQUIRED EVIDENCE REPORT
+
+Create one comprehensive Batch-2 execution report under:
+
+`docs/claude-execution-reports/CP-MVP2-CR-001/`
+
+Use a timestamped filename.
+
+The report must include:
+
+## A. Governance
+
+* starting commit
+* ending commit
+* CR-001 authorization state
+* frozen specifications verified
+* scope
+* exclusions
+
+## B. Implementation
+
+* files added
+* files modified
+* files deliberately untouched
+* architecture integration
+
+## C. Persistence
+
+* persisted artifact locations
+* envelope/version handling
+* loading/validation
+* traceability
+
+## D. CP-06 integration
+
+* persisted input path
+* execution path
+* result persistence
+* summary persistence
+
+## E. Tests
+
+* new tests
+* CP-06 tests
+* full regression
+* pass/fail counts
+
+## F. Real execution
+
+* execution ID
+* automation ID
+* testcase ID
+* requirement ID
+* test-data ID
+* browser
+* timestamp
+* final result
+* evidence paths
+
+## G. Coverage
+
+Clearly separate:
+
+* execution coverage
+* testcase coverage
+* requirement coverage
+
+## H. Governance findings
+
+Include:
+
+* DATA-OQ-01
+* automation ID collision advisory
+* any other genuine findings
+
+## I. Backward compatibility
+
+Show evidence that existing CP-06 behavior/evidence remains intact.
+
+## J. Final assessment
+
+State:
+
+* PASS
+* PASS WITH ADVISORIES
+* BLOCKED
+
+Do NOT claim Human + Di approval.
+
+---
+
+# 25. SUMMARY FILE
+
+Create a concise summary in:
+
+`docs/claude-execution-reports/CP-MVP2-CR-001/summaries/`
+
+The summary must contain:
+
+* Batch
+* objective
+* starting commit
+* implementation commit
+* evidence commit if separate
+* tests
+* regression
+* real execution
+* persisted artifacts
+* traceability
+* findings
+* advisories
+* limitations
+* readiness for Human + Di gate
+
+---
+
+# 26. GIT DISCIPLINE
+
+Before committing:
+
+1. inspect `git status`
+2. inspect changed files
+3. verify no frozen artifacts changed accidentally
+4. run targeted tests
+5. run full regression
+6. inspect generated evidence
+7. inspect final diff
+8. commit only intended changes
+9. verify commit
+10. verify `origin/main`
+
+Prefer a clean, auditable commit structure.
+
+Do not include unrelated changes.
+
+---
+
+# 27. FINAL RESPONSE TO HUMAN
+
+At completion provide a concise completion report containing:
+
+**STATUS**
+
+**STARTING COMMIT**
+
+**IMPLEMENTATION COMMIT**
+
+**EVIDENCE COMMIT**
+
+**FILES ADDED**
+
+**FILES MODIFIED**
+
+**FILES UNTOUCHED**
+
+**NEW TESTS**
+
+**FULL REGRESSION**
+
+**REAL BROWSER EXECUTION**
+
+**PERSISTENCE VERIFIED**
+
+**TRACEABILITY VERIFIED**
+
+**BACKWARD COMPATIBILITY VERIFIED**
+
+**FROZEN ARTIFACTS VERIFIED**
+
+**ADVISORIES**
+
+**BLOCKERS**
+
+**REPORT PATH**
+
+**SUMMARY PATH**
+
+**READY FOR HUMAN + DI FINAL GATE: YES / NO**
+
+Do not declare the final Batch-2 gate yourself.
+
+---
+
+# 28. ABSOLUTE GOVERNANCE RULE
+
+The governing rule remains:
+
+**NEVER CHANGE THE SPECIFICATION TO MAKE THE IMPLEMENTATION PASS.**
+
+If something doesn't work:
+
+**STOP → REPORT → PRESERVE EVIDENCE → HUMAN + DI DECIDE**
+
+Do not hide failures.
+
+Do not fabricate evidence.
+
+Do not fabricate execution.
+
+Do not fabricate coverage.
+
+Do not fabricate IDs.
+
+Do not fabricate timestamps.
+
+Do not silently modify frozen artifacts.
+
+Do not silently expand scope.
+
+---
+
+# 29. SUCCESS CRITERION
+
+Batch 2 succeeds when the repository demonstrates, with real persisted evidence, that the Agentic QE lifecycle can move from:
+
+**Persisted Playwright Automation + Persisted Test Data**
+
+into:
+
+**Governed CP-06 Real Browser Execution**
+
+and persist:
+
+**Execution Log + Evidence + Execution Summary**
+
+while maintaining:
+
+**Requirement → Testcase → Test Data → Automation → Execution**
+
+traceability and preserving all frozen governance boundaries.
+
+Proceed continuously through the complete Batch-2 workflow unless a genuine hard-stop condition defined above occurs.

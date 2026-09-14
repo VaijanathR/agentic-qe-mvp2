@@ -1,0 +1,14 @@
+{
+  "artifact_id": "RBTP-TC-REQ-CART-03-03",
+  "latest_version": 1,
+  "latest_path": "rbtp\\generated\\RBTP-TC-REQ-CART-03-03\\v1.json",
+  "content_hash": "9626e5e4d145740a07aa4bc936b47a4e6d5d771d0d1fd9144e28b82cf0fe14ab",
+  "updated_at": "2026-09-14T18:15:51.130701+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "rbtp\\generated\\RBTP-TC-REQ-CART-03-03\\v1.json",
+      "generated_at": "2026-09-14T18:15:51.130701+00:00"
+    }
+  ]
+}

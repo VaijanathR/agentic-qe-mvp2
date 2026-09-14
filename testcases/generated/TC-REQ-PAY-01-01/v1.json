@@ -1,0 +1,50 @@
+{
+  "artifact_id": "TC-REQ-PAY-01-01",
+  "artifact_version": 1,
+  "generated_at": "2026-09-14T18:15:51.109551+00:00",
+  "generator": "stub-deterministic-v1",
+  "provenance": {
+    "batch_id": "CR001-BATCH1-LIVE-01",
+    "checkpoint": "CP-MVP2-03"
+  },
+  "content_hash": "a46234b52b5be7a7967ebab3dba031d8f3fee9d3d0e4105263e294fa90666d20",
+  "payload": {
+    "governance_status": "ACCEPTED",
+    "reasons": [],
+    "testcase_id": "TC-REQ-PAY-01-01",
+    "title": "Verify REQ-PAY-01: primary approved behavior",
+    "requirement_ids": [
+      "REQ-PAY-01"
+    ],
+    "scenario_type": "POSITIVE",
+    "preconditions": [
+      "Approved requirement REQ-PAY-01 is in effect"
+    ],
+    "test_steps": [
+      "Perform the action described by the approved requirement.",
+      "Observe the resulting system behavior."
+    ],
+    "expected_result": "REQ-PAY-01: The Payment Method step shall present multiple payment method options\nRationale: Supports customers without card-based payment\nEvidence Basis: Four payment methods were observed: Cash On Delivery, Check/Money Order, Credit Card, Purchase Order\nAcceptance Criteria: Given the Payment Method step, when reached, then more than one method is selectable\nActor: Guest, Authenticated\nJourney: J-01, J-02\nStatus: APPROVED — BASELINED v1.0",
+    "priority": "MEDIUM",
+    "journey_id": "J-01",
+    "test_data_reference": null,
+    "source_attribution": [
+      {
+        "requirement_id": "REQ-PAY-01",
+        "source_document": "requirements/MVP2_SRS_v1.0_APPROVED.md",
+        "source_version": "1.0",
+        "chunk_id": "srs_v1.0__REQ-PAY-01"
+      }
+    ],
+    "generation_metadata": {
+      "generator": "stub-deterministic-v1",
+      "generated_at": "2026-09-14T18:15:51.101555+00:00",
+      "retrieval_mode": "exact_id",
+      "scenario_types_requested": [
+        "ALTERNATE",
+        "EXCEPTIONAL",
+        "POSITIVE"
+      ]
+    }
+  }
+}

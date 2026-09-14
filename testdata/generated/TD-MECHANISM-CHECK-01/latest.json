@@ -1,0 +1,14 @@
+{
+  "artifact_id": "TD-MECHANISM-CHECK-01",
+  "latest_version": 1,
+  "latest_path": "testdata\\generated\\TD-MECHANISM-CHECK-01\\v1.json",
+  "content_hash": "39cc0f8f7ee7c8d112e6bc2a7d61f28a51f705229d3f0ff5057f821d1e054656",
+  "updated_at": "2026-09-14T19:06:00.221630+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "testdata\\generated\\TD-MECHANISM-CHECK-01\\v1.json",
+      "generated_at": "2026-09-14T19:06:00.221630+00:00"
+    }
+  ]
+}

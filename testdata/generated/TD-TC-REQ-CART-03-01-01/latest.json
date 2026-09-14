@@ -1,0 +1,14 @@
+{
+  "artifact_id": "TD-TC-REQ-CART-03-01-01",
+  "latest_version": 1,
+  "latest_path": "testdata\\generated\\TD-TC-REQ-CART-03-01-01\\v1.json",
+  "content_hash": "d87b180f343644b551e2ab1ef18187923c00db1f23ce63a14028ee525c6c1748",
+  "updated_at": "2026-09-14T18:15:51.177694+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "testdata\\generated\\TD-TC-REQ-CART-03-01-01\\v1.json",
+      "generated_at": "2026-09-14T18:15:51.177694+00:00"
+    }
+  ]
+}

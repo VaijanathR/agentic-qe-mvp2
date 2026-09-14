@@ -1,0 +1,111 @@
+{
+  "artifact_id": "CR001-BATCH1-LIVE-01",
+  "artifact_version": 1,
+  "generated_at": "2026-09-14T18:15:51.187539+00:00",
+  "generator": "deterministic-only",
+  "provenance": {
+    "checkpoint": "CP-MVP2-04",
+    "kind": "testcase_to_testdata_traceability"
+  },
+  "content_hash": "e113d04f7ca27252cf2dc184e523944f3a57cc608dfeafd614ebc9b7e8c5aba1",
+  "payload": {
+    "testcase_to_testdata": {
+      "TC-REQ-REG-01-01": [
+        "TD-TC-REQ-REG-01-01-01",
+        "TD-TC-REQ-REG-01-01-02",
+        "TD-TC-REQ-REG-01-01-03",
+        "TD-TC-REQ-REG-01-01-04",
+        "TD-TC-REQ-REG-01-01-05",
+        "TD-TC-REQ-REG-01-01-06"
+      ],
+      "TC-REQ-REG-01-02": [
+        "TD-TC-REQ-REG-01-02-01",
+        "TD-TC-REQ-REG-01-02-02",
+        "TD-TC-REQ-REG-01-02-03",
+        "TD-TC-REQ-REG-01-02-04",
+        "TD-TC-REQ-REG-01-02-05",
+        "TD-TC-REQ-REG-01-02-06"
+      ],
+      "TC-REQ-ACO-03-01": [
+        "TD-TC-REQ-ACO-03-01-01",
+        "TD-TC-REQ-ACO-03-01-02"
+      ],
+      "TC-REQ-ACO-03-02": [
+        "TD-TC-REQ-ACO-03-02-01",
+        "TD-TC-REQ-ACO-03-02-02"
+      ],
+      "TC-REQ-PAY-01-01": [
+        "TD-TC-REQ-PAY-01-01-01"
+      ],
+      "TC-REQ-PAY-01-02": [
+        "TD-TC-REQ-PAY-01-02-01"
+      ],
+      "TC-REQ-CART-03-01": [
+        "TD-TC-REQ-CART-03-01-01",
+        "TD-TC-REQ-CART-03-01-02"
+      ],
+      "TC-REQ-CART-03-02": [
+        "TD-TC-REQ-CART-03-02-01",
+        "TD-TC-REQ-CART-03-02-02"
+      ],
+      "TC-REQ-CART-03-03": [
+        "TD-TC-REQ-CART-03-03-01",
+        "TD-TC-REQ-CART-03-03-02"
+      ]
+    },
+    "testdata_to_testcase": {
+      "TD-TC-REQ-REG-01-01-01": "TC-REQ-REG-01-01",
+      "TD-TC-REQ-REG-01-01-02": "TC-REQ-REG-01-01",
+      "TD-TC-REQ-REG-01-01-03": "TC-REQ-REG-01-01",
+      "TD-TC-REQ-REG-01-01-04": "TC-REQ-REG-01-01",
+      "TD-TC-REQ-REG-01-01-05": "TC-REQ-REG-01-01",
+      "TD-TC-REQ-REG-01-01-06": "TC-REQ-REG-01-01",
+      "TD-TC-REQ-REG-01-02-01": "TC-REQ-REG-01-02",
+      "TD-TC-REQ-REG-01-02-02": "TC-REQ-REG-01-02",
+      "TD-TC-REQ-REG-01-02-03": "TC-REQ-REG-01-02",
+      "TD-TC-REQ-REG-01-02-04": "TC-REQ-REG-01-02",
+      "TD-TC-REQ-REG-01-02-05": "TC-REQ-REG-01-02",
+      "TD-TC-REQ-REG-01-02-06": "TC-REQ-REG-01-02",
+      "TD-TC-REQ-ACO-03-01-01": "TC-REQ-ACO-03-01",
+      "TD-TC-REQ-ACO-03-01-02": "TC-REQ-ACO-03-01",
+      "TD-TC-REQ-ACO-03-02-01": "TC-REQ-ACO-03-02",
+      "TD-TC-REQ-ACO-03-02-02": "TC-REQ-ACO-03-02",
+      "TD-TC-REQ-PAY-01-01-01": "TC-REQ-PAY-01-01",
+      "TD-TC-REQ-PAY-01-02-01": "TC-REQ-PAY-01-02",
+      "TD-TC-REQ-CART-03-01-01": "TC-REQ-CART-03-01",
+      "TD-TC-REQ-CART-03-01-02": "TC-REQ-CART-03-01",
+      "TD-TC-REQ-CART-03-02-01": "TC-REQ-CART-03-02",
+      "TD-TC-REQ-CART-03-02-02": "TC-REQ-CART-03-02",
+      "TD-TC-REQ-CART-03-03-01": "TC-REQ-CART-03-03",
+      "TD-TC-REQ-CART-03-03-02": "TC-REQ-CART-03-03"
+    },
+    "orphan_testdata": [],
+    "testcases_missing_testdata": [],
+    "dataset_status": {
+      "TD-TC-REQ-REG-01-01-01": "ACCEPTED",
+      "TD-TC-REQ-REG-01-01-02": "ACCEPTED",
+      "TD-TC-REQ-REG-01-01-03": "POSSIBLE_DUPLICATE",
+      "TD-TC-REQ-REG-01-01-04": "POSSIBLE_DUPLICATE",
+      "TD-TC-REQ-REG-01-01-05": "POSSIBLE_DUPLICATE",
+      "TD-TC-REQ-REG-01-01-06": "ACCEPTED",
+      "TD-TC-REQ-REG-01-02-01": "REJECTED",
+      "TD-TC-REQ-REG-01-02-02": "ACCEPTED",
+      "TD-TC-REQ-REG-01-02-03": "POSSIBLE_DUPLICATE",
+      "TD-TC-REQ-REG-01-02-04": "POSSIBLE_DUPLICATE",
+      "TD-TC-REQ-REG-01-02-05": "POSSIBLE_DUPLICATE",
+      "TD-TC-REQ-REG-01-02-06": "REJECTED",
+      "TD-TC-REQ-ACO-03-01-01": "ACCEPTED",
+      "TD-TC-REQ-ACO-03-01-02": "ACCEPTED",
+      "TD-TC-REQ-ACO-03-02-01": "ACCEPTED",
+      "TD-TC-REQ-ACO-03-02-02": "ACCEPTED",
+      "TD-TC-REQ-PAY-01-01-01": "ACCEPTED",
+      "TD-TC-REQ-PAY-01-02-01": "ACCEPTED",
+      "TD-TC-REQ-CART-03-01-01": "ACCEPTED",
+      "TD-TC-REQ-CART-03-01-02": "ACCEPTED",
+      "TD-TC-REQ-CART-03-02-01": "ACCEPTED",
+      "TD-TC-REQ-CART-03-02-02": "ACCEPTED",
+      "TD-TC-REQ-CART-03-03-01": "ACCEPTED",
+      "TD-TC-REQ-CART-03-03-02": "ACCEPTED"
+    }
+  }
+}

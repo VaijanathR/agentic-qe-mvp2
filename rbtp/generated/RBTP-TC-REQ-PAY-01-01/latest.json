@@ -1,0 +1,14 @@
+{
+  "artifact_id": "RBTP-TC-REQ-PAY-01-01",
+  "latest_version": 1,
+  "latest_path": "rbtp\\generated\\RBTP-TC-REQ-PAY-01-01\\v1.json",
+  "content_hash": "2feadec89605858012a82af7c521132214dfcdd1adbb98667e76269f6334174e",
+  "updated_at": "2026-09-14T18:15:51.125441+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "rbtp\\generated\\RBTP-TC-REQ-PAY-01-01\\v1.json",
+      "generated_at": "2026-09-14T18:15:51.125441+00:00"
+    }
+  ]
+}

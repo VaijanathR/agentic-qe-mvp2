@@ -1,0 +1,85 @@
+{
+  "artifact_id": "TD-TC-REQ-REG-01-01-06",
+  "artifact_version": 1,
+  "generated_at": "2026-09-14T18:15:51.148990+00:00",
+  "generator": "stub-deterministic-v1",
+  "provenance": {
+    "batch_id": "CR001-BATCH1-LIVE-01",
+    "checkpoint": "CP-MVP2-04"
+  },
+  "content_hash": "52d7e312d2ed38bd23c116fec4045fdba6c9a4e7826e599cbf694110776fc5e3",
+  "payload": {
+    "validation_status": "ACCEPTED",
+    "notes": [],
+    "data_set_id": "TD-TC-REQ-REG-01-01-06",
+    "testcase_id": "TC-REQ-REG-01-01",
+    "requirement_ids": [
+      "REQ-REG-01"
+    ],
+    "data_category": "INVALID",
+    "purpose": "NEG-01",
+    "validity": "INVALID",
+    "fields": [
+      {
+        "field_name": "first_name",
+        "field_value": "",
+        "value_type": "STRING",
+        "boundary_classification": "NOT_APPLICABLE",
+        "uniqueness_requirement": "UNIQUENESS_UNKNOWN",
+        "dependency_reference": null
+      },
+      {
+        "field_name": "last_name",
+        "field_value": "",
+        "value_type": "STRING",
+        "boundary_classification": "NOT_APPLICABLE",
+        "uniqueness_requirement": "UNIQUENESS_UNKNOWN",
+        "dependency_reference": null
+      },
+      {
+        "field_name": "email",
+        "field_value": "",
+        "value_type": "EMAIL",
+        "boundary_classification": "NOT_APPLICABLE",
+        "uniqueness_requirement": "MUST_BE_UNIQUE",
+        "dependency_reference": null
+      },
+      {
+        "field_name": "password",
+        "field_value": "",
+        "value_type": "STRING",
+        "boundary_classification": "NOT_APPLICABLE",
+        "uniqueness_requirement": "UNIQUENESS_UNKNOWN",
+        "dependency_reference": null
+      },
+      {
+        "field_name": "confirm_password",
+        "field_value": "",
+        "value_type": "STRING",
+        "boundary_classification": "NOT_APPLICABLE",
+        "uniqueness_requirement": "UNIQUENESS_UNKNOWN",
+        "dependency_reference": "password"
+      }
+    ],
+    "source_attribution": [
+      {
+        "requirement_id": "REQ-REG-01",
+        "source_document": "requirements/MVP2_SRS_v1.0_APPROVED.md",
+        "source_version": "1.0",
+        "chunk_id": "srs_v1.0__REQ-REG-01"
+      }
+    ],
+    "generation_metadata": {
+      "generator": "stub-deterministic-v1",
+      "generated_at": "2026-09-14T18:15:51.134639+00:00",
+      "retrieval_mode": "exact_id",
+      "categories_requested": [
+        "POSITIVE",
+        "EXCEPTIONAL",
+        "BOUNDARY",
+        "ALTERNATE",
+        "INVALID"
+      ]
+    }
+  }
+}

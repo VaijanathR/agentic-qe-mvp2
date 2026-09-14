@@ -1,0 +1,50 @@
+{
+  "artifact_id": "CR001-BATCH1-LIVE-01",
+  "artifact_version": 1,
+  "generated_at": "2026-09-14T18:15:51.345067+00:00",
+  "generator": "deterministic-only",
+  "provenance": {
+    "kind": "execution_summary"
+  },
+  "content_hash": "69a822f0a85678fe176055b86bc35cdc786c7927afae3586ba7b52f86cd6857c",
+  "payload": {
+    "batch_id": "CR001-BATCH1-LIVE-01",
+    "execution_timestamp": "2026-09-14T18:15:51.344252+00:00",
+    "scope": {
+      "testcases_planned": 9,
+      "automation_count": 9
+    },
+    "executed_count": 0,
+    "counts_by_status": {
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_EXECUTED": 22,
+      "ERROR": 0
+    },
+    "testcase_coverage": {
+      "total": 9,
+      "testcase_ids": [
+        "TC-REQ-ACO-03-01",
+        "TC-REQ-ACO-03-02",
+        "TC-REQ-CART-03-01",
+        "TC-REQ-CART-03-02",
+        "TC-REQ-CART-03-03",
+        "TC-REQ-PAY-01-01",
+        "TC-REQ-PAY-01-02",
+        "TC-REQ-REG-01-01",
+        "TC-REQ-REG-01-02"
+      ]
+    },
+    "requirement_coverage": {
+      "total_requirements_represented": 4,
+      "requirements_with_a_passing_execution": [],
+      "note": "A requirement counts toward coverage here ONLY via a PASS execution result -- never merely because a testcase or automation artifact exists for it."
+    },
+    "evidence_locations": [],
+    "major_failures": [],
+    "limitations": [
+      "INELIGIBLE: {'governance_status': 'UNSUPPORTED_NEEDS_CLARIFICATION'}"
+    ]
+  }
+}

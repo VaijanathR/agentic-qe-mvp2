@@ -1,0 +1,145 @@
+{
+  "artifact_id": "CR001-BATCH1-LIVE-01",
+  "artifact_version": 1,
+  "generated_at": "2026-09-14T18:15:51.255048+00:00",
+  "generator": "deterministic-only",
+  "provenance": {
+    "checkpoint": "CP-MVP2-05",
+    "kind": "automation_traceability"
+  },
+  "content_hash": "18477c6446f27a9c59a6ccd37606f60bf55c3660efa35f0ec47a6c44107ef8f9",
+  "payload": {
+    "automation_to_testcase": {
+      "PW-TC-REQ-REG-01-01-01": "TC-REQ-REG-01-01",
+      "PW-TC-REQ-REG-01-02-01": "TC-REQ-REG-01-02",
+      "PW-TC-REQ-ACO-03-01-01": "TC-REQ-ACO-03-01",
+      "PW-TC-REQ-ACO-03-02-01": "TC-REQ-ACO-03-02",
+      "PW-TC-REQ-PAY-01-01-01": "TC-REQ-PAY-01-01",
+      "PW-TC-REQ-PAY-01-02-01": "TC-REQ-PAY-01-02",
+      "PW-TC-REQ-CART-03-01-01": "TC-REQ-CART-03-01",
+      "PW-TC-REQ-CART-03-02-01": "TC-REQ-CART-03-02",
+      "PW-TC-REQ-CART-03-03-01": "TC-REQ-CART-03-03"
+    },
+    "testcase_to_automation": {
+      "TC-REQ-REG-01-01": [
+        "PW-TC-REQ-REG-01-01-01",
+        "PW-TC-REQ-REG-01-01-01",
+        "PW-TC-REQ-REG-01-01-01",
+        "PW-TC-REQ-REG-01-01-01",
+        "PW-TC-REQ-REG-01-01-01",
+        "PW-TC-REQ-REG-01-01-01"
+      ],
+      "TC-REQ-REG-01-02": [
+        "PW-TC-REQ-REG-01-02-01",
+        "PW-TC-REQ-REG-01-02-01",
+        "PW-TC-REQ-REG-01-02-01",
+        "PW-TC-REQ-REG-01-02-01"
+      ],
+      "TC-REQ-ACO-03-01": [
+        "PW-TC-REQ-ACO-03-01-01",
+        "PW-TC-REQ-ACO-03-01-01"
+      ],
+      "TC-REQ-ACO-03-02": [
+        "PW-TC-REQ-ACO-03-02-01",
+        "PW-TC-REQ-ACO-03-02-01"
+      ],
+      "TC-REQ-PAY-01-01": [
+        "PW-TC-REQ-PAY-01-01-01"
+      ],
+      "TC-REQ-PAY-01-02": [
+        "PW-TC-REQ-PAY-01-02-01"
+      ],
+      "TC-REQ-CART-03-01": [
+        "PW-TC-REQ-CART-03-01-01",
+        "PW-TC-REQ-CART-03-01-01"
+      ],
+      "TC-REQ-CART-03-02": [
+        "PW-TC-REQ-CART-03-02-01",
+        "PW-TC-REQ-CART-03-02-01"
+      ],
+      "TC-REQ-CART-03-03": [
+        "PW-TC-REQ-CART-03-03-01",
+        "PW-TC-REQ-CART-03-03-01"
+      ]
+    },
+    "automation_to_requirements": {
+      "PW-TC-REQ-REG-01-01-01": [
+        "REQ-REG-01"
+      ],
+      "PW-TC-REQ-REG-01-02-01": [
+        "REQ-REG-01"
+      ],
+      "PW-TC-REQ-ACO-03-01-01": [
+        "REQ-ACO-03"
+      ],
+      "PW-TC-REQ-ACO-03-02-01": [
+        "REQ-ACO-03"
+      ],
+      "PW-TC-REQ-PAY-01-01-01": [
+        "REQ-PAY-01"
+      ],
+      "PW-TC-REQ-PAY-01-02-01": [
+        "REQ-PAY-01"
+      ],
+      "PW-TC-REQ-CART-03-01-01": [
+        "REQ-CART-03"
+      ],
+      "PW-TC-REQ-CART-03-02-01": [
+        "REQ-CART-03"
+      ],
+      "PW-TC-REQ-CART-03-03-01": [
+        "REQ-CART-03"
+      ]
+    },
+    "automation_to_testdata": {
+      "PW-TC-REQ-REG-01-01-01": "TD-TC-REQ-REG-01-01-06",
+      "PW-TC-REQ-REG-01-02-01": "TD-TC-REQ-REG-01-02-05",
+      "PW-TC-REQ-ACO-03-01-01": "TD-TC-REQ-ACO-03-01-02",
+      "PW-TC-REQ-ACO-03-02-01": "TD-TC-REQ-ACO-03-02-02",
+      "PW-TC-REQ-PAY-01-01-01": "TD-TC-REQ-PAY-01-01-01",
+      "PW-TC-REQ-PAY-01-02-01": "TD-TC-REQ-PAY-01-02-01",
+      "PW-TC-REQ-CART-03-01-01": "TD-TC-REQ-CART-03-01-02",
+      "PW-TC-REQ-CART-03-02-01": "TD-TC-REQ-CART-03-02-02",
+      "PW-TC-REQ-CART-03-03-01": "TD-TC-REQ-CART-03-03-02"
+    },
+    "automation_to_components": {
+      "PW-TC-REQ-ACO-03-01-01": [
+        "STABLE_ATTRIBUTE:#BillingNewAddress_Address1",
+        "STABLE_ATTRIBUTE:#BillingNewAddress_Address2",
+        "STABLE_ATTRIBUTE:#BillingNewAddress_City",
+        "STABLE_ATTRIBUTE:#BillingNewAddress_Company",
+        "STABLE_ATTRIBUTE:#BillingNewAddress_CountryId",
+        "STABLE_ATTRIBUTE:#BillingNewAddress_Email",
+        "STABLE_ATTRIBUTE:#BillingNewAddress_FaxNumber",
+        "STABLE_ATTRIBUTE:#BillingNewAddress_FirstName",
+        "STABLE_ATTRIBUTE:#BillingNewAddress_LastName",
+        "STABLE_ATTRIBUTE:#BillingNewAddress_PhoneNumber",
+        "STABLE_ATTRIBUTE:#BillingNewAddress_ZipPostalCode"
+      ],
+      "PW-TC-REQ-ACO-03-02-01": [
+        "STABLE_ATTRIBUTE:#BillingNewAddress_Address1",
+        "STABLE_ATTRIBUTE:#BillingNewAddress_Address2",
+        "STABLE_ATTRIBUTE:#BillingNewAddress_City",
+        "STABLE_ATTRIBUTE:#BillingNewAddress_Company",
+        "STABLE_ATTRIBUTE:#BillingNewAddress_CountryId",
+        "STABLE_ATTRIBUTE:#BillingNewAddress_Email",
+        "STABLE_ATTRIBUTE:#BillingNewAddress_FaxNumber",
+        "STABLE_ATTRIBUTE:#BillingNewAddress_FirstName",
+        "STABLE_ATTRIBUTE:#BillingNewAddress_LastName",
+        "STABLE_ATTRIBUTE:#BillingNewAddress_PhoneNumber",
+        "STABLE_ATTRIBUTE:#BillingNewAddress_ZipPostalCode"
+      ]
+    },
+    "automation_status": {
+      "PW-TC-REQ-REG-01-01-01": "UNSUPPORTED_NEEDS_CLARIFICATION",
+      "PW-TC-REQ-REG-01-02-01": "UNSUPPORTED_NEEDS_CLARIFICATION",
+      "PW-TC-REQ-ACO-03-01-01": "UNSUPPORTED_NEEDS_CLARIFICATION",
+      "PW-TC-REQ-ACO-03-02-01": "UNSUPPORTED_NEEDS_CLARIFICATION",
+      "PW-TC-REQ-PAY-01-01-01": "UNSUPPORTED_NEEDS_CLARIFICATION",
+      "PW-TC-REQ-PAY-01-02-01": "UNSUPPORTED_NEEDS_CLARIFICATION",
+      "PW-TC-REQ-CART-03-01-01": "UNSUPPORTED_NEEDS_CLARIFICATION",
+      "PW-TC-REQ-CART-03-02-01": "UNSUPPORTED_NEEDS_CLARIFICATION",
+      "PW-TC-REQ-CART-03-03-01": "UNSUPPORTED_NEEDS_CLARIFICATION"
+    }
+  }
+}

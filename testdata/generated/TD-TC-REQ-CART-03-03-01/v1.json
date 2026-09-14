@@ -1,0 +1,53 @@
+{
+  "artifact_id": "TD-TC-REQ-CART-03-03-01",
+  "artifact_version": 1,
+  "generated_at": "2026-09-14T18:15:51.185013+00:00",
+  "generator": "stub-deterministic-v1",
+  "provenance": {
+    "batch_id": "CR001-BATCH1-LIVE-01",
+    "checkpoint": "CP-MVP2-04"
+  },
+  "content_hash": "34835f4527568d378adafa9cd8244e4588d1a7a6814f37dfe1ab3d4f8f250a12",
+  "payload": {
+    "validation_status": "ACCEPTED",
+    "notes": [],
+    "data_set_id": "TD-TC-REQ-CART-03-03-01",
+    "testcase_id": "TC-REQ-CART-03-03",
+    "requirement_ids": [
+      "REQ-CART-03"
+    ],
+    "data_category": "POSITIVE",
+    "purpose": "Valid data satisfying all mandatory fields for REQ-CART-03",
+    "validity": "VALID",
+    "fields": [
+      {
+        "field_name": "quantity",
+        "field_value": 1,
+        "value_type": "INTEGER",
+        "boundary_classification": "MIN_BOUNDARY",
+        "uniqueness_requirement": "UNIQUENESS_UNKNOWN",
+        "dependency_reference": null
+      }
+    ],
+    "source_attribution": [
+      {
+        "requirement_id": "REQ-CART-03",
+        "source_document": "requirements/MVP2_SRS_v1.0_APPROVED.md",
+        "source_version": "1.0",
+        "chunk_id": "srs_v1.0__REQ-CART-03"
+      }
+    ],
+    "generation_metadata": {
+      "generator": "stub-deterministic-v1",
+      "generated_at": "2026-09-14T18:15:51.140628+00:00",
+      "retrieval_mode": "exact_id",
+      "categories_requested": [
+        "POSITIVE",
+        "EXCEPTIONAL",
+        "BOUNDARY",
+        "ALTERNATE",
+        "INVALID"
+      ]
+    }
+  }
+}

@@ -1,0 +1,87 @@
+{
+  "artifact_id": "TD-TC-REQ-REG-01-02-03",
+  "artifact_version": 1,
+  "generated_at": "2026-09-14T18:15:51.153153+00:00",
+  "generator": "stub-deterministic-v1",
+  "provenance": {
+    "batch_id": "CR001-BATCH1-LIVE-01",
+    "checkpoint": "CP-MVP2-04"
+  },
+  "content_hash": "f63979447259f3d6142eac89c38e0ad7dc11f40d9126fdb56e6a8ca7d23fffca",
+  "payload": {
+    "validation_status": "POSSIBLE_DUPLICATE",
+    "notes": [
+      "POSSIBLE_DUPLICATE_OF:TD-TC-REQ-REG-01-02-02"
+    ],
+    "data_set_id": "TD-TC-REQ-REG-01-02-03",
+    "testcase_id": "TC-REQ-REG-01-02",
+    "requirement_ids": [
+      "REQ-REG-01"
+    ],
+    "data_category": "EXCEPTIONAL",
+    "purpose": "NEG-02/REQ-REG-02",
+    "validity": "INVALID",
+    "fields": [
+      {
+        "field_name": "first_name",
+        "field_value": "Synthetic-first_name",
+        "value_type": "STRING",
+        "boundary_classification": "NOT_APPLICABLE",
+        "uniqueness_requirement": "UNIQUENESS_UNKNOWN",
+        "dependency_reference": null
+      },
+      {
+        "field_name": "last_name",
+        "field_value": "Synthetic-last_name",
+        "value_type": "STRING",
+        "boundary_classification": "NOT_APPLICABLE",
+        "uniqueness_requirement": "UNIQUENESS_UNKNOWN",
+        "dependency_reference": null
+      },
+      {
+        "field_name": "email",
+        "field_value": "synthetic.req-reg-01@example.test",
+        "value_type": "EMAIL",
+        "boundary_classification": "NOT_APPLICABLE",
+        "uniqueness_requirement": "MAY_REUSE",
+        "dependency_reference": null
+      },
+      {
+        "field_name": "password",
+        "field_value": "Synthetic-password",
+        "value_type": "STRING",
+        "boundary_classification": "NOT_APPLICABLE",
+        "uniqueness_requirement": "UNIQUENESS_UNKNOWN",
+        "dependency_reference": null
+      },
+      {
+        "field_name": "confirm_password",
+        "field_value": "Synthetic-password-DIFFERENT",
+        "value_type": "STRING",
+        "boundary_classification": "NOT_APPLICABLE",
+        "uniqueness_requirement": "UNIQUENESS_UNKNOWN",
+        "dependency_reference": "password"
+      }
+    ],
+    "source_attribution": [
+      {
+        "requirement_id": "REQ-REG-01",
+        "source_document": "requirements/MVP2_SRS_v1.0_APPROVED.md",
+        "source_version": "1.0",
+        "chunk_id": "srs_v1.0__REQ-REG-01"
+      }
+    ],
+    "generation_metadata": {
+      "generator": "stub-deterministic-v1",
+      "generated_at": "2026-09-14T18:15:51.135591+00:00",
+      "retrieval_mode": "exact_id",
+      "categories_requested": [
+        "POSITIVE",
+        "EXCEPTIONAL",
+        "BOUNDARY",
+        "ALTERNATE",
+        "INVALID"
+      ]
+    }
+  }
+}

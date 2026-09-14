@@ -1,0 +1,14 @@
+{
+  "artifact_id": "TD-TC-REQ-PAY-01-01-01",
+  "latest_version": 1,
+  "latest_path": "testdata\\generated\\TD-TC-REQ-PAY-01-01-01\\v1.json",
+  "content_hash": "eebbbb30504bc24f877966de9c4416650db2aba9c61f38be46d835c3f530193c",
+  "updated_at": "2026-09-14T18:15:51.173410+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "testdata\\generated\\TD-TC-REQ-PAY-01-01-01\\v1.json",
+      "generated_at": "2026-09-14T18:15:51.173410+00:00"
+    }
+  ]
+}

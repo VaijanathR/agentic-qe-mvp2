@@ -1,0 +1,14 @@
+{
+  "artifact_id": "TC-MECHANISM-CHECK-01",
+  "latest_version": 1,
+  "latest_path": "testcases\\generated\\TC-MECHANISM-CHECK-01\\v1.json",
+  "content_hash": "6b88d11a91b80899790bf88361cdd87aeb904c13fe5ada6685cb5d5c5babc3ee",
+  "updated_at": "2026-09-14T19:06:00.220310+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "testcases\\generated\\TC-MECHANISM-CHECK-01\\v1.json",
+      "generated_at": "2026-09-14T19:06:00.220310+00:00"
+    }
+  ]
+}

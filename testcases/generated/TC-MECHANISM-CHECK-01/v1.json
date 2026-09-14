@@ -1,0 +1,35 @@
+{
+  "artifact_id": "TC-MECHANISM-CHECK-01",
+  "artifact_version": 1,
+  "generated_at": "2026-09-14T19:06:00.220310+00:00",
+  "generator": "batch2-mechanism-check",
+  "provenance": {},
+  "content_hash": "6b88d11a91b80899790bf88361cdd87aeb904c13fe5ada6685cb5d5c5babc3ee",
+  "payload": {
+    "governance_status": "ACCEPTED",
+    "reasons": [
+      "DISCLOSED_SYNTHETIC_MECHANISM_FIXTURE"
+    ],
+    "testcase_id": "TC-MECHANISM-CHECK-01",
+    "title": "Disclosed synthetic mechanism check (Batch 2)",
+    "requirement_ids": [
+      "REQ-WISH-01"
+    ],
+    "scenario_type": "POSITIVE",
+    "preconditions": [],
+    "test_steps": [
+      "Navigate to the Demo Web Shop home page"
+    ],
+    "expected_result": "The home page loads",
+    "priority": "LOW",
+    "journey_id": null,
+    "test_data_reference": null,
+    "source_attribution": [
+      {
+        "requirement_id": "REQ-WISH-01",
+        "note": "DISCLOSED SYNTHETIC MECHANISM FIXTURE -- not real generated evidence"
+      }
+    ],
+    "generation_metadata": {}
+  }
+}

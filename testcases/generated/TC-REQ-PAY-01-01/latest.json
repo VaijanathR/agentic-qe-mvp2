@@ -1,0 +1,14 @@
+{
+  "artifact_id": "TC-REQ-PAY-01-01",
+  "latest_version": 1,
+  "latest_path": "testcases\\generated\\TC-REQ-PAY-01-01\\v1.json",
+  "content_hash": "a46234b52b5be7a7967ebab3dba031d8f3fee9d3d0e4105263e294fa90666d20",
+  "updated_at": "2026-09-14T18:15:51.109551+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "testcases\\generated\\TC-REQ-PAY-01-01\\v1.json",
+      "generated_at": "2026-09-14T18:15:51.109551+00:00"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "artifact_id": "CR001-BATCH1-LIVE-01",
+  "latest_version": 1,
+  "latest_path": "traceability\\testcase_to_testdata\\CR001-BATCH1-LIVE-01\\v1.json",
+  "content_hash": "e113d04f7ca27252cf2dc184e523944f3a57cc608dfeafd614ebc9b7e8c5aba1",
+  "updated_at": "2026-09-14T18:15:51.187539+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "traceability\\testcase_to_testdata\\CR001-BATCH1-LIVE-01\\v1.json",
+      "generated_at": "2026-09-14T18:15:51.187539+00:00"
+    }
+  ]
+}

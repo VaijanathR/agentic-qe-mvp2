@@ -1,0 +1,14 @@
+{
+  "artifact_id": "BATCH2-LIVE-01",
+  "latest_version": 1,
+  "latest_path": "reports\\execution_summaries\\BATCH2-LIVE-01\\v1.json",
+  "content_hash": "f9b5cde7dd8ceaaca3d6080f33d1724880884e9012474c3019f960986fcc163a",
+  "updated_at": "2026-09-14T19:05:11.997932+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "reports\\execution_summaries\\BATCH2-LIVE-01\\v1.json",
+      "generated_at": "2026-09-14T19:05:11.997932+00:00"
+    }
+  ]
+}

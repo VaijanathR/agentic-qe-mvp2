@@ -1,0 +1,30 @@
+{
+  "artifact_id": "TD-MECHANISM-CHECK-01",
+  "artifact_version": 1,
+  "generated_at": "2026-09-14T19:06:00.221630+00:00",
+  "generator": "batch2-mechanism-check",
+  "provenance": {},
+  "content_hash": "39cc0f8f7ee7c8d112e6bc2a7d61f28a51f705229d3f0ff5057f821d1e054656",
+  "payload": {
+    "validation_status": "ACCEPTED",
+    "notes": [
+      "DISCLOSED_SYNTHETIC_MECHANISM_FIXTURE"
+    ],
+    "data_set_id": "TD-MECHANISM-CHECK-01",
+    "testcase_id": "TC-MECHANISM-CHECK-01",
+    "requirement_ids": [
+      "REQ-WISH-01"
+    ],
+    "data_category": "POSITIVE",
+    "purpose": "mechanism check -- no real field needed",
+    "validity": "VALID",
+    "fields": [],
+    "source_attribution": [
+      {
+        "requirement_id": "REQ-WISH-01",
+        "note": "DISCLOSED SYNTHETIC MECHANISM FIXTURE"
+      }
+    ],
+    "generation_metadata": {}
+  }
+}

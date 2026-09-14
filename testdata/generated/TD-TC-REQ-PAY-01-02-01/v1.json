@@ -1,0 +1,53 @@
+{
+  "artifact_id": "TD-TC-REQ-PAY-01-02-01",
+  "artifact_version": 1,
+  "generated_at": "2026-09-14T18:15:51.175243+00:00",
+  "generator": "stub-deterministic-v1",
+  "provenance": {
+    "batch_id": "CR001-BATCH1-LIVE-01",
+    "checkpoint": "CP-MVP2-04"
+  },
+  "content_hash": "48dbb71598af2d1a85e90b28f224af277b59c3bca42b6bf7aaad06b853c8f740",
+  "payload": {
+    "validation_status": "ACCEPTED",
+    "notes": [],
+    "data_set_id": "TD-TC-REQ-PAY-01-02-01",
+    "testcase_id": "TC-REQ-PAY-01-02",
+    "requirement_ids": [
+      "REQ-PAY-01"
+    ],
+    "data_category": "POSITIVE",
+    "purpose": "Valid data satisfying all mandatory fields for REQ-PAY-01",
+    "validity": "VALID",
+    "fields": [
+      {
+        "field_name": "payment_method",
+        "field_value": "Cash On Delivery",
+        "value_type": "ENUM",
+        "boundary_classification": "NOT_APPLICABLE",
+        "uniqueness_requirement": "UNIQUENESS_UNKNOWN",
+        "dependency_reference": null
+      }
+    ],
+    "source_attribution": [
+      {
+        "requirement_id": "REQ-PAY-01",
+        "source_document": "requirements/MVP2_SRS_v1.0_APPROVED.md",
+        "source_version": "1.0",
+        "chunk_id": "srs_v1.0__REQ-PAY-01"
+      }
+    ],
+    "generation_metadata": {
+      "generator": "stub-deterministic-v1",
+      "generated_at": "2026-09-14T18:15:51.139844+00:00",
+      "retrieval_mode": "exact_id",
+      "categories_requested": [
+        "POSITIVE",
+        "EXCEPTIONAL",
+        "BOUNDARY",
+        "ALTERNATE",
+        "INVALID"
+      ]
+    }
+  }
+}

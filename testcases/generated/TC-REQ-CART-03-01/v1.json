@@ -1,0 +1,50 @@
+{
+  "artifact_id": "TC-REQ-CART-03-01",
+  "artifact_version": 1,
+  "generated_at": "2026-09-14T18:15:51.112209+00:00",
+  "generator": "stub-deterministic-v1",
+  "provenance": {
+    "batch_id": "CR001-BATCH1-LIVE-01",
+    "checkpoint": "CP-MVP2-03"
+  },
+  "content_hash": "221f2da3fd81aaf3b671400e4d1c6e7b76a5e78f18ef405a07652353d047dd29",
+  "payload": {
+    "governance_status": "ACCEPTED",
+    "reasons": [],
+    "testcase_id": "TC-REQ-CART-03-01",
+    "title": "Verify REQ-CART-03: primary approved behavior",
+    "requirement_ids": [
+      "REQ-CART-03"
+    ],
+    "scenario_type": "POSITIVE",
+    "preconditions": [
+      "Approved requirement REQ-CART-03 is in effect"
+    ],
+    "test_steps": [
+      "Perform the action described by the approved requirement.",
+      "Observe the resulting system behavior."
+    ],
+    "expected_result": "REQ-CART-03: Setting a line item's quantity to 0 and applying the update shall remove that line item without a confirmation prompt\nRationale: Documents actual zero-quantity behavior for negative-path design\nEvidence Basis: Qty=0 + Update returned the cart to its empty state with no dialog\nAcceptance Criteria: Given a cart line, when quantity is set to 0 and Update is applied, then the line item no longer appears and no prompt is shown\nActor: Guest, Authenticated\nJourney: J-04\nStatus: APPROVED — BASELINED v1.0",
+    "priority": "MEDIUM",
+    "journey_id": "J-04",
+    "test_data_reference": null,
+    "source_attribution": [
+      {
+        "requirement_id": "REQ-CART-03",
+        "source_document": "requirements/MVP2_SRS_v1.0_APPROVED.md",
+        "source_version": "1.0",
+        "chunk_id": "srs_v1.0__REQ-CART-03"
+      }
+    ],
+    "generation_metadata": {
+      "generator": "stub-deterministic-v1",
+      "generated_at": "2026-09-14T18:15:51.101813+00:00",
+      "retrieval_mode": "exact_id",
+      "scenario_types_requested": [
+        "ALTERNATE",
+        "EXCEPTIONAL",
+        "POSITIVE"
+      ]
+    }
+  }
+}

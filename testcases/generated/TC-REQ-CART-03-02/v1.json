@@ -1,0 +1,50 @@
+{
+  "artifact_id": "TC-REQ-CART-03-02",
+  "artifact_version": 1,
+  "generated_at": "2026-09-14T18:15:51.113371+00:00",
+  "generator": "stub-deterministic-v1",
+  "provenance": {
+    "batch_id": "CR001-BATCH1-LIVE-01",
+    "checkpoint": "CP-MVP2-03"
+  },
+  "content_hash": "aa992470cebb810d14163a3eaef8a3f8858f976533c17a6a680c267734797834",
+  "payload": {
+    "governance_status": "ACCEPTED",
+    "reasons": [],
+    "testcase_id": "TC-REQ-CART-03-02",
+    "title": "Verify REQ-CART-03: alternate handling per srs_v1.0__BR-04",
+    "requirement_ids": [
+      "REQ-CART-03"
+    ],
+    "scenario_type": "ALTERNATE",
+    "preconditions": [
+      "Approved requirement REQ-CART-03 is in effect"
+    ],
+    "test_steps": [
+      "Drive the alternate path described by the approved business rule.",
+      "Observe the resulting system behavior."
+    ],
+    "expected_result": "BR-04: Setting a cart line's quantity to 0 is treated as removal, not an error (REQ-CART-03).",
+    "priority": "MEDIUM",
+    "journey_id": "J-04",
+    "test_data_reference": null,
+    "source_attribution": [
+      {
+        "requirement_id": "REQ-CART-03",
+        "source_document": "requirements/MVP2_SRS_v1.0_APPROVED.md",
+        "source_version": "1.0",
+        "chunk_id": "srs_v1.0__REQ-CART-03"
+      }
+    ],
+    "generation_metadata": {
+      "generator": "stub-deterministic-v1",
+      "generated_at": "2026-09-14T18:15:51.101821+00:00",
+      "retrieval_mode": "exact_id",
+      "scenario_types_requested": [
+        "ALTERNATE",
+        "EXCEPTIONAL",
+        "POSITIVE"
+      ]
+    }
+  }
+}

@@ -1,0 +1,50 @@
+{
+  "artifact_id": "TC-REQ-ACO-03-01",
+  "artifact_version": 1,
+  "generated_at": "2026-09-14T18:15:51.106952+00:00",
+  "generator": "stub-deterministic-v1",
+  "provenance": {
+    "batch_id": "CR001-BATCH1-LIVE-01",
+    "checkpoint": "CP-MVP2-03"
+  },
+  "content_hash": "a21d2d32eca8bf37f93ecd9d8208c99827b9fe5e64e6bef60330d5bd3f7a566b",
+  "payload": {
+    "governance_status": "ACCEPTED",
+    "reasons": [],
+    "testcase_id": "TC-REQ-ACO-03-01",
+    "title": "Verify REQ-ACO-03: primary approved behavior",
+    "requirement_ids": [
+      "REQ-ACO-03"
+    ],
+    "scenario_type": "POSITIVE",
+    "preconditions": [
+      "Approved requirement REQ-ACO-03 is in effect"
+    ],
+    "test_steps": [
+      "Perform the action described by the approved requirement.",
+      "Observe the resulting system behavior."
+    ],
+    "expected_result": "REQ-ACO-03: The Billing/Shipping address form shall require First name, Last name, Email, Country, City, Address 1, Zip/postal code, and Phone number; Company, Address 2, and Fax number shall be optional\nRationale: Ensures sufficient fulfillment data\nEvidence Basis: Required-field markers and matching inline messages observed on the named fields; no such marker on the optional fields\nAcceptance Criteria: Given the address form, when required fields are left blank, then progression to the next step is blocked\nActor: Guest, Authenticated\nJourney: J-01, J-02\nStatus: APPROVED — BASELINED v1.0",
+    "priority": "MEDIUM",
+    "journey_id": "J-01",
+    "test_data_reference": null,
+    "source_attribution": [
+      {
+        "requirement_id": "REQ-ACO-03",
+        "source_document": "requirements/MVP2_SRS_v1.0_APPROVED.md",
+        "source_version": "1.0",
+        "chunk_id": "srs_v1.0__REQ-ACO-03"
+      }
+    ],
+    "generation_metadata": {
+      "generator": "stub-deterministic-v1",
+      "generated_at": "2026-09-14T18:15:51.100556+00:00",
+      "retrieval_mode": "exact_id",
+      "scenario_types_requested": [
+        "ALTERNATE",
+        "EXCEPTIONAL",
+        "POSITIVE"
+      ]
+    }
+  }
+}

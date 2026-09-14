@@ -1,0 +1,546 @@
+# CP-MVP2-03 — Controlled Raw Claude Response Investigation Authorization
+
+## 1. TASK CLASSIFICATION
+
+**Checkpoint:** CP-MVP2-03 — LLM Testcase Generation
+**Task:** Controlled Raw Claude Response Investigation
+**Status:** INVESTIGATION AUTHORIZED
+**Specification:** `docs/CP-MVP2-03-SPECIFICATION-v1.0.md` — APPROVED / FROZEN
+**Provider Decision:** `docs/CP-MVP2-03-CLAUDE-PROVIDER-DECISION.md` — APPROVED
+**Provider Implementation:** Existing Claude provider adapter
+
+This is a **diagnostic evidence-gathering task only**.
+
+It is NOT:
+
+* a parser implementation task,
+* a bug-fix task,
+* a specification change,
+* a retry of the previous smoke,
+* a testcase-generation batch,
+* a CP-MVP2-04 task.
+
+---
+
+# 2. PURPOSE
+
+The previous controlled live smoke established:
+
+```text
+Real Claude authentication       PASS
+Real claude -p execution         PASS
+Outer JSON envelope              PASS
+Inner result JSON parsing       FAIL
+```
+
+The observed parsing exception was:
+
+```text
+Expecting value: line 1 column 1 (char 0)
+```
+
+The previous report identified markdown-code-fence wrapping as a **possible hypothesis**, but this has NOT been proven.
+
+The purpose of this task is to determine the actual representation of the inner `result` returned by the real Claude invocation.
+
+### Evidence, not hypothesis, is the objective.
+
+---
+
+# 3. GOVERNANCE — NON-NEGOTIABLE
+
+The following MUST remain unchanged:
+
+* CP-MVP2-03 specification
+* Claude Provider Decision
+* `llm/client.py`
+* `testcases/`
+* `tests/`
+* `requirements/`
+* `knowledge/`
+* CP-MVP2-01 artifacts
+* CP-MVP2-02 artifacts
+
+Do not modify implementation code.
+
+Do not modify tests.
+
+Do not modify the parser.
+
+Do not add normalization logic.
+
+Do not change the prompt to compensate for the failure.
+
+If a change appears necessary:
+
+**STOP → REPORT → HUMAN + DI DECIDE**
+
+---
+
+# 4. IMPORTANT — THIS IS A NEW INVESTIGATION
+
+The previous live smoke was intentionally stopped after its single authorized invocation.
+
+This task is a **new, separately authorized investigation**.
+
+Do not describe the previous invocation as being retried.
+
+A new real Claude invocation is permitted only under the controlled procedure below.
+
+---
+
+# 5. EXACTLY ONE INVESTIGATIVE CLAUDE INVOCATION
+
+Perform exactly **ONE** real Claude invocation for this investigation.
+
+Do NOT:
+
+* retry automatically,
+* perform multiple prompts,
+* experiment with different prompts,
+* start an interactive session,
+* invoke Claude manually outside the approved mechanism.
+
+The invocation must use the existing `ClaudeLLMClient` / existing subprocess boundary where possible.
+
+The purpose is to capture the actual provider response representation.
+
+If the investigation invocation fails:
+
+**STOP.**
+
+Do not retry.
+
+---
+
+# 6. AUTHENTICATION SAFETY
+
+Use the existing authenticated Claude Pro subscription.
+
+Do NOT introduce:
+
+* `ANTHROPIC_API_KEY`,
+* Anthropic API credentials,
+* OpenAI API credentials,
+* `.env` credentials,
+* API billing.
+
+Before invocation, verify only that the intended subscription authentication is available.
+
+Do not print or persist credential values.
+
+If `ANTHROPIC_API_KEY` is present:
+
+**STOP.**
+
+Do not execute the live investigation.
+
+Report only that the API-key environment variable was detected and the subscription-only investigation was blocked.
+
+---
+
+# 7. REPOSITORY PRE-CHECK
+
+Record:
+
+* branch,
+* starting HEAD,
+* origin/main,
+* working-tree status.
+
+Confirm that the existing implementation is the implementation under investigation.
+
+The previous implementation commit is:
+
+```text
+12c7627bee283b85969a6d9a97fc5fb0564ca660
+```
+
+Do not reset, amend, rebase, or alter repository history.
+
+---
+
+# 8. BASELINE REGRESSION
+
+Run the existing full regression before the investigation.
+
+Expected baseline:
+
+```text
+67 passed
+0 failed
+```
+
+If baseline regression is not green:
+
+**STOP.**
+
+Do not execute the live investigation.
+
+---
+
+# 9. REQUIREMENT
+
+Use the same real Approved requirement used in the previous smoke where possible:
+
+```text
+REQ-REG-01
+```
+
+Source:
+
+```text
+requirements/MVP2_SRS_v1.0_APPROVED.md
+```
+
+Verify through the existing CP-MVP2-02 governed RAG path that it remains:
+
+* Approved,
+* baselined,
+* correctly attributed.
+
+Do not manually invent or alter the requirement.
+
+---
+
+# 10. INVESTIGATION OBJECTIVE
+
+The key question is:
+
+> What exactly is contained in the inner `result` field returned by the real Claude CLI response?
+
+Determine whether the result is:
+
+* plain JSON,
+* JSON wrapped in markdown fences,
+* natural-language text,
+* JSON preceded/followed by explanatory text,
+* a different structured representation,
+* empty,
+* malformed,
+* or another format.
+
+Do not assume the answer.
+
+---
+
+# 11. RAW RESPONSE EVIDENCE
+
+Capture the minimum raw-response evidence necessary to establish the actual format.
+
+Prefer safe diagnostic representation such as:
+
+* Python `repr()` of the inner result,
+* character/length information,
+* first/last relevant characters,
+* structural classification,
+* JSON parsing diagnostics.
+
+If the actual response contains potentially sensitive information, do NOT publish the entire response.
+
+Redact or minimize only information that is genuinely sensitive.
+
+Do not alter the response before determining its format.
+
+The report must distinguish:
+
+```text
+OBSERVED FACT
+```
+
+from:
+
+```text
+HYPOTHESIS
+```
+
+For example:
+
+````text
+Observed:
+inner result begins with "```json"
+
+Hypothesis:
+Claude's formatting caused the parser failure.
+````
+
+Do not present the second statement as fact unless evidence supports it.
+
+---
+
+# 12. DO NOT MODIFY THE PARSER
+
+Even if the evidence clearly shows:
+
+````text
+```json
+...
+````
+
+````
+
+do NOT implement:
+
+- fence stripping,
+- whitespace normalization,
+- JSON extraction,
+- regex repair,
+- fallback parsing,
+- prompt modification.
+
+This task ends after root-cause evidence is collected.
+
+A separate implementation task will be authorized only after Di reviews the evidence.
+
+---
+
+# 13. DO NOT SUBSTITUTE OUTPUT
+
+Do not use:
+
+- StubLLMClient,
+- OpenAILLMClient,
+- manually constructed Claude output,
+- previously generated output
+
+as a substitute for the real response.
+
+The purpose is specifically to inspect the response produced by the real Claude invocation.
+
+---
+
+# 14. DETERMINISTIC VALIDATION
+
+Do NOT proceed into full testcase validation if the provider output cannot be parsed by the existing implementation.
+
+The previous smoke already established that deterministic validation was not reached.
+
+This investigation is about the parsing boundary.
+
+If the raw result happens to be parseable through the existing implementation during this invocation, record that fact and stop at the appropriate point.
+
+Do not expand the scope into broader testcase-generation validation.
+
+---
+
+# 15. NO IMPLEMENTATION CHANGES
+
+At the end:
+
+```text
+git diff
+````
+
+must demonstrate that no implementation/specification files were modified.
+
+Only the investigation report and summary may be added.
+
+---
+
+# 16. REQUIRED DETAILED REPORT
+
+Create a detailed report under:
+
+```text
+docs/claude-execution-reports/CP-MVP2-03-LIVE-LLM-RAW-RESPONSE/
+```
+
+Use the established project naming convention.
+
+The report must contain:
+
+### Repository
+
+* starting HEAD,
+* ending HEAD,
+* branch,
+* working-tree status.
+
+### Authentication
+
+* Claude Code authentication status,
+* subscription type,
+* confirmation that no API key was used,
+* confirmation that no credential values were logged.
+
+### Baseline
+
+* exact pre-investigation regression result.
+
+### Requirement
+
+* requirement ID,
+* source,
+* version,
+* approval status,
+* RAG retrieval confirmation.
+
+### Live invocation
+
+* exactly one investigative invocation,
+* confirmation it used the existing Claude provider boundary,
+* execution result,
+* elapsed time if available.
+
+### Response analysis
+
+Clearly document:
+
+* outer envelope format,
+* inner `result` type,
+* inner `result` length,
+* safe representation of its beginning/end,
+* whether it contains markdown fencing,
+* whether it contains explanatory text,
+* whether it is valid JSON,
+* exact parser failure if applicable.
+
+### Root-cause assessment
+
+Separate:
+
+**Confirmed evidence**
+
+from:
+
+**Likely hypothesis**
+
+from:
+
+**Unknown / requires further evidence**
+
+Do not overstate conclusions.
+
+### Implementation integrity
+
+Confirm:
+
+* no parser changes,
+* no implementation changes,
+* no specification changes.
+
+### Downstream
+
+Confirm:
+
+```text
+CP-MVP2-04: NOT STARTED
+```
+
+and no out-of-scope work.
+
+---
+
+# 17. REQUIRED SUMMARY
+
+Create a concise summary under:
+
+```text
+docs/claude-execution-reports/CP-MVP2-03-LIVE-LLM-RAW-RESPONSE/summaries/
+```
+
+The summary must state:
+
+```text
+INVESTIGATION: COMPLETE / BLOCKED
+REAL CLAUDE INVOCATION: SUCCESS / FAILED / BLOCKED
+RAW RESPONSE FORMAT: <observed classification>
+INNER JSON PARSING: PASS / FAIL
+ROOT CAUSE: CONFIRMED / HYPOTHESIS / UNKNOWN
+IMPLEMENTATION CHANGED: NO
+SPECIFICATION CHANGED: NO
+REGRESSION: <exact count>
+CP-MVP2-04: NOT STARTED
+```
+
+---
+
+# 18. GIT COMMIT
+
+Commit only the investigation evidence.
+
+Suggested commit message:
+
+```text
+docs: record CP-MVP2-03 raw Claude response investigation
+```
+
+Push the commit.
+
+Provide:
+
+* detailed report path,
+* summary report path,
+* evidence commit SHA.
+
+Do not amend the existing implementation or smoke commits.
+
+---
+
+# 19. HARD STOP CONDITIONS
+
+STOP immediately if:
+
+1. subscription authentication is unavailable,
+2. `ANTHROPIC_API_KEY` is detected,
+3. baseline regression fails,
+4. Approved RAG retrieval fails,
+5. implementation/specification is unexpectedly changed,
+6. the investigation requires modifying code,
+7. the response cannot be captured safely,
+8. the first investigative invocation fails.
+
+No retry.
+
+No parser patch.
+
+No prompt modification.
+
+No fabricated evidence.
+
+---
+
+# 20. OUT OF SCOPE
+
+Do NOT:
+
+* fix the parser,
+* modify `ClaudeLLMClient`,
+* modify tests,
+* modify the specification,
+* modify RAG,
+* change the testcase schema,
+* start CP-MVP2-04,
+* generate test data,
+* execute browser tests,
+* perform performance testing,
+* perform security testing,
+* implement self-healing,
+* perform RCA,
+* start CI/CD work.
+
+---
+
+# 21. FINAL COMPLETION RESPONSE
+
+Return:
+
+1. detailed investigation report GitHub path,
+2. summary report GitHub path,
+3. evidence commit SHA,
+4. starting/ending HEAD,
+5. exact regression result,
+6. confirmation of exactly one real Claude invocation,
+7. observed inner-result format,
+8. parser result,
+9. confirmed vs hypothesized root cause,
+10. files changed,
+11. confirmation frozen artifacts remain unchanged,
+12. confirmation no API key was used,
+13. confirmation CP-MVP2-04 was not started.
+
+**STOP after the investigation.**
+
+Do not implement a fix.
+
+The next action is **Di's independent review and decision on whether a separate corrective implementation task is justified.**

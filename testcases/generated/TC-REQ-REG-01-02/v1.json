@@ -1,0 +1,50 @@
+{
+  "artifact_id": "TC-REQ-REG-01-02",
+  "artifact_version": 1,
+  "generated_at": "2026-09-14T18:15:51.105444+00:00",
+  "generator": "stub-deterministic-v1",
+  "provenance": {
+    "batch_id": "CR001-BATCH1-LIVE-01",
+    "checkpoint": "CP-MVP2-03"
+  },
+  "content_hash": "d90b185b0a05bb96dbcf3d1250bbac47ccc9d38dc8511458d09e521f4ada1f5b",
+  "payload": {
+    "governance_status": "ACCEPTED",
+    "reasons": [],
+    "testcase_id": "TC-REQ-REG-01-02",
+    "title": "Verify REQ-REG-01: exceptional/negative path per srs_v1.0__NEG-01",
+    "requirement_ids": [
+      "REQ-REG-01"
+    ],
+    "scenario_type": "EXCEPTIONAL",
+    "preconditions": [
+      "Approved requirement REQ-REG-01 is in effect"
+    ],
+    "test_steps": [
+      "Drive the exceptional/negative condition described by the approved negative case.",
+      "Observe the resulting system behavior."
+    ],
+    "expected_result": "NEG-01: Registration with all fields blank is rejected with per-field required messages",
+    "priority": "HIGH",
+    "journey_id": "J-01",
+    "test_data_reference": null,
+    "source_attribution": [
+      {
+        "requirement_id": "REQ-REG-01",
+        "source_document": "requirements/MVP2_SRS_v1.0_APPROVED.md",
+        "source_version": "1.0",
+        "chunk_id": "srs_v1.0__REQ-REG-01"
+      }
+    ],
+    "generation_metadata": {
+      "generator": "stub-deterministic-v1",
+      "generated_at": "2026-09-14T18:15:51.099505+00:00",
+      "retrieval_mode": "exact_id",
+      "scenario_types_requested": [
+        "ALTERNATE",
+        "EXCEPTIONAL",
+        "POSITIVE"
+      ]
+    }
+  }
+}

@@ -1,0 +1,84 @@
+{
+  "artifact_id": "CR001-BATCH1-LIVE-01",
+  "artifact_version": 1,
+  "generated_at": "2026-09-14T18:15:51.116163+00:00",
+  "generator": "deterministic-only",
+  "provenance": {
+    "checkpoint": "CP-MVP2-03",
+    "kind": "req_to_testcase_traceability"
+  },
+  "content_hash": "621fc4b6341e3aa538e3a00fedea8fd6ee15f55b082c1740a37c6d73d4b7e96f",
+  "payload": {
+    "coverage": {
+      "total_applicable_requirements": 4,
+      "covered_requirements": [
+        "REQ-ACO-03",
+        "REQ-CART-03",
+        "REQ-PAY-01",
+        "REQ-REG-01"
+      ],
+      "uncovered_requirements": [],
+      "coverage_percentage": 100.0
+    },
+    "requirement_to_testcases": {
+      "REQ-REG-01": [
+        "TC-REQ-REG-01-01",
+        "TC-REQ-REG-01-02"
+      ],
+      "REQ-ACO-03": [
+        "TC-REQ-ACO-03-01",
+        "TC-REQ-ACO-03-02"
+      ],
+      "REQ-PAY-01": [
+        "TC-REQ-PAY-01-01",
+        "TC-REQ-PAY-01-02"
+      ],
+      "REQ-CART-03": [
+        "TC-REQ-CART-03-01",
+        "TC-REQ-CART-03-02",
+        "TC-REQ-CART-03-03"
+      ]
+    },
+    "testcase_to_requirements": {
+      "TC-REQ-REG-01-01": [
+        "REQ-REG-01"
+      ],
+      "TC-REQ-REG-01-02": [
+        "REQ-REG-01"
+      ],
+      "TC-REQ-ACO-03-01": [
+        "REQ-ACO-03"
+      ],
+      "TC-REQ-ACO-03-02": [
+        "REQ-ACO-03"
+      ],
+      "TC-REQ-PAY-01-01": [
+        "REQ-PAY-01"
+      ],
+      "TC-REQ-PAY-01-02": [
+        "REQ-PAY-01"
+      ],
+      "TC-REQ-CART-03-01": [
+        "REQ-CART-03"
+      ],
+      "TC-REQ-CART-03-02": [
+        "REQ-CART-03"
+      ],
+      "TC-REQ-CART-03-03": [
+        "REQ-CART-03"
+      ]
+    },
+    "orphan_or_invalid_references": [],
+    "testcase_status": {
+      "TC-REQ-REG-01-01": "ACCEPTED",
+      "TC-REQ-REG-01-02": "ACCEPTED",
+      "TC-REQ-ACO-03-01": "ACCEPTED",
+      "TC-REQ-ACO-03-02": "ACCEPTED",
+      "TC-REQ-PAY-01-01": "ACCEPTED",
+      "TC-REQ-PAY-01-02": "ACCEPTED",
+      "TC-REQ-CART-03-01": "ACCEPTED",
+      "TC-REQ-CART-03-02": "ACCEPTED",
+      "TC-REQ-CART-03-03": "ACCEPTED"
+    }
+  }
+}

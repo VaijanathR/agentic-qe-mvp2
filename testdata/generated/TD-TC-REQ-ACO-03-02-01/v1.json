@@ -1,0 +1,133 @@
+{
+  "artifact_id": "TD-TC-REQ-ACO-03-02-01",
+  "artifact_version": 1,
+  "generated_at": "2026-09-14T18:15:51.168398+00:00",
+  "generator": "stub-deterministic-v1",
+  "provenance": {
+    "batch_id": "CR001-BATCH1-LIVE-01",
+    "checkpoint": "CP-MVP2-04"
+  },
+  "content_hash": "30fff929aca08542d0c847735e1682b06e14f90db3e0abbe6970829a16171649",
+  "payload": {
+    "validation_status": "ACCEPTED",
+    "notes": [],
+    "data_set_id": "TD-TC-REQ-ACO-03-02-01",
+    "testcase_id": "TC-REQ-ACO-03-02",
+    "requirement_ids": [
+      "REQ-ACO-03"
+    ],
+    "data_category": "POSITIVE",
+    "purpose": "Valid data satisfying all mandatory fields for REQ-ACO-03",
+    "validity": "VALID",
+    "fields": [
+      {
+        "field_name": "first_name",
+        "field_value": "Synthetic-first_name",
+        "value_type": "STRING",
+        "boundary_classification": "NOT_APPLICABLE",
+        "uniqueness_requirement": "UNIQUENESS_UNKNOWN",
+        "dependency_reference": null
+      },
+      {
+        "field_name": "last_name",
+        "field_value": "Synthetic-last_name",
+        "value_type": "STRING",
+        "boundary_classification": "NOT_APPLICABLE",
+        "uniqueness_requirement": "UNIQUENESS_UNKNOWN",
+        "dependency_reference": null
+      },
+      {
+        "field_name": "email",
+        "field_value": "synthetic.req-aco-03@example.test",
+        "value_type": "EMAIL",
+        "boundary_classification": "NOT_APPLICABLE",
+        "uniqueness_requirement": "UNIQUENESS_UNKNOWN",
+        "dependency_reference": null
+      },
+      {
+        "field_name": "country",
+        "field_value": "Synthetic-country",
+        "value_type": "STRING",
+        "boundary_classification": "NOT_APPLICABLE",
+        "uniqueness_requirement": "UNIQUENESS_UNKNOWN",
+        "dependency_reference": null
+      },
+      {
+        "field_name": "city",
+        "field_value": "Synthetic-city",
+        "value_type": "STRING",
+        "boundary_classification": "NOT_APPLICABLE",
+        "uniqueness_requirement": "UNIQUENESS_UNKNOWN",
+        "dependency_reference": null
+      },
+      {
+        "field_name": "address1",
+        "field_value": "Synthetic-address1",
+        "value_type": "STRING",
+        "boundary_classification": "NOT_APPLICABLE",
+        "uniqueness_requirement": "UNIQUENESS_UNKNOWN",
+        "dependency_reference": null
+      },
+      {
+        "field_name": "zip_postal_code",
+        "field_value": "Synthetic-zip_postal_code",
+        "value_type": "STRING",
+        "boundary_classification": "NOT_APPLICABLE",
+        "uniqueness_requirement": "UNIQUENESS_UNKNOWN",
+        "dependency_reference": null
+      },
+      {
+        "field_name": "phone_number",
+        "field_value": "Synthetic-phone_number",
+        "value_type": "STRING",
+        "boundary_classification": "NOT_APPLICABLE",
+        "uniqueness_requirement": "UNIQUENESS_UNKNOWN",
+        "dependency_reference": null
+      },
+      {
+        "field_name": "company",
+        "field_value": "Synthetic-company",
+        "value_type": "STRING",
+        "boundary_classification": "NOT_APPLICABLE",
+        "uniqueness_requirement": "UNIQUENESS_UNKNOWN",
+        "dependency_reference": null
+      },
+      {
+        "field_name": "address2",
+        "field_value": "Synthetic-address2",
+        "value_type": "STRING",
+        "boundary_classification": "NOT_APPLICABLE",
+        "uniqueness_requirement": "UNIQUENESS_UNKNOWN",
+        "dependency_reference": null
+      },
+      {
+        "field_name": "fax_number",
+        "field_value": "Synthetic-fax_number",
+        "value_type": "STRING",
+        "boundary_classification": "NOT_APPLICABLE",
+        "uniqueness_requirement": "UNIQUENESS_UNKNOWN",
+        "dependency_reference": null
+      }
+    ],
+    "source_attribution": [
+      {
+        "requirement_id": "REQ-ACO-03",
+        "source_document": "requirements/MVP2_SRS_v1.0_APPROVED.md",
+        "source_version": "1.0",
+        "chunk_id": "srs_v1.0__REQ-ACO-03"
+      }
+    ],
+    "generation_metadata": {
+      "generator": "stub-deterministic-v1",
+      "generated_at": "2026-09-14T18:15:51.137808+00:00",
+      "retrieval_mode": "exact_id",
+      "categories_requested": [
+        "POSITIVE",
+        "EXCEPTIONAL",
+        "BOUNDARY",
+        "ALTERNATE",
+        "INVALID"
+      ]
+    }
+  }
+}

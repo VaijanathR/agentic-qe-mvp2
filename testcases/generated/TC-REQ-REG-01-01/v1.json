@@ -1,0 +1,50 @@
+{
+  "artifact_id": "TC-REQ-REG-01-01",
+  "artifact_version": 1,
+  "generated_at": "2026-09-14T18:15:51.103849+00:00",
+  "generator": "stub-deterministic-v1",
+  "provenance": {
+    "batch_id": "CR001-BATCH1-LIVE-01",
+    "checkpoint": "CP-MVP2-03"
+  },
+  "content_hash": "2865e17d4845ab8ec8050a373e4b928bcffe639df287f1ae8162d74aeb093af7",
+  "payload": {
+    "governance_status": "ACCEPTED",
+    "reasons": [],
+    "testcase_id": "TC-REQ-REG-01-01",
+    "title": "Verify REQ-REG-01: primary approved behavior",
+    "requirement_ids": [
+      "REQ-REG-01"
+    ],
+    "scenario_type": "POSITIVE",
+    "preconditions": [
+      "Approved requirement REQ-REG-01 is in effect"
+    ],
+    "test_steps": [
+      "Perform the action described by the approved requirement.",
+      "Observe the resulting system behavior."
+    ],
+    "expected_result": "REQ-REG-01: Registration shall require First name, Last name, Email, Password, and Confirm password, rejecting submission with field-specific messages when any are blank\nRationale: Baseline data-quality gate\nEvidence Basis: Empty-form submission returned per-field \"is required\" messages\nAcceptance Criteria: Given all fields blank, when submitted, then all required-field messages show and no account is created\nActor: Guest\nJourney: J-01\nStatus: APPROVED — BASELINED v1.0",
+    "priority": "MEDIUM",
+    "journey_id": "J-01",
+    "test_data_reference": null,
+    "source_attribution": [
+      {
+        "requirement_id": "REQ-REG-01",
+        "source_document": "requirements/MVP2_SRS_v1.0_APPROVED.md",
+        "source_version": "1.0",
+        "chunk_id": "srs_v1.0__REQ-REG-01"
+      }
+    ],
+    "generation_metadata": {
+      "generator": "stub-deterministic-v1",
+      "generated_at": "2026-09-14T18:15:51.099468+00:00",
+      "retrieval_mode": "exact_id",
+      "scenario_types_requested": [
+        "ALTERNATE",
+        "EXCEPTIONAL",
+        "POSITIVE"
+      ]
+    }
+  }
+}
