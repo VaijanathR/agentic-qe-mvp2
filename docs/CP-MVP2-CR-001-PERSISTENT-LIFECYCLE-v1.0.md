@@ -3,7 +3,7 @@
 ## Formal Change Request
 
 * **CR ID:** CP-MVP2-CR-001
-* **Status:** **BATCH 1 IMPLEMENTATION AUTHORIZED AND COMPLETE** (RBTP corrected to Risk-Based Test Prioritization; see §4). Di's independent engineering review: PASS with advisories. **This status describes implementation completion, not a final CR-001 governance gate — that determination remains Di's separate, independent responsibility** (see the governance reconciliation report under `docs/claude-execution-reports/CP-MVP2-CR-001/`).
+* **Status:** **BATCH 1 IMPLEMENTATION AUTHORIZED AND COMPLETE — AWAITING DI FINAL GATE.** (RBTP corrected to Risk-Based Test Prioritization; see §4.) Di's independent engineering review of the Batch 1 implementation: PASS with advisories. **Di has NOT yet issued the final CR-001 governance gate** — that determination remains Di's separate, independent responsibility (see the governance reconciliation report under `docs/claude-execution-reports/CP-MVP2-CR-001/`).
 * **Raised against:** CP-MVP2-03, CP-MVP2-04, CP-MVP2-05, CP-MVP2-06 (all currently **FROZEN/CLOSED**), and the not-yet-started CP-MVP2-07/08/09.
 * **Trigger evidence:** `docs/claude-execution-reports/CP-MVP2-03/CP-MVP2-03-TESTCASE-PERSISTENCE-INVESTIGATION-20260914-173808-FAE651.md` (commit `21ce740`) — a read-only forensic investigation that established, by direct code inspection, that CP-03-generated testcase instances are **not** persisted as first-class artifacts (governance classification **RED**).
 * **Companion document:** `docs/CP-MVP2-CR-001-ARCHITECTURE-IMPACT-ASSESSMENT-v1.0.md` (current-vs-proposed architecture, per-artifact contract, checkpoint impact matrix, migration strategy).

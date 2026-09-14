@@ -1,11 +1,12 @@
 # CP-MVP2-CR-001 — Architecture Impact Assessment
 
 Companion to `docs/CP-MVP2-CR-001-PERSISTENT-LIFECYCLE-v1.0.md`. **Status:
-BATCH 1 IMPLEMENTATION AUTHORIZED AND COMPLETE.** RBTP corrected to
-Risk-Based Test Prioritization (see companion §4). Di's independent
-engineering review: PASS with advisories. **This describes implementation
-completion, not a final CR-001 governance gate** — see the governance
-reconciliation report under `docs/claude-execution-reports/CP-MVP2-CR-001/`.
+BATCH 1 IMPLEMENTATION AUTHORIZED AND COMPLETE — AWAITING DI FINAL GATE.**
+RBTP corrected to Risk-Based Test Prioritization (see companion §4).
+Di's independent engineering review of the Batch 1 implementation: PASS
+with advisories. **Di has NOT yet issued the final CR-001 governance
+gate** — see the governance reconciliation report under
+`docs/claude-execution-reports/CP-MVP2-CR-001/`.
 
 ---
 
