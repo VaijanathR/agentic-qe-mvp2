@@ -1,0 +1,15 @@
+{
+  "searchValidUrl": "https://demowebshop.tricentis.com/search?Q=computer&As=false&Cid=0&Isc=false&Mid=0&Pf=&Pt=&Sid=false",
+  "searchValidResultCount": 4,
+  "searchNoResultText": "Search keyword: Advanced search No products were found that matched your criteria.",
+  "searchNoResultCount": 0,
+  "priceBeforeOptionChange": "1200.00",
+  "numConfigurableSelects": 2,
+  "priceAfterOptionChange": "1200.00",
+  "addToCartNotice": " Please select HDD",
+  "cartTextAfterAdd": "N/A",
+  "cartTextAfterQtyUpdate": "N/A",
+  "cartTextAfterRemove": [
+    "Shopping Cart is empty"
+  ]
+}

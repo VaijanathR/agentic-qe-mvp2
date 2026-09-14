@@ -1,0 +1,454 @@
+[
+  {
+    "category": "Computers",
+    "state": "anonymous",
+    "url": "https://demowebshop.tricentis.com/desktop-pc",
+    "label": "Computers (ANONYMOUS) - /desktop-pc",
+    "visibleButtonsOnPage": [
+      "Subscribe"
+    ],
+    "wishlistControlFound": false,
+    "wishlistSelectorMatched": null,
+    "clickResult": "N/A - no wishlist control found"
+  },
+  {
+    "category": "Computers-grid",
+    "state": "anonymous",
+    "url": "https://demowebshop.tricentis.com/desktops",
+    "label": "Computers-grid (ANONYMOUS) - /desktops",
+    "visibleButtonsOnPage": [
+      "Subscribe",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart"
+    ],
+    "wishlistControlFound": false,
+    "wishlistSelectorMatched": null,
+    "clickResult": "N/A - no wishlist control found"
+  },
+  {
+    "category": "Electronics",
+    "state": "anonymous",
+    "url": "https://demowebshop.tricentis.com/digital-slr-camera",
+    "label": "Electronics (ANONYMOUS) - /digital-slr-camera",
+    "visibleButtonsOnPage": [
+      "Subscribe",
+      "Add to cart",
+      "Add to wishlist",
+      "Add to cart",
+      "Add to wishlist"
+    ],
+    "wishlistControlFound": true,
+    "wishlistSelectorMatched": "text=/add to wishlist/i",
+    "clickResult": "Clicked OK. Notice/result:  The product has been added to your wishlist. URL after click: https://demowebshop.tricentis.com/digital-slr-camera"
+  },
+  {
+    "category": "Electronics-grid",
+    "state": "anonymous",
+    "url": "https://demowebshop.tricentis.com/camera-photo",
+    "label": "Electronics-grid (ANONYMOUS) - /camera-photo",
+    "visibleButtonsOnPage": [
+      "Subscribe"
+    ],
+    "wishlistControlFound": false,
+    "wishlistSelectorMatched": null,
+    "clickResult": "N/A - no wishlist control found"
+  },
+  {
+    "category": "Apparel",
+    "state": "anonymous",
+    "url": "https://demowebshop.tricentis.com/blue-jeans",
+    "label": "Apparel (ANONYMOUS) - /blue-jeans",
+    "visibleButtonsOnPage": [
+      "Subscribe",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart"
+    ],
+    "wishlistControlFound": false,
+    "wishlistSelectorMatched": null,
+    "clickResult": "N/A - no wishlist control found"
+  },
+  {
+    "category": "Apparel-grid",
+    "state": "anonymous",
+    "url": "https://demowebshop.tricentis.com/apparel-shoes",
+    "label": "Apparel-grid (ANONYMOUS) - /apparel-shoes",
+    "visibleButtonsOnPage": [
+      "Subscribe",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart"
+    ],
+    "wishlistControlFound": false,
+    "wishlistSelectorMatched": null,
+    "clickResult": "N/A - no wishlist control found"
+  },
+  {
+    "category": "Digital Downloads",
+    "state": "anonymous",
+    "url": "https://demowebshop.tricentis.com/music-album-1",
+    "label": "Digital Downloads (ANONYMOUS) - /music-album-1",
+    "visibleButtonsOnPage": [
+      "Subscribe",
+      "Add to cart",
+      "Add to wishlist",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart"
+    ],
+    "wishlistControlFound": true,
+    "wishlistSelectorMatched": "text=/add to wishlist/i",
+    "clickResult": "Clicked OK. Notice/result:  The product has been added to your wishlist. URL after click: https://demowebshop.tricentis.com/music-album-1"
+  },
+  {
+    "category": "Digital Downloads-grid",
+    "state": "anonymous",
+    "url": "https://demowebshop.tricentis.com/digital-downloads",
+    "label": "Digital Downloads-grid (ANONYMOUS) - /digital-downloads",
+    "visibleButtonsOnPage": [
+      "Subscribe",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart"
+    ],
+    "wishlistControlFound": false,
+    "wishlistSelectorMatched": null,
+    "clickResult": "N/A - no wishlist control found"
+  },
+  {
+    "category": "Books",
+    "state": "anonymous",
+    "url": "https://demowebshop.tricentis.com/computing-and-internet",
+    "label": "Books (ANONYMOUS) - /computing-and-internet",
+    "visibleButtonsOnPage": [
+      "Subscribe",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart"
+    ],
+    "wishlistControlFound": false,
+    "wishlistSelectorMatched": null,
+    "clickResult": "N/A - no wishlist control found"
+  },
+  {
+    "category": "Books-grid",
+    "state": "anonymous",
+    "url": "https://demowebshop.tricentis.com/books",
+    "label": "Books-grid (ANONYMOUS) - /books",
+    "visibleButtonsOnPage": [
+      "Subscribe",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart"
+    ],
+    "wishlistControlFound": false,
+    "wishlistSelectorMatched": null,
+    "clickResult": "N/A - no wishlist control found"
+  },
+  {
+    "category": "Jewelry",
+    "state": "anonymous",
+    "url": "https://demowebshop.tricentis.com/diamond-tennis-bracelet",
+    "label": "Jewelry (ANONYMOUS) - /diamond-tennis-bracelet",
+    "visibleButtonsOnPage": [
+      "Subscribe",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart"
+    ],
+    "wishlistControlFound": false,
+    "wishlistSelectorMatched": null,
+    "clickResult": "N/A - no wishlist control found"
+  },
+  {
+    "category": "Jewelry-grid",
+    "state": "anonymous",
+    "url": "https://demowebshop.tricentis.com/jewelry",
+    "label": "Jewelry-grid (ANONYMOUS) - /jewelry",
+    "visibleButtonsOnPage": [
+      "Subscribe",
+      "Add to cart",
+      "Add to cart"
+    ],
+    "wishlistControlFound": false,
+    "wishlistSelectorMatched": null,
+    "clickResult": "N/A - no wishlist control found"
+  },
+  {
+    "category": "Gift Cards",
+    "state": "anonymous",
+    "url": "https://demowebshop.tricentis.com/25-virtual-gift-card",
+    "label": "Gift Cards (ANONYMOUS) - /25-virtual-gift-card",
+    "visibleButtonsOnPage": [
+      "Subscribe",
+      "Add to cart",
+      "Add to wishlist",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart"
+    ],
+    "wishlistControlFound": true,
+    "wishlistSelectorMatched": "text=/add to wishlist/i",
+    "clickResult": "Clicked OK. Notice/result:  Enter valid recipient name Enter valid recipient email Enter valid sender name Enter valid sender email. URL after click: https://demowebshop.tricentis.com/25-virtual-gift-card"
+  },
+  {
+    "category": "Gift Cards-grid",
+    "state": "anonymous",
+    "url": "https://demowebshop.tricentis.com/gift-cards",
+    "label": "Gift Cards-grid (ANONYMOUS) - /gift-cards",
+    "visibleButtonsOnPage": [
+      "Subscribe",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart"
+    ],
+    "wishlistControlFound": false,
+    "wishlistSelectorMatched": null,
+    "clickResult": "N/A - no wishlist control found"
+  },
+  {
+    "category": "Computers",
+    "state": "authenticated",
+    "url": "https://demowebshop.tricentis.com/desktop-pc",
+    "label": "Computers (AUTHENTICATED) - /desktop-pc",
+    "visibleButtonsOnPage": [
+      "Go to cart",
+      "Subscribe"
+    ],
+    "wishlistControlFound": false,
+    "wishlistSelectorMatched": null,
+    "clickResult": "N/A - no wishlist control found"
+  },
+  {
+    "category": "Computers-grid",
+    "state": "authenticated",
+    "url": "https://demowebshop.tricentis.com/desktops",
+    "label": "Computers-grid (AUTHENTICATED) - /desktops",
+    "visibleButtonsOnPage": [
+      "Go to cart",
+      "Subscribe",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart"
+    ],
+    "wishlistControlFound": false,
+    "wishlistSelectorMatched": null,
+    "clickResult": "N/A - no wishlist control found"
+  },
+  {
+    "category": "Electronics",
+    "state": "authenticated",
+    "url": "https://demowebshop.tricentis.com/digital-slr-camera",
+    "label": "Electronics (AUTHENTICATED) - /digital-slr-camera",
+    "visibleButtonsOnPage": [
+      "Go to cart",
+      "Subscribe",
+      "Add to cart",
+      "Add to wishlist",
+      "Add to cart",
+      "Add to wishlist"
+    ],
+    "wishlistControlFound": true,
+    "wishlistSelectorMatched": "text=/add to wishlist/i",
+    "clickResult": "Clicked OK. Notice/result:  The product has been added to your wishlist. URL after click: https://demowebshop.tricentis.com/digital-slr-camera"
+  },
+  {
+    "category": "Electronics-grid",
+    "state": "authenticated",
+    "url": "https://demowebshop.tricentis.com/camera-photo",
+    "label": "Electronics-grid (AUTHENTICATED) - /camera-photo",
+    "visibleButtonsOnPage": [
+      "Go to cart",
+      "Subscribe"
+    ],
+    "wishlistControlFound": false,
+    "wishlistSelectorMatched": null,
+    "clickResult": "N/A - no wishlist control found"
+  },
+  {
+    "category": "Apparel",
+    "state": "authenticated",
+    "url": "https://demowebshop.tricentis.com/blue-jeans",
+    "label": "Apparel (AUTHENTICATED) - /blue-jeans",
+    "visibleButtonsOnPage": [
+      "Go to cart",
+      "Subscribe",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart"
+    ],
+    "wishlistControlFound": false,
+    "wishlistSelectorMatched": null,
+    "clickResult": "N/A - no wishlist control found"
+  },
+  {
+    "category": "Apparel-grid",
+    "state": "authenticated",
+    "url": "https://demowebshop.tricentis.com/apparel-shoes",
+    "label": "Apparel-grid (AUTHENTICATED) - /apparel-shoes",
+    "visibleButtonsOnPage": [
+      "Go to cart",
+      "Subscribe",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart"
+    ],
+    "wishlistControlFound": false,
+    "wishlistSelectorMatched": null,
+    "clickResult": "N/A - no wishlist control found"
+  },
+  {
+    "category": "Digital Downloads",
+    "state": "authenticated",
+    "url": "https://demowebshop.tricentis.com/music-album-1",
+    "label": "Digital Downloads (AUTHENTICATED) - /music-album-1",
+    "visibleButtonsOnPage": [
+      "Go to cart",
+      "Subscribe",
+      "Add to cart",
+      "Add to wishlist",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart"
+    ],
+    "wishlistControlFound": true,
+    "wishlistSelectorMatched": "text=/add to wishlist/i",
+    "clickResult": "Clicked OK. Notice/result:  The product has been added to your wishlist. URL after click: https://demowebshop.tricentis.com/music-album-1"
+  },
+  {
+    "category": "Digital Downloads-grid",
+    "state": "authenticated",
+    "url": "https://demowebshop.tricentis.com/digital-downloads",
+    "label": "Digital Downloads-grid (AUTHENTICATED) - /digital-downloads",
+    "visibleButtonsOnPage": [
+      "Go to cart",
+      "Subscribe",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart"
+    ],
+    "wishlistControlFound": false,
+    "wishlistSelectorMatched": null,
+    "clickResult": "N/A - no wishlist control found"
+  },
+  {
+    "category": "Books",
+    "state": "authenticated",
+    "url": "https://demowebshop.tricentis.com/computing-and-internet",
+    "label": "Books (AUTHENTICATED) - /computing-and-internet",
+    "visibleButtonsOnPage": [
+      "Go to cart",
+      "Subscribe",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart"
+    ],
+    "wishlistControlFound": false,
+    "wishlistSelectorMatched": null,
+    "clickResult": "N/A - no wishlist control found"
+  },
+  {
+    "category": "Books-grid",
+    "state": "authenticated",
+    "url": "https://demowebshop.tricentis.com/books",
+    "label": "Books-grid (AUTHENTICATED) - /books",
+    "visibleButtonsOnPage": [
+      "Go to cart",
+      "Subscribe",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart"
+    ],
+    "wishlistControlFound": false,
+    "wishlistSelectorMatched": null,
+    "clickResult": "N/A - no wishlist control found"
+  },
+  {
+    "category": "Jewelry",
+    "state": "authenticated",
+    "url": "https://demowebshop.tricentis.com/diamond-tennis-bracelet",
+    "label": "Jewelry (AUTHENTICATED) - /diamond-tennis-bracelet",
+    "visibleButtonsOnPage": [
+      "Go to cart",
+      "Subscribe",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart"
+    ],
+    "wishlistControlFound": false,
+    "wishlistSelectorMatched": null,
+    "clickResult": "N/A - no wishlist control found"
+  },
+  {
+    "category": "Jewelry-grid",
+    "state": "authenticated",
+    "url": "https://demowebshop.tricentis.com/jewelry",
+    "label": "Jewelry-grid (AUTHENTICATED) - /jewelry",
+    "visibleButtonsOnPage": [
+      "Go to cart",
+      "Subscribe",
+      "Add to cart",
+      "Add to cart"
+    ],
+    "wishlistControlFound": false,
+    "wishlistSelectorMatched": null,
+    "clickResult": "N/A - no wishlist control found"
+  },
+  {
+    "category": "Gift Cards",
+    "state": "authenticated",
+    "url": "https://demowebshop.tricentis.com/25-virtual-gift-card",
+    "label": "Gift Cards (AUTHENTICATED) - /25-virtual-gift-card",
+    "visibleButtonsOnPage": [
+      "Go to cart",
+      "Subscribe",
+      "Add to cart",
+      "Add to wishlist",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart"
+    ],
+    "wishlistControlFound": true,
+    "wishlistSelectorMatched": "text=/add to wishlist/i",
+    "clickResult": "Clicked OK. Notice/result:  Enter valid recipient name Enter valid recipient email. URL after click: https://demowebshop.tricentis.com/25-virtual-gift-card"
+  },
+  {
+    "category": "Gift Cards-grid",
+    "state": "authenticated",
+    "url": "https://demowebshop.tricentis.com/gift-cards",
+    "label": "Gift Cards-grid (AUTHENTICATED) - /gift-cards",
+    "visibleButtonsOnPage": [
+      "Go to cart",
+      "Subscribe",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart",
+      "Add to cart"
+    ],
+    "wishlistControlFound": false,
+    "wishlistSelectorMatched": null,
+    "clickResult": "N/A - no wishlist control found"
+  }
+]

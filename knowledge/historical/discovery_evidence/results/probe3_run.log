@@ -1,0 +1,24 @@
+{
+  "ordersPageText": "qe.discovery.1789149299815@example.com Log out Shopping cart (0) Wishlist (0) BOOKS COMPUTERS ELECTRONICS APPAREL & SHOES DIGITAL DOWNLOADS JEWELRY GIFT CARDS MY ACCOUNT Customer info Addresses Orders Downloadable products Back in stock subscriptions Reward points Change password My account - Orders Order Number: 2386132 Order status: Pending Order Date: 9/11/2026 6:10:58 PM Order Total: 17.00 INFORMATION Sitemap Shipping & Returns Privacy Notice Conditions of Use About us Contact us CUSTOMER SERVICE Search News Blog Recently viewed products Compare products list New products MY ACCOUNT My account Orders Addresses Shopping cart Wishlist FOLLOW US Facebook Twitter RSS YouTube Google+ Powered by nopCommerce Copyright © 2026 Tricentis Demo Web Shop. All rights reserved.",
+  "anonProductPageHasWishlistBtn": 0,
+  "anonProductPageButtons": [
+    "",
+    "",
+    "",
+    "",
+    "",
+    "",
+    ""
+  ],
+  "anonAddToCartNotice": " The product has been added to your shopping cart",
+  "anonCheckoutUrl": "https://demowebshop.tricentis.com/login/checkoutasguest?returnUrl=%2Fcart",
+  "anonCheckoutText": "Register Log in Shopping cart (1) Wishlist (0) BOOKS COMPUTERS ELECTRONICS APPAREL & SHOES DIGITAL DOWNLOADS JEWELRY GIFT CARDS CATEGORIES Books Computers Electronics Apparel & Shoes Digital downloads Jewelry Gift Cards MANUFACTURERS Tricentis NEWSLETTER Sign up for our newsletter: Welcome, Please Sign In! Checkout as a guest or register Register and save time! Register with us for future convenience: Fast and easy check out Easy access to your order history and status Returning Customer Email: Password: Remember me? Forgot password? About login / registration Put your login / registration inf",
+  "cartAfterLoginRowCount": 1,
+  "cartAfterLoginText": "Remove Product(s) Price Qty. Total Computing and Internet 10.00 10.00",
+  "invalidEmailValidation": [
+    "Wrong email"
+  ],
+  "duplicateEmailValidation": [
+    "The specified email already exists\n"
+  ]
+}

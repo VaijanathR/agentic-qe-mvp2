@@ -1,0 +1,34 @@
+STEP0 URL: https://demowebshop.tricentis.com/onepagecheckout
+country select failed page.selectOption: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('#BillingNewAddress_CountryId')[22m
+[2m    - locator resolved to <select data-val="true" id="BillingNewAddress_CountryId" name="BillingNewAddress.CountryId" data-val-required="Country is required." data-val-number="The field Country must be a number.">…</select>[22m
+[2m  - attempting select option action[22m
+[2m    2 × waiting for element to be visible and enabled[22m
+[2m      - element is not visible[22m
+[2m    - retrying select option action[22m
+[2m    - waiting 20ms[22m
+[2m    2 × waiting for element to be visible and enabled[22m
+[2m      - element is not visible[22m
+[2m    - retrying select option action[22m
+[2m      - waiting 100ms[22m
+[2m    59 × waiting for element to be visible and enabled[22m
+[2m       - element is not visible[22m
+[2m     - retrying select option action[22m
+[2m       - waiting 500ms[22m
+
+--- STEP 1 URL: https://demowebshop.tricentis.com/onepagecheckout
+  clicking (visible): .new-address-next-step-button
+--- STEP 2 URL: https://demowebshop.tricentis.com/onepagecheckout
+  clicking (visible): .new-address-next-step-button
+--- STEP 3 URL: https://demowebshop.tricentis.com/onepagecheckout
+  clicking (visible): .shipping-method-next-step-button
+--- STEP 4 URL: https://demowebshop.tricentis.com/onepagecheckout
+  clicking (visible): .payment-method-next-step-button
+--- STEP 5 URL: https://demowebshop.tricentis.com/onepagecheckout
+  clicking (visible): .payment-info-next-step-button
+--- STEP 6 URL: https://demowebshop.tricentis.com/onepagecheckout
+  clicking (visible): .confirm-order-next-step-button
+--- STEP 7 URL: https://demowebshop.tricentis.com/checkout/completed/
+  No known continue-button selector matched. Stopping loop.
+FINAL URL: https://demowebshop.tricentis.com/checkout/completed/

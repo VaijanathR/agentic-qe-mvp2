@@ -1,0 +1,56 @@
+[
+  {
+    "capability": "Registration",
+    "action": "Submit registration form with all fields empty",
+    "result": "First name is required. | Last name is required. | Email is required. | Password is required. | Password is required.",
+    "preconditions": "Anonymous, /register",
+    "data": "none",
+    "authRequired": false,
+    "evidence": "OBSERVED_DIRECTLY"
+  },
+  {
+    "capability": "Registration",
+    "action": "Submit with mismatched password/confirm-password",
+    "result": "The password and confirmation password do not match.",
+    "preconditions": "Valid names/email, mismatched passwords",
+    "data": "qe.discovery.1789149299815@example.com",
+    "authRequired": false,
+    "evidence": "OBSERVED_DIRECTLY"
+  },
+  {
+    "capability": "Registration",
+    "action": "Submit valid registration (unique email, matching passwords)",
+    "result": "URL after submit: https://demowebshop.tricentis.com/registerresult/1. Page text snippet: qe.discovery.1789149299815@example.com Log out Shopping cart (0) Wishlist (0) BOOKS COMPUTERS ELECTRONICS APPAREL & SHOES DIGITAL DOWNLOADS JEWELRY GIFT CARDS CATEGORIES Books Computers Electronics Apparel & Shoes Digital downloads Jewelry Gift Cards MANUFACTURERS Tricentis NEWSLETTER Sign up for ou",
+    "preconditions": "Unique email, all required fields valid",
+    "data": "qe.discovery.1789149299815@example.com",
+    "authRequired": false,
+    "evidence": "OBSERVED_DIRECTLY"
+  },
+  {
+    "capability": "Registration",
+    "action": "Inspect header immediately after registration submit",
+    "result": "N/A",
+    "preconditions": "Just registered",
+    "data": "qe.discovery.1789149299815@example.com",
+    "authRequired": false,
+    "evidence": "OBSERVED_DIRECTLY"
+  },
+  {
+    "capability": "Login",
+    "action": "Attempt login with correct email but wrong password",
+    "result": "\n                            Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect\n\n                         | Login was unsuccessful. Please correct the errors and try again.\nThe credentials provided are incorrect\n",
+    "preconditions": "Registered email, wrong password",
+    "data": "qe.discovery.1789149299815@example.com",
+    "authRequired": false,
+    "evidence": "OBSERVED_DIRECTLY"
+  },
+  {
+    "capability": "Login",
+    "action": "Login with the just-registered email/password",
+    "result": "URL after login: https://demowebshop.tricentis.com/. Header: qe.discovery.1789149299815@example.com Log out Shopping cart (0) Wishlist (0)",
+    "preconditions": "Account created in previous step",
+    "data": "qe.discovery.1789149299815@example.com",
+    "authRequired": false,
+    "evidence": "OBSERVED_DIRECTLY"
+  }
+]

@@ -1,0 +1,1018 @@
+<!DOCTYPE html><html><head>
+    <title>Demo Web Shop. Checkout</title>
+    <meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="generator" content="nopCommerce">
+    
+    
+            <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    
+    <link href="/Themes/DefaultClean/Content/styles.css" rel="stylesheet" type="text/css">
+<link href="/Themes/DefaultClean/Content/responsive.css" rel="stylesheet" type="text/css">
+<link href="/Content/jquery-ui-themes/smoothness/jquery-ui-1.10.3.custom.min.css" rel="stylesheet" type="text/css">
+
+    <script type="text/javascript" async="" src="https://ssl.google-analytics.com/ga.js"></script><script src="/Scripts/jquery-1.10.2.min.js" type="text/javascript"></script>
+<script src="/Scripts/jquery.validate.min.js" type="text/javascript"></script>
+<script src="/Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+<script src="/Scripts/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+<script src="/Scripts/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="/Scripts/public.common.js" type="text/javascript"></script>
+<script src="/Scripts/public.ajaxcart.js" type="text/javascript"></script>
+<script src="/Scripts/public.accordion.js" type="text/javascript"></script>
+<script src="/Scripts/public.onepagecheckout.js" type="text/javascript"></script>
+
+    
+    
+    
+    
+    
+<link rel="shortcut icon" href="https://demowebshop.tricentis.com/favicon.ico">
+    <!--Powered by nopCommerce - http://www.nopCommerce.com-->
+    <!--Copyright (c) 2008-2014-->
+</head>
+<body style="">
+    
+
+
+<div id="dialog-notifications-success" title="Notification" style="display:none;">
+</div>
+<div id="dialog-notifications-error" title="Error" style="display:none;">
+</div>
+<div id="bar-notification" class="bar-notification">
+    <span class="close" title="Close">&nbsp;</span>
+</div>
+
+
+
+<div class="master-wrapper-page">
+    
+    <div class="master-wrapper-content">
+        <script type="text/javascript">
+            AjaxCart.init(false, '.header-links .cart-qty', '.header-links .wishlist-qty', '#flyout-cart');
+        </script>
+        
+
+<div class="header">
+    
+    <div class="header-logo">
+        <a href="/">
+            <img title="" alt="Tricentis Demo Web Shop" src="/Themes/DefaultClean/Content/images/logo.png">
+        </a>
+    </div>
+    <div class="header-links-wrapper">
+        <div class="header-links">
+    <ul>
+        
+            <li><a href="/customer/info" class="account">qe.discovery.1789149299815@example.com</a></li>
+            <li><a href="/logout" class="ico-logout">Log out</a></li>
+                            <li id="topcartlink">
+                <a href="/cart" class="ico-cart">
+                    <span class="cart-label">Shopping cart</span>
+                    <span class="cart-qty">(1)</span>
+                </a>
+            </li>
+                    <li>
+                <a href="/wishlist" class="ico-wishlist">
+                    <span class="cart-label">Wishlist</span>
+                    <span class="wishlist-qty">(0)</span>
+                </a>
+            </li>
+        
+    </ul>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                $('.header').on('mouseenter', '#topcartlink', function () {
+                    $('#flyout-cart').addClass('active');
+                });
+                $('.header').on('mouseleave', '#topcartlink', function () {
+                    $('#flyout-cart').removeClass('active');
+                });
+                $('.header').on('mouseenter', '#flyout-cart', function () {
+                    $('#flyout-cart').addClass('active');
+                });
+                $('.header').on('mouseleave', '#flyout-cart', function () {
+                    $('#flyout-cart').removeClass('active');
+                });
+            });
+        </script>
+</div>
+
+        <div id="flyout-cart" class="flyout-cart">
+    <div class="mini-shopping-cart">
+        <div class="count">
+There are <a href="/cart" class="items">1 item(s)</a> in your cart.        </div>
+            <div class="items">
+                    <div class="item first">
+                            <div class="picture">
+                                <a href="/computing-and-internet" title="Show details for Computing and Internet">
+                                    <img alt="Picture of Computing and Internet" src="https://demowebshop.tricentis.com/content/images/thumbs/0000130_computing-and-internet_47.jpeg" title="Show details for Computing and Internet">
+                                </a>
+                            </div>
+                        <div class="product">
+                            <div class="name">
+                                <a href="/computing-and-internet">Computing and Internet</a>
+                            </div>
+                            <div class="price">Unit price: <span>10.00</span></div>
+                            <div class="quantity">Quantity: <span>1</span></div>
+                        </div>
+                    </div>
+            </div>
+            <div class="totals">Sub-Total: <strong>10.00</strong></div>
+            <div class="buttons">
+                    <input type="button" value="Go to cart" class="button-1 cart-button" onclick="setLocation('/cart')">
+                            </div>
+    </div>
+</div>
+
+    </div>
+    <div class="search-box">
+        
+<form action="/search" method="get" onsubmit="return check_small_search_form()" novalidate="novalidate">    <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><input type="text" class="search-box-text ui-autocomplete-input" id="small-searchterms" autocomplete="off" value="Search store" name="q">
+    <input type="submit" class="button-1 search-box-button" value="Search">
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $("#small-searchterms").focus(function() {
+                if (this.value == 'Search store') {
+                    this.value = '';
+                }
+            });
+
+            $("#small-searchterms").blur(function() {
+                if (this.value == '') {
+                    this.value = 'Search store';
+                }
+            });
+        });
+
+        function check_small_search_form() {
+            var search_terms = $("#small-searchterms");
+            if (search_terms.val() == "" || search_terms.val() == "Search store") {
+                alert('Please enter some search keyword');
+                search_terms.focus();
+                return false;
+            }
+            return true;
+        }
+    </script>
+        
+            <script type="text/javascript">
+                $(function() {
+                    $('#small-searchterms').autocomplete({
+                            delay: 500,
+                            minLength: 3,
+                            source: '/catalog/searchtermautocomplete',
+                            select: function(event, ui) {
+                                $("#small-searchterms").val(ui.item.label);
+                                setLocation(ui.item.producturl);
+                                return false;
+                            }
+                        })
+                        .data("ui-autocomplete")._renderItem = function(ul, item) {
+                            var t = item.label;
+                            //html encode
+                            t = htmlEncode(t);
+                            return $("<li></li>")
+                                .data("item.autocomplete", item)
+                                .append("<a>" + t + "</a>")
+                            .appendTo(ul);
+                    };
+                });
+            </script>
+        
+</form>
+    </div>
+    <div class="header-selectors-wrapper">
+        <div class="tax-display-type-selector">
+            
+        </div>
+        <div class="currency-selector">
+            
+        </div>
+        <div class="language-selector">
+            
+        </div>
+        
+    </div>
+</div>
+
+        <div class="header-menu">
+            
+
+<ul class="top-menu">
+    
+    <li>
+        <a href="/books">Books
+        </a>
+                <div class="top-menu-triangle"></div>
+
+    </li>
+    <li>
+        <a href="/computers">Computers
+        </a>
+                <div class="top-menu-triangle"></div>
+                <ul class="sublist firstLevel">
+    <li>
+        <a href="/desktops">Desktops
+        </a>
+
+    </li>
+    <li>
+        <a href="/notebooks">Notebooks
+        </a>
+
+    </li>
+    <li>
+        <a href="/accessories">Accessories
+        </a>
+
+    </li>
+                </ul>
+
+    </li>
+    <li>
+        <a href="/electronics">Electronics
+        </a>
+                <div class="top-menu-triangle"></div>
+                <ul class="sublist firstLevel">
+    <li>
+        <a href="/camera-photo">Camera, photo
+        </a>
+
+    </li>
+    <li>
+        <a href="/cell-phones">Cell phones
+        </a>
+
+    </li>
+                </ul>
+
+    </li>
+    <li>
+        <a href="/apparel-shoes">Apparel &amp; Shoes
+        </a>
+                <div class="top-menu-triangle"></div>
+
+    </li>
+    <li>
+        <a href="/digital-downloads">Digital downloads
+        </a>
+                <div class="top-menu-triangle"></div>
+
+    </li>
+    <li>
+        <a href="/jewelry">Jewelry
+        </a>
+                <div class="top-menu-triangle"></div>
+
+    </li>
+    <li>
+        <a href="/gift-cards">Gift Cards
+        </a>
+                <div class="top-menu-triangle"></div>
+
+    </li>
+    
+</ul>
+
+<script type="text/javascript">
+    $('li', '.top-menu').on('mouseenter', function () {
+        $('a', $(this)).first().addClass('hover');
+        if (!$(this).parent().hasClass('top-menu')) {
+            var width = $(this).innerWidth();
+            $('.sublist', $(this)).first().css('left', width + 15);
+        }
+        $('.sublist', $(this)).first().addClass('active');
+        $('.top-menu-triangle', $(this)).addClass('active');
+    });
+
+    $('li', '.top-menu').on('mouseleave', function () {
+        $('a', $(this)).first().removeClass('hover');
+        $('.sublist', $(this)).first().removeClass('active');
+        $('.top-menu-triangle', $(this)).removeClass('active');
+    });
+
+</script>
+
+    <div id="mob-menu-button">
+        <a href="">
+            <span class="icon"><span class="line"></span><span class="line"></span><span class="line"></span></span>
+
+            <span>Categories</span>
+        </a>
+    </div>
+    <ul class="mob-top-menu">
+        
+    <li>
+        <a href="/books">Books
+        </a>
+                <div class="top-menu-triangle"></div>
+
+    </li>
+    <li>
+        <a href="/computers">Computers
+        </a>
+                <div class="top-menu-triangle"></div>
+                    <span class="expand">&nbsp;</span>
+                <ul class="sublist firstLevel">
+    <li>
+        <a href="/desktops">Desktops
+        </a>
+
+    </li>
+    <li>
+        <a href="/notebooks">Notebooks
+        </a>
+
+    </li>
+    <li>
+        <a href="/accessories">Accessories
+        </a>
+
+    </li>
+                </ul>
+
+    </li>
+    <li>
+        <a href="/electronics">Electronics
+        </a>
+                <div class="top-menu-triangle"></div>
+                    <span class="expand">&nbsp;</span>
+                <ul class="sublist firstLevel">
+    <li>
+        <a href="/camera-photo">Camera, photo
+        </a>
+
+    </li>
+    <li>
+        <a href="/cell-phones">Cell phones
+        </a>
+
+    </li>
+                </ul>
+
+    </li>
+    <li>
+        <a href="/apparel-shoes">Apparel &amp; Shoes
+        </a>
+                <div class="top-menu-triangle"></div>
+
+    </li>
+    <li>
+        <a href="/digital-downloads">Digital downloads
+        </a>
+                <div class="top-menu-triangle"></div>
+
+    </li>
+    <li>
+        <a href="/jewelry">Jewelry
+        </a>
+                <div class="top-menu-triangle"></div>
+
+    </li>
+    <li>
+        <a href="/gift-cards">Gift Cards
+        </a>
+                <div class="top-menu-triangle"></div>
+
+    </li>
+        
+    </ul>
+    <script type="text/javascript">
+        $('a', $('#mob-menu-button')).toggle(function() {
+                $('.mob-top-menu').addClass('show');
+            },
+            function() {
+                $('.mob-top-menu').removeClass('show');
+            }
+        );
+
+        $(function($) {
+            $('.mob-top-menu .expand').click(function() {
+                var parent = $(this).parent();
+                if (parent.hasClass('active')) {
+                    $(".sublist:first", parent).hide(300);
+                    parent.removeClass('active');
+                } else {
+                    $(".sublist:first", parent).show(300);
+                    parent.addClass('active');
+                }
+            });
+        });
+    </script>
+
+        </div>
+        
+        
+        <div class="ajax-loading-block-window" style="display: none">
+            <div class="loading-image">
+            </div>
+        </div>
+        <div class="master-wrapper-main">
+            
+<div class="center-1">
+    
+    
+
+<div class="page checkout-page">
+    <div class="page-title">
+        <h1>Checkout</h1>
+    </div>
+    <div class="page-body checkout-data">
+        <ol class="opc" id="checkout-steps">
+            <li id="opc-billing" class="tab-section allow active">
+                <div class="step-title">
+                    <span class="number">1</span>
+                    <h2>Billing address</h2>
+                </div>
+                <div id="checkout-step-billing" class="step a-item" style="">
+                    <form id="co-billing-form" action="" novalidate="novalidate">
+                    <div id="checkout-billing-load">
+                        <div class="checkout-data">
+    
+        <div class="section select-billing-address">
+            <label for="billing-address-select">Select a billing address from your address book or enter a new address.</label>
+            <div>
+                <select name="billing_address_id" id="billing-address-select" class="address-select" title="" onchange="Billing.newAddress(!this.value)">
+                        <option value="5139559">QE Discovery, 123 QE Street, Springfield, AE (Armed Forces Europe) 12345, United States</option>
+                    <option value="">New Address</option>
+                </select>
+            </div>
+        </div>
+    
+    <div class="section new-billing-address" id="billing-new-address-form" style="display: none;">
+        <div class="enter-address">
+            <div class="enter-address-body">
+
+    <script type="text/javascript">
+        $(function () {
+            $("#BillingNewAddress_CountryId").change(function () {
+                var selectedItem = $(this).val();
+                var ddlStates = $("#BillingNewAddress_StateProvinceId");
+                var statesProgress = $("#states-loading-progress");
+                statesProgress.show();
+                $.ajax({
+                    cache: false,
+                    type: "GET",
+                    url: "/country/getstatesbycountryid",
+                    data: { "countryId": selectedItem, "addEmptyStateIfRequired": "true" },
+                    success: function (data) {
+                        ddlStates.html('');
+                        $.each(data, function (id, option) {
+                            ddlStates.append($('<option></option>').val(option.id).html(option.name));
+                        });
+                        statesProgress.hide();
+                    },
+                    error: function (xhr, ajaxOptions, thrownError) {
+                        alert('Failed to retrieve states.');
+                        statesProgress.hide();
+                    }
+                });
+            });
+        });
+    </script>
+<input data-val="true" data-val-number="The field Id must be a number." data-val-required="'Id' must not be empty." id="BillingNewAddress_Id" name="BillingNewAddress.Id" type="hidden" value="0">
+<div class="edit-address">
+    <div class="inputs">
+        <label for="BillingNewAddress_FirstName">First name:</label>
+            <input class="text-box single-line" data-val="true" data-val-required="First name is required." id="BillingNewAddress_FirstName" name="BillingNewAddress.FirstName" type="text" value="QE">
+        <span class="required">*</span>
+        <span class="field-validation-valid" data-valmsg-for="BillingNewAddress.FirstName" data-valmsg-replace="true"></span>
+    </div>
+    <div class="inputs">
+        <label for="BillingNewAddress_LastName">Last name:</label>
+            <input class="text-box single-line" data-val="true" data-val-required="Last name is required." id="BillingNewAddress_LastName" name="BillingNewAddress.LastName" type="text" value="Discovery">
+        <span class="required">*</span>
+        <span class="field-validation-valid" data-valmsg-for="BillingNewAddress.LastName" data-valmsg-replace="true"></span>
+
+    </div>
+    <div class="inputs">
+        <label for="BillingNewAddress_Email">Email:</label>
+            <input class="text-box single-line" data-val="true" data-val-email="Wrong email" data-val-required="Email is required." id="BillingNewAddress_Email" name="BillingNewAddress.Email" type="text" value="qe.discovery.1789149299815@example.com">
+        <span class="required">*</span>
+        <span class="field-validation-valid" data-valmsg-for="BillingNewAddress.Email" data-valmsg-replace="true"></span>
+    </div>
+        <div class="inputs">
+            <label for="BillingNewAddress_Company">Company:</label>
+                <input class="text-box single-line" id="BillingNewAddress_Company" name="BillingNewAddress.Company" type="text" value="">
+            <span class="field-validation-valid" data-valmsg-for="BillingNewAddress.Company" data-valmsg-replace="true"></span>
+        </div>
+            <div class="inputs">
+            <label for="BillingNewAddress_CountryId">Country:</label>
+                <select data-val="true" data-val-number="The field Country must be a number." data-val-required="Country is required." id="BillingNewAddress_CountryId" name="BillingNewAddress.CountryId"><option value="0">Select country</option>
+<option value="1">United States</option>
+<option value="2">Canada</option>
+<option value="86">Afghanistan</option>
+<option value="87">Albania</option>
+<option value="88">Algeria</option>
+<option value="89">American Samoa</option>
+<option value="90">Andorra</option>
+<option value="91">Angola</option>
+<option value="92">Anguilla</option>
+<option value="93">Antarctica</option>
+<option value="94">Antigua and Barbuda</option>
+<option value="3">Argentina</option>
+<option value="4">Armenia</option>
+<option value="5">Aruba</option>
+<option value="6">Australia</option>
+<option value="7">Austria</option>
+<option value="8">Azerbaijan</option>
+<option value="9">Bahamas</option>
+<option value="95">Bahrain</option>
+<option value="10">Bangladesh</option>
+<option value="96">Barbados</option>
+<option value="11">Belarus</option>
+<option value="12">Belgium</option>
+<option value="13">Belize</option>
+<option value="97">Benin</option>
+<option value="14">Bermuda</option>
+<option value="98">Bhutan</option>
+<option value="15">Bolivia</option>
+<option value="16">Bosnia and Herzegowina</option>
+<option value="99">Botswana</option>
+<option value="100">Bouvet Island</option>
+<option value="17">Brazil</option>
+<option value="101">British Indian Ocean Territory</option>
+<option value="102">Brunei Darussalam</option>
+<option value="18">Bulgaria</option>
+<option value="103">Burkina Faso</option>
+<option value="104">Burundi</option>
+<option value="105">Cambodia</option>
+<option value="106">Cameroon</option>
+<option value="107">Cape Verde</option>
+<option value="19">Cayman Islands</option>
+<option value="108">Central African Republic</option>
+<option value="109">Chad</option>
+<option value="20">Chile</option>
+<option value="21">China</option>
+<option value="110">Christmas Island</option>
+<option value="111">Cocos (Keeling) Islands</option>
+<option value="22">Colombia</option>
+<option value="112">Comoros</option>
+<option value="113">Congo</option>
+<option value="114">Cook Islands</option>
+<option value="23">Costa Rica</option>
+<option value="115">Cote D'Ivoire</option>
+<option value="24">Croatia</option>
+<option value="25">Cuba</option>
+<option value="26">Cyprus</option>
+<option value="27">Czech Republic</option>
+<option value="28">Denmark</option>
+<option value="116">Djibouti</option>
+<option value="117">Dominica</option>
+<option value="29">Dominican Republic</option>
+<option value="30">Ecuador</option>
+<option value="31">Egypt</option>
+<option value="118">El Salvador</option>
+<option value="119">Equatorial Guinea</option>
+<option value="120">Eritrea</option>
+<option value="121">Estonia</option>
+<option value="122">Ethiopia</option>
+<option value="123">Falkland Islands (Malvinas)</option>
+<option value="124">Faroe Islands</option>
+<option value="125">Fiji</option>
+<option value="32">Finland</option>
+<option value="33">France</option>
+<option value="126">French Guiana</option>
+<option value="127">French Polynesia</option>
+<option value="128">French Southern Territories</option>
+<option value="129">Gabon</option>
+<option value="130">Gambia</option>
+<option value="34">Georgia</option>
+<option value="35">Germany</option>
+<option value="131">Ghana</option>
+<option value="36">Gibraltar</option>
+<option value="37">Greece</option>
+<option value="132">Greenland</option>
+<option value="133">Grenada</option>
+<option value="134">Guadeloupe</option>
+<option value="135">Guam</option>
+<option value="38">Guatemala</option>
+<option value="136">Guinea</option>
+<option value="137">Guinea-bissau</option>
+<option value="138">Guyana</option>
+<option value="139">Haiti</option>
+<option value="140">Heard and Mc Donald Islands</option>
+<option value="141">Honduras</option>
+<option value="39">Hong Kong</option>
+<option value="40">Hungary</option>
+<option value="142">Iceland</option>
+<option value="41">India</option>
+<option value="42">Indonesia</option>
+<option value="143">Iran (Islamic Republic of)</option>
+<option value="144">Iraq</option>
+<option value="43">Ireland</option>
+<option value="44">Israel</option>
+<option value="45">Italy</option>
+<option value="46">Jamaica</option>
+<option value="47">Japan</option>
+<option value="48">Jordan</option>
+<option value="49">Kazakhstan</option>
+<option value="145">Kenya</option>
+<option value="146">Kiribati</option>
+<option value="147">Korea</option>
+<option value="50">Korea, Democratic People's Republic of</option>
+<option value="51">Kuwait</option>
+<option value="148">Kyrgyzstan</option>
+<option value="149">Lao People's Democratic Republic</option>
+<option value="150">Latvia</option>
+<option value="151">Lebanon</option>
+<option value="152">Lesotho</option>
+<option value="153">Liberia</option>
+<option value="154">Libyan Arab Jamahiriya</option>
+<option value="155">Liechtenstein</option>
+<option value="156">Lithuania</option>
+<option value="157">Luxembourg</option>
+<option value="158">Macau</option>
+<option value="159">Macedonia</option>
+<option value="160">Madagascar</option>
+<option value="161">Malawi</option>
+<option value="52">Malaysia</option>
+<option value="162">Maldives</option>
+<option value="163">Mali</option>
+<option value="164">Malta</option>
+<option value="165">Marshall Islands</option>
+<option value="166">Martinique</option>
+<option value="167">Mauritania</option>
+<option value="168">Mauritius</option>
+<option value="169">Mayotte</option>
+<option value="53">Mexico</option>
+<option value="170">Micronesia</option>
+<option value="171">Moldova</option>
+<option value="172">Monaco</option>
+<option value="173">Mongolia</option>
+<option value="174">Montenegro</option>
+<option value="175">Montserrat</option>
+<option value="176">Morocco</option>
+<option value="177">Mozambique</option>
+<option value="178">Myanmar</option>
+<option value="179">Namibia</option>
+<option value="180">Nauru</option>
+<option value="181">Nepal</option>
+<option value="54">Netherlands</option>
+<option value="182">Netherlands Antilles</option>
+<option value="183">New Caledonia</option>
+<option value="55">New Zealand</option>
+<option value="184">Nicaragua</option>
+<option value="185">Niger</option>
+<option value="186">Nigeria</option>
+<option value="187">Niue</option>
+<option value="188">Norfolk Island</option>
+<option value="189">Northern Mariana Islands</option>
+<option value="56">Norway</option>
+<option value="190">Oman</option>
+<option value="57">Pakistan</option>
+<option value="191">Palau</option>
+<option value="192">Panama</option>
+<option value="193">Papua New Guinea</option>
+<option value="58">Paraguay</option>
+<option value="59">Peru</option>
+<option value="60">Philippines</option>
+<option value="194">Pitcairn</option>
+<option value="61">Poland</option>
+<option value="62">Portugal</option>
+<option value="63">Puerto Rico</option>
+<option value="64">Qatar</option>
+<option value="195">Reunion</option>
+<option value="65">Romania</option>
+<option value="66">Russia</option>
+<option value="196">Rwanda</option>
+<option value="197">Saint Kitts and Nevis</option>
+<option value="198">Saint Lucia</option>
+<option value="199">Saint Vincent and the Grenadines</option>
+<option value="200">Samoa</option>
+<option value="201">San Marino</option>
+<option value="202">Sao Tome and Principe</option>
+<option value="67">Saudi Arabia</option>
+<option value="203">Senegal</option>
+<option value="85">Serbia</option>
+<option value="204">Seychelles</option>
+<option value="205">Sierra Leone</option>
+<option value="68">Singapore</option>
+<option value="69">Slovakia (Slovak Republic)</option>
+<option value="70">Slovenia</option>
+<option value="206">Solomon Islands</option>
+<option value="207">Somalia</option>
+<option value="71">South Africa</option>
+<option value="208">South Georgia &amp; South Sandwich Islands</option>
+<option value="72">Spain</option>
+<option value="209">Sri Lanka</option>
+<option value="210">St. Helena</option>
+<option value="211">St. Pierre and Miquelon</option>
+<option value="212">Sudan</option>
+<option value="213">Suriname</option>
+<option value="214">Svalbard and Jan Mayen Islands</option>
+<option value="215">Swaziland</option>
+<option value="73">Sweden</option>
+<option value="74">Switzerland</option>
+<option value="216">Syrian Arab Republic</option>
+<option value="75">Taiwan</option>
+<option value="217">Tajikistan</option>
+<option value="218">Tanzania</option>
+<option value="76">Thailand</option>
+<option value="219">Togo</option>
+<option value="220">Tokelau</option>
+<option value="221">Tonga</option>
+<option value="222">Trinidad and Tobago</option>
+<option value="223">Tunisia</option>
+<option value="77">Turkey</option>
+<option value="224">Turkmenistan</option>
+<option value="225">Turks and Caicos Islands</option>
+<option value="226">Tuvalu</option>
+<option value="227">Uganda</option>
+<option value="78">Ukraine</option>
+<option value="79">United Arab Emirates</option>
+<option value="80">United Kingdom</option>
+<option value="81">United States minor outlying islands</option>
+<option value="82">Uruguay</option>
+<option value="83">Uzbekistan</option>
+<option value="228">Vanuatu</option>
+<option value="229">Vatican City State (Holy See)</option>
+<option value="84">Venezuela</option>
+<option value="230">Viet Nam</option>
+<option value="231">Virgin Islands (British)</option>
+<option value="232">Virgin Islands (U.S.)</option>
+<option value="233">Wallis and Futuna Islands</option>
+<option value="234">Western Sahara</option>
+<option value="235">Yemen</option>
+<option value="236">Zambia</option>
+<option value="237">Zimbabwe</option>
+</select>
+            <span class="required">*</span>
+            <span class="field-validation-valid" data-valmsg-for="BillingNewAddress.CountryId" data-valmsg-replace="true"></span>
+        </div>
+
+        <div class="inputs">
+            <label for="BillingNewAddress_StateProvinceId">State / province:</label>
+                <select data-val="true" data-val-number="The field State / province must be a number." id="BillingNewAddress_StateProvinceId" name="BillingNewAddress.StateProvinceId"><option value="0">Other (Non US)</option>
+</select>
+            <span id="states-loading-progress" style="display: none;" class="please-wait">Wait...</span>
+            <span class="field-validation-valid" data-valmsg-for="BillingNewAddress.StateProvinceId" data-valmsg-replace="true"></span>
+        </div>
+            <div class="inputs">
+            <label for="BillingNewAddress_City">City:</label>
+                <input class="text-box single-line" data-val="true" data-val-required="City is required" id="BillingNewAddress_City" name="BillingNewAddress.City" type="text" value="">
+
+<span class="required">*</span>            <span class="field-validation-valid" data-valmsg-for="BillingNewAddress.City" data-valmsg-replace="true"></span>
+        </div>
+            <div class="inputs">
+            <label for="BillingNewAddress_Address1">Address 1:</label>
+                <input class="text-box single-line" data-val="true" data-val-required="Street address is required" id="BillingNewAddress_Address1" name="BillingNewAddress.Address1" type="text" value="">
+<span class="required">*</span>            <span class="field-validation-valid" data-valmsg-for="BillingNewAddress.Address1" data-valmsg-replace="true"></span>
+        </div>
+            <div class="inputs">
+            <label for="BillingNewAddress_Address2">Address 2:</label>
+                <input class="text-box single-line" id="BillingNewAddress_Address2" name="BillingNewAddress.Address2" type="text" value="">
+            <span class="field-validation-valid" data-valmsg-for="BillingNewAddress.Address2" data-valmsg-replace="true"></span>
+        </div>
+            <div class="inputs">
+            <label for="BillingNewAddress_ZipPostalCode">Zip / postal code:</label>
+                <input class="text-box single-line" data-val="true" data-val-required="Zip / postal code is required" id="BillingNewAddress_ZipPostalCode" name="BillingNewAddress.ZipPostalCode" type="text" value="">
+<span class="required">*</span>            <span class="field-validation-valid" data-valmsg-for="BillingNewAddress.ZipPostalCode" data-valmsg-replace="true"></span>
+        </div>
+            <div class="inputs">
+            <label for="BillingNewAddress_PhoneNumber">Phone number:</label>
+                <input class="text-box single-line" data-val="true" data-val-required="Phone is required" id="BillingNewAddress_PhoneNumber" name="BillingNewAddress.PhoneNumber" type="text" value="">
+<span class="required">*</span>            <span class="field-validation-valid" data-valmsg-for="BillingNewAddress.PhoneNumber" data-valmsg-replace="true"></span>
+        </div>
+            <div class="inputs">
+            <label for="BillingNewAddress_FaxNumber">Fax number:</label>
+                <input class="text-box single-line" id="BillingNewAddress_FaxNumber" name="BillingNewAddress.FaxNumber" type="text" value="">
+            <span class="field-validation-valid" data-valmsg-for="BillingNewAddress.FaxNumber" data-valmsg-replace="true"></span>
+        </div>
+</div>
+
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+                        
+                    </div>
+                    </form>
+                    <script type="text/javascript">
+                        Billing.init('#co-billing-form', 'https://demowebshop.tricentis.com/checkout/OpcSaveBilling/', false);
+                        if ($("#billing-address-select").length > 0) {
+                            Billing.newAddress(!$('#billing-address-select').val());
+                        }
+                    </script>
+                    <div class="buttons" id="billing-buttons-container">
+                        <input type="button" title="Continue" class="button-1 new-address-next-step-button" onclick="Billing.save()" value="Continue">
+                        <span class="please-wait" id="billing-please-wait" style="display: none;">Loading next step...</span>
+                    </div>
+                </div>
+            </li>
+                <li id="opc-shipping" class="tab-section">
+                    <div class="step-title">
+                        <span class="number">2</span>
+                        <h2>Shipping address</h2>
+                    </div>
+                    <div id="checkout-step-shipping" class="step a-item" style="display: none;">
+                        <form action="" id="co-shipping-form" novalidate="novalidate">
+                        <div id="checkout-shipping-load">
+                            
+                        </div>
+                        </form>
+                        <script type="text/javascript">
+                            Shipping.init('#co-shipping-form', 'https://demowebshop.tricentis.com/checkout/OpcSaveShipping/');
+                            if ($("#shipping-address-select").length > 0) {
+                                Shipping.newAddress(!$('#shipping-address-select').val());
+                            }
+                        </script>
+                        <div class="buttons" id="shipping-buttons-container">
+                            <p class="back-link">
+                                <a href="#" onclick="Checkout.back(); return false;"><small>« </small>Back</a></p>
+                            <input type="button" class="button-1 new-address-next-step-button" title="Continue" onclick="Shipping.save()" value="Continue">
+                            <span id="shipping-please-wait" class="please-wait" style="display: none;"> Loading next step...</span>
+                        </div>
+                    </div>
+                </li>
+                <li id="opc-shipping_method" class="tab-section">
+                    <div class="step-title">
+                        <span class="number">3</span>
+                        <h2>Shipping method</h2>
+                    </div>
+                    <div id="checkout-step-shipping-method" class="step a-item" style="display: none;">
+                        <form id="co-shipping-method-form" action="" novalidate="novalidate">
+                        <div id="checkout-shipping-method-load">
+                            
+                        </div>
+                        <script type="text/javascript">
+                            ShippingMethod.init('#co-shipping-method-form', 'https://demowebshop.tricentis.com/checkout/OpcSaveShippingMethod/');
+                        </script>
+                        <div class="buttons" id="shipping-method-buttons-container">
+                            <p class="back-link">
+                                <a href="#" onclick="Checkout.back(); return false;"><small>« </small>Back</a></p>
+                            <input type="button" class="button-1 shipping-method-next-step-button" onclick="ShippingMethod.save()" value="Continue">
+                            <span id="shipping-method-please-wait" class="please-wait" style="display: none;">Loading next step...</span>
+                        </div>
+                        </form>
+                    </div>
+                </li>
+            <li id="opc-payment_method" class="tab-section">
+                <div class="step-title">
+                    <span class="number">4</span>
+                    <h2>Payment method</h2>
+                </div>
+                <div id="checkout-step-payment-method" class="step a-item" style="display: none;">
+                    <form action="" id="co-payment-method-form" novalidate="novalidate">
+                    <div id="checkout-payment-method-load">
+                         Payment is not required
+                    </div>
+                    </form>
+                    <script type="text/javascript">
+                        PaymentMethod.init('#co-payment-method-form', 'https://demowebshop.tricentis.com/checkout/OpcSavePaymentMethod/');
+                    </script>
+                    <div class="buttons" id="payment-method-buttons-container">
+                        <p class="back-link">
+                            <a href="#" onclick="Checkout.back(); return false;"><small>« </small>Back</a></p>
+                        <input type="button" class="button-1 payment-method-next-step-button" onclick="PaymentMethod.save()" value="Continue">
+                        <span class="please-wait" id="payment-method-please-wait" style="display: none;">Loading next step...</span>
+                    </div>
+                </div>
+            </li>
+            <li id="opc-payment_info" class="tab-section">
+                <div class="step-title">
+                    <span class="number">5</span>
+                    <h2>Payment information</h2>
+                </div>
+                <div id="checkout-step-payment-info" class="step a-item" style="display: none;">
+                    <form action="" id="co-payment-info-form" novalidate="novalidate">
+                    <div id="checkout-payment-info-load">
+                         Payment is not required
+                    </div>
+                    </form>
+                    <script type="text/javascript">
+                        PaymentInfo.init('#co-payment-info-form', 'https://demowebshop.tricentis.com/checkout/OpcSavePaymentInfo/');
+                    </script>
+                    <div class="buttons" id="payment-info-buttons-container">
+                        <p class="back-link">
+                            <a href="#" onclick="Checkout.back(); return false;"><small>« </small>Back</a></p>
+                        <input type="button" class="button-1 payment-info-next-step-button" onclick="PaymentInfo.save()" value="Continue">
+                        <span class="please-wait" id="payment-info-please-wait" style="display: none;">Loading next step...</span>
+                    </div>
+                </div>
+            </li>
+            <li id="opc-confirm_order" class="tab-section">
+                <div class="step-title">
+                    <span class="number">6</span>
+                    <h2>Confirm order</h2>
+                </div>
+                <div id="checkout-step-confirm-order" class="step a-item" style="display: none;">
+                    <div id="checkout-confirm-order-load">
+                        
+                    </div>
+                    <script type="text/javascript">
+                        ConfirmOrder.init('https://demowebshop.tricentis.com/checkout/OpcConfirmOrder/', 'https://demowebshop.tricentis.com/checkout/completed/');
+                    </script>
+                    <div class="buttons" id="confirm-order-buttons-container">
+                        <p class="back-link">
+                            <a href="#" onclick="Checkout.back(); return false;"><small>« </small>Back</a></p>
+                        <input type="button" class="button-1 confirm-order-next-step-button" onclick="ConfirmOrder.save()" value="Confirm">
+                        <span class="please-wait" id="confirm-order-please-wait" style="display: none;">Submitting order information...</span>
+                    </div>
+                </div>
+            </li>
+        </ol>
+    </div>
+    <script type="text/javascript">
+        Accordion.init('checkout-steps', '.step-title', true);
+        Accordion.openSection('#opc-billing');
+        Checkout.init('https://demowebshop.tricentis.com/cart/');
+        if (Billing.disableBillingAddressCheckoutStep)
+        {
+            Accordion.hideSection('#opc-billing');
+            Billing.save();
+        }
+    </script>
+</div>
+
+    
+</div>
+
+        </div>
+        
+    </div>
+    
+<div class="footer">
+    <div class="footer-menu-wrapper">
+        <div class="column information">
+            <h3>Information</h3>
+            <ul>
+                    <li><a href="/sitemap">Sitemap</a></li>
+                <li><a href="/shipping-returns">Shipping &amp; Returns</a></li>
+                <li><a href="/privacy-policy">Privacy Notice</a></li>
+                <li><a href="/conditions-of-use">Conditions of Use</a></li>
+                <li><a href="/about-us">About us</a></li>
+                <li><a href="/contactus">Contact us</a></li>
+            </ul>
+        </div>
+        <div class="column customer-service">
+            <h3>Customer service</h3>
+            <ul>
+                <li><a href="/search">Search</a> </li>
+                    <li><a href="/news">News</a></li>
+                                    <li><a href="/blog">Blog</a></li>
+                                                    <li><a href="/recentlyviewedproducts">Recently viewed products</a></li>
+                                    <li><a href="/compareproducts">Compare products list</a></li>
+                                    <li><a href="/newproducts">New products</a></li>
+            </ul>
+        </div>
+        <div class="column my-account">
+            <h3>My account</h3>
+            <ul>
+                <li><a href="/customer/info" class="account">My account</a></li>
+                    <li><a href="/customer/orders">Orders</a></li>
+                                    <li><a href="/customer/addresses" class="">Addresses</a></li>
+                                    <li><a href="/cart" class="ico-cart">Shopping cart</a></li>
+                                    <li><a href="/wishlist" class="ico-wishlist">Wishlist</a></li>
+            </ul>
+        </div>
+        <div class="column follow-us">
+            <h3>Follow us</h3>
+            <ul>
+                    <li class="facebook"><a href="http://www.facebook.com/nopCommerce" target="_blank">Facebook</a></li>
+                                                    <li class="twitter"><a href="https://twitter.com/nopCommerce" target="_blank">Twitter</a></li>
+                                                    <li class="rss"><a href="/news/rss/1">RSS</a></li>
+                                                    <li class="youtube"><a href="http://www.youtube.com/user/nopCommerce" target="_blank">YouTube</a></li>
+                                                    <li class="google-plus"><a href="https://plus.google.com/+nopcommerce" target="_blank">Google+</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="footer-poweredby">
+        Powered by <a href="http://www.nopcommerce.com/">nopCommerce</a>
+        
+    </div>
+    <div class="footer-disclaimer">
+        Copyright © 2026 Tricentis Demo Web Shop. All rights reserved.
+    </div>
+    <div class="footer-store-theme">
+        
+
+
+    </div>
+    
+</div>
+</div>
+
+<!-- Google code for Analytics tracking -->
+<script type="text/javascript">
+var _gaq = _gaq || [];
+_gaq.push(['_setAccount', 'UA-6574346-11']);
+_gaq.push(['_trackPageview']);
+
+(function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+})();
+</script>
+
+
+    
+    
+
+
+<ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-1" tabindex="0" style="display: none;"></ul></body></html>
