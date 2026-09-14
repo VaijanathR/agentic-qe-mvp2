@@ -14,12 +14,18 @@ means every `LLMClient` implementation here MUST:
     verified by deterministic code in testcases/generate.py and
     testcases/validate.py, which is the final governance authority.
 
-Two implementations are provided:
-  - OpenAILLMClient: the real backend. Reuses the `openai` package that is
+Three implementations are provided:
+  - OpenAILLMClient: a real backend. Reuses the `openai` package that is
     already part of this project's environment (see `pip list`) and the
     standard OPENAI_API_KEY / CP_MVP2_03_LLM_MODEL environment-variable
     convention. It fails fast with LLMUnavailableError when the key is not
     configured — it never silently degrades to fabricated output.
+  - ClaudeLLMClient: a real backend using the user's already-authenticated
+    Claude Code / Claude Pro subscription via the locally installed
+    `claude` CLI in non-interactive print mode — see its own docstring
+    below and docs/CP-MVP2-03-CLAUDE-PROVIDER-DECISION.md for the
+    approved architecture. This is NOT the Anthropic REST API and does
+    NOT use ANTHROPIC_API_KEY.
   - StubLLMClient: a deterministic, offline stand-in used by the test
     suite (and by anyone running this pipeline without LLM credentials
     configured). It performs a fixed, disclosed mechanical transformation
@@ -30,7 +36,10 @@ Two implementations are provided:
 """
 from __future__ import annotations
 
+import json
 import os
+import shutil
+import subprocess
 from abc import ABC, abstractmethod
 from typing import Dict, List, Optional
 
@@ -46,6 +55,13 @@ class LLMOutputError(RuntimeError):
     """Raised when a real LLM response cannot be parsed into the expected
     structured candidate format. Deterministic code must never silently
     accept malformed model output."""
+
+
+class ClaudeProviderError(RuntimeError):
+    """Raised for every ClaudeLLMClient failure mode: CLI not found,
+    ANTHROPIC_API_KEY billing-safety guard tripped, non-zero exit,
+    timeout, or an unparsable/unexpected response envelope. Deterministic
+    code must never convert one of these into a fabricated testcase."""
 
 
 class LLMClient(ABC):
@@ -148,6 +164,194 @@ class OpenAILLMClient(LLMClient):
         if not isinstance(parsed, list):
             raise LLMOutputError("CP-MVP2-03: model output JSON was not a list of candidates")
         return parsed
+
+
+class ClaudeLLMClient(LLMClient):
+    """Real LLM backend using the user's authenticated Claude Code /
+    Claude Pro subscription, via the locally installed `claude` CLI in
+    non-interactive print mode — this is NOT the Anthropic REST API and
+    NOT a second, independent LLM integration; it is the officially
+    supported subscription-authenticated invocation path documented in
+    docs/CP-MVP2-03-CLAUDE-PROVIDER-DECISION.md.
+
+    Authentication (billing safety): this class relies entirely on the
+    already-authenticated local Claude Code session. It never reads,
+    sets, requires, prints, or persists ANTHROPIC_API_KEY. Per the
+    approved decision doc sec. 11/7, if ANTHROPIC_API_KEY IS present in
+    the environment, this class does not attempt to "ignore" it — the
+    `claude` CLI's own documented precedence rules (API key overrides
+    subscription auth) are outside this class's control, so there is no
+    way to *deterministically* guarantee the call would still be
+    subscription-billed. Construction therefore fails fast with
+    ClaudeProviderError instead, per the decision doc's explicitly
+    allowed "fail clearly and report the condition" option.
+
+    Invocation: `claude -p <prompt> --append-system-prompt <system>
+    --output-format json --restricted [--model <model>]`, executed via
+    `subprocess.run` with an argument LIST — never `shell=True`, never
+    string concatenation — so no requirement text or generated prompt
+    content can be interpreted as shell syntax regardless of quotes,
+    metacharacters, or Unicode content. `--restricted` is Claude Code's
+    own documented flag for removing built-in code-running tools (Bash,
+    PowerShell, REPL) and WebFetch, so this call cannot read or modify
+    repository files — it is used purely as a reasoning/text-generation
+    call, never as an agentic coding session. An explicit, configurable
+    timeout (CP_MVP2_03_CLAUDE_TIMEOUT_SECONDS, default 120s) is always
+    applied; stdout and stderr are captured separately, and a non-zero
+    exit code is always treated as a failure, never as a response to
+    parse.
+
+    Response envelope: `--output-format json` (Claude Code's documented
+    non-interactive print-mode contract) returns a single JSON object
+    with an `is_error` flag and a `result` string (the model's final
+    text). This class parses that envelope, checks `is_error`, then
+    parses `result` itself as the JSON array of candidate testcases the
+    system prompt requested — the same contract OpenAILLMClient's
+    response follows. IMPORTANT / DISCLOSED LIMITATION: this envelope
+    shape has been implemented from Claude Code's documented print-mode
+    output contract, not from a real invocation — a live Claude call is
+    explicitly out of scope for the task that added this class (see
+    docs/CP-MVP2-03-CLAUDE-PROVIDER-DECISION.md secs. 21/29; the live
+    smoke test is a separate, later task). Any envelope mismatch raises
+    ClaudeProviderError; it is never silently reinterpreted as success.
+    """
+
+    DEFAULT_TIMEOUT_SECONDS = 120.0
+
+    def __init__(
+        self,
+        executable: Optional[str] = None,
+        model: Optional[str] = None,
+        timeout_seconds: Optional[float] = None,
+    ) -> None:
+        if os.environ.get("ANTHROPIC_API_KEY"):
+            raise ClaudeProviderError(
+                "ANTHROPIC_API_KEY is present in the environment. Per the "
+                "approved CP-MVP2-03 Claude provider decision (billing "
+                "safety), ClaudeLLMClient never silently proceeds when this "
+                "variable could override the intended subscription-"
+                "authenticated path — unset it to use the Claude Pro "
+                "subscription via this client, or use OpenAILLMClient if "
+                "API-key billing is genuinely intended."
+            )
+
+        self._executable = executable or os.environ.get("CP_MVP2_03_CLAUDE_EXECUTABLE", "claude")
+        if shutil.which(self._executable) is None:
+            raise ClaudeProviderError(
+                f"Claude CLI executable '{self._executable}' was not found on PATH. "
+                "ClaudeLLMClient requires a locally installed, authenticated Claude "
+                "Code CLI (subscription auth); it does not fall back to an API key."
+            )
+
+        self.model = model or os.environ.get("CP_MVP2_03_CLAUDE_MODEL") or None
+        self.timeout_seconds = timeout_seconds or float(
+            os.environ.get("CP_MVP2_03_CLAUDE_TIMEOUT_SECONDS", self.DEFAULT_TIMEOUT_SECONDS)
+        )
+        self.model_name = f"claude-cli:{self.model or 'default'}"
+
+    @staticmethod
+    def _system_prompt() -> str:
+        return (
+            "You are a governed test-case reasoning assistant for the "
+            "Agentic QE MVP2 project (CP-MVP2-03). You are given ONLY the "
+            "governed requirement evidence retrieved from the approved "
+            "MVP2 Knowledge Base — you MUST NOT use outside knowledge of "
+            "the application, invent business rules, or invent scenarios "
+            "not justified by the evidence provided, and you MUST NOT use "
+            "any tool. For each scenario type in the requested list that "
+            "the evidence genuinely justifies, propose exactly one "
+            "candidate test case. If the evidence does not justify a "
+            "requested scenario type, omit it — do not force a scenario "
+            "to appear. Respond with ONLY a JSON array as your entire "
+            "final answer (no prose, no markdown fences). Each array "
+            "element must be an object with exactly these keys: "
+            "scenario_type (one of POSITIVE, ALTERNATE, EXCEPTIONAL), "
+            "title, preconditions (array of strings), test_steps (array "
+            "of strings), expected_result (string), priority (one of "
+            "HIGH, MEDIUM, LOW). Do not include any other keys."
+        )
+
+    def _build_argv(self, user_prompt: str) -> List[str]:
+        argv = [
+            self._executable,
+            "-p", user_prompt,
+            "--append-system-prompt", self._system_prompt(),
+            "--output-format", "json",
+            "--restricted",
+        ]
+        if self.model:
+            argv += ["--model", self.model]
+        return argv
+
+    def propose_testcases(self, requirement_context: Dict, scenario_types: List[str]) -> List[Dict]:
+        user_prompt = json.dumps(
+            {
+                "requirement_id": requirement_context["requirement_id"],
+                "requirement_text": requirement_context["requirement_text"],
+                "approval_status": requirement_context["approval_status"],
+                "evidence": requirement_context["evidence"],
+                "requested_scenario_types": scenario_types,
+            },
+            ensure_ascii=False,
+        )
+        argv = self._build_argv(user_prompt)
+
+        try:
+            completed = subprocess.run(
+                argv,
+                capture_output=True,
+                text=True,
+                timeout=self.timeout_seconds,
+                shell=False,
+            )
+        except subprocess.TimeoutExpired as exc:
+            raise ClaudeProviderError(
+                f"Claude CLI invocation timed out after {self.timeout_seconds}s "
+                f"for requirement {requirement_context.get('requirement_id')!r}."
+            ) from exc
+        except OSError as exc:
+            raise ClaudeProviderError(f"Failed to start the Claude CLI process: {exc}") from exc
+
+        if completed.returncode != 0:
+            stderr_excerpt = (completed.stderr or "")[:2000]
+            raise ClaudeProviderError(
+                f"Claude CLI exited with non-zero status {completed.returncode} "
+                f"for requirement {requirement_context.get('requirement_id')!r}. "
+                f"stderr (truncated to 2000 chars): {stderr_excerpt}"
+            )
+
+        stdout = completed.stdout or ""
+        if not stdout.strip():
+            raise ClaudeProviderError("Claude CLI returned empty stdout despite a zero exit code.")
+
+        try:
+            envelope = json.loads(stdout)
+        except json.JSONDecodeError as exc:
+            raise ClaudeProviderError(f"Claude CLI stdout was not valid JSON: {exc}") from exc
+
+        if not isinstance(envelope, dict):
+            raise ClaudeProviderError("Claude CLI JSON envelope was not a JSON object.")
+
+        if envelope.get("is_error"):
+            raise ClaudeProviderError(
+                f"Claude CLI reported is_error=true. result field: {envelope.get('result')!r}"
+            )
+
+        result_text = envelope.get("result")
+        if not isinstance(result_text, str) or not result_text.strip():
+            raise ClaudeProviderError(
+                "Claude CLI JSON envelope did not contain a non-empty string 'result' field."
+            )
+
+        try:
+            candidates = json.loads(result_text)
+        except json.JSONDecodeError as exc:
+            raise ClaudeProviderError(f"Claude CLI 'result' text was not valid JSON: {exc}") from exc
+
+        if not isinstance(candidates, list):
+            raise ClaudeProviderError("Claude CLI 'result' JSON was not a list of candidates.")
+
+        return candidates
 
 
 class StubLLMClient(LLMClient):
