@@ -6,7 +6,10 @@ RBTP corrected to Risk-Based Test Prioritization (see companion §4).
 Di's independent engineering review of the Batch 1 implementation: PASS
 with advisories. **Di has NOT yet issued the final CR-001 governance
 gate** — see the governance reconciliation report under
-`docs/claude-execution-reports/CP-MVP2-CR-001/`.
+`docs/claude-execution-reports/CP-MVP2-CR-001/`. **Batch 2** (persisted-
+lifecycle integration with CP-06, commits `53a4f38`/`b33f5c9`) is
+implemented and evidenced, **awaiting independent Human + Di final
+gate** — not self-declared approved or closed.
 
 ---
 
@@ -39,7 +42,7 @@ DATA ─────────────→ TRACEABILITY (TC↔DATA)
  ↓  (persisted)
 PLAYWRIGHT ───────→ TRACEABILITY (REQ↔TC↔DATA↔AUTOMATION↔COMPONENT)
  ↓  (persisted)
-REUSABLE COMPONENTS  (page objects / utilities / fixtures)
+REUSABLE COMPONENT CANDIDATES  (identification only — see §C.8; no page-object/utility source-file scaffolding was built)
  ↓  (persisted)
 EXECUTION
  ↓  (persisted, timestamped)

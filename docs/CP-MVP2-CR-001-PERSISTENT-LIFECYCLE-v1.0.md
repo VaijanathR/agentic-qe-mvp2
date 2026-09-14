@@ -8,6 +8,7 @@
 * **Trigger evidence:** `docs/claude-execution-reports/CP-MVP2-03/CP-MVP2-03-TESTCASE-PERSISTENCE-INVESTIGATION-20260914-173808-FAE651.md` (commit `21ce740`) — a read-only forensic investigation that established, by direct code inspection, that CP-03-generated testcase instances are **not** persisted as first-class artifacts (governance classification **RED**).
 * **Companion document:** `docs/CP-MVP2-CR-001-ARCHITECTURE-IMPACT-ASSESSMENT-v1.0.md` (current-vs-proposed architecture, per-artifact contract, checkpoint impact matrix, migration strategy).
 * **Batch 1 implementation commits:** `415038c` (implementation), `546c568` (evidence report). Implemented additively — no frozen CP-01–06 specification, freeze checkpoint, or `llm/client.py` was edited (verified by `git diff`).
+* **Batch 2 (persisted-lifecycle integration with CP-06):** implementation completed and evidenced — commits `53a4f38` (implementation), `b33f5c9` (evidence report: `docs/claude-execution-reports/CP-MVP2-CR-001/CP-MVP2-BATCH2-EXEC-20260914-190701-CA5312.md`). **Awaiting independent Human + Di final gate** — Batch 2 is not self-declared approved, complete-and-closed, or Di-approved by this statement.
 
 ---
 
@@ -105,7 +106,7 @@ PLAYWRIGHT AUTOMATION GENERATION  →  PERSIST AUTOMATION ARTIFACT
      ↓
 TESTCASE ↔ AUTOMATION TRACEABILITY ARTIFACT (persisted)
      ↓
-REUSABLE PLAYWRIGHT COMPONENTS (page objects / utilities / fixtures)
+REUSABLE COMPONENT CANDIDATES (identification only — automation/components.py; no page-object/utility source-file scaffolding was built, see §6 "§12 Playwright reuse" and Architecture Impact §C.8)
      ↓
 EXECUTION  →  TIMESTAMPED EXECUTION LOGS (persisted)
      ↓
