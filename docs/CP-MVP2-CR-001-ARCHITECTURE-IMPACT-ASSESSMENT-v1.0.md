@@ -1,8 +1,9 @@
 # CP-MVP2-CR-001 — Architecture Impact Assessment
 
 Companion to `docs/CP-MVP2-CR-001-PERSISTENT-LIFECYCLE-v1.0.md`. **Status:
-PROPOSED — PENDING REVIEW. Design/analysis only; nothing in this document
-has been implemented.**
+APPROVED FOR BATCH 1 IMPLEMENTATION.** RBTP corrected to Risk-Based Test
+Prioritization (see companion §4). Implementation report:
+`docs/claude-execution-reports/CP-MVP2-CR-001/` (this batch).
 
 ---
 
@@ -27,7 +28,7 @@ SRS
  ↓
 TC ───────────────→ TRACEABILITY (REQ↔TC)
  ↓  (persisted)
-RBTP  (pending definition approval — CR §4)
+RBTP  (Risk-Based Test Prioritization — corrected definition, CR §4)
  ↓  (persisted)          → TRACEABILITY (REQ↔TC↔RBTP)
 DEPENDENCY MATRIX
  ↓  (persisted)
@@ -89,20 +90,20 @@ none is created by this CR.
 | Consumer | Human audit; RBTP generation; CP-MVP2-09 reporting |
 | Persistence location (proposed) | `traceability/req_to_testcase/<batch_id>.json` |
 
-### C.3 RBTP Artifact (pending definition approval — CR §4)
+### C.3 RBTP Artifact — Risk-Based Test Prioritization (corrected definition, CR §4)
 
 | Field | Value |
 |---|---|
-| Purpose | Per-requirement test-planning/governance record (intent, priority/risk, scenario-coverage summary, dependencies, gaps, execution relevance) |
-| Schema | **Not yet defined** — first requires the proposed definition in CR §4 to be approved |
-| ID | Proposed: `RBTP-<requirement_id>` |
-| Version | TBD |
-| Owner | Proposed: CP-MVP2-03 (immediately after testcase persistence) or a new sub-stage |
-| Inputs | Persisted Testcase Artifacts (C.1) + Requirement↔Testcase Traceability (C.2) |
-| Outputs | One RBTP artifact per requirement |
-| Traceability | REQ ↔ RBTP ↔ TC(s) |
-| Consumer | Human review; dependency matrix (C.4); CP-MVP2-09 reporting |
-| Persistence location (proposed) | `rbtp/<requirement_id>.json` |
+| Purpose | Per-testcase, explainable prioritization record answering "which testcases should be executed first, and why" — evidence-backed risk factors, deterministic priority, execution recommendation, rationale |
+| Schema | `rbtp/schema.py::RBTPRecord`/`GovernedRBTPRecord` (this batch) |
+| ID | `RBTP-<testcase_id>` |
+| Version | Persistence-format version (via `persistence.envelope`) |
+| Owner | A new sub-stage, run immediately after Requirement↔Testcase Traceability and before the Dependency/Reusability Matrix |
+| Inputs | Persisted Testcase Artifacts (C.1) + Requirement↔Testcase Traceability (C.2) + real KB evidence (journey membership, requirement text) |
+| Outputs | One RBTP artifact per accepted testcase |
+| Traceability | REQ ↔ TC ↔ RBTP |
+| Consumer | Human review; execution planning; CP-MVP2-09 reporting |
+| Persistence location | `rbtp/generated/<rbtp_id>/` |
 
 ### C.4 Dependency / Reusability Matrix
 
@@ -113,7 +114,7 @@ none is created by this CR.
 | ID | Proposed: one artifact per CP-05 generation batch |
 | Version | Schema version + reference to the CP-03/04 artifacts inspected |
 | Owner | Proposed: a pre-CP-05 analysis stage |
-| Inputs | Persisted Testcase Artifacts (C.1), Persisted Test Data Artifacts (C.6), RBTP (C.3, where available) |
+| Inputs | Persisted Testcase Artifacts (C.1), Persisted Test Data Artifacts (C.6) — RBTP (C.3) is a parallel, independent prioritization concern, not an input to this matrix |
 | Outputs | One dependency matrix per batch |
 | Traceability | TC ↔ shared setup/data/component candidates |
 | Consumer | CP-MVP2-05 (automation generation), human review |
@@ -259,7 +260,7 @@ The goal is to move from "in-memory only" to "persisted, traceable" **without co
 2. **No retroactive rewriting of existing evidence.** The one existing embedded testcase (`TC-REQ-REG-01-01`, inside the CP-03 live-pipeline-governance execution report) is **not** proposed to be extracted or converted into the new persisted format as part of this migration — that report remains exactly as frozen. Any future backfill would be its own explicitly-authorized, clearly-labeled action (Open Question §12.6 in the CR).
 3. **Phased rollout, one checkpoint at a time**, mirroring how CP-04/05/06 were each implemented, verified, and frozen individually in this project:
    - Phase A: CP-03 persistence (C.1, C.2).
-   - Phase B: RBTP (C.3) — only after its definition (CR §4) is approved.
+   - Phase B: RBTP (C.3) — Risk-Based Test Prioritization, per the corrected §4 definition.
    - Phase C: CP-04 persistence (C.5, C.6) + Dependency Matrix (C.4).
    - Phase D: CP-05 persistence (C.7, C.8, C.9).
    - Phase E: CP-06 persistence/consumption changes (C.10, C.11), including the explicitly-approved-or-rejected directory-convention change.
