@@ -19,6 +19,7 @@ from typing import Dict, List, Optional
 
 from automation.multi_locator.evidence import candidates_for_field, submit_candidates
 from automation.multi_locator.schema import AutomationHealth, MultiLocatorArtifact, StepLocatorCandidateSet
+from automation.multi_locator.step_mapping import build_step_mapping
 from automation.persist import BASE_DIR as AUTOMATION_BASE_DIR
 from automation.schema import ActionType, ELEMENT_TARGETING_ACTION_TYPES, LocatorStatus
 from execution.persisted_lifecycle import discover_distinct_test_data_variants
@@ -59,10 +60,19 @@ def resolve_source_automation_payload(source_automation_id: str, expected_test_d
     )
 
 
-def build_multi_locator_artifact(source_payload: Dict, ml_automation_id: str) -> MultiLocatorArtifact:
+def build_multi_locator_artifact(
+    source_payload: Dict,
+    ml_automation_id: str,
+    testcase_payload: Optional[Dict] = None,
+) -> MultiLocatorArtifact:
     """`source_payload` is the real persisted automation payload dict
     (as returned by `persistence.envelope.load_latest` against
-    `automation/persist.py::BASE_DIR`) -- read-only input."""
+    `automation/persist.py::BASE_DIR`) -- read-only input.
+    `testcase_payload` (optional, but required for step-mapping to be
+    populated) is the real persisted testcase payload dict this
+    automation is anchored on -- also read-only; supplying it enables
+    the additive testcase-step<->automation-step traceability layer
+    (`automation.multi_locator.step_mapping`)."""
     requirement_ids = list(source_payload["requirement_ids"])
     # This package only has real, verified evidence for REQ-ACO-03's
     # submit control; for every other requirement, `submit_candidates`
@@ -103,6 +113,15 @@ def build_multi_locator_artifact(source_payload: Dict, ml_automation_id: str) ->
     else:
         health = AutomationHealth.GREEN
 
+    testcase_step_mappings: List[Dict] = []
+    if testcase_payload is not None:
+        mappings = build_step_mapping(
+            list(testcase_payload["test_steps"]),
+            source_payload["steps"],
+            has_assertions=bool(source_payload.get("assertions")),
+        )
+        testcase_step_mappings = [m.to_dict() for m in mappings]
+
     return MultiLocatorArtifact(
         ml_automation_id=ml_automation_id,
         source_automation_id=source_payload["automation_id"],
@@ -110,6 +129,7 @@ def build_multi_locator_artifact(source_payload: Dict, ml_automation_id: str) ->
         requirement_ids=requirement_ids,
         test_data_set_id=source_payload["test_data_set_id"],
         step_candidate_sets=step_sets,
+        testcase_step_mappings=testcase_step_mappings,
         automation_health=health,
         source_attribution=list(source_payload.get("source_attribution", [])),
         generation_metadata={

@@ -94,10 +94,11 @@ class StepLocatorCandidateSet:
 class MultiLocatorArtifact:
     """Wraps a real, persisted, frozen CP-05 `PlaywrightArtifact` (by
     reference, never by mutation) with an additive locator-candidate
-    layer. `source_automation_id` always points back to the real,
-    unmodified, frozen-governed automation artifact this was derived
-    from -- full traceability preserved; the frozen artifact itself is
-    never edited."""
+    layer, plus (new) an additive testcase-step<->automation-step
+    traceability layer (`automation.multi_locator.step_mapping`).
+    `source_automation_id` always points back to the real, unmodified,
+    frozen-governed automation artifact this was derived from -- full
+    traceability preserved; the frozen artifact itself is never edited."""
 
     ml_automation_id: str
     source_automation_id: str
@@ -105,6 +106,7 @@ class MultiLocatorArtifact:
     requirement_ids: List[str]
     test_data_set_id: str
     step_candidate_sets: List[StepLocatorCandidateSet] = field(default_factory=list)
+    testcase_step_mappings: List[Dict] = field(default_factory=list)
     automation_health: str = AutomationHealth.GREEN
     source_attribution: List[Dict] = field(default_factory=list)
     generation_metadata: Dict = field(default_factory=dict)

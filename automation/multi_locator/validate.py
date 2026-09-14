@@ -4,6 +4,7 @@ from __future__ import annotations
 from typing import List
 
 from automation.multi_locator.schema import GovernedMultiLocatorArtifact, MultiLocatorArtifact, MultiLocatorGovernanceStatus
+from automation.multi_locator.step_mapping import TestcaseStepMapping, validate_full_coverage, validate_order_preserved
 
 
 def govern_multi_locator_artifact(artifact: MultiLocatorArtifact) -> GovernedMultiLocatorArtifact:
@@ -23,6 +24,19 @@ def govern_multi_locator_artifact(artifact: MultiLocatorArtifact) -> GovernedMul
         for c in s.candidates:
             if not c.evidence_source or not c.locator:
                 problems.append(f"STEP_{s.step_order}_CANDIDATE_MISSING_EVIDENCE")
+
+    if artifact.testcase_step_mappings:
+        mappings = [TestcaseStepMapping(**m) for m in artifact.testcase_step_mappings]
+        expected_indices = set(range(len(mappings)))
+        actual_indices = {m.testcase_step_index for m in mappings}
+        if actual_indices != expected_indices:
+            problems.append(f"TESTCASE_STEP_MAPPING_INDEX_GAP:{sorted(expected_indices - actual_indices)}")
+        coverage = validate_full_coverage(mappings, [m.testcase_step_text for m in mappings])
+        if not coverage["passed"]:
+            problems.append(f"TESTCASE_STEP_MAPPING_INCOMPLETE:{coverage['detail']['missing_testcase_steps']}")
+        order = validate_order_preserved(mappings)
+        if not order["passed"]:
+            problems.append(f"TESTCASE_STEP_MAPPING_OUT_OF_ORDER:{order['detail']}")
 
     if problems:
         # Any unresolved load-bearing step means this artifact cannot

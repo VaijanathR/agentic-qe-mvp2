@@ -1,0 +1,255 @@
+{
+  "artifact_id": "ML-PW-TC-REQ-ACO-03-01-01-D02",
+  "artifact_version": 1,
+  "generated_at": "2026-09-14T20:29:48.998303+00:00",
+  "generator": "multi-locator-deterministic-v1",
+  "provenance": {
+    "kind": "multi_locator_artifact",
+    "source_automation_id": "PW-TC-REQ-ACO-03-01-01"
+  },
+  "content_hash": "5d351e999e1c569b8489c65674f9f2527f727886da456bfcfd5074dee1530c1e",
+  "payload": {
+    "validation_status": "ACCEPTED",
+    "notes": [],
+    "ml_automation_id": "ML-PW-TC-REQ-ACO-03-01-01-D02",
+    "source_automation_id": "PW-TC-REQ-ACO-03-01-01",
+    "testcase_id": "TC-REQ-ACO-03-01",
+    "requirement_ids": [
+      "REQ-ACO-03"
+    ],
+    "test_data_set_id": "TD-TC-REQ-ACO-03-01-02",
+    "step_candidate_sets": [
+      {
+        "step_order": 2,
+        "field_name": "first_name",
+        "candidates": [
+          {
+            "priority": 4,
+            "strategy": "STABLE_ATTRIBUTE",
+            "locator": "#BillingNewAddress_FirstName",
+            "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+            "evidence_reference": "field='first_name', single-locator lookup (automation.evidence.lookup_locator)",
+            "confidence": "HIGH"
+          }
+        ],
+        "original_locator_was_evidenced": true
+      },
+      {
+        "step_order": 3,
+        "field_name": "last_name",
+        "candidates": [
+          {
+            "priority": 4,
+            "strategy": "STABLE_ATTRIBUTE",
+            "locator": "#BillingNewAddress_LastName",
+            "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+            "evidence_reference": "field='last_name', single-locator lookup (automation.evidence.lookup_locator)",
+            "confidence": "HIGH"
+          }
+        ],
+        "original_locator_was_evidenced": true
+      },
+      {
+        "step_order": 4,
+        "field_name": "email",
+        "candidates": [
+          {
+            "priority": 4,
+            "strategy": "STABLE_ATTRIBUTE",
+            "locator": "#BillingNewAddress_Email",
+            "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+            "evidence_reference": "field='email', single-locator lookup (automation.evidence.lookup_locator)",
+            "confidence": "HIGH"
+          }
+        ],
+        "original_locator_was_evidenced": true
+      },
+      {
+        "step_order": 5,
+        "field_name": "country",
+        "candidates": [
+          {
+            "priority": 4,
+            "strategy": "STABLE_ATTRIBUTE",
+            "locator": "#BillingNewAddress_CountryId",
+            "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+            "evidence_reference": "field='country', single-locator lookup (automation.evidence.lookup_locator)",
+            "confidence": "HIGH"
+          }
+        ],
+        "original_locator_was_evidenced": true
+      },
+      {
+        "step_order": 6,
+        "field_name": "city",
+        "candidates": [
+          {
+            "priority": 4,
+            "strategy": "STABLE_ATTRIBUTE",
+            "locator": "#BillingNewAddress_City",
+            "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+            "evidence_reference": "field='city', single-locator lookup (automation.evidence.lookup_locator)",
+            "confidence": "HIGH"
+          }
+        ],
+        "original_locator_was_evidenced": true
+      },
+      {
+        "step_order": 7,
+        "field_name": "address1",
+        "candidates": [
+          {
+            "priority": 4,
+            "strategy": "STABLE_ATTRIBUTE",
+            "locator": "#BillingNewAddress_Address1",
+            "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+            "evidence_reference": "field='address1', single-locator lookup (automation.evidence.lookup_locator)",
+            "confidence": "HIGH"
+          }
+        ],
+        "original_locator_was_evidenced": true
+      },
+      {
+        "step_order": 8,
+        "field_name": "zip_postal_code",
+        "candidates": [
+          {
+            "priority": 4,
+            "strategy": "STABLE_ATTRIBUTE",
+            "locator": "#BillingNewAddress_ZipPostalCode",
+            "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+            "evidence_reference": "field='zip_postal_code', single-locator lookup (automation.evidence.lookup_locator)",
+            "confidence": "HIGH"
+          }
+        ],
+        "original_locator_was_evidenced": true
+      },
+      {
+        "step_order": 9,
+        "field_name": "phone_number",
+        "candidates": [
+          {
+            "priority": 4,
+            "strategy": "STABLE_ATTRIBUTE",
+            "locator": "#BillingNewAddress_PhoneNumber",
+            "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+            "evidence_reference": "field='phone_number', single-locator lookup (automation.evidence.lookup_locator)",
+            "confidence": "HIGH"
+          }
+        ],
+        "original_locator_was_evidenced": true
+      },
+      {
+        "step_order": 10,
+        "field_name": "company",
+        "candidates": [
+          {
+            "priority": 4,
+            "strategy": "STABLE_ATTRIBUTE",
+            "locator": "#BillingNewAddress_Company",
+            "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+            "evidence_reference": "field='company', single-locator lookup (automation.evidence.lookup_locator)",
+            "confidence": "HIGH"
+          }
+        ],
+        "original_locator_was_evidenced": true
+      },
+      {
+        "step_order": 11,
+        "field_name": "address2",
+        "candidates": [
+          {
+            "priority": 4,
+            "strategy": "STABLE_ATTRIBUTE",
+            "locator": "#BillingNewAddress_Address2",
+            "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+            "evidence_reference": "field='address2', single-locator lookup (automation.evidence.lookup_locator)",
+            "confidence": "HIGH"
+          }
+        ],
+        "original_locator_was_evidenced": true
+      },
+      {
+        "step_order": 12,
+        "field_name": "fax_number",
+        "candidates": [
+          {
+            "priority": 4,
+            "strategy": "STABLE_ATTRIBUTE",
+            "locator": "#BillingNewAddress_FaxNumber",
+            "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+            "evidence_reference": "field='fax_number', single-locator lookup (automation.evidence.lookup_locator)",
+            "confidence": "HIGH"
+          }
+        ],
+        "original_locator_was_evidenced": true
+      },
+      {
+        "step_order": 13,
+        "field_name": null,
+        "candidates": [
+          {
+            "priority": 4,
+            "strategy": "STABLE_ATTRIBUTE",
+            "locator": "#billing-buttons-container .new-address-next-step-button",
+            "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+            "evidence_reference": "Real capture shows the bare class '.new-address-next-step-button' matches 2 elements (Billing.save()/Shipping.save()), but scoping by the real, evidenced parent container id=\"billing-buttons-container\" resolves to exactly 1 element -- verified by regex against the live file content at call time.",
+            "confidence": "HIGH"
+          },
+          {
+            "priority": 5,
+            "strategy": "STABLE_ATTRIBUTE",
+            "locator": "input[onclick=\"Billing.save()\"]",
+            "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+            "evidence_reference": "Real capture's onclick=\"Billing.save()\" attribute is unique on the page -- verified by regex against the live file content at call time. An independent selector strategy from candidate 1, pointing at the same real element, for resilience against container-id renaming.",
+            "confidence": "MEDIUM"
+          }
+        ],
+        "original_locator_was_evidenced": false
+      }
+    ],
+    "testcase_step_mappings": [
+      {
+        "testcase_step_index": 0,
+        "testcase_step_text": "Perform the action described by the approved requirement.",
+        "automation_step_orders": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "maps_to_assertions": false
+      },
+      {
+        "testcase_step_index": 1,
+        "testcase_step_text": "Observe the resulting system behavior.",
+        "automation_step_orders": [],
+        "maps_to_assertions": true
+      }
+    ],
+    "automation_health": "YELLOW",
+    "source_attribution": [
+      {
+        "requirement_id": "REQ-ACO-03",
+        "source_document": "requirements/MVP2_SRS_v1.0_APPROVED.md",
+        "source_version": "1.0",
+        "chunk_id": "srs_v1.0__REQ-ACO-03"
+      }
+    ],
+    "generation_metadata": {
+      "generator": "deterministic-only (no LLM anywhere in multi-locator resolution)",
+      "generated_at": "2026-09-14T20:29:48.997041+00:00",
+      "source_automation_id": "PW-TC-REQ-ACO-03-01-01",
+      "source_automation_governance_status": "UNSUPPORTED_NEEDS_CLARIFICATION"
+    }
+  }
+}

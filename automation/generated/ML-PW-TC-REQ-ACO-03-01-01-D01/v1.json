@@ -1,0 +1,218 @@
+{
+  "artifact_id": "ML-PW-TC-REQ-ACO-03-01-01-D01",
+  "artifact_version": 1,
+  "generated_at": "2026-09-14T20:29:48.991250+00:00",
+  "generator": "multi-locator-deterministic-v1",
+  "provenance": {
+    "batch_id": "REALISM-VERTICAL-SLICE",
+    "checkpoint": "CP-MVP2-05"
+  },
+  "content_hash": "8b7d95612b7f2949d026fd58642e8f660c4a654342e86f028570519d99facdc0",
+  "payload": {
+    "validation_status": "ACCEPTED",
+    "notes": [],
+    "automation_id": "ML-PW-TC-REQ-ACO-03-01-01-D01",
+    "testcase_id": "TC-REQ-ACO-03-01",
+    "requirement_ids": [
+      "REQ-ACO-03"
+    ],
+    "test_data_set_id": "TD-TC-REQ-ACO-03-01-01",
+    "journey_id": "J-01",
+    "scenario_type": "POSITIVE",
+    "browser_intent": "chromium-headless",
+    "preconditions": [
+      "Approved requirement REQ-ACO-03 is in effect"
+    ],
+    "steps": [
+      {
+        "step_order": 1,
+        "action_type": "NAVIGATE",
+        "locator": null,
+        "input_mapping": null,
+        "synchronization_strategy": "WAIT_FOR_NETWORK_IDLE"
+      },
+      {
+        "step_order": 2,
+        "action_type": "FILL",
+        "locator": {
+          "strategy": "STABLE_ATTRIBUTE",
+          "value": "#BillingNewAddress_FirstName",
+          "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+          "status": "EVIDENCED"
+        },
+        "input_mapping": "first_name",
+        "synchronization_strategy": "WAIT_FOR_VISIBLE"
+      },
+      {
+        "step_order": 3,
+        "action_type": "FILL",
+        "locator": {
+          "strategy": "STABLE_ATTRIBUTE",
+          "value": "#BillingNewAddress_LastName",
+          "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+          "status": "EVIDENCED"
+        },
+        "input_mapping": "last_name",
+        "synchronization_strategy": "WAIT_FOR_VISIBLE"
+      },
+      {
+        "step_order": 4,
+        "action_type": "FILL",
+        "locator": {
+          "strategy": "STABLE_ATTRIBUTE",
+          "value": "#BillingNewAddress_Email",
+          "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+          "status": "EVIDENCED"
+        },
+        "input_mapping": "email",
+        "synchronization_strategy": "WAIT_FOR_VISIBLE"
+      },
+      {
+        "step_order": 5,
+        "action_type": "FILL",
+        "locator": {
+          "strategy": "STABLE_ATTRIBUTE",
+          "value": "#BillingNewAddress_CountryId",
+          "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+          "status": "EVIDENCED"
+        },
+        "input_mapping": "country",
+        "synchronization_strategy": "WAIT_FOR_VISIBLE"
+      },
+      {
+        "step_order": 6,
+        "action_type": "FILL",
+        "locator": {
+          "strategy": "STABLE_ATTRIBUTE",
+          "value": "#BillingNewAddress_City",
+          "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+          "status": "EVIDENCED"
+        },
+        "input_mapping": "city",
+        "synchronization_strategy": "WAIT_FOR_VISIBLE"
+      },
+      {
+        "step_order": 7,
+        "action_type": "FILL",
+        "locator": {
+          "strategy": "STABLE_ATTRIBUTE",
+          "value": "#BillingNewAddress_Address1",
+          "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+          "status": "EVIDENCED"
+        },
+        "input_mapping": "address1",
+        "synchronization_strategy": "WAIT_FOR_VISIBLE"
+      },
+      {
+        "step_order": 8,
+        "action_type": "FILL",
+        "locator": {
+          "strategy": "STABLE_ATTRIBUTE",
+          "value": "#BillingNewAddress_ZipPostalCode",
+          "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+          "status": "EVIDENCED"
+        },
+        "input_mapping": "zip_postal_code",
+        "synchronization_strategy": "WAIT_FOR_VISIBLE"
+      },
+      {
+        "step_order": 9,
+        "action_type": "FILL",
+        "locator": {
+          "strategy": "STABLE_ATTRIBUTE",
+          "value": "#BillingNewAddress_PhoneNumber",
+          "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+          "status": "EVIDENCED"
+        },
+        "input_mapping": "phone_number",
+        "synchronization_strategy": "WAIT_FOR_VISIBLE"
+      },
+      {
+        "step_order": 10,
+        "action_type": "FILL",
+        "locator": {
+          "strategy": "STABLE_ATTRIBUTE",
+          "value": "#BillingNewAddress_Company",
+          "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+          "status": "EVIDENCED"
+        },
+        "input_mapping": "company",
+        "synchronization_strategy": "WAIT_FOR_VISIBLE"
+      },
+      {
+        "step_order": 11,
+        "action_type": "FILL",
+        "locator": {
+          "strategy": "STABLE_ATTRIBUTE",
+          "value": "#BillingNewAddress_Address2",
+          "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+          "status": "EVIDENCED"
+        },
+        "input_mapping": "address2",
+        "synchronization_strategy": "WAIT_FOR_VISIBLE"
+      },
+      {
+        "step_order": 12,
+        "action_type": "FILL",
+        "locator": {
+          "strategy": "STABLE_ATTRIBUTE",
+          "value": "#BillingNewAddress_FaxNumber",
+          "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+          "status": "EVIDENCED"
+        },
+        "input_mapping": "fax_number",
+        "synchronization_strategy": "WAIT_FOR_VISIBLE"
+      },
+      {
+        "step_order": 13,
+        "action_type": "CLICK",
+        "locator": {
+          "strategy": "STABLE_ATTRIBUTE",
+          "value": "#billing-buttons-container .new-address-next-step-button",
+          "evidence_source": "knowledge/historical/discovery_evidence/captures/checkout_00.html",
+          "status": "EVIDENCED"
+        },
+        "input_mapping": null,
+        "synchronization_strategy": "WAIT_FOR_NETWORK_IDLE"
+      }
+    ],
+    "assertions": [
+      {
+        "assertion_type": "BUSINESS_REQUIRED",
+        "condition": "REQ-ACO-03: The Billing/Shipping address form shall require First name, Last name, Email, Country, City, Address 1, Zip/postal code, and Phone number; Company, Address 2, and Fax number shall be optional\nRationale: Ensures sufficient fulfillment data\nEvidence Basis: Required-field markers and matching inline messages observed on the named fields; no such marker on the optional fields\nAcceptance Criteria: Given the address form, when required fields are left blank, then progression to the next step is blocked\nActor: Guest, Authenticated\nJourney: J-01, J-02\nStatus: APPROVED — BASELINED v1.0",
+        "source": "testcase:TC-REQ-ACO-03-01.expected_result",
+        "counts_toward_coverage": true
+      },
+      {
+        "assertion_type": "TECHNICAL_USEFUL",
+        "condition": "REQ-ACO-03: The Billing/Shipping address form shall require First name, Last name, Email, Country, City, Address 1, Zip/postal code, and Phone number; Company, Address 2, and Fax number shall be optional\nRationale: Ensures sufficient fulfillment data\nEvidence Basis: Required-field markers and matching inline messages observed on the named fields; no such marker on the optional fields\nAcceptance Criteria: Given the address form, when required fields are left blank, then progression to the next step is blocked\nActor: Guest, Authenticated\nJourney: J-01, J-02\nStatus: APPROVED — BASELINED v1.0",
+        "source": "llm_proposed_step_assertion",
+        "counts_toward_coverage": false
+      }
+    ],
+    "evidence_requirements": [
+      "screenshot",
+      "dom_snapshot"
+    ],
+    "failure_handling_metadata": {
+      "retry": false,
+      "escalate": true
+    },
+    "source_attribution": [
+      {
+        "requirement_id": "REQ-ACO-03",
+        "source_document": "requirements/MVP2_SRS_v1.0_APPROVED.md",
+        "source_version": "1.0",
+        "chunk_id": "srs_v1.0__REQ-ACO-03"
+      }
+    ],
+    "generation_metadata": {
+      "generator": "deterministic-only (no LLM anywhere in multi-locator resolution)",
+      "generated_at": "2026-09-14T20:29:48.988680+00:00",
+      "source_automation_id": "PW-TC-REQ-ACO-03-01-01",
+      "source_automation_governance_status": "UNSUPPORTED_NEEDS_CLARIFICATION",
+      "bridge": "automation.multi_locator.bridge.build_executable_artifact",
+      "note": "Every LocatorSpec here is the PRIMARY (priority-1) candidate only; no runtime fallback is attempted by this artifact or by CP-06 execution -- see CP-MVP2-CR-002 proposal."
+    }
+  }
+}

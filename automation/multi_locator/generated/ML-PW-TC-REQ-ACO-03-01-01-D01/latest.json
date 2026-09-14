@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ML-PW-TC-REQ-ACO-03-01-01-D01",
+  "latest_version": 1,
+  "latest_path": "automation\\multi_locator\\generated\\ML-PW-TC-REQ-ACO-03-01-01-D01\\v1.json",
+  "content_hash": "018b8982d7cdc65997c16c58a0b9c7967a0f759f0856ff701d97ac944d7b7e79",
+  "updated_at": "2026-09-14T20:29:48.989608+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\multi_locator\\generated\\ML-PW-TC-REQ-ACO-03-01-01-D01\\v1.json",
+      "generated_at": "2026-09-14T20:29:48.989608+00:00"
+    }
+  ]
+}
