@@ -1,9 +1,11 @@
 # CP-MVP2-CR-001 — Architecture Impact Assessment
 
 Companion to `docs/CP-MVP2-CR-001-PERSISTENT-LIFECYCLE-v1.0.md`. **Status:
-APPROVED FOR BATCH 1 IMPLEMENTATION.** RBTP corrected to Risk-Based Test
-Prioritization (see companion §4). Implementation report:
-`docs/claude-execution-reports/CP-MVP2-CR-001/` (this batch).
+BATCH 1 IMPLEMENTATION AUTHORIZED AND COMPLETE.** RBTP corrected to
+Risk-Based Test Prioritization (see companion §4). Di's independent
+engineering review: PASS with advisories. **This describes implementation
+completion, not a final CR-001 governance gate** — see the governance
+reconciliation report under `docs/claude-execution-reports/CP-MVP2-CR-001/`.
 
 ---
 
@@ -57,8 +59,12 @@ be replaced.
 
 ## C. Artifact Contract
 
-Each row is a **proposed** contract. None of these artifacts exist yet;
-none is created by this CR.
+**All contracts below are implemented (Batch 1, commit `415038c`).**
+Each "Persistence location" now names the actual, real path produced by
+the implementation — an artifact's own directory containing an
+immutable `v<N>.json` per version plus a mutable `latest.json` pointer
+(`persistence/envelope.py`), not a single flat `.json` file as this
+document's earlier draft anticipated.
 
 ### C.1 Persisted Testcase Artifact
 
@@ -73,7 +79,7 @@ none is created by this CR.
 | Outputs | One artifact file per accepted testcase |
 | Traceability | `requirement_ids`, `source_attribution` (already present, unchanged) |
 | Consumer | Human review; CP-MVP2-04; CP-MVP2-05; CP-MVP2-07 reporting |
-| Persistence location (proposed) | `testcases/generated/<testcase_id>.json` |
+| Persistence location (actual) | `testcases/generated/<testcase_id>/v<N>.json` + `latest.json` |
 
 ### C.2 Requirement ↔ Testcase Traceability Artifact
 
@@ -88,7 +94,7 @@ none is created by this CR.
 | Outputs | One traceability artifact |
 | Traceability | REQ → TC(s); TC → REQ |
 | Consumer | Human audit; RBTP generation; CP-MVP2-09 reporting |
-| Persistence location (proposed) | `traceability/req_to_testcase/<batch_id>.json` |
+| Persistence location (actual) | `traceability/req_to_testcase/<batch_id>/v<N>.json` + `latest.json` |
 
 ### C.3 RBTP Artifact — Risk-Based Test Prioritization (corrected definition, CR §4)
 
@@ -103,22 +109,22 @@ none is created by this CR.
 | Outputs | One RBTP artifact per accepted testcase |
 | Traceability | REQ ↔ TC ↔ RBTP |
 | Consumer | Human review; execution planning; CP-MVP2-09 reporting |
-| Persistence location | `rbtp/generated/<rbtp_id>/` |
+| Persistence location (actual) | `rbtp/generated/<rbtp_id>/v<N>.json` + `latest.json` |
 
 ### C.4 Dependency / Reusability Matrix
 
 | Field | Value |
 |---|---|
 | Purpose | Identify shared preconditions, data reuse/uniqueness constraints, auth/session dependencies, reusable component candidates, before automation is generated |
-| Schema | New |
-| ID | Proposed: one artifact per CP-05 generation batch |
-| Version | Schema version + reference to the CP-03/04 artifacts inspected |
-| Owner | Proposed: a pre-CP-05 analysis stage |
-| Inputs | Persisted Testcase Artifacts (C.1), Persisted Test Data Artifacts (C.6) — RBTP (C.3) is a parallel, independent prioritization concern, not an input to this matrix |
-| Outputs | One dependency matrix per batch |
-| Traceability | TC ↔ shared setup/data/component candidates |
+| Schema | `dependencies/schema.py::DependencyMatrix`/`DependencyEdge` (this batch) |
+| ID | `matrix_id` (one per batch) |
+| Version | Persistence-format version (via `persistence.envelope`) |
+| Owner | `dependencies/pipeline.py::run_dependency_matrix`, a deterministic, LLM-free analysis stage run after RBTP, before CP-04/CP-05 consumption |
+| Inputs | Persisted Testcase Artifacts (C.1) only, as actually implemented — edges are computed from each testcase's own `journey_id`/`preconditions`/`requirement_ids`/CP-03 duplicate-detection reasons; Test Data Artifacts (C.6) and RBTP (C.3) are NOT inputs (RBTP is a parallel, independent prioritization concern) |
+| Outputs | One dependency matrix per batch: pairwise edges (`SHARED_JOURNEY`/`SHARED_PRECONDITION`/`SHARED_REQUIREMENT`/`POSSIBLE_DUPLICATE_TESTING`) plus `reusable_component_candidates` requiring literal repetition across 2+ testcases |
+| Traceability | TC ↔ shared setup/requirement/possible-duplicate relationships |
 | Consumer | CP-MVP2-05 (automation generation), human review |
-| Persistence location (proposed) | `dependencies/<batch_id>.json` |
+| Persistence location (actual) | `dependencies/generated/<matrix_id>/v<N>.json` + `latest.json` |
 
 ### C.5 Persisted Test Data Artifact
 
@@ -133,7 +139,7 @@ none is created by this CR.
 | Outputs | One artifact per accepted dataset |
 | Traceability | `testcase_id`, `requirement_ids` (already present) |
 | Consumer | Human review; CP-MVP2-05; CP-MVP2-06 |
-| Persistence location (proposed) | `testdata/generated/<data_set_id>.json` |
+| Persistence location (actual) | `testdata/generated/<data_set_id>/v<N>.json` + `latest.json` |
 
 ### C.6 Testcase ↔ Test Data Traceability Artifact
 
@@ -148,7 +154,7 @@ none is created by this CR.
 | Outputs | One traceability artifact |
 | Traceability | TC ↔ Data |
 | Consumer | Human audit; CP-MVP2-05; CP-MVP2-09 |
-| Persistence location (proposed) | `traceability/testcase_to_testdata/<batch_id>.json` |
+| Persistence location (actual) | `traceability/testcase_to_testdata/<batch_id>/v<N>.json` + `latest.json` |
 
 ### C.7 Persisted Automation Artifact
 
@@ -156,29 +162,34 @@ none is created by this CR.
 |---|---|
 | Purpose | First-class record of one CP-05 Playwright artifact |
 | Schema | Wraps existing `automation.schema.GovernedPlaywrightArtifact.to_dict()` unchanged; adds `artifact_version`, `baseline_reference` |
-| ID | `automation_id` (existing) |
+| ID | `automation_id` (existing) — **known limitation:** `f"PW-{testcase_id}-01"` does not incorporate the paired `test_data_set_id`, so a testcase with N eligible datasets produces N distinct artifacts sharing one `automation_id` (`AUTOMATION_ID_COLLISION_ADVISORY`, discovered by this batch; see the Batch 1 implementation report). Persistence handled this safely (every distinct artifact retained as its own immutable version, no data lost) but `latest.json` for such an ID does not mean "the current version of one logical automation." |
 | Version | Persistence-format version |
 | Owner | CP-MVP2-05 |
 | Inputs | A `GovernedPlaywrightArtifact` from the existing, unmodified `automation.validate.govern_batch()` |
 | Outputs | One artifact per generated automation |
 | Traceability | `testcase_id`, `requirement_ids`, `test_data_set_id` (already present) |
 | Consumer | Human review; CP-MVP2-06 |
-| Persistence location (proposed) | `automation/generated/<automation_id>.json` |
+| Persistence location (actual) | `automation/generated/<automation_id>/v<N>.json` + `latest.json` |
 
-### C.8 Reusable Component Artifact
+### C.8 Reusable Component Candidate (implemented as identification only — not a persisted artifact family, not source-file extraction)
+
+**Corrected scope.** Batch 1 implements real, evidence-backed **candidate
+identification** (`automation/components.py::identify_reusable_locator_candidates`),
+not the page-object/utility/fixture source-file scaffolding this row's
+earlier draft anticipated. No `automation/components/`, `automation/pages/`,
+or `automation/utils/` source directory was created.
 
 | Field | Value |
 |---|---|
-| Purpose | A page object, utility, fixture, or helper shared across multiple automation artifacts, only where real evidence justifies reuse (CR §12 — no premature abstraction) |
-| Schema | New — component ID, purpose, evidence justifying reuse, list of consuming `automation_id`s |
-| ID | Proposed: `COMPONENT-<name>` |
-| Version | Component-level version, since a change here can affect multiple automation artifacts |
-| Owner | CP-MVP2-05 |
-| Inputs | Recurring locator/workflow patterns identified via the Dependency Matrix (C.4) |
-| Outputs | Reusable component source files (`automation/components/`, `automation/pages/`, `automation/utils/`) |
-| Traceability | Component ↔ Automation(s) that use it |
-| Consumer | CP-MVP2-05 generation; CP-MVP2-06 execution |
-| Persistence location (proposed) | `automation/components/`, `automation/pages/`, `automation/utils/` |
+| Purpose | Report where 2+ **distinct** automation artifacts literally share the same locator (`strategy`+`value`) — real, evidence-backed reuse potential, never a fabricated or speculative one |
+| Schema | Plain dict: `{strategy, value, used_by_automation_ids}` — no dataclass, no independent persistence; folded into C.9's `automation_to_components` field |
+| ID | None — not independently ID-addressed or versioned |
+| Owner | `automation/components.py` (Batch 1) |
+| Inputs | Real, persisted CP-05 automation artifacts (any governance status — candidates are computed over ALL generated artifacts, not only `ACCEPTED` ones, per §12's "identify reuse wherever real repetition exists") |
+| Outputs | A list of candidates (empty when fewer than 2 artifacts share a locator — an honest empty result, not an error) |
+| Traceability | Folded into Automation Traceability (C.9)'s `automation_to_components` map |
+| Consumer | Human review; a future task deciding whether to actually extract a page object/helper |
+| Persistence location | Not independently persisted; see C.9 |
 
 ### C.9 Automation Traceability Artifact
 
@@ -193,7 +204,7 @@ none is created by this CR.
 | Outputs | One traceability artifact |
 | Traceability | Full REQ→TC→Data→Automation→Component chain |
 | Consumer | Human audit; CP-MVP2-06; CP-MVP2-09 |
-| Persistence location (proposed) | `traceability/automation/<batch_id>.json` |
+| Persistence location (actual) | `traceability/automation/<batch_id>/v<N>.json` + `latest.json` |
 
 ### C.10 Timestamped Execution Log
 
@@ -205,10 +216,10 @@ none is created by this CR.
 | Version | Execution-schema version (already exists) |
 | Owner | CP-MVP2-06 |
 | Inputs | A real `ExecutionResult` from the existing, unmodified `execution.pipeline.run_cp_mvp2_06()` |
-| Outputs | `execution.log`, `step_results.json`, `assertions.json`, `screenshots/`, `traces/`, `final_result.json` |
+| Outputs | `final_result.json`, `step_results.json`, `assertions.json` written by the NEW additive path (`execution/persist.py`); `execution.log`/screenshots continue to be written, unchanged, by the frozen `execution/evidence.py::EvidenceManager` under the original `runs/cp_mvp2_06/<execution_id>/` path — the two paths coexist, neither replaces the other |
 | Traceability | `automation_id`, `testcase_id`, `requirement_ids`, `test_data_set_id` (already present) |
 | Consumer | Human audit; Execution Summary (C.11); CP-MVP2-07 RCA |
-| Persistence location (proposed) | `runs/<YYYY>/<MM>/<DD>/<execution_id>/...` — **a change to the existing frozen CP-06 convention (`runs/cp_mvp2_06/<execution_id>/...`); requires explicit approval, see CR §7/§8** |
+| Persistence location (actual) | **Additive, resolved:** `runs/<YYYY>/<MM>/<DD>/<execution_id>/...` was added as a SEPARATE, parallel path. The frozen `runs/cp_mvp2_06/<execution_id>/...` convention was left completely untouched (`git diff` on `execution/evidence.py` empty) — no approval-requiring breaking change was made. |
 
 ### C.11 Execution Summary
 
@@ -218,12 +229,12 @@ none is created by this CR.
 | Schema | New |
 | ID | One per execution batch |
 | Version | Schema version + list of `execution_id`s included |
-| Owner | CP-MVP2-06 (or CP-MVP2-07, TBD at implementation time) |
-| Inputs | One or more Timestamped Execution Logs (C.10) |
-| Outputs | One execution summary artifact |
+| Owner | Implemented as a standalone, additive module (`execution/summary.py`) — not owned by frozen CP-06 itself; consumed by future CP-MVP2-07/09 |
+| Inputs | One or more real `ExecutionResult`s from the unmodified, frozen `run_cp_mvp2_06()` |
+| Outputs | One execution summary artifact: counts by status, execution/testcase/requirement coverage kept distinct (a requirement counts only via a PASS execution) |
 | Traceability | Batch ↔ Execution(s) ↔ Automation(s) ↔ Testcase(s) ↔ Requirement(s) |
 | Consumer | Human review; CP-MVP2-07 RCA; CP-MVP2-09 final reporting |
-| Persistence location (proposed) | `reports/execution_summaries/<batch_id>.json` |
+| Persistence location (actual) | `reports/execution_summaries/<batch_id>/v<N>.json` + `latest.json` |
 
 ### C.12 (Future, design-only) Security Test Scenario / Evidence / Finding
 
@@ -241,10 +252,10 @@ none is created by this CR.
 |---|---|---|---|---|
 | CP-MVP2-01 | Frozen; Approved SRS + discovery evidence, already durable | None | None — not reopened | None |
 | CP-MVP2-02 | Frozen; Knowledge Base/RAG corpus, already durable | None | None — not reopened | None |
-| CP-MVP2-03 | Frozen; generation+governance logic unchanged, output in-memory only | Add C.1 (Testcase Artifact) + C.2 (REQ↔TC Traceability) persistence as an additive layer around the existing, unmodified `run_cp_mvp2_03()` | **Requires a scoped Change Request/implementation task against the frozen CP-03 checkpoint** — additive only, no change to generation/governance semantics | Low (additive) |
-| CP-MVP2-04 | Frozen; same in-memory pattern | Add C.5 (Test Data Artifact) + C.6 (TC↔Data Traceability); consume C.1 where available | **Requires a scoped CR/implementation task against frozen CP-04** — additive only | Low (additive) |
-| CP-MVP2-05 | Frozen; same in-memory pattern | Add C.7 (Automation Artifact) + C.8 (Reusable Components) + C.9 (Automation Traceability); consume C.4/C.5/C.6 | **Requires a scoped CR/implementation task against frozen CP-05** — additive, plus a genuinely new capability (reusable-component extraction) that did not exist before | Medium (new capability, evidence-justification discipline needed to avoid over-engineering) |
-| CP-MVP2-06 | Frozen; execution-evidence persistence already exists under `runs/cp_mvp2_06/<execution_id>/` | (a) Consume persisted C.7/C.5 artifacts instead of only in-memory ones — additive; (b) change the evidence directory convention to the timestamped `runs/YYYY/MM/DD/<execution_id>/` layout — **behavioral change to frozen output location**; (c) add C.11 (Execution Summary) | **Requires a scoped CR/implementation task against frozen CP-06; part (b) specifically requires explicit sign-off since it changes already-frozen, already-verified output paths referenced in CP-06's own freeze checkpoint** | Medium (part b touches frozen evidence paths already cited in a closed checkpoint) |
+| CP-MVP2-03 | Frozen; generation+governance logic unchanged | **IMPLEMENTED (Batch 1):** C.1 (Testcase Artifact) + C.2 (REQ↔TC Traceability) added as an additive layer around the existing, unmodified `run_cp_mvp2_03()` | Frozen checkpoint itself not reopened — `testcases/{schema,generate,validate,pipeline}.py` byte-for-byte unchanged (`git diff` empty) | Realized: Low (additive, confirmed) |
+| CP-MVP2-04 | Frozen; same prior in-memory pattern | **IMPLEMENTED (Batch 1):** C.5 (Test Data Artifact) + C.6 (TC↔Data Traceability) | Frozen checkpoint itself not reopened — `testdata/{schema,generate,validate,pipeline,constraints}.py` byte-for-byte unchanged | Realized: Low (additive, confirmed) |
+| CP-MVP2-05 | Frozen; same prior in-memory pattern | **IMPLEMENTED (Batch 1):** C.7 (Automation Artifact) + C.8 (reusable-component candidate identification, corrected scope) + C.9 (Automation Traceability) | Frozen checkpoint itself not reopened — `automation/{schema,generate,validate,pipeline,evidence}.py` byte-for-byte unchanged. **New finding surfaced (not a checkpoint reopening):** `AUTOMATION_ID_COLLISION_ADVISORY` — see C.7 | Realized: Medium — new capability implemented within evidence-justification discipline (11 real candidates found, 0 fabricated); one advisory discovered, not fixed |
+| CP-MVP2-06 | Frozen; execution-evidence persistence already existed under `runs/cp_mvp2_06/<execution_id>/` | **IMPLEMENTED (Batch 1), additive only:** (a) `execution/persist.py`/`execution/summary.py` consume real `ExecutionResult`s from the unmodified `run_cp_mvp2_06()`; (b) the timestamped `runs/YYYY/MM/DD/<execution_id>/` layout was added as a SEPARATE path — the original convention was NOT changed | Frozen checkpoint itself not reopened — `execution/{schema,validate,evidence,engine,pipeline}.py` byte-for-byte unchanged; no output path a closed checkpoint cites was altered | Realized: Low (additive-only path chosen specifically to avoid the Medium risk originally flagged here) |
 | CP-MVP2-07 | Not started (RCA + Replanning + Governance, per README) | This CR lays the artifact groundwork (C.2, C.6, C.9, C.11) CP-07 will consume; CP-07 itself remains out of scope for this CR | N/A — not yet started, not reopened | N/A |
 | CP-MVP2-08 | Not started (JMeter Performance Testing, per README) | Same artifact/traceability *pattern* is reusable in principle; no direct persistence requirement imposed by this CR | N/A | N/A |
 | CP-MVP2-09 | Not started (Unified Final QE Reporting, per README) | Depends on C.2/C.6/C.9/C.11 existing; this CR is a prerequisite, not an implementation | N/A | N/A |
@@ -256,17 +267,11 @@ none is created by this CR.
 
 The goal is to move from "in-memory only" to "persisted, traceable" **without corrupting or silently changing any frozen historical evidence**, and without reopening a frozen checkpoint's existing behavior except where explicitly approved (CP-06 directory convention, §D above).
 
-1. **Additive-only code changes.** Exactly as this project already did for `llm/test_data_client.py` (CP-04) and `llm/automation_client.py` (CP-05) — new persistence modules are added alongside the existing frozen pipeline files, never edited in place. E.g., a new `testcases/persist.py` would read the `List[GovernedTestcase]` a caller already produced via the unmodified `testcases.pipeline.run_cp_mvp2_03()` and write C.1/C.2 artifacts — `testcases/generate.py`/`validate.py`/`pipeline.py`/`schema.py` remain byte-for-byte unchanged unless a specific, separately-justified change is proposed.
-2. **No retroactive rewriting of existing evidence.** The one existing embedded testcase (`TC-REQ-REG-01-01`, inside the CP-03 live-pipeline-governance execution report) is **not** proposed to be extracted or converted into the new persisted format as part of this migration — that report remains exactly as frozen. Any future backfill would be its own explicitly-authorized, clearly-labeled action (Open Question §12.6 in the CR).
-3. **Phased rollout, one checkpoint at a time**, mirroring how CP-04/05/06 were each implemented, verified, and frozen individually in this project:
-   - Phase A: CP-03 persistence (C.1, C.2).
-   - Phase B: RBTP (C.3) — Risk-Based Test Prioritization, per the corrected §4 definition.
-   - Phase C: CP-04 persistence (C.5, C.6) + Dependency Matrix (C.4).
-   - Phase D: CP-05 persistence (C.7, C.8, C.9).
-   - Phase E: CP-06 persistence/consumption changes (C.10, C.11), including the explicitly-approved-or-rejected directory-convention change.
-   - Each phase: full regression before/after, a scoped implementation report, and its own freeze checkpoint — the same discipline already used for every prior checkpoint in this project.
-4. **Backward-compatible consumption.** Where a pipeline's signature must change to *consume* a persisted artifact (e.g., CP-04 optionally loading a specific persisted CP-03 testcase by ID instead of only receiving one in memory), the existing in-memory parameter path is preserved as a supported alternative, not removed — existing tests and existing call patterns continue to work unmodified.
-5. **Versioning.** Every new persisted artifact carries an explicit `artifact_version`/schema-version field from its first implementation, so future format changes do not require guessing the shape of older files.
-6. **Regression discipline unchanged.** Full `pytest -q` run before and after every phase, exactly as done for CP-03 through CP-06; the current 204-passed/0-failed baseline is the starting point for Phase A.
+1. **Additive-only code changes, confirmed.** Exactly as this project already did for `llm/test_data_client.py` (CP-04) and `llm/automation_client.py` (CP-05) — new persistence modules were added alongside the existing frozen pipeline files, never edited in place. `testcases/persist.py` reads the `List[GovernedTestcase]` a caller already produced via the unmodified `testcases.pipeline.run_cp_mvp2_03()` and writes C.1/C.2 artifacts — `testcases/generate.py`/`validate.py`/`pipeline.py`/`schema.py` remain byte-for-byte unchanged (confirmed by `git diff`).
+2. **No retroactive rewriting of existing evidence, confirmed.** The one existing embedded testcase (`TC-REQ-REG-01-01`, inside the CP-03 live-pipeline-governance execution report) was **not** extracted or converted into the new persisted format as part of Batch 1 — that report remains exactly as frozen. Any future backfill would be its own explicitly-authorized, clearly-labeled action (Open Question §12.6 in the CR — still open, not decided by Batch 1).
+3. **Rollout, as actually authorized and executed:** this document originally proposed a phased, per-checkpoint rollout (Phase A: CP-03; B: RBTP; C: CP-04 + Dependency Matrix; D: CP-05; E: CP-06), each with its own freeze checkpoint. The Human/Di-authorized Batch 1 instruction explicitly directed all five phases (A–E) to be implemented together in **one controlled batch**, with one full regression run, one comprehensive implementation report, and one governance reconciliation — not five separate freeze checkpoints. This was a deliberate, explicit authorization decision, recorded here rather than silently substituted for the originally-proposed sequencing.
+4. **Backward-compatible consumption, confirmed.** No frozen pipeline (`run_cp_mvp2_03/04/05/06`) signature changed; every persistence/traceability/RBTP/dependency-matrix call is a separate step the caller makes after the frozen pipeline returns. Existing tests and call patterns work unmodified (204 pre-existing tests still pass).
+5. **Versioning, implemented.** `persistence/envelope.py` gives every persisted artifact an immutable `v<N>.json` + mutable `latest.json` pointer from its first write; a byte-identical regeneration (ignoring the volatile `generated_at` field) is reused rather than reversioned.
+6. **Regression discipline, confirmed.** Full `pytest -q` run before and after Batch 1: **204 passed, 0 failed → 249 passed, 0 failed** (45 new tests).
 
-**No part of this migration strategy is executed by this CR.** It is provided so the human reviewer can evaluate feasibility and sequencing before authorizing any implementation phase.
+**This migration strategy has been executed as Batch 1**, per the deviation recorded in point 3 above. This section now records what was actually done, not merely what was proposed.

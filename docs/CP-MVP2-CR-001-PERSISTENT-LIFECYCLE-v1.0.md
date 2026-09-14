@@ -3,11 +3,11 @@
 ## Formal Change Request
 
 * **CR ID:** CP-MVP2-CR-001
-* **Status:** **APPROVED FOR BATCH 1 IMPLEMENTATION** (RBTP corrected to Risk-Based Test Prioritization; see §4). Implementation report: `docs/claude-execution-reports/CP-MVP2-CR-001/` (this batch).
+* **Status:** **BATCH 1 IMPLEMENTATION AUTHORIZED AND COMPLETE** (RBTP corrected to Risk-Based Test Prioritization; see §4). Di's independent engineering review: PASS with advisories. **This status describes implementation completion, not a final CR-001 governance gate — that determination remains Di's separate, independent responsibility** (see the governance reconciliation report under `docs/claude-execution-reports/CP-MVP2-CR-001/`).
 * **Raised against:** CP-MVP2-03, CP-MVP2-04, CP-MVP2-05, CP-MVP2-06 (all currently **FROZEN/CLOSED**), and the not-yet-started CP-MVP2-07/08/09.
 * **Trigger evidence:** `docs/claude-execution-reports/CP-MVP2-03/CP-MVP2-03-TESTCASE-PERSISTENCE-INVESTIGATION-20260914-173808-FAE651.md` (commit `21ce740`) — a read-only forensic investigation that established, by direct code inspection, that CP-03-generated testcase instances are **not** persisted as first-class artifacts (governance classification **RED**).
 * **Companion document:** `docs/CP-MVP2-CR-001-ARCHITECTURE-IMPACT-ASSESSMENT-v1.0.md` (current-vs-proposed architecture, per-artifact contract, checkpoint impact matrix, migration strategy).
-* **This document is specification/change-control only. No implementation, schema edit, or frozen-checkpoint edit accompanies this CR.**
+* **Batch 1 implementation commits:** `415038c` (implementation), `546c568` (evidence report). Implemented additively — no frozen CP-01–06 specification, freeze checkpoint, or `llm/client.py` was edited (verified by `git diff`).
 
 ---
 
@@ -32,7 +32,7 @@ Concretely, this CR requests:
 7. A reusable Playwright component architecture (page objects / utilities / fixtures) so automation is not one fully independent script per testcase where reuse is justified by real evidence.
 8. Persisted, timestamped CP-06 execution logs/evidence and a persisted execution summary, distinguishing requirement coverage from testcase coverage from execution coverage.
 9. An explicitly-scoped, non-destructive future pattern for security/penetration testing following the same governance shape — **without silently lifting the existing POST-MVP/PARKED scope decision** (see §9).
-10. A proposed repository structure for all of the above (see companion Architecture Impact Assessment §C/§D) — **proposed only, not created by this CR.**
+10. A repository structure for all of the above (see companion Architecture Impact Assessment §C/§D) — **implemented in Batch 1** (`persistence/`, `testcases/generated/`, `testdata/generated/`, `automation/generated/`, `rbtp/generated/`, `dependencies/generated/`, `traceability/*/`, `reports/execution_summaries/`; the generated-data directories are real, locally-produced evidence, left untracked in git per this repo's existing `runs/`/`evidence/` convention — see the Batch 1 implementation report).
 
 ## 2. Reason
 
@@ -114,7 +114,7 @@ EXECUTION SUMMARY (persisted)
 EVIDENCE / RCA / GOVERNANCE  (CP-MVP2-07, not started)
 ```
 
-Every arrow above that is annotated "persisted" is new relative to today's implementation, except CP-06's own execution evidence, which already persists (§3) but whose directory convention this CR also proposes changing (§8, and Architecture Impact §D — this is itself a change against the **frozen** CP-06 checkpoint and requires explicit approval, not a silent adjustment).
+Every arrow above annotated "persisted" is now implemented (Batch 1). CP-06's own execution evidence already persisted before Batch 1 (§3); Batch 1's resolution of the directory-convention question (§8, Open Question §12.2) was to leave the frozen `runs/cp_mvp2_06/<execution_id>/` default completely untouched and add a **separate, additive** `runs/YYYY/MM/DD/<execution_id>/` path (`execution/persist.py`) — the frozen CP-06 checkpoint's own already-cited evidence paths were never changed.
 
 ## 6. Requested Changes — Mapped to This CR's Own Instruction Sections
 
@@ -128,11 +128,11 @@ Every arrow above that is annotated "persisted" is new relative to today's imple
 | §9 Test data persistence | Persist every ACCEPTED CP-04 dataset as a first-class artifact (CP-04's existing schema/governance rules preserved unchanged). | Persisted Test Data Artifact |
 | §10 Testcase↔Test Data traceability | Persist a deterministic TC↔Data mapping; detect missing/orphan/incompatible/duplicate data. | Traceability Artifact (TC↔Data) |
 | §11 Automation persistence | Persist every CP-05 automation artifact; map Automation→Testcase→Requirement→Test Data. | Persisted Automation Artifact |
-| §12 Playwright reuse | Introduce page objects / components / utilities / fixtures where real evidence justifies reuse; avoid duplicated selectors/workflow logic. | Reusable Component Artifacts |
+| §12 Playwright reuse | Batch 1 implements real, evidence-backed **candidate identification** (`automation/components.py`) — literal locator repetition across 2+ distinct automation artifacts. It does not yet scaffold actual page-object/utility source files; that is left for a future task once a real `ACCEPTED` automation artifact exists to refactor (no speculative framework was built). | Reusable component candidates (identification only, not extraction) |
 | §13 Automation traceability | Persist REQ→TC→Data→Automation→Component mapping; answer "which automation implements this testcase / which components does it use." | Traceability Artifact (Automation) |
 | §14–16 Execution logging/summary | Persist timestamped, per-execution evidence (extending CP-06's existing `ExecutionResult`) plus a batch-level execution summary distinguishing requirement/testcase/execution coverage. | Timestamped Execution Log, Execution Summary |
 | §17 Security/pentest | Define (not implement) the same governed shape for a future, explicitly-authorized security-testing checkpoint — **without lifting the current POST-MVP/PARKED scope decision.** | (Future) Security artifacts — design only |
-| §18 Repository structure | Propose (not create) a clean directory layout separating each artifact family. | — (proposal only, Architecture Impact §D) |
+| §18 Repository structure | Implemented in Batch 1: `persistence/`, `testcases/generated/`, `testdata/generated/`, `automation/generated/`, `rbtp/generated/`, `dependencies/generated/`, `traceability/*/`, `reports/execution_summaries/`. | — (Architecture Impact §D) |
 | §19 End-to-end traceability | Ensure every artifact above carries enough ID cross-references that a human can navigate the full chain in either direction. | — (cross-cutting requirement on every artifact contract) |
 
 ## 7. Affected Checkpoints (summary — full matrix in companion document §D)
@@ -144,16 +144,16 @@ Every arrow above that is annotated "persisted" is new relative to today's imple
 | CP-MVP2-03 | Frozen — testcase generation | **Yes** | Additive: a new persistence step after governance, not a change to generation/validation logic or schema semantics |
 | CP-MVP2-04 | Frozen — test data generation | **Yes** | Additive: persistence + traceability, same governance rules preserved |
 | CP-MVP2-05 | Frozen — Playwright generation | **Yes** | Additive: persistence + traceability + reusable-component architecture |
-| CP-MVP2-06 | Frozen — real browser execution | **Yes** | Two parts: (a) additive — consuming persisted upstream artifacts instead of only in-memory ones; (b) a **behavioral change** to the existing frozen evidence directory convention (`runs/cp_mvp2_06/<id>/` → the timestamped `runs/YYYY/MM/DD/<id>/` layout requested in §15) — this specific part is a change to already-frozen CP-06 behavior and must be called out and separately approved, not silently adopted |
+| CP-MVP2-06 | Frozen — real browser execution | **Yes** | Implemented additively only: (a) `execution/persist.py`/`execution/summary.py` consume real `ExecutionResult`s produced by the unmodified, frozen `run_cp_mvp2_06()`; (b) the timestamped `runs/YYYY/MM/DD/<execution_id>/` layout was added as a **separate, additional** path — the frozen `runs/cp_mvp2_06/<id>/` default and every file `execution/evidence.py`/`engine.py`/`pipeline.py`/`schema.py`/`validate.py` produce are byte-for-byte unchanged (`git diff` empty) |
 | CP-MVP2-07 | Not started — RCA + Replanning + Governance (per README) | **Yes** | This CR's "Evidence/RCA/Governance" stage is CP-07's own stated scope; this CR only lays the artifact groundwork CP-07 will consume — it does not implement CP-07 |
 | CP-MVP2-08 | Not started — JMeter Performance Testing | Indirect | Same artifact/traceability *pattern* is reusable; no direct change requested here |
 | CP-MVP2-09 | Not started — Unified Final QE Reporting | **Yes (dependency)** | CP-09 cannot produce a durable, evidence-backed final report without the persisted artifacts this CR introduces; this CR is a prerequisite, not an implementation of CP-09 |
 
 ## 8. Schema Impact
 
-* **No existing frozen schema's semantics change.** `Testcase`, `GovernedTestcase` (testcases/schema.py), `TestDataSet`, `GovernedTestDataSet` (testdata/schema.py), `PlaywrightArtifact`, `GovernedPlaywrightArtifact` (automation/schema.py), and `ExecutionResult` (execution/schema.py) are proposed to be **wrapped**, not edited — each gains an additive, versioned persistence envelope (artifact ID, schema version, baseline reference) around its existing `to_dict()` output, following the same "new parallel file, frozen file untouched" precedent this project already established for `llm/test_data_client.py` and `llm/automation_client.py`.
-* **New schemas required** (none yet implemented): Traceability Artifact schema (REQ↔TC, TC↔Data, Automation chain), RBTP schema (§4, `rbtp/schema.py`), Dependency Matrix schema, Execution Summary schema.
-* **One proposed breaking-adjacent change:** CP-06's evidence *directory convention* (not its `ExecutionResult` schema) — see §7 above. Everything else is additive.
+* **No existing frozen schema's semantics changed** (confirmed by `git diff`). `Testcase`, `GovernedTestcase` (testcases/schema.py), `TestDataSet`, `GovernedTestDataSet` (testdata/schema.py), `PlaywrightArtifact`, `GovernedPlaywrightArtifact` (automation/schema.py), and `ExecutionResult` (execution/schema.py) were **wrapped**, not edited — each gains an additive, versioned persistence envelope (`persistence/envelope.py`: `artifact_id`, `artifact_version`, `generated_at`, `provenance`, `content_hash`) around its existing `to_dict()` output, following the same "new parallel file, frozen file untouched" precedent this project already established for `llm/test_data_client.py` and `llm/automation_client.py`.
+* **New schemas implemented:** Traceability schemas (REQ↔TC, TC↔Data, Automation chain — `traceability/`), RBTP schema (§4, `rbtp/schema.py`), Dependency Matrix schema (`dependencies/schema.py`), Execution Summary shape (`execution/summary.py`).
+* **The originally-flagged breaking-adjacent change (CP-06's evidence directory convention) was NOT made** — resolved as additive-only (§5/§7/§10 above). No frozen schema or output path changed.
 
 ## 9. Security/Penetration Testing — Explicit Scope Note
 
@@ -161,38 +161,36 @@ Every arrow above that is annotated "persisted" is new relative to today's imple
 
 ## 10. Backward Compatibility
 
-* Existing valid functionality (`run_cp_mvp2_03/04/05/06`, all governance rules, all existing tests) is intended to remain intact. The proposed approach is **additive**: new persistence functions/modules wrap existing pipeline outputs; existing function signatures are not required to change (a persistence call can be inserted by the *caller* of each pipeline, or the pipeline can be given an optional `persist: bool` /`persist_dir` parameter — a design choice for the implementation phase, not decided here).
-* The one flagged exception is the CP-06 evidence-directory-convention change (§7, §8) — explicitly not backward compatible with the current frozen convention, and explicitly called out for separate approval rather than silently changed.
-* All 204 currently-passing tests are expected to keep passing unmodified; new tests are additive.
+* Existing valid functionality (`run_cp_mvp2_03/04/05/06`, all governance rules, all existing tests) remains intact, confirmed. Batch 1 implemented every persistence function as a **separate, explicit call the caller makes after** the existing frozen pipeline returns (Open Question §12.3, RESOLVED this way) — no frozen pipeline function signature changed.
+* The originally-flagged exception (CP-06 evidence-directory convention) was resolved as **fully backward compatible**: the frozen `runs/cp_mvp2_06/<id>/` convention was never touched; the timestamped layout was added as an additional, separate path (§5 above).
+* Regression: all 204 pre-Batch-1 tests continue to pass unmodified; 45 new tests were added. See §11.
 
 ## 11. Regression Impact
 
-No regression is anticipated from adopting this CR's *design* (this document changes nothing executable). Once implementation is authorized, the Migration Strategy (Architecture Impact §E) requires: full regression run before and after each additive persistence module is introduced, exactly as every prior checkpoint in this project has done.
+**Actual result (Batch 1):** `.venv/Scripts/python.exe -m pytest -q` → **249 passed, 0 failed** (204 pre-existing + 45 new). Full regression was run before and after implementation, exactly as every prior checkpoint in this project has done.
 
 ## 12. Open Questions
 
 1. **RBTP definition (§4):** RESOLVED — corrected to Risk-Based Test Prioritization by the Batch 1 implementation instruction.
-2. **CP-06 evidence directory convention (§7/§8):** approve or reject changing `runs/cp_mvp2_06/<execution_id>/` to the timestamped `runs/YYYY/MM/DD/<execution_id>/` hierarchy — this is a change to already-frozen CP-06 behavior.
-3. **Persistence trigger point:** should each pipeline (`run_cp_mvp2_03/04/05`) persist automatically as part of its own call, or should persistence be an explicit, separate step the caller invokes after receiving the governed in-memory result? (Affects whether existing frozen pipeline function signatures/behavior change at all, or only new code is added around them.)
-4. **Security/penetration testing scope (§9):** this CR proposes only the future *governance shape*; actually lifting POST-MVP/PARKED status and starting real security-testing work requires a separate, explicit decision — is that decision being made now, or deferred?
-5. **Artifact versioning/concurrency:** if the same requirement/testcase is regenerated multiple times (e.g., repeated CP-03 runs against the same requirement), how are multiple persisted instances of the "same" logical testcase ID reconciled — overwrite, version-suffix, or reject-as-duplicate? This CR does not decide this; it is a design question for the implementation phase.
-6. **Historical evidence treatment:** the existing embedded-in-report testcase (`TC-REQ-REG-01-01`, §2) is explicitly **not** proposed to be retroactively extracted into the new persisted format — is that correct, or should a one-time, clearly-labeled backfill be authorized separately?
+2. **CP-06 evidence directory convention (§7/§8):** RESOLVED — the frozen `runs/cp_mvp2_06/<execution_id>/` convention is kept exactly as frozen; the timestamped `runs/YYYY/MM/DD/<execution_id>/` hierarchy was added as a separate, additive path (`execution/persist.py`). No frozen CP-06 behavior changed.
+3. **Persistence trigger point:** RESOLVED — an explicit, separate step the caller invokes after receiving the governed in-memory result (each `*/persist.py` module). No frozen pipeline signature or behavior changed.
+4. **Security/penetration testing scope (§9):** RESOLVED (deferred) — this CR's Batch 1 documents only the future *governance shape* (`docs/CP-MVP2-CR-001-SECURITY-DESIGN-BOUNDARY.md`, design-only); POST-MVP/PARKED status is unchanged; lifting it remains a separate, not-yet-made decision.
+5. **Artifact versioning/concurrency:** RESOLVED — `persistence/envelope.py` implements an immutable-version + mutable-pointer model: a byte-identical regeneration (ignoring only the volatile `generated_at` field) is reused, not reversioned; a genuinely different regeneration gets its own new, permanently retained version. No prior version is ever overwritten.
+6. **Historical evidence treatment:** RESOLVED for Batch 1 (no backfill performed) — the embedded-in-report testcase (`TC-REQ-REG-01-01`, §2) was **not** retroactively extracted or backfilled into the new persisted format; that execution report remains exactly as frozen. Whether a one-time, explicitly-labeled backfill should be separately authorized in the future remains genuinely open — not decided either way by Batch 1, and not blocking.
 
 ## 13. Risks
 
-* **Scope creep risk:** this CR is intentionally broad (spans 4 frozen checkpoints + 3 not-yet-started ones). Recommend phased implementation (per checkpoint, each with its own focused Change Request execution against this CR, mirroring how CP-04/05/06 were each implemented individually) rather than one monolithic implementation task.
+* **Scope creep risk:** this CR is intentionally broad (spans 4 frozen checkpoints + 3 not-yet-started ones). This document originally recommended phased, per-checkpoint implementation; the Human/Di-authorized Batch 1 instruction explicitly directed a single, controlled batch covering all phases (A–E) instead, with one comprehensive regression run and one implementation report rather than a freeze checkpoint per phase. That was a deliberate, explicit authorization decision — not a silent deviation from this CR's own recommendation.
 * **Frozen-checkpoint reopening risk:** any implementation phase must re-verify, at the start of each phase, that the specific frozen artifact being extended is still byte-for-byte what was last frozen (the same `git diff --stat` discipline used throughout this project) — this CR does not relax that discipline.
 * **Over-engineering risk (§12 of the CR's own instruction, "reusable components"):** the Playwright reusability architecture (§6/§11) must be justified by real, evidence-backed repetition, not built speculatively — consistent with this project's existing "no premature abstraction" principle.
 * **Security-scope risk:** designing the future security-testing shape without a clear, separate authorization boundary could be misread as silently un-parking POST-MVP scope — mitigated by explicitly surfacing this as Open Question §12.4, not a decision this CR makes.
 
-## 14. Proposed Acceptance Criteria (for the CR itself, not for implementation)
+## 14. Acceptance Criteria — Status
 
-This CR is ready to be marked **APPROVED** when:
+1. RESOLVED — the RBTP definition (§4) was explicitly corrected to Risk-Based Test Prioritization.
+2. RESOLVED — the CP-06 evidence-directory-convention question was resolved as additive-only (§5/§7/§10/§12.2); no frozen CP-06 behavior was changed.
+3. RESOLVED (deferred) — security/penetration-testing scope remains POST-MVP/PARKED (§9, §12.4); not lifted by Batch 1.
+4. RESOLVED — a single, controlled Batch 1 implementation (covering phases A–E together) was explicitly authorized and executed (§13).
+5. RESOLVED — this document and its companion Architecture Impact Assessment have been reconciled with the actual Batch 1 implementation and evidence (see the governance reconciliation report under `docs/claude-execution-reports/CP-MVP2-CR-001/`).
 
-1. RESOLVED — the RBTP definition (§4) was explicitly corrected to Risk-Based Test Prioritization by the Batch 1 implementation instruction.
-2. The CP-06 evidence-directory-convention change (§7/§8) is explicitly approved or rejected.
-3. The security/penetration-testing scope question (§9, Open Question §12.4) is explicitly answered (deferred is an acceptable answer).
-4. A phasing decision is made (single monolithic implementation vs. per-checkpoint phased implementation, §13).
-5. The companion Architecture Impact Assessment's per-artifact contracts and Checkpoint Impact Matrix are reviewed and found consistent with this CR's requested changes.
-
-**No implementation work is authorized until all five items above are explicitly resolved by Human + Di.**
+**All five items above are resolved at the engineering-documentation level. This CR document does not itself constitute Di's independent final governance gate for CR-001 or for the Batch 1 implementation — that determination is Di's separate, independent responsibility.**
