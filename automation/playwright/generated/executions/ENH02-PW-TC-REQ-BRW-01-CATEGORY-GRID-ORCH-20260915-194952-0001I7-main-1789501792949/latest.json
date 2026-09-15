@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-BRW-01-CATEGORY-GRID-ORCH-20260915-194952-0001I7-main-1789501792949",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-BRW-01-CATEGORY-GRID-ORCH-20260915-194952-0001I7-main-1789501792949\\v1.json",
+  "content_hash": "be9d28cb3eb36e5c3902cfa923e7c4e02beb00ebfdfbd262eeb896c91a33242e",
+  "updated_at": "2026-09-15T19:49:55.727593+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-BRW-01-CATEGORY-GRID-ORCH-20260915-194952-0001I7-main-1789501792949\\v1.json",
+      "generated_at": "2026-09-15T19:49:55.727593+00:00"
+    }
+  ]
+}

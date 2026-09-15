@@ -1,0 +1,14 @@
+{
+  "artifact_id": "GOV-ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-195201-0001Q0-main-1789501921681",
+  "latest_version": 1,
+  "latest_path": "rca\\generated\\governance\\GOV-ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-195201-0001Q0-main-1789501921681\\v1.json",
+  "content_hash": "9c3de4e40f84b35994ecd80cdf2fa380310ac8520d463e15c1fc4d4b99332c66",
+  "updated_at": "2026-09-15T19:52:04.330537+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "rca\\generated\\governance\\GOV-ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-195201-0001Q0-main-1789501921681\\v1.json",
+      "generated_at": "2026-09-15T19:52:04.330537+00:00"
+    }
+  ]
+}

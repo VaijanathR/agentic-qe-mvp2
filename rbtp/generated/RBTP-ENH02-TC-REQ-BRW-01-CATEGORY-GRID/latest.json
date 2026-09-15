@@ -1,0 +1,14 @@
+{
+  "artifact_id": "RBTP-ENH02-TC-REQ-BRW-01-CATEGORY-GRID",
+  "latest_version": 1,
+  "latest_path": "rbtp/generated/RBTP-ENH02-TC-REQ-BRW-01-CATEGORY-GRID/v1.json",
+  "content_hash": "91357cbe29488c25df19d01b5ea3bd839b4d08e887f4576a4e45a0afcf648c6a",
+  "updated_at": "2026-09-15T19:15:49.575079+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "rbtp/generated/RBTP-ENH02-TC-REQ-BRW-01-CATEGORY-GRID/v1.json",
+      "generated_at": "2026-09-15T19:15:49.575079+00:00"
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+2026-09-16 01:20:39,730 INFO o.a.j.u.JMeterUtils: Setting Locale to en_EN
+2026-09-16 01:20:39,818 INFO o.a.j.JMeter: Loading user properties from: D:\AI PROJECTS\.cp08-tools-win\apache-jmeter-5.6.3\bin\user.properties
+2026-09-16 01:20:39,818 INFO o.a.j.JMeter: Loading system properties from: D:\AI PROJECTS\.cp08-tools-win\apache-jmeter-5.6.3\bin\system.properties
+2026-09-16 01:20:39,850 INFO o.a.j.JMeter: Copyright (c) 1998-2024 The Apache Software Foundation
+2026-09-16 01:20:39,850 INFO o.a.j.JMeter: Version 5.6.3
+2026-09-16 01:20:39,850 INFO o.a.j.JMeter: java.version=17.0.20.1
+2026-09-16 01:20:39,850 INFO o.a.j.JMeter: java.vm.name=OpenJDK 64-Bit Server VM
+2026-09-16 01:20:39,850 INFO o.a.j.JMeter: os.name=Windows 10
+2026-09-16 01:20:39,850 INFO o.a.j.JMeter: os.arch=amd64
+2026-09-16 01:20:39,850 INFO o.a.j.JMeter: os.version=10.0
+2026-09-16 01:20:39,850 INFO o.a.j.JMeter: file.encoding=Cp1252
+2026-09-16 01:20:39,850 INFO o.a.j.JMeter: java.awt.headless=true
+2026-09-16 01:20:39,850 INFO o.a.j.JMeter: Max memory     =1073741824
+2026-09-16 01:20:39,850 INFO o.a.j.JMeter: Available Processors =4
+2026-09-16 01:20:39,884 INFO o.a.j.JMeter: Default Locale=English (EN)
+2026-09-16 01:20:39,884 INFO o.a.j.JMeter: JMeter  Locale=English (EN)
+2026-09-16 01:20:39,884 INFO o.a.j.JMeter: JMeterHome=D:\AI PROJECTS\.cp08-tools-win\apache-jmeter-5.6.3
+2026-09-16 01:20:39,884 INFO o.a.j.JMeter: user.dir  =D:\AI PROJECTS\agentic-qe-mvp2
+2026-09-16 01:20:39,884 INFO o.a.j.JMeter: PWD       =D:\AI PROJECTS\agentic-qe-mvp2
+2026-09-16 01:20:39,901 INFO o.a.j.JMeter: IP: 172.25.192.1 Name: VaijLPTP FullName: VaijLPTP.mshome.net
+2026-09-16 01:20:39,971 INFO o.a.j.s.FileServer: Default base='D:\AI PROJECTS\agentic-qe-mvp2'
+2026-09-16 01:20:39,979 INFO o.a.j.s.FileServer: Set new base='D:\AI PROJECTS\agentic-qe-mvp2\performance\jmeter'
+2026-09-16 01:20:40,765 INFO o.a.j.s.SaveService: Testplan (JMX) version: 2.2. Testlog (JTL) version: 2.2
+2026-09-16 01:20:40,865 INFO o.a.j.s.SaveService: Using SaveService properties version 5.0
+2026-09-16 01:20:40,874 INFO o.a.j.s.SaveService: Using SaveService properties file encoding UTF-8
+2026-09-16 01:20:40,887 INFO o.a.j.s.SaveService: Loading file: D:\AI PROJECTS\agentic-qe-mvp2\performance\jmeter\PERF-REQ-BRW-01-catalog-browse.jmx
+2026-09-16 01:20:41,070 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/html is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-09-16 01:20:41,070 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xhtml+xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-09-16 01:20:41,070 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for application/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-09-16 01:20:41,070 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/xml is org.apache.jmeter.protocol.http.parser.LagartoBasedHtmlParser
+2026-09-16 01:20:41,070 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/vnd.wap.wml is org.apache.jmeter.protocol.http.parser.RegexpHTMLParser
+2026-09-16 01:20:41,070 INFO o.a.j.p.h.s.HTTPSamplerBase: Parser for text/css is org.apache.jmeter.protocol.http.parser.CssParser
+2026-09-16 01:20:41,113 INFO o.a.j.JMeter: Creating summariser <summary>
+2026-09-16 01:20:41,163 INFO o.a.j.e.StandardJMeterEngine: Running the test!
+2026-09-16 01:20:41,164 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2026-09-16 01:20:41,164 INFO o.a.j.s.SampleEvent: List of sample_variables: []
+2026-09-16 01:20:41,179 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must contain the string: '.functions.'
+2026-09-16 01:20:41,179 INFO o.a.j.e.u.CompoundVariable: Note: Function class names must not contain the string: '.gui.'
+2026-09-16 01:20:41,431 INFO o.a.j.JMeter: Running test (1789501841431)
+2026-09-16 01:20:41,469 INFO o.a.j.e.StandardJMeterEngine: Starting ThreadGroup: 1 : REQ-BRW-01 Catalog Browse Users
+2026-09-16 01:20:41,469 INFO o.a.j.e.StandardJMeterEngine: Starting 5 threads for group REQ-BRW-01 Catalog Browse Users.
+2026-09-16 01:20:41,469 INFO o.a.j.e.StandardJMeterEngine: Thread will continue on error
+2026-09-16 01:20:41,472 INFO o.a.j.t.ThreadGroup: Starting thread group... number=1 threads=5 ramp-up=5 delayedStart=false
+2026-09-16 01:20:41,491 INFO o.a.j.t.ThreadGroup: Started thread group number 1
+2026-09-16 01:20:41,491 INFO o.a.j.e.StandardJMeterEngine: All thread groups have been started
+2026-09-16 01:20:41,496 INFO o.a.j.t.JMeterThread: Thread started: REQ-BRW-01 Catalog Browse Users 1-1
+2026-09-16 01:20:42,485 INFO o.a.j.t.JMeterThread: Thread started: REQ-BRW-01 Catalog Browse Users 1-2
+2026-09-16 01:20:43,484 INFO o.a.j.t.JMeterThread: Thread started: REQ-BRW-01 Catalog Browse Users 1-3
+2026-09-16 01:20:43,621 INFO o.a.j.p.h.s.HTTPHCAbstractImpl: Local host = VaijLPTP
+2026-09-16 01:20:43,643 INFO o.a.j.p.h.s.HTTPHC4Impl: HTTP request retry count = 0
+2026-09-16 01:20:43,648 INFO o.a.j.s.SampleResult: Note: Sample TimeStamps are START times
+2026-09-16 01:20:43,648 INFO o.a.j.s.SampleResult: sampleresult.default.encoding is set to UTF-8
+2026-09-16 01:20:43,648 INFO o.a.j.s.SampleResult: sampleresult.useNanoTime=true
+2026-09-16 01:20:43,648 INFO o.a.j.s.SampleResult: sampleresult.nanoThreadSleep=5000
+2026-09-16 01:20:43,954 INFO o.a.j.p.h.s.h.LazyLayeredConnectionSocketFactory: Setting up HTTPS TrustAll Socket Factory
+2026-09-16 01:20:43,979 INFO o.a.j.u.JsseSSLManager: Using default SSL protocol: TLS
+2026-09-16 01:20:43,979 INFO o.a.j.u.JsseSSLManager: SSL session context: per-thread
+2026-09-16 01:20:44,381 INFO o.a.j.u.SSLManager: JmeterKeyStore Location:  type JKS
+2026-09-16 01:20:44,390 INFO o.a.j.u.SSLManager: KeyStore created OK
+2026-09-16 01:20:44,391 WARN o.a.j.u.SSLManager: Keystore file not found, loading empty keystore
+2026-09-16 01:20:44,488 INFO o.a.j.t.JMeterThread: Thread started: REQ-BRW-01 Catalog Browse Users 1-4
+2026-09-16 01:20:45,555 INFO o.a.j.t.JMeterThread: Thread started: REQ-BRW-01 Catalog Browse Users 1-5
+2026-09-16 01:20:58,339 INFO o.a.j.t.JMeterThread: Thread is done: REQ-BRW-01 Catalog Browse Users 1-2
+2026-09-16 01:20:58,339 INFO o.a.j.t.JMeterThread: Thread finished: REQ-BRW-01 Catalog Browse Users 1-2
+2026-09-16 01:20:58,340 INFO o.a.j.t.JMeterThread: Thread is done: REQ-BRW-01 Catalog Browse Users 1-1
+2026-09-16 01:20:58,340 INFO o.a.j.t.JMeterThread: Thread finished: REQ-BRW-01 Catalog Browse Users 1-1
+2026-09-16 01:20:58,893 INFO o.a.j.t.JMeterThread: Thread is done: REQ-BRW-01 Catalog Browse Users 1-3
+2026-09-16 01:20:58,895 INFO o.a.j.t.JMeterThread: Thread finished: REQ-BRW-01 Catalog Browse Users 1-3
+2026-09-16 01:20:59,913 INFO o.a.j.t.JMeterThread: Thread is done: REQ-BRW-01 Catalog Browse Users 1-4
+2026-09-16 01:20:59,913 INFO o.a.j.t.JMeterThread: Thread finished: REQ-BRW-01 Catalog Browse Users 1-4
+2026-09-16 01:21:01,036 INFO o.a.j.r.Summariser: summary +     30 in 00:00:20 =    1.5/s Avg:   610 Min:   436 Max:  1999 Err:     0 (0.00%) Active: 1 Started: 5 Finished: 4
+2026-09-16 01:21:01,036 INFO o.a.j.t.JMeterThread: Thread is done: REQ-BRW-01 Catalog Browse Users 1-5
+2026-09-16 01:21:01,037 INFO o.a.j.t.JMeterThread: Thread finished: REQ-BRW-01 Catalog Browse Users 1-5
+2026-09-16 01:21:01,038 INFO o.a.j.e.StandardJMeterEngine: Notifying test listeners of end of test
+2026-09-16 01:21:01,039 INFO o.a.j.r.Summariser: summary =     30 in 00:00:20 =    1.5/s Avg:   610 Min:   436 Max:  1999 Err:     0 (0.00%)

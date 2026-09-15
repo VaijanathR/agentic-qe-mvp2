@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ORCH-IMPACT-REQ-BRW-01",
+  "latest_version": 1,
+  "latest_path": "dependencies/generated/ORCH-IMPACT-REQ-BRW-01/v1.json",
+  "content_hash": "ff87dbef8da5a32a435a06a28f5a240e458fb829fcf6149ad6a8211e3bf8c237",
+  "updated_at": "2026-09-15T19:15:49.396442+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "dependencies/generated/ORCH-IMPACT-REQ-BRW-01/v1.json",
+      "generated_at": "2026-09-15T19:15:49.396442+00:00"
+    }
+  ]
+}
