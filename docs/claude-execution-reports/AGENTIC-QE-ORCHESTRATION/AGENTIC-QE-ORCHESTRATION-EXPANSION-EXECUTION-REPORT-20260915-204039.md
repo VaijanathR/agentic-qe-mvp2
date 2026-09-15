@@ -2,7 +2,8 @@
 
 **Generated:** 2026-09-15T20:40:39Z
 **Starting commit:** `ae1056b`
-**Final commit:** *(recorded below, after commit)*
+**Final commit:** `ea0c8fa` (terminal commit on `origin/main` after this
+enhancement; `git log --oneline -1 origin/main` is authoritative)
 
 ---
 
@@ -327,7 +328,14 @@ in one further wave.
 
 ## Final Git State
 
-- Final commit SHA: *(recorded below, after commit)*
-- `HEAD == origin/main`: *(confirmed below, after push)*
-- Working tree clean (excluding pre-existing, unrelated items already
-  documented in the prior orchestration report): *(confirmed below)*
+- Final commit SHA: see header (terminal commit on `origin/main`).
+- `HEAD == origin/main`: confirmed after push (see commit log).
+- Working tree clean, excluding the same pre-existing, unrelated items
+  already documented in the prior orchestration reports
+  (`README.md` whitespace-only edit predating this whole session;
+  several `ClaudeInstructions/` files the user edits directly;
+  `reports/execution_summaries/BATCH2-TEST*`;
+  `requirements/Post MVP Enhancments.md`;
+  `performance/generated/records/PERF-RUN-TEST-BLOCKED-NO-TOOLS/`,
+  a pre-existing test-fixture byproduct) -- none modified, staged, or
+  claimed as this task's work.
