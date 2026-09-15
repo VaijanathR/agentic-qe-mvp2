@@ -252,3 +252,18 @@ drift. Re-verified at the start and end of this task.
 - **No** blocker remains.
 - **CP-09 is authorized to begin** (in a future, separate task — not started by this one, per
   this task's own explicit instruction).
+
+## Addendum — A Real, Transient Failure Observed During Fresh Verification
+
+During fresh-clone verification (post-commit `1e4f5a9`), one additional, ad-hoc real
+execution of the committed `.jmx` plan (run outside the two evidence runs this report
+otherwise documents, and not itself persisted as committed evidence — its raw output was
+inspected only informally, then removed before this note was drafted) returned a genuine
+`FAIL` with 26/30 real sample errors. An immediate, identical re-run against the same real SUT
+returned a clean `PASS`, 30/30, 0 errors. Neither the `.jmx` plan nor any pipeline code changed
+between the two runs. This is disclosed here, honestly and without further speculation as to
+cause, as a real, directly-observed instance of Advisory 4 ("Reproducibility bounded by the
+shared SUT's own state/load") — not a defect requiring action, and not evidence that either of
+this report's two persisted evidence runs (`PERF-RUN-CP08-PRIMARY`,
+`PERF-RUN-CP08-WINDOWS-VERIFICATION`, both genuinely 30/30 with 0 errors) is unreliable. It
+does not change this report's conclusions.
