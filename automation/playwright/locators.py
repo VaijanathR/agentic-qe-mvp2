@@ -96,6 +96,92 @@ REGISTRATION_FORM_CANDIDATES: Dict[str, List[LocatorCandidate]] = {
 }
 
 
+# Post-MVP2 Enhancement 02 -- additional real, evidence-backed candidates,
+# captured live from the real SUT during this enhancement's own inspection
+# phase (login, search, cart, wishlist, checkout, configurable-attribute
+# pages).
+
+LOGIN_FORM_CANDIDATES: Dict[str, List[LocatorCandidate]] = {
+    "email": [
+        LocatorCandidate("ID", "#Email", "live capture: <input id=\"Email\" name=\"Email\" class=\"email\">", 1),
+        LocatorCandidate("NAME", "[name='Email']", "live capture: <input name=\"Email\">", 2),
+    ],
+    "password": [
+        LocatorCandidate("ID", "#Password", "live capture: <input id=\"Password\" name=\"Password\" class=\"password\">", 1),
+        LocatorCandidate("NAME", "[name='Password']", "live capture: <input name=\"Password\">", 2),
+    ],
+    "login_button": [
+        LocatorCandidate("CLASS", ".login-button", "live capture: <input type=\"submit\" class=\"button-1 login-button\" value=\"Log in\">", 1),
+        LocatorCandidate("ROLE", "role=button[name='Log in']", "live capture: value=\"Log in\"", 2),
+    ],
+}
+
+SEARCH_CANDIDATES: Dict[str, List[LocatorCandidate]] = {
+    "search_box": [
+        LocatorCandidate("ID", "#small-searchterms", "live capture: <input id=\"small-searchterms\" name=\"q\">", 1),
+        LocatorCandidate("NAME", "[name='q']", "live capture: <input name=\"q\">", 2),
+    ],
+    "search_button": [
+        LocatorCandidate("CLASS", ".search-box-button", "live capture: <input type=\"submit\" class=\"button-1 search-box-button\">", 1),
+    ],
+}
+
+WISHLIST_CANDIDATES: Dict[str, List[LocatorCandidate]] = {
+    "add_to_wishlist_button": [
+        LocatorCandidate("CLASS", ".add-to-wishlist-button", "live capture: <input id=\"add-to-wishlist-button-53\" class=\"button-2 add-to-wishlist-button\">", 1),
+    ],
+}
+
+CART_CANDIDATES: Dict[str, List[LocatorCandidate]] = {
+    "add_to_cart_button_album3": [
+        LocatorCandidate("ID", "#add-to-cart-button-53", "live capture: <input id=\"add-to-cart-button-53\" type=\"button\">", 1),
+    ],
+    "qty_input": [
+        LocatorCandidate("CLASS", "input.qty-input", "live capture: <input name=\"itemquantity7088492\" class=\"qty-input\">", 1),
+    ],
+    "remove_checkbox": [
+        LocatorCandidate("NAME", "input[name='removefromcart']", "live capture: <input type=\"checkbox\" name=\"removefromcart\">", 1),
+    ],
+    "update_cart_button": [
+        LocatorCandidate("NAME", "input[name='updatecart']", "live capture: <input type=\"submit\" name=\"updatecart\" class=\"update-cart-button\">", 1),
+    ],
+    "terms_of_service": [
+        LocatorCandidate("ID", "#termsofservice", "live capture: <input id=\"termsofservice\" type=\"checkbox\">", 1),
+    ],
+    "checkout_button": [
+        LocatorCandidate("ID", "#checkout", "live capture: <button id=\"checkout\" name=\"checkout\" class=\"button-1 checkout-button\">", 1),
+    ],
+}
+
+CHECKOUT_CANDIDATES: Dict[str, List[LocatorCandidate]] = {
+    "checkout_as_guest_button": [
+        LocatorCandidate("CLASS", ".checkout-as-guest-button", "live capture: <input class=\"button-1 checkout-as-guest-button\" value=\"Checkout as Guest\">", 1),
+    ],
+}
+
+# Build Your Own Computer -- real, live-discovered mandatory attribute
+# (governing instruction sec. 14; discovered this task via a real,
+# interactive Playwright session, not merely static HTML inspection --
+# see the Enhancement-02 report's "Live discovery" section).
+CONFIGURABLE_ATTRIBUTE_CANDIDATES: Dict[str, List[LocatorCandidate]] = {
+    "add_to_cart_button_byoc": [
+        LocatorCandidate("ID", "#add-to-cart-button-16", "live capture: <input id=\"add-to-cart-button-16\">", 1),
+    ],
+    "bar_notification": [
+        LocatorCandidate("ID", "#bar-notification", "live capture: real click-triggered notification bar", 1),
+    ],
+}
+
+PASSWORD_RECOVERY_CANDIDATES: Dict[str, List[LocatorCandidate]] = {
+    "email": [
+        LocatorCandidate("ID", "#Email", "live capture: password-recovery form real input id=\"Email\"", 1),
+    ],
+    "recover_button": [
+        LocatorCandidate("CLASS", ".password-recovery-button", "live capture: <input type=\"submit\" name=\"send-email\" class=\"button-1 password-recovery-button\" value=\"Recover\">", 1),
+    ],
+}
+
+
 def resolve_with_fallback(
     field_name: str,
     candidates: List[LocatorCandidate],

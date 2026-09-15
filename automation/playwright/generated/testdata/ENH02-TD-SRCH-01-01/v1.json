@@ -1,0 +1,22 @@
+{
+  "artifact_id": "ENH02-TD-SRCH-01-01",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T16:17:39.166197+00:00",
+  "generator": "automation.playwright.enh02_testdata (Post-MVP2 Enhancement 02)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-SRCH-01-VALID-KEYWORD"
+  },
+  "content_hash": "96a6c587d882e342523f186bdf4300bb0da7d47dc2472d9951f912cc91dbe6ad",
+  "payload": {
+    "dataset_id": "ENH02-TD-SRCH-01-01",
+    "testcase_id": "ENH02-TC-REQ-SRCH-01-VALID-KEYWORD",
+    "requirement_ids": [
+      "REQ-SRCH-01"
+    ],
+    "data_category": "POSITIVE",
+    "purpose": "A real, known keyword expected to match existing products.",
+    "fields": {
+      "search_term": "book"
+    }
+  }
+}

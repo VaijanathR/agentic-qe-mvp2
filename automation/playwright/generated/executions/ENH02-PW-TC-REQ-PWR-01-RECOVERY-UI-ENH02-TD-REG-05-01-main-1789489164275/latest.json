@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-PWR-01-RECOVERY-UI-ENH02-TD-REG-05-01-main-1789489164275",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-PWR-01-RECOVERY-UI-ENH02-TD-REG-05-01-main-1789489164275\\v1.json",
+  "content_hash": "25acd4336e517f2c365220b1418e4e4d202833ceb1526a4a8f82292ad922f772",
+  "updated_at": "2026-09-15T16:19:26.449231+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-PWR-01-RECOVERY-UI-ENH02-TD-REG-05-01-main-1789489164275\\v1.json",
+      "generated_at": "2026-09-15T16:19:26.449231+00:00"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-CART-02-QUANTITY-UPDATE-NO-DATASET-gw3-1789489108815",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-CART-02-QUANTITY-UPDATE-NO-DATASET-gw3-1789489108815\\v1.json",
+  "content_hash": "cfca2825b99a437c251635d7f130d567f04506e4ef7e57869dbd3eafa9de32c1",
+  "updated_at": "2026-09-15T16:18:32.338009+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-CART-02-QUANTITY-UPDATE-NO-DATASET-gw3-1789489108815\\v1.json",
+      "generated_at": "2026-09-15T16:18:32.338009+00:00"
+    }
+  ]
+}

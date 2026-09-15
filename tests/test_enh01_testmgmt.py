@@ -11,15 +11,21 @@ from openpyxl import load_workbook
 from testmgmt.generate_workbooks import build_all_workbooks
 
 
-def test_build_all_workbooks_produces_three_real_files():
+def test_build_all_workbooks_produces_four_real_files():
+    """Enhancement 02 added a fourth workbook (the requirement coverage
+    matrix) alongside the three Enhancement 01 established."""
     paths = build_all_workbooks()
-    assert set(paths.keys()) == {"testcases", "testdata", "traceability"}
+    assert set(paths.keys()) == {"testcases", "testdata", "traceability", "coverage_matrix"}
     for path in paths.values():
         assert path.exists()
         assert path.stat().st_size > 0
 
 
 def test_testcase_workbook_contains_every_real_persisted_testcase():
+    """Enhancement 02 added a new, additive testcase corpus to this same
+    sheet (marked Origin=POST-MVP2 ENHANCEMENT 02) -- so the real,
+    historical MVP2 ids must be a SUBSET of what's in the sheet, not an
+    exact match."""
     paths = build_all_workbooks()
     wb = load_workbook(paths["testcases"])
     ws = wb["Testcases"]
@@ -28,7 +34,7 @@ def test_testcase_workbook_contains_every_real_persisted_testcase():
     import testcases.persist as testcases_persist
 
     real_ids = set(testcases_persist.list_persisted_testcase_ids())
-    assert ids_in_sheet == real_ids
+    assert real_ids.issubset(ids_in_sheet)
 
 
 def test_testcase_workbook_never_rewrites_the_disclosed_generic_steps():
@@ -45,16 +51,22 @@ def test_testcase_workbook_never_rewrites_the_disclosed_generic_steps():
 
 
 def test_testdata_workbook_has_a_row_per_real_field():
+    """Enhancement 02 added its own dataset corpus to this same sheet, so
+    the total row count is the historical MVP2 field count PLUS the
+    Enhancement 02 field count, not the historical count alone."""
     paths = build_all_workbooks()
     wb = load_workbook(paths["testdata"])
     ws = wb["TestData Fields"]
 
     import testdata.persist as testdata_persist
+    from automation.playwright.enh02_testdata import ENH02_TESTDATA
 
     total_fields = 0
     for did in testdata_persist.list_persisted_dataset_ids():
         ds = testdata_persist.load_persisted_dataset(did)
         total_fields += len(ds.get("fields", []))
+    for ds in ENH02_TESTDATA:
+        total_fields += len(ds["fields"])
 
     assert ws.max_row - 1 == total_fields
 

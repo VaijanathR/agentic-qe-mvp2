@@ -106,6 +106,14 @@ def build_testcase_workbook() -> Path:
             for tid, dids in payload.get("testcase_to_testdata", {}).items():
                 testcase_to_data.setdefault(tid, []).extend(dids)
 
+    from automation.playwright.enh02_testcases import ENH02_TESTCASES
+    from automation.playwright.logging_ import list_execution_log_ids, load_execution_log
+
+    real_exec_by_testcase: Dict[str, List[str]] = {}
+    for eid in list_execution_log_ids():
+        rec = load_execution_log(eid)
+        real_exec_by_testcase.setdefault(rec["testcase_id"], []).append(rec["final_status"])
+
     wb = Workbook()
     ws = wb.active
     ws.title = "Testcases"
@@ -113,10 +121,12 @@ def build_testcase_workbook() -> Path:
         "Testcase ID", "Requirement ID(s)", "Title", "Objective / Expected Result",
         "Preconditions", "Business Steps", "Test Type (Scenario)", "Priority",
         "Dataset Reference(s)", "Automation Reference(s)", "Execution Status", "Governance Status",
+        "Origin",
     ]
     _write_header(ws, headers)
 
-    for row, tid in enumerate(testcase_ids, start=2):
+    row = 2
+    for tid in testcase_ids:
         tc = testcases[tid]
         if tc is None:
             continue
@@ -132,8 +142,30 @@ def build_testcase_workbook() -> Path:
         ws.cell(row=row, column=10, value=", ".join(_automation_ids_for(tid, automation_records)))
         ws.cell(row=row, column=11, value=_execution_status_for(tid, exec_facts["records"]))
         ws.cell(row=row, column=12, value=tc.get("governance_status"))
+        ws.cell(row=row, column=13, value="MVP2-HISTORICAL (frozen baseline 33b9946)")
+        row += 1
 
-    _autosize(ws, [22, 16, 32, 55, 30, 50, 14, 10, 30, 30, 16, 18])
+    # Post-MVP2 Enhancement 02: the new, explicit, business-level
+    # testcase corpus (never overwriting the historical rows above).
+    for tc in ENH02_TESTCASES:
+        statuses = real_exec_by_testcase.get(tc["testcase_id"], [])
+        exec_status = "/".join(sorted(set(statuses))) if statuses else "NO_EXECUTION_RECORD"
+        ws.cell(row=row, column=1, value=tc["testcase_id"])
+        ws.cell(row=row, column=2, value=", ".join(tc["requirement_ids"]))
+        ws.cell(row=row, column=3, value=tc["title"])
+        ws.cell(row=row, column=4, value=tc["expected_result"]).alignment = _WRAP
+        ws.cell(row=row, column=5, value="\n".join(tc["preconditions"])).alignment = _WRAP
+        ws.cell(row=row, column=6, value="\n".join(f"{i+1}. {s}" for i, s in enumerate(tc["business_steps"]))).alignment = _WRAP
+        ws.cell(row=row, column=7, value=tc["test_type"])
+        ws.cell(row=row, column=8, value=tc["priority"])
+        ws.cell(row=row, column=9, value=", ".join(tc["dataset_ids"]))
+        ws.cell(row=row, column=10, value=tc["automation_id"])
+        ws.cell(row=row, column=11, value=exec_status)
+        ws.cell(row=row, column=12, value="ACCEPTED")
+        ws.cell(row=row, column=13, value="POST-MVP2 ENHANCEMENT 02")
+        row += 1
+
+    _autosize(ws, [22, 16, 32, 55, 30, 50, 14, 10, 30, 34, 16, 18, 28])
 
     notes = wb.create_sheet("Notes")
     notes["A1"] = "Provenance and limitations"
@@ -153,6 +185,13 @@ def build_testcase_workbook() -> Path:
         "'Execution Status' reflects real CP06 execution evidence, deterministically",
         "rolled up via reporting.gather.gather_real_execution_results(). A testcase with",
         "no real execution record shows NO_EXECUTION_RECORD -- never fabricated as PASS.",
+        "",
+        "Post-MVP2 Enhancement 02 added a new, explicit, business-level testcase corpus",
+        "(rows marked Origin=POST-MVP2 ENHANCEMENT 02) for 25 Approved SRS requirements,",
+        "grounded directly in each requirement's own Statement/Acceptance Criteria text.",
+        "None of the 10 historical MVP2 testcases above were modified. Enhancement 02's",
+        "own 'Execution Status' reflects real, live Playwright execution logs (see",
+        "docs/claude-execution-reports/ENHANCEMENT-02/ for the full report).",
     ]
     for i, line in enumerate(notes_lines, start=2):
         notes.cell(row=i, column=1, value=line)
@@ -168,12 +207,14 @@ def build_testdata_workbook() -> Path:
     data_ids = testdata_persist.list_persisted_dataset_ids()
     datasets = {did: testdata_persist.load_persisted_dataset(did) for did in data_ids}
 
+    from automation.playwright.enh02_testdata import ENH02_TESTDATA
+
     wb = Workbook()
     ws = wb.active
     ws.title = "TestData Fields"
     headers = [
         "Dataset ID", "Testcase ID", "Requirement ID(s)", "Data Category", "Validation Status",
-        "Field Name", "Field Value", "Value Type", "Uniqueness Requirement", "Purpose",
+        "Field Name", "Field Value", "Value Type", "Uniqueness Requirement", "Purpose", "Origin",
     ]
     _write_header(ws, headers)
 
@@ -193,12 +234,28 @@ def build_testdata_workbook() -> Path:
             ws.cell(row=row, column=8, value=field.get("value_type"))
             ws.cell(row=row, column=9, value=field.get("uniqueness_requirement"))
             ws.cell(row=row, column=10, value=ds.get("purpose")).alignment = _WRAP
+            ws.cell(row=row, column=11, value="MVP2-HISTORICAL")
             row += 1
 
-    _autosize(ws, [24, 20, 16, 14, 18, 18, 34, 12, 22, 40])
+    for ds in ENH02_TESTDATA:
+        for field_name, field_value in ds["fields"].items():
+            ws.cell(row=row, column=1, value=ds["dataset_id"])
+            ws.cell(row=row, column=2, value=ds["testcase_id"])
+            ws.cell(row=row, column=3, value=", ".join(ds["requirement_ids"]))
+            ws.cell(row=row, column=4, value=ds["data_category"])
+            ws.cell(row=row, column=5, value="ACCEPTED")
+            ws.cell(row=row, column=6, value=field_name)
+            ws.cell(row=row, column=7, value=field_value)
+            ws.cell(row=row, column=8, value="STRING")
+            ws.cell(row=row, column=9, value="")
+            ws.cell(row=row, column=10, value=ds["purpose"]).alignment = _WRAP
+            ws.cell(row=row, column=11, value="POST-MVP2 ENHANCEMENT 02")
+            row += 1
+
+    _autosize(ws, [24, 20, 16, 14, 18, 18, 34, 12, 22, 40, 28])
 
     mapping = wb.create_sheet("Testcase-Dataset Mapping")
-    mapping_headers = ["Testcase ID", "Dataset ID", "Data Category", "Validation Status", "Purpose"]
+    mapping_headers = ["Testcase ID", "Dataset ID", "Data Category", "Validation Status", "Purpose", "Origin"]
     _write_header(mapping, mapping_headers)
     row = 2
     for did in data_ids:
@@ -210,8 +267,17 @@ def build_testdata_workbook() -> Path:
         mapping.cell(row=row, column=3, value=ds.get("data_category"))
         mapping.cell(row=row, column=4, value=ds.get("validation_status"))
         mapping.cell(row=row, column=5, value=ds.get("purpose")).alignment = _WRAP
+        mapping.cell(row=row, column=6, value="MVP2-HISTORICAL")
         row += 1
-    _autosize(mapping, [20, 24, 14, 18, 45])
+    for ds in ENH02_TESTDATA:
+        mapping.cell(row=row, column=1, value=ds["testcase_id"])
+        mapping.cell(row=row, column=2, value=ds["dataset_id"])
+        mapping.cell(row=row, column=3, value=ds["data_category"])
+        mapping.cell(row=row, column=4, value="ACCEPTED")
+        mapping.cell(row=row, column=5, value=ds["purpose"]).alignment = _WRAP
+        mapping.cell(row=row, column=6, value="POST-MVP2 ENHANCEMENT 02")
+        row += 1
+    _autosize(mapping, [20, 24, 14, 18, 45, 28])
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     out_path = OUTPUT_DIR / "MVP2_TestData.xlsx"
@@ -247,10 +313,56 @@ def build_traceability_workbook() -> Path:
     return out_path
 
 
+def build_requirement_coverage_workbook() -> Path:
+    """Post-MVP2 Enhancement 02 -- the master 35-requirement coverage
+    matrix (`reporting/requirement_coverage.py`), enriched with real,
+    currently-persisted automation/execution evidence at generation
+    time -- never hard-coded."""
+    from reporting.requirement_coverage import disposition_breakdown, enrich_with_real_execution_data
+
+    records = enrich_with_real_execution_data()
+
+    wb = Workbook()
+    ws = wb.active
+    ws.title = "Requirement Coverage Matrix"
+    headers = [
+        "Requirement ID", "Title", "Category", "Disposition", "Testcase ID(s)",
+        "Automation ID(s)", "Real Execution Count", "Performance Testcase ID(s)", "Remarks",
+    ]
+    _write_header(ws, headers)
+
+    for row, r in enumerate(records, start=2):
+        ws.cell(row=row, column=1, value=r.requirement_id)
+        ws.cell(row=row, column=2, value=r.title)
+        ws.cell(row=row, column=3, value=r.category)
+        ws.cell(row=row, column=4, value=r.disposition)
+        ws.cell(row=row, column=5, value=", ".join(r.testcase_ids))
+        ws.cell(row=row, column=6, value=", ".join(r.automation_ids))
+        ws.cell(row=row, column=7, value=len(r.execution_ids))
+        ws.cell(row=row, column=8, value=", ".join(r.performance_testcase_ids))
+        ws.cell(row=row, column=9, value=r.remarks).alignment = _WRAP
+
+    _autosize(ws, [16, 40, 20, 26, 24, 34, 12, 26, 60])
+
+    summary = wb.create_sheet("Summary")
+    summary["A1"] = "Disposition breakdown (35/35 Approved SRS requirements, no silent omissions)"
+    summary["A1"].font = Font(bold=True)
+    for i, (disposition, count) in enumerate(sorted(disposition_breakdown().items()), start=2):
+        summary.cell(row=i, column=1, value=disposition)
+        summary.cell(row=i, column=2, value=count)
+    summary.column_dimensions["A"].width = 32
+
+    OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
+    out_path = OUTPUT_DIR / "MVP2_Requirement_Coverage_Matrix.xlsx"
+    wb.save(out_path)
+    return out_path
+
+
 def build_all_workbooks() -> Dict[str, Path]:
     return {
         "testcases": build_testcase_workbook(),
         "testdata": build_testdata_workbook(),
+        "coverage_matrix": build_requirement_coverage_workbook(),
         "traceability": build_traceability_workbook(),
     }
 

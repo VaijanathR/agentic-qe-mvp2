@@ -1,0 +1,63 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-AUTH-02-WRONG-PASSWORD-ENH02-TD-REG-05-01-main-1789489147510",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T16:19:11.007234+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-AUTH-02-WRONG-PASSWORD",
+    "dataset_id": "ENH02-TD-REG-05-01"
+  },
+  "content_hash": "f08c5723b850ac5587a50fa5e962d56bb85b37642b9054776ee8c470aad9c175",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-AUTH-02-WRONG-PASSWORD-ENH02-TD-REG-05-01-main-1789489147510",
+    "requirement_ids": [
+      "REQ-AUTH-02"
+    ],
+    "testcase_id": "ENH02-TC-REQ-AUTH-02-WRONG-PASSWORD",
+    "dataset_id": "ENH02-TD-REG-05-01",
+    "automation_id": "ENH02-PW-TC-REQ-AUTH-02-WRONG-PASSWORD",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "main",
+    "start_time": "2026-09-15T16:19:07.510591+00:00",
+    "end_time": "2026-09-15T16:19:11.005312+00:00",
+    "duration_seconds": 3.494721,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "Log out first, so this check starts from a genuinely anonymous session",
+        "status": "PASS"
+      },
+      {
+        "step_order": 2,
+        "description": "Navigate to login page",
+        "status": "PASS"
+      },
+      {
+        "step_order": 3,
+        "description": "Fill the real account's email with an incorrect password",
+        "status": "PASS"
+      },
+      {
+        "step_order": 4,
+        "description": "Submit login form",
+        "status": "PASS"
+      },
+      {
+        "step_order": 5,
+        "description": "Observe generic rejection message and no session",
+        "status": "PASS"
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-AUTH-02-WRONG-PASSWORD-ENH02-TD-REG-05-01-main-1789489147510\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

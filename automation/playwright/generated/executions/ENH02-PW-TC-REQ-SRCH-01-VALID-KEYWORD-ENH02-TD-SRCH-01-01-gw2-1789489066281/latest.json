@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-SRCH-01-VALID-KEYWORD-ENH02-TD-SRCH-01-01-gw2-1789489066281",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-SRCH-01-VALID-KEYWORD-ENH02-TD-SRCH-01-01-gw2-1789489066281\\v1.json",
+  "content_hash": "85f4daf22b19f3edc06f477195c1bffe0307c4ff454a7a9fe29afa75fb3724c3",
+  "updated_at": "2026-09-15T16:17:53.259977+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-SRCH-01-VALID-KEYWORD-ENH02-TD-SRCH-01-01-gw2-1789489066281\\v1.json",
+      "generated_at": "2026-09-15T16:17:53.259977+00:00"
+    }
+  ]
+}

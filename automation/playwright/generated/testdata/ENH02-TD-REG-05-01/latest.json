@@ -1,0 +1,19 @@
+{
+  "artifact_id": "ENH02-TD-REG-05-01",
+  "latest_version": 2,
+  "latest_path": "automation\\playwright\\generated\\testdata\\ENH02-TD-REG-05-01\\v2.json",
+  "content_hash": "72de0cfaa7b87974213530ec0ec98617299b1b0c774a00f95ade58360fb46ab0",
+  "updated_at": "2026-09-15T16:18:52.727706+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\testdata\\ENH02-TD-REG-05-01\\v1.json",
+      "generated_at": "2026-09-15T16:17:39.161951+00:00"
+    },
+    {
+      "version": 2,
+      "path": "automation\\playwright\\generated\\testdata\\ENH02-TD-REG-05-01\\v2.json",
+      "generated_at": "2026-09-15T16:18:52.727706+00:00"
+    }
+  ]
+}

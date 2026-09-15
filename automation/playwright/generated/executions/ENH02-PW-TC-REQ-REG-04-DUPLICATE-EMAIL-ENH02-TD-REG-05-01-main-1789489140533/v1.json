@@ -1,0 +1,91 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-REG-04-DUPLICATE-EMAIL-ENH02-TD-REG-05-01-main-1789489140533",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T16:19:05.057765+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-REG-04-DUPLICATE-EMAIL",
+    "dataset_id": "ENH02-TD-REG-05-01"
+  },
+  "content_hash": "7e87ceb6598bb0c47088d24b6f8412c828f47902a94309b91d0523bd5efd1aad",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-REG-04-DUPLICATE-EMAIL-ENH02-TD-REG-05-01-main-1789489140533",
+    "requirement_ids": [
+      "REQ-REG-04"
+    ],
+    "testcase_id": "ENH02-TC-REQ-REG-04-DUPLICATE-EMAIL",
+    "dataset_id": "ENH02-TD-REG-05-01",
+    "automation_id": "ENH02-PW-TC-REQ-REG-04-DUPLICATE-EMAIL",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "main",
+    "start_time": "2026-09-15T16:19:00.533760+00:00",
+    "end_time": "2026-09-15T16:19:05.056137+00:00",
+    "duration_seconds": 4.522377,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "Log out",
+        "status": "PASS"
+      },
+      {
+        "step_order": 2,
+        "description": "Navigate to home page",
+        "status": "PASS"
+      },
+      {
+        "step_order": 3,
+        "description": "Select 'Register' link",
+        "status": "PASS",
+        "locator_resolution": {
+          "field_name": "register_link",
+          "attempted": [
+            {
+              "candidate": {
+                "locator_type": "HREF",
+                "expression": "a[href='/register']",
+                "source": "live capture: <a href=\"/register\" class=\"ico-register\">",
+                "priority": 1,
+                "validation_status": "ACCEPTED"
+              },
+              "outcome": "SUCCESS"
+            }
+          ],
+          "resolved_candidate": {
+            "locator_type": "HREF",
+            "expression": "a[href='/register']",
+            "source": "live capture: <a href=\"/register\" class=\"ico-register\">",
+            "priority": 1,
+            "validation_status": "ACCEPTED"
+          },
+          "used_fallback": false
+        }
+      },
+      {
+        "step_order": 4,
+        "description": "Fill the already-registered email with otherwise-valid data",
+        "status": "PASS"
+      },
+      {
+        "step_order": 5,
+        "description": "Submit registration form",
+        "status": "PASS"
+      },
+      {
+        "step_order": 6,
+        "description": "Observe duplicate-email message",
+        "status": "PASS"
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-REG-04-DUPLICATE-EMAIL-ENH02-TD-REG-05-01-main-1789489140533\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

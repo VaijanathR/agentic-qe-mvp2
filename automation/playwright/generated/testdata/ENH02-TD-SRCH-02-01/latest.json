@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-TD-SRCH-02-01",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\testdata\\ENH02-TD-SRCH-02-01\\v1.json",
+  "content_hash": "f989fdc76cd58892d8175eb85756567ec0251fe13c4d0662312faa3ad5797b26",
+  "updated_at": "2026-09-15T16:17:39.168034+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\testdata\\ENH02-TD-SRCH-02-01\\v1.json",
+      "generated_at": "2026-09-15T16:17:39.168034+00:00"
+    }
+  ]
+}

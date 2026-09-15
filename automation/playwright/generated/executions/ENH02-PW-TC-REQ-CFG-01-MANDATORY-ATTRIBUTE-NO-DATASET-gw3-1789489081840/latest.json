@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-CFG-01-MANDATORY-ATTRIBUTE-NO-DATASET-gw3-1789489081840",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-CFG-01-MANDATORY-ATTRIBUTE-NO-DATASET-gw3-1789489081840\\v1.json",
+  "content_hash": "fe5d4d156ce7882f738cf7919cc581d60d34c7f5add8e54afe4d8a2d2bdf98b7",
+  "updated_at": "2026-09-15T16:18:07.819232+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-CFG-01-MANDATORY-ATTRIBUTE-NO-DATASET-gw3-1789489081840\\v1.json",
+      "generated_at": "2026-09-15T16:18:07.819232+00:00"
+    }
+  ]
+}

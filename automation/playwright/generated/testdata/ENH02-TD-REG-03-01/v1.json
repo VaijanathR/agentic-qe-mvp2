@@ -1,0 +1,26 @@
+{
+  "artifact_id": "ENH02-TD-REG-03-01",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T16:17:39.159582+00:00",
+  "generator": "automation.playwright.enh02_testdata (Post-MVP2 Enhancement 02)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-REG-03-MALFORMED-EMAIL"
+  },
+  "content_hash": "78f3a5490ab87983f47a5d140aacc3b815cb4fb697c30c8b2c9889994d3e2b34",
+  "payload": {
+    "dataset_id": "ENH02-TD-REG-03-01",
+    "testcase_id": "ENH02-TC-REQ-REG-03-MALFORMED-EMAIL",
+    "requirement_ids": [
+      "REQ-REG-03"
+    ],
+    "data_category": "NEGATIVE",
+    "purpose": "Valid identity fields, malformed email",
+    "fields": {
+      "first_name": "Synthetic-FirstName",
+      "last_name": "Synthetic-LastName",
+      "email": "not-an-email",
+      "password": "Synthetic-Pw-1",
+      "confirm_password": "Synthetic-Pw-1"
+    }
+  }
+}

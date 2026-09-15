@@ -1,0 +1,48 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-CART-04-EMPTY-CART-STATE-NO-DATASET-gw3-1789489115571",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T16:18:36.485180+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-CART-04-EMPTY-CART-STATE",
+    "dataset_id": "NO-DATASET"
+  },
+  "content_hash": "e3378232c8382fe4cdb88fedc16859606d8345cc6a3ca141dc3ee62ad4577f95",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-CART-04-EMPTY-CART-STATE-NO-DATASET-gw3-1789489115571",
+    "requirement_ids": [
+      "REQ-CART-04"
+    ],
+    "testcase_id": "ENH02-TC-REQ-CART-04-EMPTY-CART-STATE",
+    "dataset_id": "NO-DATASET",
+    "automation_id": "ENH02-PW-TC-REQ-CART-04-EMPTY-CART-STATE",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "gw3",
+    "start_time": "2026-09-15T16:18:35.571811+00:00",
+    "end_time": "2026-09-15T16:18:36.483780+00:00",
+    "duration_seconds": 0.911969,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "Navigate to (empty) cart page",
+        "status": "PASS"
+      },
+      {
+        "step_order": 2,
+        "description": "Observe empty-state message",
+        "status": "PASS"
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-CART-04-EMPTY-CART-STATE-NO-DATASET-gw3-1789489115571\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-AUTH-03-RELOGIN-ENH02-TD-REG-05-01-main-1789489151009",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-AUTH-03-RELOGIN-ENH02-TD-REG-05-01-main-1789489151009\\v1.json",
+  "content_hash": "e3efbd1b6de0a9050fe0bfadb74633c3fea71274b00e4705c6c7e72ed8d72411",
+  "updated_at": "2026-09-15T16:19:13.529096+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-AUTH-03-RELOGIN-ENH02-TD-REG-05-01-main-1789489151009\\v1.json",
+      "generated_at": "2026-09-15T16:19:13.529096+00:00"
+    }
+  ]
+}

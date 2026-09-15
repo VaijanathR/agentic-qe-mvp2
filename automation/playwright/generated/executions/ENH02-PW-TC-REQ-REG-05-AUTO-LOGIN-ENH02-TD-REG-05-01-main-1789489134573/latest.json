@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-REG-05-AUTO-LOGIN-ENH02-TD-REG-05-01-main-1789489134573",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-REG-05-AUTO-LOGIN-ENH02-TD-REG-05-01-main-1789489134573\\v1.json",
+  "content_hash": "1a7ee993ab78c23fbf2a538553990997ea005e49be09d2cd9765b036fed98f87",
+  "updated_at": "2026-09-15T16:19:00.532492+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-REG-05-AUTO-LOGIN-ENH02-TD-REG-05-01-main-1789489134573\\v1.json",
+      "generated_at": "2026-09-15T16:19:00.532492+00:00"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "artifact_id": "ENH02-TD-SRCH-02-01",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T16:17:39.168034+00:00",
+  "generator": "automation.playwright.enh02_testdata (Post-MVP2 Enhancement 02)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-SRCH-02-NO-RESULTS"
+  },
+  "content_hash": "f989fdc76cd58892d8175eb85756567ec0251fe13c4d0662312faa3ad5797b26",
+  "payload": {
+    "dataset_id": "ENH02-TD-SRCH-02-01",
+    "testcase_id": "ENH02-TC-REQ-SRCH-02-NO-RESULTS",
+    "requirement_ids": [
+      "REQ-SRCH-02"
+    ],
+    "data_category": "NEGATIVE",
+    "purpose": "A nonsense keyword guaranteed to match nothing.",
+    "fields": {
+      "search_term": "zzzznoresultxyz123"
+    }
+  }
+}

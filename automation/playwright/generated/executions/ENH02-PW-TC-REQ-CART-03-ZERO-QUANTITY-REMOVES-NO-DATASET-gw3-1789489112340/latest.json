@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-CART-03-ZERO-QUANTITY-REMOVES-NO-DATASET-gw3-1789489112340",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-CART-03-ZERO-QUANTITY-REMOVES-NO-DATASET-gw3-1789489112340\\v1.json",
+  "content_hash": "32de50e5e45719dbf7887488fdd788988de7c92580a0b4c124992959292459fc",
+  "updated_at": "2026-09-15T16:18:35.568216+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-CART-03-ZERO-QUANTITY-REMOVES-NO-DATASET-gw3-1789489112340\\v1.json",
+      "generated_at": "2026-09-15T16:18:35.568216+00:00"
+    }
+  ]
+}
