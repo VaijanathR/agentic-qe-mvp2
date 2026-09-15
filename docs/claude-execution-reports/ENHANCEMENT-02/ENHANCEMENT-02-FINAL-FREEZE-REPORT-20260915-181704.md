@@ -4,7 +4,10 @@
 **Starting baseline (pre-closure Enhancement-02):** `f82277d`
 **MVP2 frozen baseline:** `33b9946`
 **Enhancement-01 baseline:** `85dc6ab`
-**Final commit SHA (this closure):** `73c06d0` (feature commit `7d38878` + follow-up workbook-regeneration commit `73c06d0`)
+**Final commit SHA (this closure):** `4c0a8b6` (feature commit `7d38878`,
+workbook-regeneration follow-up `73c06d0`, this report's own SHA-recording
+follow-up `4c0a8b6` — the terminal commit; `git log --oneline -1 origin/main`
+is authoritative)
 
 ---
 
@@ -395,4 +398,5 @@ of this as a permanent, documented MVP2/Enhancement-02 scope boundary.
 13. HEAD == origin/main — **CONFIRMED** (see below).
 14. Working tree clean (excluding pre-existing, unrelated untracked files
     present before this task began) — **CONFIRMED**.
-15. Final commit SHA — **`73c06d0`**.
+15. Final commit SHA — see header (terminal commit on `origin/main` after
+    this closure work).
