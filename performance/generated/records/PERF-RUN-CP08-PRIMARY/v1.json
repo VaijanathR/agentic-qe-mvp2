@@ -1,0 +1,77 @@
+{
+  "artifact_id": "PERF-RUN-CP08-PRIMARY",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T09:41:30.453852+00:00",
+  "generator": "performance.pipeline.run_cp08_performance_scenario (real JMeter execution, deterministic parse)",
+  "provenance": {
+    "scenario_id": "PERF-REQ-BRW-01-CATALOG-BROWSE",
+    "checkpoint": "CP-MVP2-08"
+  },
+  "content_hash": "b7c54909146b3fb717f3402d70c5033bd176ec49d370fc81daec76eba21e1041",
+  "payload": {
+    "run_id": "PERF-RUN-CP08-PRIMARY",
+    "scenario_id": "PERF-REQ-BRW-01-CATALOG-BROWSE",
+    "requirement_ids": [
+      "REQ-BRW-01"
+    ],
+    "jmx_path": "performance/jmeter/PERF-REQ-BRW-01-catalog-browse.jmx",
+    "raw_results_path": "performance/generated/raw/PERF-RUN-CP08-PRIMARY/results.jtl",
+    "environment": {
+      "operating_system": "Linux 6.18.33.2-microsoft-standard-WSL2 (x86_64)",
+      "jmeter_version": "5.6.3",
+      "java_version": "17.0.20",
+      "target_url": "https://demowebshop.tricentis.com/",
+      "execution_timestamp": "2026-09-15T09:41:05.891211+00:00",
+      "workload": {
+        "virtual_users": 5,
+        "ramp_up_seconds": 5,
+        "loops_per_user": 3,
+        "think_time_ms": 1000
+      },
+      "reproducibility_note": "Reproducibility is bounded by the real, shared, third-party SUT's own state/load at execution time (Approved SRS sec. 11 -- no SLA, no exclusive ownership) and by JMeter/Java being external, versioned dependencies not vendored in this repository."
+    },
+    "aggregate_metrics": {
+      "sample_count": 30,
+      "error_count": 0,
+      "error_percentage": 0.0,
+      "avg_ms": 595.4,
+      "median_ms": 503.0,
+      "p90_ms": 985.0,
+      "min_ms": 441.0,
+      "max_ms": 1465.0,
+      "throughput_per_sec": 1.742,
+      "test_duration_seconds": 17.219
+    },
+    "sampler_metrics": [
+      {
+        "label": "GET Books Category (REQ-BRW-01)",
+        "sample_count": 15,
+        "error_count": 0,
+        "error_percentage": 0.0,
+        "avg_ms": 516.467,
+        "median_ms": 507.0,
+        "p90_ms": 530.0,
+        "min_ms": 483.0,
+        "max_ms": 663.0
+      },
+      {
+        "label": "GET Home Page",
+        "sample_count": 15,
+        "error_count": 0,
+        "error_percentage": 0.0,
+        "avg_ms": 674.333,
+        "median_ms": 479.0,
+        "p90_ms": 1032.0,
+        "min_ms": 441.0,
+        "max_ms": 1465.0
+      }
+    ],
+    "capability_result": "PASS",
+    "capability_result_detail": "All 30 real HTTP samples completed with 0 assertion/HTTP failures; the .jmx test plan is confirmed real, valid, and executable.",
+    "numeric_sla_result": "INCONCLUSIVE",
+    "numeric_sla_result_detail": "No approved numeric threshold exists to compare against (Approved MVP2 SRS v1.0 sec. 9.2: response-time/throughput/error-rate/baseline-load/concurrency/availability targets are all TBD -- HUMAN/PROJECT TARGET REQUIRING EXPLICIT APPROVAL). This is a standing, pre-existing, already-disclosed open item (SRS sec. 13), not a new blocking discovery made by this checkpoint. INCONCLUSIVE is the honest disposition; it is never converted into PASS merely because the measured numbers look reasonable.",
+    "generation_metadata": {
+      "generator": "performance.pipeline.run_cp08_performance_scenario"
+    }
+  }
+}

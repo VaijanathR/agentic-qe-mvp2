@@ -1,0 +1,14 @@
+{
+  "artifact_id": "PERF-RUN-CP08-PRIMARY",
+  "latest_version": 1,
+  "latest_path": "performance/generated/records/PERF-RUN-CP08-PRIMARY/v1.json",
+  "content_hash": "b7c54909146b3fb717f3402d70c5033bd176ec49d370fc81daec76eba21e1041",
+  "updated_at": "2026-09-15T09:41:30.453852+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "performance/generated/records/PERF-RUN-CP08-PRIMARY/v1.json",
+      "generated_at": "2026-09-15T09:41:30.453852+00:00"
+    }
+  ]
+}

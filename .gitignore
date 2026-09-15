@@ -22,6 +22,10 @@ test-results/
 
 # JMeter
 *.jtl
+# CP-MVP2-08: the actual, committed .jtl evidence for the real JMeter
+# execution this checkpoint requires (docs/CP-MVP2-08-SPECIFICATION-v1.0.md
+# sec. 11) is deliberately un-ignored here.
+!performance/generated/raw/**/*.jtl
 
 # OS
 .DS_Store

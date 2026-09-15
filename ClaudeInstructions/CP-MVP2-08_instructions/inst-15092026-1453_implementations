@@ -1,0 +1,502 @@
+# CP-MVP2-08 — JMeter Performance Engineering
+
+## Mission
+
+Implement and close **CP-MVP2-08** according to its approved/frozen specification.
+
+CP06 and CP07 are already formally closed:
+
+* CP06 — GREEN WITH ADVISORIES
+* CP07 — GREEN WITH ADVISORIES
+
+Do not reopen either checkpoint.
+
+The objective is to demonstrate the **performance-engineering capability defined by the frozen CP08 specification** using Apache JMeter and produce honest, persisted performance evidence.
+
+This is an MVP checkpoint, not a production-scale performance-testing framework redesign.
+
+---
+
+# 1. Mandatory First Action — Inspect Before Implementing
+
+Before modifying anything:
+
+1. Inspect the frozen CP-MVP2-08 specification.
+2. Inspect the existing CP08 implementation, if any.
+3. Inspect the existing performance-testing/JMeter structure.
+4. Inspect CP01–CP07 artifacts and conventions relevant to CP08.
+5. Inspect the Approved MVP2 SRS.
+6. Identify the performance requirements/acceptance criteria that CP08 must validate.
+7. Inspect existing test data and reusable artifacts that may legitimately be used.
+8. Inspect Git history and establish the exact current HEAD.
+9. Determine which artifacts are frozen and must remain unchanged.
+
+Do not rely only on previous Claude summaries.
+
+Use the repository as the source of truth.
+
+---
+
+# 2. Frozen Governance Boundary
+
+Do NOT modify:
+
+* Approved MVP2 SRS v1.0
+* CP01 specification/implementation
+* CP02 specification/implementation
+* CP03 specification/implementation
+* CP04 specification/implementation
+* CP05 specification/implementation
+* CP06 specification/implementation
+* CP07 specification/implementation
+* CP06 governance closure
+* CP07 governance closure
+
+Do not modify requirements, expected results, response-time targets, test data, or specifications merely to obtain a performance PASS.
+
+Golden rule:
+
+> NEVER CHANGE THE SPECIFICATION TO MAKE THE IMPLEMENTATION PASS.
+
+If a genuine conflict is discovered:
+
+**STOP → REPORT → HUMAN + DI DECIDE**
+
+---
+
+# 3. Determine the Exact CP08 Contract
+
+Before implementation, identify from the frozen CP08 specification:
+
+* required performance scenarios;
+* target APIs/pages/business flows;
+* workload model;
+* concurrency/users;
+* duration;
+* ramp-up;
+* response-time requirements;
+* throughput requirements;
+* error-rate requirements;
+* pass/fail criteria;
+* evidence requirements;
+* reporting requirements;
+* governance restrictions.
+
+Do not invent performance requirements that are not present in the frozen specification.
+
+If a required value is genuinely unspecified:
+
+record it as an open question/limitation according to existing governance rather than silently inventing it.
+
+---
+
+# 4. JMeter Requirement
+
+Use **Apache JMeter** for the CP08 performance implementation.
+
+The JMeter test plan must be a real executable JMeter artifact, not pseudocode.
+
+Persist the actual `.jmx` test plan in the repository.
+
+Where applicable, also persist:
+
+* configuration/properties;
+* supporting data;
+* execution command/configuration;
+* result files;
+* summary reports;
+* evidence.
+
+Do not substitute a Python load generator for JMeter if the frozen CP08 contract requires JMeter.
+
+---
+
+# 5. Performance Scenario
+
+Use the performance scenario(s) explicitly required by CP08.
+
+The scenario must be traceable to:
+
+**Approved Requirement → Performance Scenario → JMeter Test Plan → Execution → Result → Conclusion**
+
+Do not create an unrelated synthetic workload merely to obtain measurable numbers.
+
+If the frozen CP08 specification allows a bounded representative scenario, document exactly what was selected and why.
+
+---
+
+# 6. Workload and Concurrency
+
+Implement the exact workload model defined by the frozen specification.
+
+Explicitly record:
+
+* number of virtual users;
+* ramp-up;
+* steady-state duration;
+* iterations;
+* request distribution;
+* pacing/timers;
+* environment;
+* JMeter version;
+* Java version where relevant;
+* target system/environment.
+
+Do not silently change concurrency or duration to improve results.
+
+If resource limitations prevent the specified workload:
+
+**STOP → REPORT → HUMAN + DI DECIDE**
+
+Do not redefine the acceptance criteria.
+
+---
+
+# 7. Test Data
+
+Use valid data appropriate to the performance scenario.
+
+Respect all existing MVP governance around test data.
+
+Do NOT:
+
+* change requirements;
+* weaken uniqueness rules;
+* modify expected responses;
+* create duplicate business entities merely to increase load;
+* alter data to force a PASS.
+
+If data limitations affect performance execution, classify and report the limitation honestly.
+
+---
+
+# 8. Performance Metrics
+
+Capture the metrics required by the frozen CP08 specification.
+
+Where applicable:
+
+* response time;
+* average response time;
+* median;
+* percentile(s);
+* minimum/maximum;
+* throughput;
+* error count;
+* error percentage;
+* requests/sec;
+* concurrent users;
+* transaction/sample count.
+
+Do not manufacture missing measurements.
+
+Clearly distinguish:
+
+**Observed measurement → derived metric → interpretation**
+
+---
+
+# 9. Pass/Fail Determination
+
+Performance PASS/FAIL must be determined against the **frozen CP08 acceptance criteria**.
+
+Do NOT:
+
+* change thresholds;
+* remove slow samples;
+* exclude failures without justification;
+* alter workload after seeing results;
+* selectively report only successful requests;
+* change the requirement because the environment performs poorly.
+
+If the result fails:
+
+report the failure honestly and classify it.
+
+A failed performance result does NOT automatically mean CP08 failed governance.
+
+Determine the actual CP08 gate according to its specification.
+
+---
+
+# 10. Environment Evidence
+
+Persist enough environment information to make the performance result meaningful.
+
+Record, as applicable:
+
+* operating system;
+* CPU/memory information if available;
+* JMeter version;
+* Java version;
+* target URL/environment;
+* timestamp;
+* workload configuration;
+* network/environment limitations where known.
+
+Do not claim reproducibility beyond what the evidence supports.
+
+---
+
+# 11. Evidence Persistence
+
+Persist CP08 evidence under:
+
+`docs/claude-execution-reports/CP-MVP2-08/`
+
+Include a formal execution report containing:
+
+1. CP08 objective
+2. Frozen specification reference
+3. Starting repository HEAD
+4. Performance requirements
+5. Scenario
+6. Workload model
+7. Environment
+8. JMeter configuration
+9. Execution timestamp
+10. Metrics
+11. Acceptance-criteria comparison
+12. Result
+13. Failures/errors, if any
+14. Limitations
+15. Evidence locations
+16. Final CP08 gate decision
+17. Recommended next checkpoint
+
+Persist actual JMeter artifacts in the appropriate project directory.
+
+---
+
+# 12. Reproducibility
+
+Where practical, verify that the JMeter test plan can be executed from a clean/fresh process.
+
+Record:
+
+* execution command;
+* execution timestamp;
+* configuration used;
+* result artifact location.
+
+Do not claim full reproducibility if the environment or dependencies prevent it.
+
+---
+
+# 13. Regression Safety
+
+Run CP08-specific tests.
+
+Then run the full regression suite.
+
+Verify that:
+
+* CP01 remains intact.
+* CP02 remains intact.
+* CP03 remains intact.
+* CP04 remains intact.
+* CP05 remains intact.
+* CP06 remains closed.
+* CP07 remains closed.
+* Approved SRS remains unchanged.
+
+Do not weaken/remove existing tests to obtain a green result.
+
+Report:
+
+* focused test count/result;
+* full regression count/result;
+* frozen-artifact integrity;
+* current Git SHA.
+
+---
+
+# 14. No Scope Creep
+
+Do NOT implement during CP08:
+
+* Excel testcase enhancements;
+* Excel test-data enhancements;
+* production-grade Playwright architecture;
+* richer testcase-generation architecture;
+* multiple-dataset redesign;
+* page-object modernization;
+* runtime locator fallback;
+* CR-002;
+* advanced self-healing;
+* security/penetration testing;
+* post-MVP performance framework enhancements.
+
+These remain parked.
+
+---
+
+# 15. Security Boundary
+
+Security/penetration testing is POST-MVP and remains parked.
+
+Do not introduce security testing into CP08 unless the frozen CP08 specification explicitly requires a security-related performance control.
+
+---
+
+# 16. Performance Result Integrity
+
+The performance report must distinguish:
+
+### PASS
+
+Requirement/threshold satisfied based on actual measurements.
+
+### FAIL
+
+Requirement/threshold not satisfied based on actual measurements.
+
+### BLOCKED / NOT_EXECUTED
+
+Execution could not legitimately be performed.
+
+### INCONCLUSIVE
+
+Evidence is insufficient to make a valid determination.
+
+Use the exact terminology required by the frozen CP08 specification where defined.
+
+Do not convert an inconclusive or blocked result into PASS.
+
+---
+
+# 17. Governance
+
+If performance results reveal:
+
+* environment limitations;
+* requirement ambiguity;
+* data limitations;
+* workload limitations;
+* tool limitations;
+* third-party dependency issues;
+
+classify them explicitly.
+
+Do not silently compensate by modifying the requirement.
+
+Where human approval is required:
+
+**PROPOSE → GOVERN → HUMAN + DI DECIDE**
+
+---
+
+# 18. CP08 Closure Decision
+
+At the end provide exactly one:
+
+### CP08 — GREEN
+
+Frozen CP08 requirements satisfied and no blocking governance issue remains.
+
+### CP08 — GREEN WITH ADVISORIES
+
+Frozen CP08 requirements satisfied, with only non-blocking advisories/future work.
+
+### CP08 — BLOCKED
+
+A genuine frozen CP08 requirement or governance obligation remains unresolved.
+
+Do not call a performance failure a governance failure unless the CP08 specification makes it one.
+
+Do not manufacture PASS.
+
+---
+
+# 19. Required Closure Report
+
+The final CP08 report must contain:
+
+1. Objective
+2. Frozen specification reference
+3. Starting HEAD
+4. Requirements tested
+5. Performance scenarios
+6. Workload model
+7. JMeter implementation
+8. Environment
+9. Execution evidence
+10. Metrics
+11. Acceptance criteria
+12. PASS/FAIL/BLOCKED/INCONCLUSIVE determination
+13. Analysis
+14. Limitations/advisories
+15. Regression results
+16. Frozen-artifact integrity
+17. Final CP08 gate
+18. CP09 recommendation/authorization
+
+---
+
+# 20. Git Commit
+
+Commit only artifacts legitimately produced for CP08.
+
+Do not include unrelated modifications.
+
+Use a clear commit message such as:
+
+`feat: implement CP-MVP2-08 JMeter performance engineering`
+
+Report:
+
+* commit SHA;
+* final HEAD;
+* changed files;
+* focused test result;
+* full regression result.
+
+---
+
+# 21. Fresh Verification
+
+After committing:
+
+1. Verify the committed CP08 report.
+2. Verify the JMeter `.jmx` artifact is actually committed.
+3. Verify execution evidence is persisted.
+4. Verify commit ancestry.
+5. Verify frozen specifications remain unchanged.
+6. Verify CP06 closure remains intact.
+7. Verify CP07 closure remains intact.
+8. Perform fresh-process/fresh-clone verification where practical.
+
+Do not report completion based only on the pre-commit working tree.
+
+---
+
+# 22. Completion Notification
+
+When the entire CP08 task has completed:
+
+**Play the Windows system notification sound.**
+
+Do NOT display a message box.
+
+The sound is the only completion notification required.
+
+---
+
+# 23. Final Claude Response
+
+Return a concise final response containing:
+
+* CP08 decision;
+* closure report path;
+* implementation commit SHA;
+* final HEAD;
+* focused test result;
+* full regression result;
+* performance scenario;
+* workload;
+* key measured results;
+* acceptance-criteria outcome;
+* limitations/advisories;
+* confirmation whether CP09 is authorized.
+
+Do not claim CP09 authorization if CP08 is BLOCKED.
