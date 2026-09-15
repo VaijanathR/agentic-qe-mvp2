@@ -59,15 +59,16 @@ class RequirementCoverageRecord:
 # closed via exactly ONE real, permanent order, completed by the SAME
 # shared account, chained immediately after its own registration/login
 # testcases in `test_enh02_shared_account.py` -- never a second account,
-# never a second order. REQ-GCO-03 (guest checkout culminating in a
-# completed order) remains deferred: real, live investigation this task
-# confirmed the guest path technically reaches Confirm Order identically
-# to the authenticated path (no technical blocker), but closing it would
-# require a SECOND, separate, permanent order via the anonymous path --
-# exceeding this task's own "minimum necessary permanent state creation"
-# principle (sec. 7) and "no duplicate-account or order pollution"
-# principle (sec. 8). Left HUMAN_REVIEW_REQUIRED pending an explicit
-# Human + Di decision on whether a second real order is authorized.
+# never a second order.
+#
+# Controlled REQ-GCO-03 Post-Freeze Validation (separate task, after
+# Enhancement-02 frozen baseline 521b155, under explicit Human + Di
+# authorization): REQ-GCO-03 (guest checkout culminating in a completed
+# order) is now also CLOSED. One additional real, permanent, genuinely
+# anonymous guest-path order was authorized and completed
+# (`test_gco03_post_freeze_validation.py`, order number 2387519),
+# supplying the DIRECT SYSTEM EVIDENCE the Approved SRS itself disclosed
+# as missing for this one requirement.
 
 REQUIREMENT_COVERAGE: List[RequirementCoverageRecord] = [
     # --- Registration ---
@@ -138,8 +139,9 @@ REQUIREMENT_COVERAGE: List[RequirementCoverageRecord] = [
         testcase_ids=["ENH02-TC-REQ-GCO-01-GUEST-CHECKOUT-INIT"]),
     RequirementCoverageRecord("REQ-GCO-02", "Guest checkout shows the same step sequence", "Guest Checkout", Disposition.FUNCTIONAL_AUTOMATABLE,
         testcase_ids=["ENH02-TC-REQ-GCO-02-GUEST-STEP-SEQUENCE"], remarks="Verifies the Billing Address step renders; does not proceed further (see REQ-GCO-03)."),
-    RequirementCoverageRecord("REQ-GCO-03", "Guest checkout culminates in a completed order", "Guest Checkout", Disposition.HUMAN_REVIEW_REQUIRED,
-        remarks="Real, live investigation this task confirmed the guest path technically reaches Confirm Order identically to the authenticated path (no technical blocker). Deliberately left deferred: closing it would require a SECOND, separate, permanent order via the anonymous path, exceeding this task's 'minimum necessary permanent state creation' principle. Decision required: Human + Di authorization for a second real, permanent order."),
+    RequirementCoverageRecord("REQ-GCO-03", "Guest checkout culminates in a completed order", "Guest Checkout", Disposition.FUNCTIONAL_AUTOMATABLE,
+        testcase_ids=["ENH02-TC-REQ-GCO-03-GUEST-CHECKOUT-COMPLETION"],
+        remarks="Closed under the Controlled REQ-GCO-03 Post-Freeze Validation (Human + Di authorization, commit after Enhancement-02 frozen baseline 521b155): one real, permanent, genuinely anonymous guest-path order (order number 2387519), supplying the DIRECT SYSTEM EVIDENCE the Approved SRS itself disclosed as missing (Evidence Basis was 'AGENT INFERENCE, bridging from DIRECT SYSTEM EVIDENCE on the authenticated path')."),
 
     # --- Authenticated Checkout ---
     RequirementCoverageRecord("REQ-ACO-01", "Authenticated checkout proceeds through all 6 named steps to a completed order", "Authenticated Checkout", Disposition.FUNCTIONAL_AUTOMATABLE,

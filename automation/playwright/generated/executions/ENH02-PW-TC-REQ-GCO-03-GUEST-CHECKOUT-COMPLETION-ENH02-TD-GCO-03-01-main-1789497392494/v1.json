@@ -1,0 +1,411 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-GCO-03-GUEST-CHECKOUT-COMPLETION-ENH02-TD-GCO-03-01-main-1789497392494",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T18:36:58.287255+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-GCO-03-GUEST-CHECKOUT-COMPLETION",
+    "dataset_id": "ENH02-TD-GCO-03-01"
+  },
+  "content_hash": "ab0d3ddf2c239086a10e6730a82975c27a0f6727fe77e135916be517be4bb1dc",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-GCO-03-GUEST-CHECKOUT-COMPLETION-ENH02-TD-GCO-03-01-main-1789497392494",
+    "requirement_ids": [
+      "REQ-GCO-03"
+    ],
+    "testcase_id": "ENH02-TC-REQ-GCO-03-GUEST-CHECKOUT-COMPLETION",
+    "dataset_id": "ENH02-TD-GCO-03-01",
+    "automation_id": "ENH02-PW-TC-REQ-GCO-03-GUEST-CHECKOUT-COMPLETION",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "main",
+    "start_time": "2026-09-15T18:36:32.494029+00:00",
+    "end_time": "2026-09-15T18:36:58.285992+00:00",
+    "duration_seconds": 25.791963,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "As an anonymous session, add the real 'Computing and Internet' physical product to the cart",
+        "status": "PASS",
+        "locator_resolution": {
+          "field_name": "add_to_cart_button",
+          "attempted": [
+            {
+              "candidate": {
+                "locator_type": "ID",
+                "expression": "#add-to-cart-button-13",
+                "source": "live capture: real add-to-cart id for this product",
+                "priority": 1,
+                "validation_status": "ACCEPTED"
+              },
+              "outcome": "SUCCESS"
+            }
+          ],
+          "resolved_candidate": {
+            "locator_type": "ID",
+            "expression": "#add-to-cart-button-13",
+            "source": "live capture: real add-to-cart id for this product",
+            "priority": 1,
+            "validation_status": "ACCEPTED"
+          },
+          "used_fallback": false
+        }
+      },
+      {
+        "step_order": 2,
+        "description": "Accept Terms of Service and select Checkout",
+        "status": "PASS",
+        "locator_resolution": {
+          "terms_of_service": {
+            "field_name": "terms_of_service",
+            "attempted": [
+              {
+                "candidate": {
+                  "locator_type": "ID",
+                  "expression": "#termsofservice",
+                  "source": "live capture: <input id=\"termsofservice\" type=\"checkbox\">",
+                  "priority": 1,
+                  "validation_status": "ACCEPTED"
+                },
+                "outcome": "SUCCESS"
+              }
+            ],
+            "resolved_candidate": {
+              "locator_type": "ID",
+              "expression": "#termsofservice",
+              "source": "live capture: <input id=\"termsofservice\" type=\"checkbox\">",
+              "priority": 1,
+              "validation_status": "ACCEPTED"
+            },
+            "used_fallback": false
+          },
+          "checkout_button": {
+            "field_name": "checkout_button",
+            "attempted": [
+              {
+                "candidate": {
+                  "locator_type": "ID",
+                  "expression": "#checkout",
+                  "source": "live capture: <button id=\"checkout\" name=\"checkout\" class=\"button-1 checkout-button\">",
+                  "priority": 1,
+                  "validation_status": "ACCEPTED"
+                },
+                "outcome": "SUCCESS"
+              }
+            ],
+            "resolved_candidate": {
+              "locator_type": "ID",
+              "expression": "#checkout",
+              "source": "live capture: <button id=\"checkout\" name=\"checkout\" class=\"button-1 checkout-button\">",
+              "priority": 1,
+              "validation_status": "ACCEPTED"
+            },
+            "used_fallback": false
+          }
+        }
+      },
+      {
+        "step_order": 3,
+        "description": "Select 'Checkout as Guest' (remain anonymous)",
+        "status": "PASS",
+        "locator_resolution": {
+          "field_name": "checkout_as_guest_button",
+          "attempted": [
+            {
+              "candidate": {
+                "locator_type": "CLASS",
+                "expression": ".checkout-as-guest-button",
+                "source": "live capture: <input class=\"button-1 checkout-as-guest-button\" value=\"Checkout as Guest\">",
+                "priority": 1,
+                "validation_status": "ACCEPTED"
+              },
+              "outcome": "SUCCESS"
+            }
+          ],
+          "resolved_candidate": {
+            "locator_type": "CLASS",
+            "expression": ".checkout-as-guest-button",
+            "source": "live capture: <input class=\"button-1 checkout-as-guest-button\" value=\"Checkout as Guest\">",
+            "priority": 1,
+            "validation_status": "ACCEPTED"
+          },
+          "used_fallback": false
+        }
+      },
+      {
+        "step_order": 4,
+        "description": "Fill the real, required Billing Address fields and Continue",
+        "status": "PASS",
+        "locator_resolution": {
+          "first_name": {
+            "field_name": "first_name",
+            "attempted": [
+              {
+                "candidate": {
+                  "locator_type": "ID",
+                  "expression": "#BillingNewAddress_FirstName",
+                  "source": "real capture: checkout_00.html",
+                  "priority": 1,
+                  "validation_status": "ACCEPTED"
+                },
+                "outcome": "SUCCESS"
+              }
+            ],
+            "resolved_candidate": {
+              "locator_type": "ID",
+              "expression": "#BillingNewAddress_FirstName",
+              "source": "real capture: checkout_00.html",
+              "priority": 1,
+              "validation_status": "ACCEPTED"
+            },
+            "used_fallback": false
+          },
+          "last_name": {
+            "field_name": "last_name",
+            "attempted": [
+              {
+                "candidate": {
+                  "locator_type": "ID",
+                  "expression": "#BillingNewAddress_LastName",
+                  "source": "real capture: checkout_00.html",
+                  "priority": 1,
+                  "validation_status": "ACCEPTED"
+                },
+                "outcome": "SUCCESS"
+              }
+            ],
+            "resolved_candidate": {
+              "locator_type": "ID",
+              "expression": "#BillingNewAddress_LastName",
+              "source": "real capture: checkout_00.html",
+              "priority": 1,
+              "validation_status": "ACCEPTED"
+            },
+            "used_fallback": false
+          },
+          "email": {
+            "field_name": "email",
+            "attempted": [
+              {
+                "candidate": {
+                  "locator_type": "ID",
+                  "expression": "#BillingNewAddress_Email",
+                  "source": "real capture: checkout_00.html",
+                  "priority": 1,
+                  "validation_status": "ACCEPTED"
+                },
+                "outcome": "SUCCESS"
+              }
+            ],
+            "resolved_candidate": {
+              "locator_type": "ID",
+              "expression": "#BillingNewAddress_Email",
+              "source": "real capture: checkout_00.html",
+              "priority": 1,
+              "validation_status": "ACCEPTED"
+            },
+            "used_fallback": false
+          },
+          "city": {
+            "field_name": "city",
+            "attempted": [
+              {
+                "candidate": {
+                  "locator_type": "ID",
+                  "expression": "#BillingNewAddress_City",
+                  "source": "real capture: checkout_00.html",
+                  "priority": 1,
+                  "validation_status": "ACCEPTED"
+                },
+                "outcome": "SUCCESS"
+              }
+            ],
+            "resolved_candidate": {
+              "locator_type": "ID",
+              "expression": "#BillingNewAddress_City",
+              "source": "real capture: checkout_00.html",
+              "priority": 1,
+              "validation_status": "ACCEPTED"
+            },
+            "used_fallback": false
+          },
+          "address1": {
+            "field_name": "address1",
+            "attempted": [
+              {
+                "candidate": {
+                  "locator_type": "ID",
+                  "expression": "#BillingNewAddress_Address1",
+                  "source": "real capture: checkout_00.html",
+                  "priority": 1,
+                  "validation_status": "ACCEPTED"
+                },
+                "outcome": "SUCCESS"
+              }
+            ],
+            "resolved_candidate": {
+              "locator_type": "ID",
+              "expression": "#BillingNewAddress_Address1",
+              "source": "real capture: checkout_00.html",
+              "priority": 1,
+              "validation_status": "ACCEPTED"
+            },
+            "used_fallback": false
+          },
+          "zip_postal_code": {
+            "field_name": "zip_postal_code",
+            "attempted": [
+              {
+                "candidate": {
+                  "locator_type": "ID",
+                  "expression": "#BillingNewAddress_ZipPostalCode",
+                  "source": "real capture: checkout_00.html",
+                  "priority": 1,
+                  "validation_status": "ACCEPTED"
+                },
+                "outcome": "SUCCESS"
+              }
+            ],
+            "resolved_candidate": {
+              "locator_type": "ID",
+              "expression": "#BillingNewAddress_ZipPostalCode",
+              "source": "real capture: checkout_00.html",
+              "priority": 1,
+              "validation_status": "ACCEPTED"
+            },
+            "used_fallback": false
+          },
+          "phone_number": {
+            "field_name": "phone_number",
+            "attempted": [
+              {
+                "candidate": {
+                  "locator_type": "ID",
+                  "expression": "#BillingNewAddress_PhoneNumber",
+                  "source": "real capture: checkout_00.html",
+                  "priority": 1,
+                  "validation_status": "ACCEPTED"
+                },
+                "outcome": "SUCCESS"
+              }
+            ],
+            "resolved_candidate": {
+              "locator_type": "ID",
+              "expression": "#BillingNewAddress_PhoneNumber",
+              "source": "real capture: checkout_00.html",
+              "priority": 1,
+              "validation_status": "ACCEPTED"
+            },
+            "used_fallback": false
+          },
+          "country": {
+            "field_name": "country",
+            "attempted": [
+              {
+                "candidate": {
+                  "locator_type": "ID",
+                  "expression": "#BillingNewAddress_CountryId",
+                  "source": "real capture: checkout_00.html; option value=\"1\"=\"United States\"",
+                  "priority": 1,
+                  "validation_status": "ACCEPTED"
+                },
+                "outcome": "SUCCESS"
+              }
+            ],
+            "resolved_candidate": {
+              "locator_type": "ID",
+              "expression": "#BillingNewAddress_CountryId",
+              "source": "real capture: checkout_00.html; option value=\"1\"=\"United States\"",
+              "priority": 1,
+              "validation_status": "ACCEPTED"
+            },
+            "used_fallback": false
+          },
+          "state_province": {
+            "field_name": "state_province",
+            "attempted": [
+              {
+                "candidate": {
+                  "locator_type": "ID",
+                  "expression": "#BillingNewAddress_StateProvinceId",
+                  "source": "real capture: checkout_00.html; real, AJAX-populated after Country selection (live-verified this task)",
+                  "priority": 1,
+                  "validation_status": "ACCEPTED"
+                },
+                "outcome": "SUCCESS"
+              }
+            ],
+            "resolved_candidate": {
+              "locator_type": "ID",
+              "expression": "#BillingNewAddress_StateProvinceId",
+              "source": "real capture: checkout_00.html; real, AJAX-populated after Country selection (live-verified this task)",
+              "priority": 1,
+              "validation_status": "ACCEPTED"
+            },
+            "used_fallback": false
+          }
+        }
+      },
+      {
+        "step_order": 5,
+        "description": "Accept the pre-selected (auto-saved) shipping address and Continue",
+        "status": "PASS"
+      },
+      {
+        "step_order": 6,
+        "description": "Observe multiple real Shipping Method options; select default and Continue",
+        "status": "PASS",
+        "shipping_options": [
+          "Ground___Shipping.FixedRate",
+          "Next Day Air___Shipping.FixedRate",
+          "2nd Day Air___Shipping.FixedRate"
+        ]
+      },
+      {
+        "step_order": 7,
+        "description": "Observe multiple real Payment Method options; select Cash On Delivery and Continue",
+        "status": "PASS",
+        "payment_options": [
+          "Payments.CashOnDelivery",
+          "Payments.CheckMoneyOrder",
+          "Payments.Manual",
+          "Payments.PurchaseOrder"
+        ]
+      },
+      {
+        "step_order": 8,
+        "description": "Observe Cash On Delivery Payment Info renders no payment-detail form; Continue",
+        "status": "PASS",
+        "payment_info_text": "You will pay by COD"
+      },
+      {
+        "step_order": 9,
+        "description": "Observe Confirm Order totals; verify Total equals the sum of its components",
+        "status": "PASS",
+        "totals_text": "Sub-Total:\t10.00\nShipping: (Ground)\t0.00\nPayment method additional fee:\t7.00\nTax:\t0.00\nTotal:\t17.00"
+      },
+      {
+        "step_order": 10,
+        "description": "Select Confirm to submit the real guest-path order",
+        "status": "PASS"
+      },
+      {
+        "step_order": 11,
+        "description": "Observe the Order Completed page for success and a real order number, while remaining genuinely anonymous",
+        "status": "PASS",
+        "order_number": "2387519",
+        "still_anonymous": true
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-GCO-03-GUEST-CHECKOUT-COMPLETION-ENH02-TD-GCO-03-01-main-1789497392494\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

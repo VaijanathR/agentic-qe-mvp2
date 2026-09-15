@@ -1,0 +1,162 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-GCO-01-GUEST-CHECKOUT-INIT-NO-DATASET-gw3-1789497519149",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T18:38:51.208316+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-GCO-01-GUEST-CHECKOUT-INIT",
+    "dataset_id": "NO-DATASET"
+  },
+  "content_hash": "e5467025770c91e4ef5ab2c6efdebb41b8656889282895e2cfc8026091d194e7",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-GCO-01-GUEST-CHECKOUT-INIT-NO-DATASET-gw3-1789497519149",
+    "requirement_ids": [
+      "REQ-GCO-01"
+    ],
+    "testcase_id": "ENH02-TC-REQ-GCO-01-GUEST-CHECKOUT-INIT",
+    "dataset_id": "NO-DATASET",
+    "automation_id": "ENH02-PW-TC-REQ-GCO-01-GUEST-CHECKOUT-INIT",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "gw3",
+    "start_time": "2026-09-15T18:38:39.149882+00:00",
+    "end_time": "2026-09-15T18:38:51.206474+00:00",
+    "duration_seconds": 12.056592,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "Navigate to '3rd Album'",
+        "status": "PASS"
+      },
+      {
+        "step_order": 2,
+        "description": "Add to Cart",
+        "status": "PASS",
+        "locator_resolution": {
+          "field_name": "add_to_cart_button",
+          "attempted": [
+            {
+              "candidate": {
+                "locator_type": "ID",
+                "expression": "#add-to-cart-button-53",
+                "source": "live capture: real add-to-cart id for this product",
+                "priority": 1,
+                "validation_status": "ACCEPTED"
+              },
+              "outcome": "SUCCESS"
+            }
+          ],
+          "resolved_candidate": {
+            "locator_type": "ID",
+            "expression": "#add-to-cart-button-53",
+            "source": "live capture: real add-to-cart id for this product",
+            "priority": 1,
+            "validation_status": "ACCEPTED"
+          },
+          "used_fallback": false
+        }
+      },
+      {
+        "step_order": 3,
+        "description": "Navigate to cart page",
+        "status": "PASS"
+      },
+      {
+        "step_order": 4,
+        "description": "Accept Terms of Service and select Checkout",
+        "status": "PASS",
+        "locator_resolution": {
+          "terms_of_service": {
+            "field_name": "terms_of_service",
+            "attempted": [
+              {
+                "candidate": {
+                  "locator_type": "ID",
+                  "expression": "#termsofservice",
+                  "source": "live capture: <input id=\"termsofservice\" type=\"checkbox\">",
+                  "priority": 1,
+                  "validation_status": "ACCEPTED"
+                },
+                "outcome": "SUCCESS"
+              }
+            ],
+            "resolved_candidate": {
+              "locator_type": "ID",
+              "expression": "#termsofservice",
+              "source": "live capture: <input id=\"termsofservice\" type=\"checkbox\">",
+              "priority": 1,
+              "validation_status": "ACCEPTED"
+            },
+            "used_fallback": false
+          },
+          "checkout_button": {
+            "field_name": "checkout_button",
+            "attempted": [
+              {
+                "candidate": {
+                  "locator_type": "ID",
+                  "expression": "#checkout",
+                  "source": "live capture: <button id=\"checkout\" name=\"checkout\" class=\"button-1 checkout-button\">",
+                  "priority": 1,
+                  "validation_status": "ACCEPTED"
+                },
+                "outcome": "SUCCESS"
+              }
+            ],
+            "resolved_candidate": {
+              "locator_type": "ID",
+              "expression": "#checkout",
+              "source": "live capture: <button id=\"checkout\" name=\"checkout\" class=\"button-1 checkout-button\">",
+              "priority": 1,
+              "validation_status": "ACCEPTED"
+            },
+            "used_fallback": false
+          }
+        }
+      },
+      {
+        "step_order": 5,
+        "description": "Select 'Checkout as Guest'",
+        "status": "PASS",
+        "locator_resolution": {
+          "field_name": "checkout_as_guest_button",
+          "attempted": [
+            {
+              "candidate": {
+                "locator_type": "CLASS",
+                "expression": ".checkout-as-guest-button",
+                "source": "live capture: <input class=\"button-1 checkout-as-guest-button\" value=\"Checkout as Guest\">",
+                "priority": 1,
+                "validation_status": "ACCEPTED"
+              },
+              "outcome": "SUCCESS"
+            }
+          ],
+          "resolved_candidate": {
+            "locator_type": "CLASS",
+            "expression": ".checkout-as-guest-button",
+            "source": "live capture: <input class=\"button-1 checkout-as-guest-button\" value=\"Checkout as Guest\">",
+            "priority": 1,
+            "validation_status": "ACCEPTED"
+          },
+          "used_fallback": false
+        }
+      },
+      {
+        "step_order": 6,
+        "description": "Observe checkout page loads, still anonymous",
+        "status": "PASS"
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-GCO-01-GUEST-CHECKOUT-INIT-NO-DATASET-gw3-1789497519149\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

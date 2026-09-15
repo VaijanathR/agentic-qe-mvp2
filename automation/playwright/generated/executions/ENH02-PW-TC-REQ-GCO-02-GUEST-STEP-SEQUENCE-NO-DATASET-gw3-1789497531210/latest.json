@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-GCO-02-GUEST-STEP-SEQUENCE-NO-DATASET-gw3-1789497531210",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-GCO-02-GUEST-STEP-SEQUENCE-NO-DATASET-gw3-1789497531210\\v1.json",
+  "content_hash": "ec9a7bbdad96e6b13ea27c72aa992adff61abebe320f215bacf08e0ae5149669",
+  "updated_at": "2026-09-15T18:38:51.331554+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-GCO-02-GUEST-STEP-SEQUENCE-NO-DATASET-gw3-1789497531210\\v1.json",
+      "generated_at": "2026-09-15T18:38:51.331554+00:00"
+    }
+  ]
+}

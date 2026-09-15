@@ -89,6 +89,32 @@ ENH02_TESTDATA = [
         "fields": {"search_term": "zzzznoresultxyz123"},
     },
     {
+        "dataset_id": "ENH02-TD-GCO-03-01",
+        "testcase_id": "ENH02-TC-REQ-GCO-03-GUEST-CHECKOUT-COMPLETION",
+        "requirement_ids": ["REQ-GCO-03"],
+        "data_category": "POSITIVE",
+        "purpose": (
+            "Synthetic Billing/Shipping contact used by the ONE real, "
+            "guest-path, order-completing checkout authorized by the "
+            "Controlled REQ-GCO-03 Post-Freeze Validation (Human + Di "
+            "authorization). Deliberately independent of "
+            "ENH02-TD-ACO-01-01 (the authenticated-path dataset) -- this "
+            "checkout must remain genuinely anonymous; no account "
+            "credentials are used or created."
+        ),
+        "fields": {
+            "first_name": "Enh02GuestCheckout",
+            "last_name": "SyntheticCustomer",
+            "email": "enh02.gco03.guest.contact@example.test",
+            "country_id": "1",
+            "state_label": "New York",
+            "city": "New York",
+            "address1": "1 Enhancement02 GCO03 Test Way",
+            "zip_postal_code": "10002",
+            "phone_number": "5555550200",
+        },
+    },
+    {
         "dataset_id": "ENH02-TD-ACO-01-01",
         "testcase_id": "ENH02-TC-REQ-ACO-01-AUTHENTICATED-CHECKOUT-COMPLETION",
         "requirement_ids": [

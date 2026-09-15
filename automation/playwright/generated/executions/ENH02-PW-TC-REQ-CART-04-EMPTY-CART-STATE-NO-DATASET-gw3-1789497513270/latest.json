@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-CART-04-EMPTY-CART-STATE-NO-DATASET-gw3-1789497513270",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-CART-04-EMPTY-CART-STATE-NO-DATASET-gw3-1789497513270\\v1.json",
+  "content_hash": "5c3b6bb2c532f65f3573aa3aef70b3c20c31e4d6da4c8ececd35051119ed22ef",
+  "updated_at": "2026-09-15T18:38:34.082061+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-CART-04-EMPTY-CART-STATE-NO-DATASET-gw3-1789497513270\\v1.json",
+      "generated_at": "2026-09-15T18:38:34.082061+00:00"
+    }
+  ]
+}

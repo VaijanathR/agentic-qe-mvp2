@@ -1,0 +1,244 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-REG-02-MISMATCH-ENH02-TD-REG-02-01-gw2-1789497520508",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T18:38:47.871073+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-REG-02-MISMATCH",
+    "dataset_id": "ENH02-TD-REG-02-01"
+  },
+  "content_hash": "2d82e8a00f9a787c8068d05f60225e749b56e00d98540e2d7785444ae9850a93",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-REG-02-MISMATCH-ENH02-TD-REG-02-01-gw2-1789497520508",
+    "requirement_ids": [
+      "REQ-REG-02"
+    ],
+    "testcase_id": "ENH02-TC-REQ-REG-02-MISMATCH",
+    "dataset_id": "ENH02-TD-REG-02-01",
+    "automation_id": "ENH02-PW-TC-REQ-REG-02-MISMATCH",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "gw2",
+    "start_time": "2026-09-15T18:38:40.508916+00:00",
+    "end_time": "2026-09-15T18:38:47.869421+00:00",
+    "duration_seconds": 7.360505,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "Navigate to home page",
+        "status": "PASS"
+      },
+      {
+        "step_order": 2,
+        "description": "Select 'Register' link",
+        "status": "PASS",
+        "locator_resolution": {
+          "field_name": "register_link",
+          "attempted": [
+            {
+              "candidate": {
+                "locator_type": "HREF",
+                "expression": "a[href='/register']",
+                "source": "live capture: <a href=\"/register\" class=\"ico-register\">",
+                "priority": 1,
+                "validation_status": "ACCEPTED"
+              },
+              "outcome": "SUCCESS"
+            }
+          ],
+          "resolved_candidate": {
+            "locator_type": "HREF",
+            "expression": "a[href='/register']",
+            "source": "live capture: <a href=\"/register\" class=\"ico-register\">",
+            "priority": 1,
+            "validation_status": "ACCEPTED"
+          },
+          "used_fallback": false
+        }
+      },
+      {
+        "step_order": 1,
+        "description": "Fill first_name",
+        "status": "PASS",
+        "locator_resolution": {
+          "field_name": "first_name",
+          "attempted": [
+            {
+              "candidate": {
+                "locator_type": "ID",
+                "expression": "#FirstName",
+                "source": "live capture: <input id=\"FirstName\" name=\"FirstName\">",
+                "priority": 1,
+                "validation_status": "ACCEPTED"
+              },
+              "outcome": "SUCCESS"
+            }
+          ],
+          "resolved_candidate": {
+            "locator_type": "ID",
+            "expression": "#FirstName",
+            "source": "live capture: <input id=\"FirstName\" name=\"FirstName\">",
+            "priority": 1,
+            "validation_status": "ACCEPTED"
+          },
+          "used_fallback": false
+        }
+      },
+      {
+        "step_order": 2,
+        "description": "Fill last_name",
+        "status": "PASS",
+        "locator_resolution": {
+          "field_name": "last_name",
+          "attempted": [
+            {
+              "candidate": {
+                "locator_type": "ID",
+                "expression": "#LastName",
+                "source": "live capture: <input id=\"LastName\" name=\"LastName\">",
+                "priority": 1,
+                "validation_status": "ACCEPTED"
+              },
+              "outcome": "SUCCESS"
+            }
+          ],
+          "resolved_candidate": {
+            "locator_type": "ID",
+            "expression": "#LastName",
+            "source": "live capture: <input id=\"LastName\" name=\"LastName\">",
+            "priority": 1,
+            "validation_status": "ACCEPTED"
+          },
+          "used_fallback": false
+        }
+      },
+      {
+        "step_order": 3,
+        "description": "Fill email",
+        "status": "PASS",
+        "locator_resolution": {
+          "field_name": "email",
+          "attempted": [
+            {
+              "candidate": {
+                "locator_type": "ID",
+                "expression": "#Email",
+                "source": "live capture: <input id=\"Email\" name=\"Email\">",
+                "priority": 1,
+                "validation_status": "ACCEPTED"
+              },
+              "outcome": "SUCCESS"
+            }
+          ],
+          "resolved_candidate": {
+            "locator_type": "ID",
+            "expression": "#Email",
+            "source": "live capture: <input id=\"Email\" name=\"Email\">",
+            "priority": 1,
+            "validation_status": "ACCEPTED"
+          },
+          "used_fallback": false
+        }
+      },
+      {
+        "step_order": 4,
+        "description": "Fill password",
+        "status": "PASS",
+        "locator_resolution": {
+          "field_name": "password",
+          "attempted": [
+            {
+              "candidate": {
+                "locator_type": "ID",
+                "expression": "#Password",
+                "source": "live capture: <input id=\"Password\" name=\"Password\">",
+                "priority": 1,
+                "validation_status": "ACCEPTED"
+              },
+              "outcome": "SUCCESS"
+            }
+          ],
+          "resolved_candidate": {
+            "locator_type": "ID",
+            "expression": "#Password",
+            "source": "live capture: <input id=\"Password\" name=\"Password\">",
+            "priority": 1,
+            "validation_status": "ACCEPTED"
+          },
+          "used_fallback": false
+        }
+      },
+      {
+        "step_order": 5,
+        "description": "Fill confirm_password",
+        "status": "PASS",
+        "locator_resolution": {
+          "field_name": "confirm_password",
+          "attempted": [
+            {
+              "candidate": {
+                "locator_type": "ID",
+                "expression": "#ConfirmPassword",
+                "source": "live capture: <input id=\"ConfirmPassword\" name=\"ConfirmPassword\">",
+                "priority": 1,
+                "validation_status": "ACCEPTED"
+              },
+              "outcome": "SUCCESS"
+            }
+          ],
+          "resolved_candidate": {
+            "locator_type": "ID",
+            "expression": "#ConfirmPassword",
+            "source": "live capture: <input id=\"ConfirmPassword\" name=\"ConfirmPassword\">",
+            "priority": 1,
+            "validation_status": "ACCEPTED"
+          },
+          "used_fallback": false
+        }
+      },
+      {
+        "step_order": 6,
+        "description": "Submit registration form",
+        "status": "PASS",
+        "locator_resolution": {
+          "field_name": "register_button",
+          "attempted": [
+            {
+              "candidate": {
+                "locator_type": "ID",
+                "expression": "#register-button",
+                "source": "live capture: <input id=\"register-button\" type=\"submit\">",
+                "priority": 1,
+                "validation_status": "ACCEPTED"
+              },
+              "outcome": "SUCCESS"
+            }
+          ],
+          "resolved_candidate": {
+            "locator_type": "ID",
+            "expression": "#register-button",
+            "source": "live capture: <input id=\"register-button\" type=\"submit\">",
+            "priority": 1,
+            "validation_status": "ACCEPTED"
+          },
+          "used_fallback": false
+        }
+      },
+      {
+        "step_order": 9,
+        "description": "Observe password-mismatch message",
+        "status": "PASS"
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-REG-02-MISMATCH-ENH02-TD-REG-02-01-gw2-1789497520508\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

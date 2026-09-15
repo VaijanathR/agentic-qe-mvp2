@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-CART-01-ADD-CONFIRMATION-NO-DATASET-gw3-1789497502066",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-CART-01-ADD-CONFIRMATION-NO-DATASET-gw3-1789497502066\\v1.json",
+  "content_hash": "b6a482fdf3ac6ca28c6e1660be843f1fed4a935b2721ecf38d9f85bb121f6c59",
+  "updated_at": "2026-09-15T18:38:27.522577+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-CART-01-ADD-CONFIRMATION-NO-DATASET-gw3-1789497502066\\v1.json",
+      "generated_at": "2026-09-15T18:38:27.522577+00:00"
+    }
+  ]
+}

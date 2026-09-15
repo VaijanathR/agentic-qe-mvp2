@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-GCO-03-GUEST-CHECKOUT-COMPLETION-ENH02-TD-GCO-03-01-main-1789497392494",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-GCO-03-GUEST-CHECKOUT-COMPLETION-ENH02-TD-GCO-03-01-main-1789497392494\\v1.json",
+  "content_hash": "ab0d3ddf2c239086a10e6730a82975c27a0f6727fe77e135916be517be4bb1dc",
+  "updated_at": "2026-09-15T18:36:58.287255+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-GCO-03-GUEST-CHECKOUT-COMPLETION-ENH02-TD-GCO-03-01-main-1789497392494\\v1.json",
+      "generated_at": "2026-09-15T18:36:58.287255+00:00"
+    }
+  ]
+}

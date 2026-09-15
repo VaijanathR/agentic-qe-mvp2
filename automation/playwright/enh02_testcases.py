@@ -564,4 +564,64 @@ ENH02_TESTCASES = [
             "completing a second one."
         ),
     },
+
+    # --- Controlled REQ-GCO-03 Post-Freeze Validation (Human + Di
+    # authorization; separate from the Enhancement-02 frozen baseline
+    # 521b155). Real evidence for every business step below comes from
+    # the same real checkout-flow mechanics already evidenced for
+    # REQ-ACO-01 (see checkout_page.py / locators.py) -- guest and
+    # authenticated checkout were already confirmed (this task's own
+    # earlier investigation, disclosed in the Enhancement-02 final freeze
+    # report) to render the identical named step sequence and mechanics;
+    # this testcase supplies the one piece of DIRECT SYSTEM EVIDENCE the
+    # Approved SRS itself discloses as missing for the guest path
+    # specifically (REQ-GCO-03's own Evidence Basis: "AGENT INFERENCE,
+    # bridging from DIRECT SYSTEM EVIDENCE on the authenticated path").
+    {
+        "testcase_id": "ENH02-TC-REQ-GCO-03-GUEST-CHECKOUT-COMPLETION",
+        "requirement_ids": ["REQ-GCO-03"],
+        "title": "Guest checkout culminates in order confirmation and a generated order number",
+        "objective": (
+            "Verify REQ-GCO-03 exactly as stated in the Approved SRS: 'Guest checkout shall culminate in order "
+            "confirmation and a generated order number, consistent with the mechanism observed for authenticated "
+            "checkout.' Acceptance criteria: 'Given a guest completes all checkout steps, then an order "
+            "confirmation and order number are produced, consistent with the authenticated-path mechanism.'"
+        ),
+        "test_type": "POSITIVE",
+        "preconditions": [
+            "The session is genuinely anonymous -- no login, no registration, no reuse of the existing shared "
+            "authenticated account or its saved address.",
+            "A real, physical (non-digital-download) product is reachable ('Computing and Internet' book) -- "
+            "real evidence (this task and the prior Enhancement-02 closure): a cart containing only "
+            "digital-download items skips the Shipping Address/Shipping Method steps entirely, which would not "
+            "faithfully mirror REQ-ACO-01's own 6-named-step mechanism this requirement must be 'consistent with'.",
+        ],
+        "business_steps": [
+            "As an anonymous session, add the real 'Computing and Internet' product to the cart.",
+            "Accept the Terms of Service checkbox and select 'Checkout'.",
+            "On the guest-or-register interstitial, select 'Checkout as Guest' (remain anonymous -- no account created).",
+            "At the Billing Address step, enter First name, Last name, Email, Country (United States), State, City, Address 1, Zip/postal code, Phone number, then Continue.",
+            "At the Shipping Address step, accept the pre-selected (auto-saved) shipping address, then Continue.",
+            "At the Shipping Method step, observe multiple real shipping options are presented; select the default option and Continue.",
+            "At the Payment Method step, observe multiple real payment options are presented; select Cash On Delivery and Continue.",
+            "At the Payment Info step, observe that Cash On Delivery presents no payment-detail form, then Continue.",
+            "At the Confirm Order step, observe the real Sub-Total/Shipping/Payment method additional fee/Tax/Total breakdown.",
+            "Select 'Confirm' to submit the order.",
+            "Observe the Order Completed page for the success message and a real, unique order number.",
+        ],
+        "expected_result": (
+            "REQ-GCO-03 (Approved SRS): the guest checkout culminates in a real order confirmation and a real, "
+            "generated order number, via the same named step sequence and mechanism already evidenced for the "
+            "authenticated path (REQ-ACO-01) -- without any authentication or account creation at any point."
+        ),
+        "risk": "HIGH", "priority": "HIGH",
+        "dataset_ids": ["ENH02-TD-GCO-03-01"],
+        "automation_id": "ENH02-PW-TC-REQ-GCO-03-GUEST-CHECKOUT-COMPLETION", "status": "AUTOMATED",
+        "notes": (
+            "The ONE real, permanent guest-path order authorized by the Controlled REQ-GCO-03 Post-Freeze "
+            "Validation (Human + Di authorization, separate from and after the Enhancement-02 frozen baseline "
+            "521b155). Session remains genuinely anonymous throughout -- never authenticates, never reuses the "
+            "shared account or its saved address from the authenticated-path closure work."
+        ),
+    },
 ]

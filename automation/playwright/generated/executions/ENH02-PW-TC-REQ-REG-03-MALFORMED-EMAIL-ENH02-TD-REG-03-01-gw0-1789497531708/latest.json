@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-REG-03-MALFORMED-EMAIL-ENH02-TD-REG-03-01-gw0-1789497531708",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-REG-03-MALFORMED-EMAIL-ENH02-TD-REG-03-01-gw0-1789497531708\\v1.json",
+  "content_hash": "26b13614b7a62f80e266ebc9bac0ec104ab5864e9e3898b960b737f3276f903a",
+  "updated_at": "2026-09-15T18:38:56.496408+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-REG-03-MALFORMED-EMAIL-ENH02-TD-REG-03-01-gw0-1789497531708\\v1.json",
+      "generated_at": "2026-09-15T18:38:56.496408+00:00"
+    }
+  ]
+}

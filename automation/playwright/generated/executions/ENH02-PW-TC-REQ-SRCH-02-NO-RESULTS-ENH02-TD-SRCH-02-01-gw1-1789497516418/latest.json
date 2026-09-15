@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-SRCH-02-NO-RESULTS-ENH02-TD-SRCH-02-01-gw1-1789497516418",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-SRCH-02-NO-RESULTS-ENH02-TD-SRCH-02-01-gw1-1789497516418\\v1.json",
+  "content_hash": "8b57a5ae92b2400e9632e47fb1ea5b3aa6263dcffe4da2699440d5fecfe430f9",
+  "updated_at": "2026-09-15T18:38:41.451989+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-SRCH-02-NO-RESULTS-ENH02-TD-SRCH-02-01-gw1-1789497516418\\v1.json",
+      "generated_at": "2026-09-15T18:38:41.451989+00:00"
+    }
+  ]
+}
