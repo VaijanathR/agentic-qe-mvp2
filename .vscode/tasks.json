@@ -1,0 +1,51 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Enhancement01: Run Playwright Tests",
+            "type": "shell",
+            "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+            "args": ["-m", "pytest", "automation/playwright/tests", "-v"],
+            "group": "test",
+            "problemMatcher": []
+        },
+        {
+            "label": "Enhancement01: Run Playwright Tests (Parallel, 2 workers)",
+            "type": "shell",
+            "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+            "args": ["-m", "pytest", "automation/playwright/tests", "-v", "-n", "2"],
+            "group": "test",
+            "problemMatcher": []
+        },
+        {
+            "label": "Enhancement01: Generate Excel Test-Management Workbooks",
+            "type": "shell",
+            "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+            "args": ["-m", "testmgmt.generate_workbooks"],
+            "problemMatcher": []
+        },
+        {
+            "label": "Enhancement01: Run Full Regression Suite",
+            "type": "shell",
+            "command": "${workspaceFolder}\\.venv\\Scripts\\python.exe",
+            "args": ["-m", "pytest", "tests", "-q"],
+            "group": {"kind": "test", "isDefault": true},
+            "problemMatcher": []
+        },
+        {
+            "label": "Enhancement01: Run JMeter Search Scenario (requires JAVA_HOME and JMETER_EXECUTABLE)",
+            "type": "shell",
+            "command": "jmeter",
+            "args": [
+                "-n",
+                "-t", "scenarios\\PERF-REQ-SRCH-01-search.jmx",
+                "-l", "results\\enh01_search_results.jtl",
+                "-j", "results\\enh01_search_jmeter.log"
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}\\performance\\jmeter"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

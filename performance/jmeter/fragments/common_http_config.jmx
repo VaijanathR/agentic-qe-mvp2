@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Post-MVP2 Enhancement 01: shared JMeter configuration fragment.
+
+  Included by scenario .jmx files via a standard core JMeter
+  IncludeController, so common HTTP defaults/headers are defined once
+  rather than duplicated into every scenario file (governing instruction
+  sec. 30, "avoid one giant .jmx"). This fragment defines no Thread
+  Group and no samplers of its own; it is never executed standalone.
+-->
+<jmeterTestPlan version="1.2" properties="5.0" jmeter="5.6.3">
+  <hashTree>
+    <TestFragmentController guiclass="TestFragmentControllerGui" testclass="TestFragmentController" testname="Common HTTP Config Fragment" enabled="true"/>
+    <hashTree>
+      <ConfigTestElement guiclass="HttpDefaultsGui" testclass="ConfigTestElement" testname="HTTP Request Defaults (shared)" enabled="true">
+        <stringProp name="HTTPSampler.domain">demowebshop.tricentis.com</stringProp>
+        <stringProp name="HTTPSampler.protocol">https</stringProp>
+        <stringProp name="HTTPSampler.path"></stringProp>
+        <stringProp name="HTTPSampler.connect_timeout">10000</stringProp>
+        <stringProp name="HTTPSampler.response_timeout">30000</stringProp>
+      </ConfigTestElement>
+      <hashTree/>
+      <HeaderManager guiclass="HeaderPanel" testclass="HeaderManager" testname="HTTP Header Manager (shared)" enabled="true">
+        <collectionProp name="HeaderManager.headers">
+          <elementProp name="" elementType="Header">
+            <stringProp name="Header.name">User-Agent</stringProp>
+            <stringProp name="Header.value">AgenticQE-Enhancement01-JMeter/5.6.3 (+https://github.com/VaijanathR/agentic-qe-mvp2)</stringProp>
+          </elementProp>
+        </collectionProp>
+      </HeaderManager>
+      <hashTree/>
+    </hashTree>
+  </hashTree>
+</jmeterTestPlan>

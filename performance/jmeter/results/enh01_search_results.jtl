@@ -1,0 +1,7 @@
+timeStamp,elapsed,label,responseCode,responseMessage,threadName,dataType,success,failureMessage,bytes,sentBytes,grpThreads,allThreads,URL,Latency,IdleTime,Connect
+1789484635749,1752,GET Search Results (REQ-SRCH-01),200,OK,REQ-SRCH-01 Search Users 1-1,text,true,,27491,187,3,3,https://demowebshop.tricentis.com/search?q=book,1621,0,975
+1789484636589,1147,GET Search Results (REQ-SRCH-01),200,OK,REQ-SRCH-01 Search Users 1-2,text,true,,31988,191,3,3,https://demowebshop.tricentis.com/search?q=computer,999,0,341
+1789484637567,1099,GET Search Results (REQ-SRCH-01),200,OK,REQ-SRCH-01 Search Users 1-3,text,true,,24176,189,3,3,https://demowebshop.tricentis.com/search?q=jacket,951,0,324
+1789484638527,628,GET Search Results (REQ-SRCH-01),200,OK,REQ-SRCH-01 Search Users 1-1,text,true,,27491,187,3,3,https://demowebshop.tricentis.com/search?q=book,614,0,0
+1789484638739,717,GET Search Results (REQ-SRCH-01),200,OK,REQ-SRCH-01 Search Users 1-2,text,true,,31988,191,2,2,https://demowebshop.tricentis.com/search?q=computer,701,0,0
+1789484639672,632,GET Search Results (REQ-SRCH-01),200,OK,REQ-SRCH-01 Search Users 1-3,text,true,,24176,189,1,1,https://demowebshop.tricentis.com/search?q=jacket,630,0,0

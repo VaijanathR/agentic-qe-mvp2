@@ -1,0 +1,43 @@
+{
+  "record_id": "ENHANCEMENT-01-ENVIRONMENT-RECORD",
+  "captured_at_utc": "2026-09-15T14:40:00Z",
+  "windows": {
+    "caption": "Microsoft Windows 10 Home",
+    "version": "10.0.19045.0"
+  },
+  "vscode": {
+    "version": "1.137.0"
+  },
+  "python": {
+    "version": "3.13.2",
+    "interpreter_path": ".venv\\Scripts\\python.exe",
+    "virtual_environment": ".venv (Windows-native venv, reached via WSL interop in this session; the venv itself is a genuine Windows venv, not a WSL/Linux one)"
+  },
+  "playwright": {
+    "package_version": "1.62.0",
+    "cli_version": "1.62.0"
+  },
+  "chromium": {
+    "status": "AVAILABLE",
+    "version": "151.0.7922.34",
+    "verified_by": "real headless launch via playwright.sync_api during this enhancement's own inspection phase"
+  },
+  "java": {
+    "distribution": "Eclipse Temurin",
+    "version": "17.0.20.1+1",
+    "path": "external, non-repo-committed, Windows-native JRE (downloaded from the official Adoptium API; see CP-MVP2-08 reconciliation precedent for the acquisition method)",
+    "java_home_status": "Not set by default in this repository's environment; must be configured per-machine, matching this project's existing CP-08 external-dependency contract"
+  },
+  "jmeter": {
+    "version": "5.6.3",
+    "path": "external, non-repo-committed, Windows-native Apache JMeter distribution (bin/jmeter.bat)",
+    "jmeter_executable_status": "Not set by default; must be configured per-machine via the JMETER_EXECUTABLE environment variable, matching performance/pipeline.py's existing contract"
+  },
+  "execution_status": {
+    "windows_playwright_execution": "DEMONSTRATED (real, live, non-mocked)",
+    "windows_jmeter_execution": "DEMONSTRATED (real, live, non-mocked)",
+    "windows_parallel_playwright_execution": "DEMONSTRATED (pytest-xdist, 2 workers, real browser instances)",
+    "distributed_execution": "CONFIGURED (architecture/contract documented) -- NOT IMPLEMENTED (no second machine/grid available in this environment)",
+    "wsl_status": "INFORMATIONAL ONLY -- WSL/Linux (python3, this session's own Bash tool) was used only for repository inspection and orchestration (git, curl, file edits); every actual Playwright/JMeter execution reported as real in this enhancement ran through the Windows-native .venv\\Scripts\\python.exe / Windows-native jmeter.bat, never through a WSL-side interpreter or WSL-side JMeter/JRE build. WSL execution alone would not have satisfied this task's Windows+VS Code acceptance requirement, and was not relied upon for any claimed result."
+  }
+}

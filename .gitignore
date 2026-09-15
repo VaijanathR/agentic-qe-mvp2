@@ -5,7 +5,21 @@ __pycache__/
 .pytest_cache/
 
 # VS Code
-.vscode/
+# A bare ".vscode/" ignores the directory itself, which git will then
+# never descend into -- so a file-level negation below would silently
+# not apply. Ignoring "*" inside the directory instead keeps the same
+# default (everything in .vscode/ is ignored) while still allowing the
+# specific negations below to work.
+.vscode/*
+# Post-MVP2 Enhancement 01: shared, project-level workspace configuration
+# is a required deliverable (interpreter path, pytest discovery, tasks,
+# debug configs) so any QE engineer opening this repo in Windows VS Code
+# gets a working setup without switching to WSL. Only these three shared
+# files are un-ignored; any other machine-specific VS Code state (caches,
+# personal overrides) remains ignored.
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
 
 # Environment / secrets
 .env
@@ -26,6 +40,9 @@ test-results/
 # execution this checkpoint requires (docs/CP-MVP2-08-SPECIFICATION-v1.0.md
 # sec. 11) is deliberately un-ignored here.
 !performance/generated/raw/**/*.jtl
+# Post-MVP2 Enhancement 01: same rationale, for the new modular JMeter
+# scenario's real execution results.
+!performance/jmeter/results/**/*.jtl
 
 # OS
 .DS_Store
