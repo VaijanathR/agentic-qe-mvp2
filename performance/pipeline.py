@@ -1,14 +1,24 @@
 """
 CP-MVP2-08 — real JMeter execution pipeline.
 
-Orchestrates: locate a real JMeter + Java installation (via the `JMETER_BIN`
-and `JAVA_HOME` environment variables; neither tool is bundled in this
-repository -- an external, independently-obtainable dependency, per frozen
-spec sec. 5/10, exactly like this project's existing, unbundled Playwright
-browser dependency) -> execute the real, committed `.jmx` test plan in
-non-GUI mode against the real SUT -> parse the real, raw `.jtl` results ->
-evaluate the two, separate acceptance-criteria dimensions (frozen spec
-sec. 8.1 capability-demonstration, sec. 8.2 numeric-SLA) -> persist.
+Orchestrates: locate a real JMeter + Java installation (via the
+`JMETER_EXECUTABLE` and `JAVA_HOME` environment variables; neither tool is
+bundled in this repository -- an external, independently-obtainable
+dependency, per frozen spec sec. 5/10, exactly like this project's existing,
+unbundled Playwright browser dependency) -> execute the real, committed
+`.jmx` test plan in non-GUI mode against the real SUT -> parse the real, raw
+`.jtl` results -> evaluate the two, separate acceptance-criteria dimensions
+(frozen spec sec. 8.1 capability-demonstration, sec. 8.2 numeric-SLA) ->
+persist.
+
+Note: this pipeline deliberately does NOT use the environment variable name
+`JMETER_BIN`, even though that is a natural-sounding choice. Apache JMeter's
+own Windows launcher (`jmeter.bat`) defines and internally relies on an
+environment variable of that exact name to mean "the JMeter bin/ directory"
+(must end in a path separator) -- a real, discovered collision that silently
+corrupted the constructed jar path on Windows when this pipeline used the
+same name for a different purpose (the path to the jmeter executable
+itself). `JMETER_EXECUTABLE` avoids the collision entirely.
 
 Never fabricates a result: if JMeter/Java cannot be located, or the real
 subprocess fails to produce a results file, the disposition is BLOCKED, not
@@ -59,14 +69,15 @@ _VERSION_RE = re.compile(r"\b\d+\.\d+(?:\.\d+)?\b")
 def _resolve_java_bin() -> Optional[str]:
     java_home = os.environ.get("JAVA_HOME")
     if java_home:
-        candidate = Path(java_home) / "bin" / "java"
-        if candidate.exists():
-            return str(candidate)
+        for name in ("java", "java.exe"):
+            candidate = Path(java_home) / "bin" / name
+            if candidate.exists():
+                return str(candidate)
     return shutil.which("java")
 
 
 def _resolve_jmeter_bin() -> Optional[str]:
-    explicit = os.environ.get("JMETER_BIN")
+    explicit = os.environ.get("JMETER_EXECUTABLE")
     if explicit and Path(explicit).exists():
         return explicit
     return shutil.which("jmeter")
@@ -110,10 +121,10 @@ def run_cp08_performance_scenario(run_id: Optional[str] = None) -> Dict:
             requirement_ids=REQUIREMENT_IDS,
             jmx_path=_relative(JMX_PATH),
             raw_results_path=None,
-            environment={"error": "JAVA_HOME/java or JMETER_BIN/jmeter could not be resolved"},
+            environment={"error": "JAVA_HOME/java or JMETER_EXECUTABLE/jmeter could not be resolved"},
             aggregate_metrics=None,
             capability_result=CapabilityResult.BLOCKED,
-            capability_result_detail="No usable Java and/or JMeter installation could be located via JAVA_HOME/JMETER_BIN or PATH. Per frozen spec sec. 9, this is reported as BLOCKED, never fabricated as PASS.",
+            capability_result_detail="No usable Java and/or JMeter installation could be located via JAVA_HOME/JMETER_EXECUTABLE or PATH. Per frozen spec sec. 9, this is reported as BLOCKED, never fabricated as PASS.",
             numeric_sla_result=NumericSLAResult.INCONCLUSIVE,
             numeric_sla_result_detail=NUMERIC_SLA_REASON,
             generation_metadata={"generator": "performance.pipeline.run_cp08_performance_scenario"},

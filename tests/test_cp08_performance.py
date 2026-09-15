@@ -9,8 +9,8 @@ ACCEPTANCE (capability-demonstration PASS/FAIL/BLOCKED vs the always-
 INCONCLUSIVE numeric-SLA dimension, per frozen spec sec. 8), PERSIST
 (roundtrip via the unmodified persistence/envelope.py), PIPELINE (the real
 BLOCKED path when JMeter/Java cannot be located; a real, live JMeter
-execution when JAVA_HOME/JMETER_BIN are available in this environment,
-skipped otherwise -- never mocked as if it were real).
+execution when JAVA_HOME/JMETER_EXECUTABLE are available in this
+environment, skipped otherwise -- never mocked as if it were real).
 """
 from __future__ import annotations
 
@@ -175,7 +175,7 @@ def test_numeric_sla_result_is_never_pass_or_fail():
 # ---------------------------------------------------------------------------
 
 def test_pipeline_blocked_when_jmeter_and_java_cannot_be_located(monkeypatch):
-    monkeypatch.delenv("JMETER_BIN", raising=False)
+    monkeypatch.delenv("JMETER_EXECUTABLE", raising=False)
     monkeypatch.delenv("JAVA_HOME", raising=False)
     monkeypatch.setattr("performance.pipeline.shutil.which", lambda _name: None)
     result = run_cp08_performance_scenario(run_id="PERF-RUN-TEST-BLOCKED-NO-TOOLS")
@@ -185,8 +185,8 @@ def test_pipeline_blocked_when_jmeter_and_java_cannot_be_located(monkeypatch):
 
 
 @pytest.mark.skipif(
-    not (os.environ.get("JMETER_BIN") and os.environ.get("JAVA_HOME")),
-    reason="JMETER_BIN/JAVA_HOME not configured in this environment -- real live JMeter execution skipped, never mocked as if it were real",
+    not (os.environ.get("JMETER_EXECUTABLE") and os.environ.get("JAVA_HOME")),
+    reason="JMETER_EXECUTABLE/JAVA_HOME not configured in this environment -- real live JMeter execution skipped, never mocked as if it were real",
 )
 def test_pipeline_real_live_execution_end_to_end():
     result = run_cp08_performance_scenario(run_id="PERF-RUN-TEST-LIVE")

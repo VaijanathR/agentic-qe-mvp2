@@ -1,0 +1,14 @@
+{
+  "artifact_id": "PERF-RUN-CP08-WINDOWS-VERIFICATION",
+  "latest_version": 1,
+  "latest_path": "performance\\generated\\records\\PERF-RUN-CP08-WINDOWS-VERIFICATION\\v1.json",
+  "content_hash": "f0e74712cbfa962a387f48861974e58e755616157fa82ab56c0986e002d53c42",
+  "updated_at": "2026-09-15T10:09:15.216690+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "performance\\generated\\records\\PERF-RUN-CP08-WINDOWS-VERIFICATION\\v1.json",
+      "generated_at": "2026-09-15T10:09:15.216690+00:00"
+    }
+  ]
+}
