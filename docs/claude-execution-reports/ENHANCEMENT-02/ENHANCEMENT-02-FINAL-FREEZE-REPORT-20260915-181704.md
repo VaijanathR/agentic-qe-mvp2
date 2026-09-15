@@ -4,7 +4,7 @@
 **Starting baseline (pre-closure Enhancement-02):** `f82277d`
 **MVP2 frozen baseline:** `33b9946`
 **Enhancement-01 baseline:** `85dc6ab`
-**Final commit SHA (this closure):** *(recorded below, after commit)*
+**Final commit SHA (this closure):** `73c06d0` (feature commit `7d38878` + follow-up workbook-regeneration commit `73c06d0`)
 
 ---
 
@@ -384,6 +384,15 @@ of this as a permanent, documented MVP2/Enhancement-02 scope boundary.
    dimension applies to the deferred-10; existing 2 scenarios untouched).
 9. Real execution evidence — **PASS** (real Windows Playwright execution
    demonstrated throughout; see Regression above).
-10. Fresh clone — *(performed as part of final commit verification below)*.
-11–15. Commit, push, HEAD==origin/main, clean tree, final SHA — *(recorded
-    below, after commit)*.
+10. Fresh clone — **PASS** (see below).
+11. Commit — **DONE**: `7d38878` (feature) + `73c06d0` (workbook
+    regeneration after final verification run; the two Enhancement-02
+    ENH02-TD-REG-02-01/ENH02-TD-REG-05-01 datasets embed a
+    timestamp-suffixed synthetic email by design, so a workbook
+    regenerated in a later process naturally differs in bytes only — a
+    documented, pre-existing characteristic, not new content).
+12. Push — **DONE**.
+13. HEAD == origin/main — **CONFIRMED** (see below).
+14. Working tree clean (excluding pre-existing, unrelated untracked files
+    present before this task began) — **CONFIRMED**.
+15. Final commit SHA — **`73c06d0`**.
