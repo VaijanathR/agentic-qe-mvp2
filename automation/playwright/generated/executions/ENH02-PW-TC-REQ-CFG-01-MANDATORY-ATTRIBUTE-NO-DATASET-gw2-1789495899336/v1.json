@@ -1,0 +1,76 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-CFG-01-MANDATORY-ATTRIBUTE-NO-DATASET-gw2-1789495899336",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T18:11:44.062993+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-CFG-01-MANDATORY-ATTRIBUTE",
+    "dataset_id": "NO-DATASET"
+  },
+  "content_hash": "e0de05c927aa65a18a0ecffa77a966c31e8aad894fc256b5f4adce53594631c8",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-CFG-01-MANDATORY-ATTRIBUTE-NO-DATASET-gw2-1789495899336",
+    "requirement_ids": [
+      "REQ-CFG-01"
+    ],
+    "testcase_id": "ENH02-TC-REQ-CFG-01-MANDATORY-ATTRIBUTE",
+    "dataset_id": "NO-DATASET",
+    "automation_id": "ENH02-PW-TC-REQ-CFG-01-MANDATORY-ATTRIBUTE",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "gw2",
+    "start_time": "2026-09-15T18:11:39.336827+00:00",
+    "end_time": "2026-09-15T18:11:44.061738+00:00",
+    "duration_seconds": 4.724911,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "Navigate to 'Build your own computer'",
+        "status": "PASS"
+      },
+      {
+        "step_order": 2,
+        "description": "Add to Cart with mandatory HDD attribute left unselected",
+        "status": "PASS",
+        "locator_resolution": {
+          "field_name": "add_to_cart_button_byoc",
+          "attempted": [
+            {
+              "candidate": {
+                "locator_type": "ID",
+                "expression": "#add-to-cart-button-16",
+                "source": "live capture: <input id=\"add-to-cart-button-16\">",
+                "priority": 1,
+                "validation_status": "ACCEPTED"
+              },
+              "outcome": "SUCCESS"
+            }
+          ],
+          "resolved_candidate": {
+            "locator_type": "ID",
+            "expression": "#add-to-cart-button-16",
+            "source": "live capture: <input id=\"add-to-cart-button-16\">",
+            "priority": 1,
+            "validation_status": "ACCEPTED"
+          },
+          "used_fallback": false
+        }
+      },
+      {
+        "step_order": 3,
+        "description": "Observe blocking message names HDD; cart unchanged",
+        "status": "PASS"
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-CFG-01-MANDATORY-ATTRIBUTE-NO-DATASET-gw2-1789495899336\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

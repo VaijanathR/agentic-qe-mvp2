@@ -1,0 +1,53 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-ACCT-01-ACCOUNT-PAGES-ENH02-TD-REG-05-01-main-1789495949436",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T18:12:32.324500+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-ACCT-01-ACCOUNT-PAGES",
+    "dataset_id": "ENH02-TD-REG-05-01"
+  },
+  "content_hash": "9b2e4512c27650419b542d96dd78c1bbd8b6a662016e79c22816e71de1c41507",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-ACCT-01-ACCOUNT-PAGES-ENH02-TD-REG-05-01-main-1789495949436",
+    "requirement_ids": [
+      "REQ-ACCT-01"
+    ],
+    "testcase_id": "ENH02-TC-REQ-ACCT-01-ACCOUNT-PAGES",
+    "dataset_id": "ENH02-TD-REG-05-01",
+    "automation_id": "ENH02-PW-TC-REQ-ACCT-01-ACCOUNT-PAGES",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "main",
+    "start_time": "2026-09-15T18:12:29.436099+00:00",
+    "end_time": "2026-09-15T18:12:32.323475+00:00",
+    "duration_seconds": 2.887376,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "Navigate to Customer Info page",
+        "status": "PASS"
+      },
+      {
+        "step_order": 2,
+        "description": "Navigate to Addresses page",
+        "status": "PASS"
+      },
+      {
+        "step_order": 3,
+        "description": "Navigate to Orders page",
+        "status": "PASS"
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-ACCT-01-ACCOUNT-PAGES-ENH02-TD-REG-05-01-main-1789495949436\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

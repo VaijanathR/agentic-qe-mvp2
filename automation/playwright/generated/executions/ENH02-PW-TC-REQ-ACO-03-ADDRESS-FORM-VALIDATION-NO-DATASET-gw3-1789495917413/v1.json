@@ -1,0 +1,48 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-ACO-03-ADDRESS-FORM-VALIDATION-NO-DATASET-gw3-1789495917413",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T18:11:59.169108+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-ACO-03-ADDRESS-FORM-VALIDATION",
+    "dataset_id": "NO-DATASET"
+  },
+  "content_hash": "d9cda65e86473b4e70709c51f7cb5779ccb7d16e5bd77a9967c9485f7a4e210c",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-ACO-03-ADDRESS-FORM-VALIDATION-NO-DATASET-gw3-1789495917413",
+    "requirement_ids": [
+      "REQ-ACO-03"
+    ],
+    "testcase_id": "ENH02-TC-REQ-ACO-03-ADDRESS-FORM-VALIDATION",
+    "dataset_id": "NO-DATASET",
+    "automation_id": "ENH02-PW-TC-REQ-ACO-03-ADDRESS-FORM-VALIDATION",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "gw3",
+    "start_time": "2026-09-15T18:11:57.413759+00:00",
+    "end_time": "2026-09-15T18:11:59.168075+00:00",
+    "duration_seconds": 1.754316,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "Submit Billing Address step with all required fields blank",
+        "status": "PASS"
+      },
+      {
+        "step_order": 2,
+        "description": "Observe progression is blocked with validation errors",
+        "status": "PASS"
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-ACO-03-ADDRESS-FORM-VALIDATION-NO-DATASET-gw3-1789495917413\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

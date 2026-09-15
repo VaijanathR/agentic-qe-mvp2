@@ -1,0 +1,43 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-GCO-02-GUEST-STEP-SEQUENCE-NO-DATASET-gw3-1789495917193",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T18:11:57.412679+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-GCO-02-GUEST-STEP-SEQUENCE",
+    "dataset_id": "NO-DATASET"
+  },
+  "content_hash": "1810cecb71326612d3037aa85f4ac33f24665a8f87ee26f823d8ddb0484c0a5c",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-GCO-02-GUEST-STEP-SEQUENCE-NO-DATASET-gw3-1789495917193",
+    "requirement_ids": [
+      "REQ-GCO-02"
+    ],
+    "testcase_id": "ENH02-TC-REQ-GCO-02-GUEST-STEP-SEQUENCE",
+    "dataset_id": "NO-DATASET",
+    "automation_id": "ENH02-PW-TC-REQ-GCO-02-GUEST-STEP-SEQUENCE",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "gw3",
+    "start_time": "2026-09-15T18:11:57.193146+00:00",
+    "end_time": "2026-09-15T18:11:57.411504+00:00",
+    "duration_seconds": 0.218358,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "Observe Billing Address step heading",
+        "status": "PASS"
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-GCO-02-GUEST-STEP-SEQUENCE-NO-DATASET-gw3-1789495917193\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

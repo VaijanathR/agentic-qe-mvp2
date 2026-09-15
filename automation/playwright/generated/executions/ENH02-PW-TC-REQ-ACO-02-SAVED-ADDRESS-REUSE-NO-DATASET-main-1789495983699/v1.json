@@ -1,0 +1,85 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-ACO-02-SAVED-ADDRESS-REUSE-NO-DATASET-main-1789495983699",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T18:13:10.048196+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-ACO-02-SAVED-ADDRESS-REUSE",
+    "dataset_id": "NO-DATASET"
+  },
+  "content_hash": "99d8254299d39ef696c04bd18c6758d0ca03bcc97d1f7e2d2076ecf65c0832c4",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-ACO-02-SAVED-ADDRESS-REUSE-NO-DATASET-main-1789495983699",
+    "requirement_ids": [
+      "REQ-ACO-02"
+    ],
+    "testcase_id": "ENH02-TC-REQ-ACO-02-SAVED-ADDRESS-REUSE",
+    "dataset_id": "NO-DATASET",
+    "automation_id": "ENH02-PW-TC-REQ-ACO-02-SAVED-ADDRESS-REUSE",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "main",
+    "start_time": "2026-09-15T18:13:03.699802+00:00",
+    "end_time": "2026-09-15T18:13:10.047049+00:00",
+    "duration_seconds": 6.347247,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "Add a real product to the cart",
+        "status": "PASS",
+        "locator_resolution": {
+          "field_name": "add_to_cart_button",
+          "attempted": [
+            {
+              "candidate": {
+                "locator_type": "ID",
+                "expression": "#add-to-cart-button-13",
+                "source": "live capture: real add-to-cart id for this product",
+                "priority": 1,
+                "validation_status": "ACCEPTED"
+              },
+              "outcome": "SUCCESS"
+            }
+          ],
+          "resolved_candidate": {
+            "locator_type": "ID",
+            "expression": "#add-to-cart-button-13",
+            "source": "live capture: real add-to-cart id for this product",
+            "priority": 1,
+            "validation_status": "ACCEPTED"
+          },
+          "used_fallback": false
+        }
+      },
+      {
+        "step_order": 2,
+        "description": "Accept Terms of Service and select Checkout",
+        "status": "PASS"
+      },
+      {
+        "step_order": 3,
+        "description": "Observe the Billing Address selection control",
+        "status": "PASS",
+        "billing_address_select_options": [
+          "Enh02Checkout SyntheticCustomer, 1 Enhancement02 Test Way, New York, New York 10001, United States",
+          "New Address"
+        ]
+      },
+      {
+        "step_order": 4,
+        "description": "Do not proceed further (no second order created)",
+        "status": "PASS"
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-ACO-02-SAVED-ADDRESS-REUSE-NO-DATASET-main-1789495983699\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

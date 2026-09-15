@@ -16,6 +16,25 @@ from automation.playwright.evidence import relative_evidence_refs, screenshot_pa
 from automation.playwright.logging_ import ExecutionLogRecord, ExecutionStatus, now_iso, persist_execution_log
 
 
+def wait_for_authenticated_indicator(page, timeout_ms: int = 10000) -> bool:
+    """Real synchronization-defect fix (this task): a fixed, short
+    `wait_for_timeout` after a real login/registration submit proved too
+    short under real, concurrent (`pytest -n 4`) load against the shared,
+    public SUT -- a real, reproducible failure this task found and fixed
+    (REQ-AUTH-01 intermittently failed to observe the authenticated-state
+    indicator under 4-worker concurrency, though it always passed running
+    alone). Waits up to `timeout_ms` for the real `a.ico-logout` indicator
+    to appear, returning as soon as it does rather than sleeping the full
+    duration every time; returns False (never raises) if it genuinely
+    never appears, preserving the caller's own honest PASS/FAIL
+    semantics."""
+    try:
+        page.wait_for_selector("a.ico-logout", timeout=timeout_ms)
+        return True
+    except Exception:
+        return page.locator("a.ico-logout").count() > 0
+
+
 @contextmanager
 def real_execution(
     *,

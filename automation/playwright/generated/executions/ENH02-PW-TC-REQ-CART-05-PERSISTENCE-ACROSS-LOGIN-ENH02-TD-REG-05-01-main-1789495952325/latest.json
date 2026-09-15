@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-CART-05-PERSISTENCE-ACROSS-LOGIN-ENH02-TD-REG-05-01-main-1789495952325",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-CART-05-PERSISTENCE-ACROSS-LOGIN-ENH02-TD-REG-05-01-main-1789495952325\\v1.json",
+  "content_hash": "43d5919dc2790de4501f528e0c1363153ee1adf223b84261581c13fbcc2fae2f",
+  "updated_at": "2026-09-15T18:12:40.085534+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-CART-05-PERSISTENCE-ACROSS-LOGIN-ENH02-TD-REG-05-01-main-1789495952325\\v1.json",
+      "generated_at": "2026-09-15T18:12:40.085534+00:00"
+    }
+  ]
+}

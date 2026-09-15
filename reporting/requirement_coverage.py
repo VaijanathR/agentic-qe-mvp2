@@ -51,15 +51,23 @@ class RequirementCoverageRecord:
 # The full, real chain of "one real registration" reuse: registering once
 # unlocks REQ-REG-04/05, REQ-AUTH-01/03, REQ-ACCT-01, REQ-CART-05,
 # REQ-PWR-01 for real execution without repeatedly creating accounts on
-# the shared, public, third-party SUT. Full checkout-to-order-completion
-# (REQ-ACO-01/02, REQ-GCO-03, REQ-SHIP-01, REQ-PAY-01/02/03, REQ-CONF-01/02,
-# REQ-OHIST-01) is deliberately NOT automated in this enhancement -- it
-# requires further, separate evidence-gathering for the shipping/payment
-# steps this enhancement did not perform, and creates a real, permanent
-# order record each run -- a materially bigger, harder-to-undo mutation
-# than a registration or cart action. This is disclosed as a real,
-# bounded scope decision (HUMAN_REVIEW_REQUIRED / DEPENDENCY_BLOCKED),
-# never hidden, never converted into a fabricated PASS.
+# the shared, public, third-party SUT.
+#
+# Post-MVP2 Enhancement 02 Deferred-10 Closure (this task): the previously
+# deferred checkout-to-order-completion chain (REQ-ACO-01/02, REQ-SHIP-01,
+# REQ-PAY-01/02/03, REQ-CONF-01/02, REQ-OHIST-01) has now been legitimately
+# closed via exactly ONE real, permanent order, completed by the SAME
+# shared account, chained immediately after its own registration/login
+# testcases in `test_enh02_shared_account.py` -- never a second account,
+# never a second order. REQ-GCO-03 (guest checkout culminating in a
+# completed order) remains deferred: real, live investigation this task
+# confirmed the guest path technically reaches Confirm Order identically
+# to the authenticated path (no technical blocker), but closing it would
+# require a SECOND, separate, permanent order via the anonymous path --
+# exceeding this task's own "minimum necessary permanent state creation"
+# principle (sec. 7) and "no duplicate-account or order pollution"
+# principle (sec. 8). Left HUMAN_REVIEW_REQUIRED pending an explicit
+# Human + Di decision on whether a second real order is authorized.
 
 REQUIREMENT_COVERAGE: List[RequirementCoverageRecord] = [
     # --- Registration ---
@@ -131,38 +139,47 @@ REQUIREMENT_COVERAGE: List[RequirementCoverageRecord] = [
     RequirementCoverageRecord("REQ-GCO-02", "Guest checkout shows the same step sequence", "Guest Checkout", Disposition.FUNCTIONAL_AUTOMATABLE,
         testcase_ids=["ENH02-TC-REQ-GCO-02-GUEST-STEP-SEQUENCE"], remarks="Verifies the Billing Address step renders; does not proceed further (see REQ-GCO-03)."),
     RequirementCoverageRecord("REQ-GCO-03", "Guest checkout culminates in a completed order", "Guest Checkout", Disposition.HUMAN_REVIEW_REQUIRED,
-        remarks="Requires completing a real order (a permanent record on the shared SUT) each run; deferred pending explicit Human + Di authorization and further shipping/payment-step evidence-gathering not performed this task."),
+        remarks="Real, live investigation this task confirmed the guest path technically reaches Confirm Order identically to the authenticated path (no technical blocker). Deliberately left deferred: closing it would require a SECOND, separate, permanent order via the anonymous path, exceeding this task's 'minimum necessary permanent state creation' principle. Decision required: Human + Di authorization for a second real, permanent order."),
 
     # --- Authenticated Checkout ---
-    RequirementCoverageRecord("REQ-ACO-01", "Authenticated checkout proceeds through all 6 named steps to a completed order", "Authenticated Checkout", Disposition.HUMAN_REVIEW_REQUIRED,
-        remarks="Same reason as REQ-GCO-03: real, permanent order creation deferred pending Human + Di authorization."),
-    RequirementCoverageRecord("REQ-ACO-02", "Saved address offered via selection on repeat checkout", "Authenticated Checkout", Disposition.DEPENDENCY_BLOCKED,
-        remarks="Depends on REQ-ACO-01 having already been completed at least once for this account (a saved address only exists after a prior checkout)."),
+    RequirementCoverageRecord("REQ-ACO-01", "Authenticated checkout proceeds through all 6 named steps to a completed order", "Authenticated Checkout", Disposition.FUNCTIONAL_AUTOMATABLE,
+        testcase_ids=["ENH02-TC-REQ-ACO-01-AUTHENTICATED-CHECKOUT-COMPLETION"],
+        remarks="Closed this task (Deferred-10 closure): the ONE real, permanent order this enhancement creates, using the shared account from REQ-REG-05, chained immediately after that account's own registration/login testcases."),
+    RequirementCoverageRecord("REQ-ACO-02", "Saved address offered via selection on repeat checkout", "Authenticated Checkout", Disposition.FUNCTIONAL_AUTOMATABLE,
+        testcase_ids=["ENH02-TC-REQ-ACO-02-SAVED-ADDRESS-REUSE"],
+        remarks="Closed this task: reuses the real saved address created as a side effect of REQ-ACO-01's own Billing Address submission; a second checkout is entered to observe the address-selection control, but never completed (no second order)."),
     RequirementCoverageRecord("REQ-ACO-03", "Billing/Shipping address form enforces required fields", "Authenticated Checkout", Disposition.FUNCTIONAL_AUTOMATABLE,
         testcase_ids=["ENH02-TC-REQ-ACO-03-ADDRESS-FORM-VALIDATION"],
         remarks="New Playwright automation validating only the blank-field block (non-mutating); real FAIL evidence from the original MVP2 multi-locator vertical slice already exists separately and is not re-created here."),
 
     # --- Shipping ---
-    RequirementCoverageRecord("REQ-SHIP-01", "Shipping Method step presents multiple options", "Shipping", Disposition.DEPENDENCY_BLOCKED,
-        remarks="Reaching the Shipping Method step requires progressing past Billing Address with real, complete data; deferred with REQ-ACO-01 (same root cause)."),
+    RequirementCoverageRecord("REQ-SHIP-01", "Shipping Method step presents multiple options", "Shipping", Disposition.FUNCTIONAL_AUTOMATABLE,
+        testcase_ids=["ENH02-TC-REQ-ACO-01-AUTHENTICATED-CHECKOUT-COMPLETION"],
+        remarks="Closed this task: real evidence requires a cart containing a physical (non-digital-download) product -- a digital-only cart skips the Shipping Address/Shipping Method steps entirely (real finding, this task). Observed within the same real order-completion execution as REQ-ACO-01 (governing instruction sec. 7: one controlled state transition validating multiple requirements)."),
 
     # --- Payment ---
-    RequirementCoverageRecord("REQ-PAY-01", "Payment Method step presents multiple options", "Payment", Disposition.DEPENDENCY_BLOCKED,
-        remarks="Same root cause as REQ-SHIP-01/REQ-ACO-01."),
-    RequirementCoverageRecord("REQ-PAY-02", "Fee-bearing payment method reflected in order total", "Payment", Disposition.DEPENDENCY_BLOCKED,
-        remarks="Same root cause; also requires reaching Confirm Order."),
-    RequirementCoverageRecord("REQ-PAY-03", "Cash On Delivery requires no payment-detail form", "Payment", Disposition.DEPENDENCY_BLOCKED,
-        remarks="Same root cause as REQ-PAY-01."),
+    RequirementCoverageRecord("REQ-PAY-01", "Payment Method step presents multiple options", "Payment", Disposition.FUNCTIONAL_AUTOMATABLE,
+        testcase_ids=["ENH02-TC-REQ-ACO-01-AUTHENTICATED-CHECKOUT-COMPLETION"],
+        remarks="Closed this task: same shared execution as REQ-ACO-01/REQ-SHIP-01."),
+    RequirementCoverageRecord("REQ-PAY-02", "Fee-bearing payment method reflected in order total", "Payment", Disposition.FUNCTIONAL_AUTOMATABLE,
+        testcase_ids=["ENH02-TC-REQ-ACO-01-AUTHENTICATED-CHECKOUT-COMPLETION"],
+        remarks="Closed this task. Real finding: on this SUT, Payments.CashOnDelivery itself carries a real $7.00 'Payment method additional fee' (Payments.CheckMoneyOrder carries a real $5.00 fee) -- this matches the original CP01 discovery capture's own real total breakdown (Sub-Total 10.00 + Shipping 0.00 + fee 7.00 + Tax 0.00 = Total 17.00), confirming that discovery order also used Cash On Delivery. No numeric threshold is asserted; only that Total reflects the real, observed fee (see REQ-CONF-02)."),
+    RequirementCoverageRecord("REQ-PAY-03", "Cash On Delivery requires no payment-detail form", "Payment", Disposition.FUNCTIONAL_AUTOMATABLE,
+        testcase_ids=["ENH02-TC-REQ-ACO-01-AUTHENTICATED-CHECKOUT-COMPLETION"],
+        remarks="Closed this task: same shared execution as REQ-ACO-01. Real, live-verified content for Cash On Delivery: \"You will pay by COD\", zero real input/select/textarea fields."),
 
     # --- Order Confirmation ---
-    RequirementCoverageRecord("REQ-CONF-01", "Completed checkout shows success + unique order number", "Order Confirmation", Disposition.DEPENDENCY_BLOCKED,
-        remarks="Requires a completed real order; same root cause as REQ-ACO-01."),
-    RequirementCoverageRecord("REQ-CONF-02", "Confirmed total equals sum of its components", "Order Confirmation", Disposition.DEPENDENCY_BLOCKED,
-        remarks="Same root cause as REQ-CONF-01."),
+    RequirementCoverageRecord("REQ-CONF-01", "Completed checkout shows success + unique order number", "Order Confirmation", Disposition.FUNCTIONAL_AUTOMATABLE,
+        testcase_ids=["ENH02-TC-REQ-ACO-01-AUTHENTICATED-CHECKOUT-COMPLETION"],
+        remarks="Closed this task: real Order Completed page, real order number parsed dynamically (never hard-coded, per SRS sec. 10)."),
+    RequirementCoverageRecord("REQ-CONF-02", "Confirmed total equals sum of its components", "Order Confirmation", Disposition.FUNCTIONAL_AUTOMATABLE,
+        testcase_ids=["ENH02-TC-REQ-ACO-01-AUTHENTICATED-CHECKOUT-COMPLETION"],
+        remarks="Closed this task: computed check (Total == Sub-Total + Shipping + Payment method additional fee + Tax) against the real, live-parsed totals -- never a hard-coded literal."),
 
     # --- Order History ---
-    RequirementCoverageRecord("REQ-OHIST-01", "Completed order appears in Order History", "Order History", Disposition.DEPENDENCY_BLOCKED,
-        remarks="Requires a completed real order to exist; same root cause as REQ-ACO-01."),
+    RequirementCoverageRecord("REQ-OHIST-01", "Completed order appears in Order History", "Order History", Disposition.FUNCTIONAL_AUTOMATABLE,
+        testcase_ids=["ENH02-TC-REQ-OHIST-01-ORDER-APPEARS-IN-HISTORY"],
+        remarks="Closed this task: read-only check reusing the one real order from REQ-ACO-01; no new mutation."),
 
     # --- Customer Account ---
     RequirementCoverageRecord("REQ-ACCT-01", "Authenticated customer can access Customer Info/Addresses/Orders", "Customer Account", Disposition.FUNCTIONAL_AUTOMATABLE,

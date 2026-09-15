@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH01-REG-BLANK-TD-TC-REQ-REG-01-01-06-gw0-1789495903726",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ENH01-REG-BLANK-TD-TC-REQ-REG-01-01-06-gw0-1789495903726\\v1.json",
+  "content_hash": "393042e1a7a2b17289ec9023910098426b95138f593bc30cb6b82111668dbe03",
+  "updated_at": "2026-09-15T18:11:48.558654+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ENH01-REG-BLANK-TD-TC-REQ-REG-01-01-06-gw0-1789495903726\\v1.json",
+      "generated_at": "2026-09-15T18:11:48.558654+00:00"
+    }
+  ]
+}

@@ -457,4 +457,111 @@ ENH02_TESTCASES = [
         "dataset_ids": ["ENH02-TD-REG-05-01"],
         "automation_id": "ENH02-PW-TC-REQ-ACCT-01-ACCOUNT-PAGES", "status": "AUTOMATED", "notes": "Uses the one real account; read-only.",
     },
+
+    # --- Post-MVP2 Enhancement 02 Deferred-10 Closure: the ONE real,
+    # order-completing checkout, and its two directly-dependent follow-on
+    # checks. Real evidence for the exact business steps below (field
+    # ids, step-transition buttons, real Payments.CashOnDelivery/
+    # CheckMoneyOrder Payment Info content, the real $7.00
+    # "Payment method additional fee" this SUT applies to
+    # Payments.CashOnDelivery) comes from a real, live Playwright
+    # investigation this task performed against the real SUT (never
+    # confirming an order during that investigation), cross-checked
+    # against the original CP01 discovery captures in
+    # `knowledge/historical/discovery_evidence/captures/checkout_00.html`
+    # through `checkout_final.html`.
+    {
+        "testcase_id": "ENH02-TC-REQ-ACO-01-AUTHENTICATED-CHECKOUT-COMPLETION",
+        "requirement_ids": ["REQ-ACO-01", "REQ-SHIP-01", "REQ-PAY-01", "REQ-PAY-02", "REQ-PAY-03", "REQ-CONF-01", "REQ-CONF-02"],
+        "title": "Authenticated checkout proceeds through all named steps to a completed order",
+        "objective": (
+            "Verify REQ-ACO-01 (authenticated checkout reaches a completed order through Billing Address, "
+            "Shipping Address, Shipping Method, Payment Method, Payment Info, Confirm Order), and, as real, "
+            "directly-observed checkpoints within that same, single, non-repeatable state transition: "
+            "REQ-SHIP-01 (Shipping Method presents multiple real options), REQ-PAY-01 (Payment Method presents "
+            "multiple real options), REQ-PAY-03 (Cash On Delivery requires no payment-detail form), REQ-PAY-02 "
+            "(the fee-bearing payment method's fee is reflected in the order total), and REQ-CONF-01/REQ-CONF-02 "
+            "(the completed order shows a success message with a unique order number, and the confirmed total "
+            "equals the sum of its components)."
+        ),
+        "test_type": "POSITIVE",
+        "preconditions": [
+            "The real account created by ENH02-TC-REQ-REG-05-AUTO-LOGIN exists and is authenticated.",
+            "A real, physical (non-digital-download) product is reachable ('Computing and Internet' book) -- "
+            "real evidence, this task: a cart containing only digital-download items skips the Shipping Address/"
+            "Shipping Method steps entirely, so a physical item is a genuine precondition, not an implementation "
+            "detail.",
+        ],
+        "business_steps": [
+            "Add the real 'Computing and Internet' product to the cart.",
+            "Accept the Terms of Service checkbox and select 'Checkout' (already authenticated: no guest interstitial appears).",
+            "At the Billing Address step, enter First name, Last name, Email, Country (United States), State, City, Address 1, Zip/postal code, Phone number, then Continue.",
+            "At the Shipping Address step, accept the pre-selected address (the just-entered Billing Address, auto-saved and offered as the default shipping address), then Continue.",
+            "At the Shipping Method step, observe that multiple real shipping options are presented; select the default option and Continue.",
+            "At the Payment Method step, observe that multiple real payment options are presented; select Cash On Delivery and Continue.",
+            "At the Payment Info step, observe that Cash On Delivery presents no payment-detail form, then Continue.",
+            "At the Confirm Order step, observe the real Sub-Total/Shipping/Payment method additional fee/Tax/Total breakdown.",
+            "Select 'Confirm' to submit the order.",
+            "Observe the Order Completed page for the success message and a real, unique order number.",
+        ],
+        "expected_result": (
+            "REQ-ACO-01: the order completes and the Order Completed page renders. REQ-SHIP-01/REQ-PAY-01: each "
+            "respective step presents more than one real, selectable option. REQ-PAY-03: the Payment Info step "
+            "renders zero real input/select/textarea fields for Cash On Delivery. REQ-PAY-02: the confirmed total "
+            "reflects the payment method's additional fee. REQ-CONF-01: a real order number is shown. REQ-CONF-02: "
+            "Total == Sub-Total + Shipping + Payment method additional fee + Tax (computed check, never a "
+            "hard-coded literal per SRS sec. 10)."
+        ),
+        "risk": "HIGH", "priority": "HIGH",
+        "dataset_ids": ["ENH02-TD-ACO-01-01"],
+        "automation_id": "ENH02-PW-TC-REQ-ACO-01-AUTHENTICATED-CHECKOUT-COMPLETION", "status": "AUTOMATED",
+        "notes": (
+            "The ONE real, permanent order this closure work creates -- never repeated, never parallelized. "
+            "Chained immediately after ENH02-TC-REQ-PWR-01-RECOVERY-UI in the same real browser session/test "
+            "function, reusing the already-authenticated shared account rather than logging in again. Reused "
+            "(read-only afterward) by ENH02-TC-REQ-OHIST-01-ORDER-APPEARS-IN-HISTORY and "
+            "ENH02-TC-REQ-ACO-02-SAVED-ADDRESS-REUSE."
+        ),
+    },
+    {
+        "testcase_id": "ENH02-TC-REQ-OHIST-01-ORDER-APPEARS-IN-HISTORY",
+        "requirement_ids": ["REQ-OHIST-01"],
+        "title": "A just-completed order appears in the customer's Order History",
+        "objective": "Verify REQ-OHIST-01: the real order number just obtained from Order Completed appears in /customer/orders.",
+        "test_type": "POSITIVE",
+        "preconditions": ["The real order from ENH02-TC-REQ-ACO-01-AUTHENTICATED-CHECKOUT-COMPLETION has just completed, and its real order number is known."],
+        "business_steps": [
+            "Navigate to the Order History page (Orders, under My account).",
+            "Observe that the real order number just obtained is listed.",
+        ],
+        "expected_result": "REQ-OHIST-01 (Approved SRS): the completed order appears in Order History.",
+        "risk": "MEDIUM", "priority": "MEDIUM",
+        "dataset_ids": [],
+        "automation_id": "ENH02-PW-TC-REQ-OHIST-01-ORDER-APPEARS-IN-HISTORY", "status": "AUTOMATED",
+        "notes": "Read-only; reuses the one real order, no new mutation.",
+    },
+    {
+        "testcase_id": "ENH02-TC-REQ-ACO-02-SAVED-ADDRESS-REUSE",
+        "requirement_ids": ["REQ-ACO-02"],
+        "title": "A repeat checkout offers the previously-saved address via selection",
+        "objective": "Verify REQ-ACO-02: on a second checkout entry by the same account, a previously-saved address is offered via a selection control, rather than requiring re-entry.",
+        "test_type": "POSITIVE",
+        "preconditions": ["The real account has at least one previously-saved address (from ENH02-TC-REQ-ACO-01-AUTHENTICATED-CHECKOUT-COMPLETION's real Billing Address submission)."],
+        "business_steps": [
+            "Add a real product to the cart.",
+            "Accept the Terms of Service checkbox and select 'Checkout'.",
+            "At the Billing Address step, observe the address-selection control.",
+            "Do not proceed further (this testcase does not create a second order).",
+        ],
+        "expected_result": "REQ-ACO-02 (Approved SRS): the address-selection control offers the previously-saved address as an option, in addition to 'New Address'.",
+        "risk": "LOW", "priority": "LOW",
+        "dataset_ids": [],
+        "automation_id": "ENH02-PW-TC-REQ-ACO-02-SAVED-ADDRESS-REUSE", "status": "AUTOMATED",
+        "notes": (
+            "Deliberately stops at Billing Address -- per governing instruction sec. 7/8 ('minimum necessary "
+            "permanent state creation', 'no duplicate-order pollution'), this enhancement creates exactly ONE "
+            "real order; this testcase reuses that order's real saved-address side effect rather than "
+            "completing a second one."
+        ),
+    },
 ]

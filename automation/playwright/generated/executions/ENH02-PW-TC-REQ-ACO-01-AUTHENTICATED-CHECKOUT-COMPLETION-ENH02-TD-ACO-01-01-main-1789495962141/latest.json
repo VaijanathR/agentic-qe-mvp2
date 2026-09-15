@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-ACO-01-AUTHENTICATED-CHECKOUT-COMPLETION-ENH02-TD-ACO-01-01-main-1789495962141",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-ACO-01-AUTHENTICATED-CHECKOUT-COMPLETION-ENH02-TD-ACO-01-01-main-1789495962141\\v1.json",
+  "content_hash": "19687ae4f12cf712c21ad7b6a7093bd96c1189681d386681e2748566cd62b5e0",
+  "updated_at": "2026-09-15T18:13:03.201675+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-ACO-01-AUTHENTICATED-CHECKOUT-COMPLETION-ENH02-TD-ACO-01-01-main-1789495962141\\v1.json",
+      "generated_at": "2026-09-15T18:13:03.201675+00:00"
+    }
+  ]
+}

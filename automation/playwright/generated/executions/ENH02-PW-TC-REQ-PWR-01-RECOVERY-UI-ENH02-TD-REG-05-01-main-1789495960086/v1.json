@@ -1,0 +1,101 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-PWR-01-RECOVERY-UI-ENH02-TD-REG-05-01-main-1789495960086",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T18:12:42.139970+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-PWR-01-RECOVERY-UI",
+    "dataset_id": "ENH02-TD-REG-05-01"
+  },
+  "content_hash": "f0254a5437fcf48a871389d163fc5eeecf648fa1c15119054ea10454a171168c",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-PWR-01-RECOVERY-UI-ENH02-TD-REG-05-01-main-1789495960086",
+    "requirement_ids": [
+      "REQ-PWR-01"
+    ],
+    "testcase_id": "ENH02-TC-REQ-PWR-01-RECOVERY-UI",
+    "dataset_id": "ENH02-TD-REG-05-01",
+    "automation_id": "ENH02-PW-TC-REQ-PWR-01-RECOVERY-UI",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "main",
+    "start_time": "2026-09-15T18:12:40.086837+00:00",
+    "end_time": "2026-09-15T18:12:42.138618+00:00",
+    "duration_seconds": 2.051781,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "Navigate to password-recovery page",
+        "status": "PASS"
+      },
+      {
+        "step_order": 2,
+        "description": "Submit the real registered account's email",
+        "status": "PASS",
+        "locator_resolution": {
+          "email": {
+            "field_name": "email",
+            "attempted": [
+              {
+                "candidate": {
+                  "locator_type": "ID",
+                  "expression": "#Email",
+                  "source": "live capture: password-recovery form real input id=\"Email\"",
+                  "priority": 1,
+                  "validation_status": "ACCEPTED"
+                },
+                "outcome": "SUCCESS"
+              }
+            ],
+            "resolved_candidate": {
+              "locator_type": "ID",
+              "expression": "#Email",
+              "source": "live capture: password-recovery form real input id=\"Email\"",
+              "priority": 1,
+              "validation_status": "ACCEPTED"
+            },
+            "used_fallback": false
+          },
+          "recover_button": {
+            "field_name": "recover_button",
+            "attempted": [
+              {
+                "candidate": {
+                  "locator_type": "CLASS",
+                  "expression": ".password-recovery-button",
+                  "source": "live capture: <input type=\"submit\" name=\"send-email\" class=\"button-1 password-recovery-button\" value=\"Recover\">",
+                  "priority": 1,
+                  "validation_status": "ACCEPTED"
+                },
+                "outcome": "SUCCESS"
+              }
+            ],
+            "resolved_candidate": {
+              "locator_type": "CLASS",
+              "expression": ".password-recovery-button",
+              "source": "live capture: <input type=\"submit\" name=\"send-email\" class=\"button-1 password-recovery-button\" value=\"Recover\">",
+              "priority": 1,
+              "validation_status": "ACCEPTED"
+            },
+            "used_fallback": false
+          }
+        }
+      },
+      {
+        "step_order": 3,
+        "description": "Observe UI acceptance, no error",
+        "status": "PASS"
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-PWR-01-RECOVERY-UI-ENH02-TD-REG-05-01-main-1789495960086\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

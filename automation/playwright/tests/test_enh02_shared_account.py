@@ -23,8 +23,9 @@ from automation.playwright.logging_ import ExecutionStatus
 from automation.playwright.pages.account_pages import AccountPage, PasswordRecoveryPage
 from automation.playwright.pages.cart_page import CartPage
 from automation.playwright.pages.catalog_pages import ProductPage
+from automation.playwright.pages.checkout_page import CheckoutPage
 from automation.playwright.pages.login_page import LoginPage
-from automation.playwright.tests.enh02_helpers import real_execution
+from automation.playwright.tests.enh02_helpers import real_execution, wait_for_authenticated_indicator
 
 REQUIRED_FIELDS = ["first_name", "last_name", "email", "password", "confirm_password"]
 
@@ -52,8 +53,7 @@ def test_shared_account_chain(browser_page, worker_id):
             steps.append({"step_order": len(steps) + 1, "description": f"Fill {field}", "status": "PASS" if resolution["resolved_candidate"] else "FAIL", "locator_resolution": resolution})
         submit_resolution = registration.submit()
         steps.append({"step_order": len(steps) + 1, "description": "Submit registration form", "status": "PASS" if submit_resolution["resolved_candidate"] else "FAIL", "locator_resolution": submit_resolution})
-        page.wait_for_timeout(1000)
-        authenticated = page.locator("a.ico-logout").count() > 0
+        authenticated = wait_for_authenticated_indicator(page)
         steps.append({"step_order": len(steps) + 1, "description": "Observe authenticated-state indicator (no separate login step)", "status": "PASS" if authenticated else "FAIL"})
         mark(ExecutionStatus.PASS if authenticated else ExecutionStatus.FAIL, None if authenticated else "ASSERTION_FAILURE", None if authenticated else "No authenticated-state indicator observed")
         assert authenticated, "Real registration did not result in an authenticated state"
@@ -102,8 +102,7 @@ def test_shared_account_chain(browser_page, worker_id):
         steps.append({"step_order": 3, "description": "Fill real account password", "status": "PASS" if password_res["resolved_candidate"] else "FAIL", "locator_resolution": password_res})
         submit_res = login.submit()
         steps.append({"step_order": 4, "description": "Submit login form", "status": "PASS" if submit_res["resolved_candidate"] else "FAIL", "locator_resolution": submit_res})
-        page.wait_for_timeout(1000)
-        authenticated = login.is_authenticated()
+        authenticated = wait_for_authenticated_indicator(page)
         steps.append({"step_order": 5, "description": "Observe authenticated state", "status": "PASS" if authenticated else "FAIL"})
         mark(ExecutionStatus.PASS if authenticated else ExecutionStatus.FAIL, None if authenticated else "ASSERTION_FAILURE", None if authenticated else "Authenticated state not reached")
         assert authenticated, "Real login with correct credentials did not reach an authenticated state"
@@ -157,8 +156,7 @@ def test_shared_account_chain(browser_page, worker_id):
         login.fill_password(creds["password"])
         login.submit()
         steps.append({"step_order": 2, "description": "Log in again with the same real account", "status": "PASS"})
-        page.wait_for_timeout(1000)
-        authenticated = login.is_authenticated()
+        authenticated = wait_for_authenticated_indicator(page)
         steps.append({"step_order": 3, "description": "Observe authenticated state", "status": "PASS" if authenticated else "FAIL"})
         mark(ExecutionStatus.PASS if authenticated else ExecutionStatus.FAIL, None if authenticated else "ASSERTION_FAILURE", None if authenticated else "Re-login did not reach an authenticated state")
         assert authenticated, "Real re-login did not succeed"
@@ -202,7 +200,7 @@ def test_shared_account_chain(browser_page, worker_id):
         login.fill_password(creds["password"])
         login.submit()
         steps.append({"step_order": 3, "description": "Log in with the real account, same session", "status": "PASS"})
-        page.wait_for_timeout(1000)
+        wait_for_authenticated_indicator(page)
         cart = CartPage(page, DEFAULT_CONFIG)
         cart.open()
         steps.append({"step_order": 4, "description": "Navigate to cart page", "status": "PASS"})
@@ -227,3 +225,122 @@ def test_shared_account_chain(browser_page, worker_id):
         steps.append({"step_order": 3, "description": "Observe UI acceptance, no error", "status": "PASS" if accepted else "FAIL"})
         mark(ExecutionStatus.PASS if accepted else ExecutionStatus.FAIL, None if accepted else "ASSERTION_FAILURE", None if accepted else f"result_text={recovery.result_text()!r}")
         assert accepted, f"Real password-recovery request for a registered email was not accepted (result_text={recovery.result_text()!r})"
+
+    # --- Post-MVP2 Enhancement 02 Deferred-10 Closure: the ONE real,
+    # permanent order this enhancement creates. Real evidence for every
+    # selector: `locators.py`'s BILLING_ADDRESS_CANDIDATES through
+    # ORDER_COMPLETED_CANDIDATES. The session is still authenticated as
+    # the shared account (REQ-PWR-01's own block above never logged out).
+    order_dataset = load_dataset(
+        "ENH02-TD-ACO-01-01",
+        required_fields=["first_name", "last_name", "email", "country_id", "state_label", "city", "address1", "zip_postal_code", "phone_number"],
+    )
+    completed_order_number = None
+
+    with real_execution(
+        testcase_id="ENH02-TC-REQ-ACO-01-AUTHENTICATED-CHECKOUT-COMPLETION",
+        requirement_ids=["REQ-ACO-01", "REQ-SHIP-01", "REQ-PAY-01", "REQ-PAY-02", "REQ-PAY-03", "REQ-CONF-01", "REQ-CONF-02"],
+        dataset_id=order_dataset.data_set_id, automation_id="ENH02-PW-TC-REQ-ACO-01-AUTHENTICATED-CHECKOUT-COMPLETION",
+        page=page, browser_version=browser_version, worker_id=worker_id,
+    ) as (steps, mark):
+        product = ProductPage(page, DEFAULT_CONFIG)
+        product.open("/computing-and-internet")
+        add_resolution = product.add_to_cart("#add-to-cart-button-13")
+        page.wait_for_timeout(1500)
+        steps.append({"step_order": 1, "description": "Add the real 'Computing and Internet' physical product to the cart", "status": "PASS" if add_resolution["resolved_candidate"] else "FAIL", "locator_resolution": add_resolution})
+
+        cart = CartPage(page, DEFAULT_CONFIG)
+        cart.open()
+        checkout_resolution = cart.accept_terms_and_checkout()
+        page.wait_for_timeout(1500)
+        steps.append({"step_order": 2, "description": "Accept Terms of Service and select Checkout (already authenticated)", "status": "PASS", "locator_resolution": checkout_resolution})
+
+        checkout = CheckoutPage(page, DEFAULT_CONFIG)
+        billing_resolution = checkout.fill_billing_address(order_dataset.fields)
+        checkout.continue_billing_address()
+        steps.append({"step_order": 3, "description": "Fill the real, required Billing Address fields and Continue", "status": "PASS", "locator_resolution": billing_resolution})
+
+        checkout.accept_shipping_address()
+        steps.append({"step_order": 4, "description": "Accept the pre-selected (auto-saved) shipping address and Continue", "status": "PASS"})
+
+        shipping_options = checkout.shipping_method_option_values()
+        multiple_shipping_options = len(shipping_options) > 1
+        checkout.select_shipping_method_and_continue()
+        steps.append({"step_order": 5, "description": "Observe multiple real Shipping Method options; select default and Continue", "status": "PASS" if multiple_shipping_options else "FAIL", "shipping_options": shipping_options})
+
+        payment_options = checkout.payment_method_option_values()
+        multiple_payment_options = len(payment_options) > 1
+        checkout.select_payment_method_and_continue()
+        steps.append({"step_order": 6, "description": "Observe multiple real Payment Method options; select Cash On Delivery and Continue", "status": "PASS" if multiple_payment_options else "FAIL", "payment_options": payment_options})
+
+        cod_has_no_form = not checkout.payment_info_has_form_fields()
+        payment_info_text = checkout.payment_info_content()
+        checkout.continue_payment_info()
+        steps.append({"step_order": 7, "description": "Observe Cash On Delivery Payment Info renders no payment-detail form; Continue", "status": "PASS" if cod_has_no_form else "FAIL", "payment_info_text": payment_info_text})
+
+        totals_consistent = checkout.confirm_order_totals_are_internally_consistent()
+        totals_text = checkout.confirm_order_totals_text()
+        steps.append({"step_order": 8, "description": "Observe Confirm Order totals; verify Total equals the sum of its components", "status": "PASS" if totals_consistent else "FAIL", "totals_text": totals_text})
+
+        checkout.submit_confirm_order()
+        steps.append({"step_order": 9, "description": "Select Confirm to submit the real order", "status": "PASS"})
+
+        order_completed = checkout.is_order_completed()
+        completed_order_number = checkout.completed_order_number()
+        order_number_present = bool(completed_order_number)
+        steps.append({"step_order": 10, "description": "Observe the Order Completed page for success and a real order number", "status": "PASS" if (order_completed and order_number_present) else "FAIL", "order_number": completed_order_number})
+
+        success = multiple_shipping_options and multiple_payment_options and cod_has_no_form and totals_consistent and order_completed and order_number_present
+        mark(
+            ExecutionStatus.PASS if success else ExecutionStatus.FAIL,
+            None if success else "ASSERTION_FAILURE",
+            None if success else f"multiple_shipping_options={multiple_shipping_options} multiple_payment_options={multiple_payment_options} cod_has_no_form={cod_has_no_form} totals_consistent={totals_consistent} order_completed={order_completed} order_number_present={order_number_present}",
+        )
+        assert success, (
+            f"Real checkout completion did not satisfy every checkpoint: "
+            f"multiple_shipping_options={multiple_shipping_options} multiple_payment_options={multiple_payment_options} "
+            f"cod_has_no_form={cod_has_no_form} totals_consistent={totals_consistent} order_completed={order_completed} "
+            f"order_number_present={order_number_present} totals_text={totals_text!r}"
+        )
+
+    # --- REQ-OHIST-01: the just-completed order appears in Order History ---
+    with real_execution(
+        testcase_id="ENH02-TC-REQ-OHIST-01-ORDER-APPEARS-IN-HISTORY", requirement_ids=["REQ-OHIST-01"],
+        dataset_id="NO-DATASET", automation_id="ENH02-PW-TC-REQ-OHIST-01-ORDER-APPEARS-IN-HISTORY",
+        page=page, browser_version=browser_version, worker_id=worker_id,
+    ) as (steps, mark):
+        assert completed_order_number, "No real order number was captured by the preceding checkout-completion testcase"
+        account = AccountPage(page, DEFAULT_CONFIG)
+        account.open_orders()
+        steps.append({"step_order": 1, "description": "Navigate to the Order History page", "status": "PASS"})
+        present = account.order_history_contains(completed_order_number)
+        steps.append({"step_order": 2, "description": f"Observe the real order number {completed_order_number} is listed", "status": "PASS" if present else "FAIL"})
+        mark(ExecutionStatus.PASS if present else ExecutionStatus.FAIL, None if present else "ASSERTION_FAILURE", None if present else f"order_number={completed_order_number} not found in Order History")
+        assert present, f"Real order number {completed_order_number} was not found in Order History"
+
+    # --- REQ-ACO-02: a repeat checkout offers the previously-saved address ---
+    with real_execution(
+        testcase_id="ENH02-TC-REQ-ACO-02-SAVED-ADDRESS-REUSE", requirement_ids=["REQ-ACO-02"],
+        dataset_id="NO-DATASET", automation_id="ENH02-PW-TC-REQ-ACO-02-SAVED-ADDRESS-REUSE",
+        page=page, browser_version=browser_version, worker_id=worker_id,
+    ) as (steps, mark):
+        product = ProductPage(page, DEFAULT_CONFIG)
+        product.open("/computing-and-internet")
+        add_resolution = product.add_to_cart("#add-to-cart-button-13")
+        page.wait_for_timeout(1500)
+        steps.append({"step_order": 1, "description": "Add a real product to the cart", "status": "PASS" if add_resolution["resolved_candidate"] else "FAIL", "locator_resolution": add_resolution})
+
+        cart = CartPage(page, DEFAULT_CONFIG)
+        cart.open()
+        cart.accept_terms_and_checkout()
+        page.wait_for_timeout(1500)
+        steps.append({"step_order": 2, "description": "Accept Terms of Service and select Checkout", "status": "PASS"})
+
+        checkout = CheckoutPage(page, DEFAULT_CONFIG)
+        billing_options = checkout.billing_address_select_options()
+        offers_saved_address = len(billing_options) > 1
+        steps.append({"step_order": 3, "description": "Observe the Billing Address selection control", "status": "PASS" if offers_saved_address else "FAIL", "billing_address_select_options": billing_options})
+        steps.append({"step_order": 4, "description": "Do not proceed further (no second order created)", "status": "PASS"})
+
+        mark(ExecutionStatus.PASS if offers_saved_address else ExecutionStatus.FAIL, None if offers_saved_address else "ASSERTION_FAILURE", None if offers_saved_address else f"billing_address_select_options={billing_options}")
+        assert offers_saved_address, f"Real repeat checkout did not offer a previously-saved address (options={billing_options})"

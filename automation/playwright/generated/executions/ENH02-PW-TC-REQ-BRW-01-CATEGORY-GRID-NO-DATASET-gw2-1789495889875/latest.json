@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-BRW-01-CATEGORY-GRID-NO-DATASET-gw2-1789495889875",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-BRW-01-CATEGORY-GRID-NO-DATASET-gw2-1789495889875\\v1.json",
+  "content_hash": "442ba42ee42b6e1a79d797de9138e8e8721da2657e000e9e33f1ff2c3ff1dc4c",
+  "updated_at": "2026-09-15T18:11:32.580007+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-BRW-01-CATEGORY-GRID-NO-DATASET-gw2-1789495889875\\v1.json",
+      "generated_at": "2026-09-15T18:11:32.580007+00:00"
+    }
+  ]
+}

@@ -1,0 +1,104 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-CART-02-QUANTITY-UPDATE-NO-DATASET-gw3-1789495894464",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T18:11:38.021248+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-CART-02-QUANTITY-UPDATE",
+    "dataset_id": "NO-DATASET"
+  },
+  "content_hash": "67ddf45409e1585bef21c2a11a3ccccc684d93fc6f6aba058938e49bfb17f5de",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-CART-02-QUANTITY-UPDATE-NO-DATASET-gw3-1789495894464",
+    "requirement_ids": [
+      "REQ-CART-02"
+    ],
+    "testcase_id": "ENH02-TC-REQ-CART-02-QUANTITY-UPDATE",
+    "dataset_id": "NO-DATASET",
+    "automation_id": "ENH02-PW-TC-REQ-CART-02-QUANTITY-UPDATE",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "gw3",
+    "start_time": "2026-09-15T18:11:34.464604+00:00",
+    "end_time": "2026-09-15T18:11:38.019775+00:00",
+    "duration_seconds": 3.555171,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "Navigate to cart page",
+        "status": "PASS"
+      },
+      {
+        "step_order": 2,
+        "description": "Set quantity to 3",
+        "status": "PASS",
+        "locator_resolution": {
+          "field_name": "qty_input",
+          "attempted": [
+            {
+              "candidate": {
+                "locator_type": "CLASS",
+                "expression": "input.qty-input",
+                "source": "live capture: <input name=\"itemquantity7088492\" class=\"qty-input\">",
+                "priority": 1,
+                "validation_status": "ACCEPTED"
+              },
+              "outcome": "SUCCESS"
+            }
+          ],
+          "resolved_candidate": {
+            "locator_type": "CLASS",
+            "expression": "input.qty-input",
+            "source": "live capture: <input name=\"itemquantity7088492\" class=\"qty-input\">",
+            "priority": 1,
+            "validation_status": "ACCEPTED"
+          },
+          "used_fallback": false
+        }
+      },
+      {
+        "step_order": 3,
+        "description": "Update shopping cart",
+        "status": "PASS",
+        "locator_resolution": {
+          "field_name": "update_cart_button",
+          "attempted": [
+            {
+              "candidate": {
+                "locator_type": "NAME",
+                "expression": "input[name='updatecart']",
+                "source": "live capture: <input type=\"submit\" name=\"updatecart\" class=\"update-cart-button\">",
+                "priority": 1,
+                "validation_status": "ACCEPTED"
+              },
+              "outcome": "SUCCESS"
+            }
+          ],
+          "resolved_candidate": {
+            "locator_type": "NAME",
+            "expression": "input[name='updatecart']",
+            "source": "live capture: <input type=\"submit\" name=\"updatecart\" class=\"update-cart-button\">",
+            "priority": 1,
+            "validation_status": "ACCEPTED"
+          },
+          "used_fallback": false
+        }
+      },
+      {
+        "step_order": 4,
+        "description": "Observe subtotal recalculated to 3.0",
+        "status": "PASS"
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-CART-02-QUANTITY-UPDATE-NO-DATASET-gw3-1789495894464\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

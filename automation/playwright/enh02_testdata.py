@@ -88,6 +88,27 @@ ENH02_TESTDATA = [
         "purpose": "A nonsense keyword guaranteed to match nothing.",
         "fields": {"search_term": "zzzznoresultxyz123"},
     },
+    {
+        "dataset_id": "ENH02-TD-ACO-01-01",
+        "testcase_id": "ENH02-TC-REQ-ACO-01-AUTHENTICATED-CHECKOUT-COMPLETION",
+        "requirement_ids": [
+            "REQ-ACO-01", "REQ-SHIP-01", "REQ-PAY-01", "REQ-PAY-02", "REQ-PAY-03",
+            "REQ-CONF-01", "REQ-CONF-02", "REQ-OHIST-01", "REQ-ACO-02",
+        ],
+        "data_category": "POSITIVE",
+        "purpose": "Synthetic Billing/Shipping address contact used by the ONE real, order-completing checkout this enhancement performs -- reused (read-only afterward) by REQ-OHIST-01/REQ-ACO-02.",
+        "fields": {
+            "first_name": "Enh02Checkout",
+            "last_name": "SyntheticCustomer",
+            "email": "enh02.checkout.contact@example.test",
+            "country_id": "1",
+            "state_label": "New York",
+            "city": "New York",
+            "address1": "1 Enhancement02 Test Way",
+            "zip_postal_code": "10001",
+            "phone_number": "5555550100",
+        },
+    },
 ]
 
 

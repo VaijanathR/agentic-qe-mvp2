@@ -1,0 +1,76 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-WISH-01-ADD-TO-WISHLIST-NO-DATASET-gw0-1789495918801",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T18:12:02.452249+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-WISH-01-ADD-TO-WISHLIST",
+    "dataset_id": "NO-DATASET"
+  },
+  "content_hash": "172042a4855d4461651495668e5c5a4dffb496855a26cdffe7f4fd32673ff496",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-WISH-01-ADD-TO-WISHLIST-NO-DATASET-gw0-1789495918801",
+    "requirement_ids": [
+      "REQ-WISH-01"
+    ],
+    "testcase_id": "ENH02-TC-REQ-WISH-01-ADD-TO-WISHLIST",
+    "dataset_id": "NO-DATASET",
+    "automation_id": "ENH02-PW-TC-REQ-WISH-01-ADD-TO-WISHLIST",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "gw0",
+    "start_time": "2026-09-15T18:11:58.801330+00:00",
+    "end_time": "2026-09-15T18:12:02.450789+00:00",
+    "duration_seconds": 3.649459,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "Navigate to '3rd Album'",
+        "status": "PASS"
+      },
+      {
+        "step_order": 2,
+        "description": "Add to wishlist",
+        "status": "PASS",
+        "locator_resolution": {
+          "field_name": "add_to_wishlist_button",
+          "attempted": [
+            {
+              "candidate": {
+                "locator_type": "CLASS",
+                "expression": ".add-to-wishlist-button",
+                "source": "live capture: <input id=\"add-to-wishlist-button-53\" class=\"button-2 add-to-wishlist-button\">",
+                "priority": 1,
+                "validation_status": "ACCEPTED"
+              },
+              "outcome": "SUCCESS"
+            }
+          ],
+          "resolved_candidate": {
+            "locator_type": "CLASS",
+            "expression": ".add-to-wishlist-button",
+            "source": "live capture: <input id=\"add-to-wishlist-button-53\" class=\"button-2 add-to-wishlist-button\">",
+            "priority": 1,
+            "validation_status": "ACCEPTED"
+          },
+          "used_fallback": false
+        }
+      },
+      {
+        "step_order": 3,
+        "description": "Observe wishlist-add confirmation",
+        "status": "PASS"
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-WISH-01-ADD-TO-WISHLIST-NO-DATASET-gw0-1789495918801\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

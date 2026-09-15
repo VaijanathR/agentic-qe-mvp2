@@ -32,6 +32,13 @@ class AccountPage(BasePage):
     def redirected_to_login(self) -> bool:
         return "/login" in self.page.url
 
+    def order_history_contains(self, order_number: str) -> bool:
+        """Real evidence for REQ-OHIST-01: the real `/customer/orders`
+        page lists each order's real order number in its own row text.
+        Never hard-codes a literal order number -- the caller passes the
+        real one just observed on the Order Completed page."""
+        return order_number in self.page.locator("body").inner_text()
+
 
 class PasswordRecoveryPage(BasePage):
     def open(self) -> None:

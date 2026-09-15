@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-REG-04-DUPLICATE-EMAIL-ENH02-TD-REG-05-01-main-1789495938909",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-REG-04-DUPLICATE-EMAIL-ENH02-TD-REG-05-01-main-1789495938909\\v1.json",
+  "content_hash": "e73ac95593aeac47c13196a2d5609ca5b21db3b8a1195a9393a8372bc8f93ae2",
+  "updated_at": "2026-09-15T18:12:23.228947+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-REG-04-DUPLICATE-EMAIL-ENH02-TD-REG-05-01-main-1789495938909\\v1.json",
+      "generated_at": "2026-09-15T18:12:23.228947+00:00"
+    }
+  ]
+}

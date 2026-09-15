@@ -181,6 +181,62 @@ PASSWORD_RECOVERY_CANDIDATES: Dict[str, List[LocatorCandidate]] = {
     ],
 }
 
+# Post-MVP2 Enhancement 02 Deferred-10 Closure -- real, evidence-backed
+# candidates for the remaining checkout steps (Billing Address full fill
+# through Order Completed). Evidence source: real HTML captures from the
+# original CP01 discovery session
+# (`knowledge/historical/discovery_evidence/captures/checkout_00.html`
+# through `checkout_final.html`), cross-checked this task against a real,
+# live, read-only Playwright investigation session (never completing an
+# order) that confirmed every field id, step-transition button class, and
+# the real Payments.CashOnDelivery / Payments.CheckMoneyOrder Payment Info
+# content. See the Enhancement-02 Deferred-10 closure report's "Real
+# checkout-flow discovery" section for the exact evidence.
+BILLING_ADDRESS_CANDIDATES: Dict[str, List[LocatorCandidate]] = {
+    "first_name": [LocatorCandidate("ID", "#BillingNewAddress_FirstName", "real capture: checkout_00.html", 1)],
+    "last_name": [LocatorCandidate("ID", "#BillingNewAddress_LastName", "real capture: checkout_00.html", 1)],
+    "email": [LocatorCandidate("ID", "#BillingNewAddress_Email", "real capture: checkout_00.html", 1)],
+    "country": [LocatorCandidate("ID", "#BillingNewAddress_CountryId", "real capture: checkout_00.html; option value=\"1\"=\"United States\"", 1)],
+    "state_province": [LocatorCandidate("ID", "#BillingNewAddress_StateProvinceId", "real capture: checkout_00.html; real, AJAX-populated after Country selection (live-verified this task)", 1)],
+    "city": [LocatorCandidate("ID", "#BillingNewAddress_City", "real capture: checkout_00.html", 1)],
+    "address1": [LocatorCandidate("ID", "#BillingNewAddress_Address1", "real capture: checkout_00.html", 1)],
+    "zip_postal_code": [LocatorCandidate("ID", "#BillingNewAddress_ZipPostalCode", "real capture: checkout_00.html", 1)],
+    "phone_number": [LocatorCandidate("ID", "#BillingNewAddress_PhoneNumber", "real capture: checkout_00.html", 1)],
+    "continue_button": [LocatorCandidate("CLASS", "#opc-billing .new-address-next-step-button", "real capture: checkout_00.html; <input class=\"button-1 new-address-next-step-button\" onclick=\"Billing.save()\" value=\"Continue\">", 1)],
+    "address_select": [LocatorCandidate("ID", "#billing-address-select", "real capture: checkout_00.html/checkout_01.html", 1)],
+}
+
+SHIPPING_ADDRESS_CANDIDATES: Dict[str, List[LocatorCandidate]] = {
+    "continue_button": [LocatorCandidate("CLASS", "#opc-shipping .new-address-next-step-button", "real capture: checkout_02.html; <input class=\"button-1 new-address-next-step-button\" onclick=\"Shipping.save()\" value=\"Continue\">", 1)],
+    "address_select": [LocatorCandidate("ID", "#shipping-address-select", "real capture: checkout_02.html; live-verified this task: the just-entered Billing Address is auto-saved and pre-selected as the default shipping address", 1)],
+}
+
+SHIPPING_METHOD_CANDIDATES: Dict[str, List[LocatorCandidate]] = {
+    "ground_option": [LocatorCandidate("ID", "#shippingoption_0", "real capture: checkout_03.html; value=\"Ground___Shipping.FixedRate\" (default-checked)", 1)],
+    "radio_group": [LocatorCandidate("NAME", "input[name='shippingoption']", "real capture: checkout_03.html; real options: Ground/Next Day Air/2nd Day Air", 1)],
+    "continue_button": [LocatorCandidate("CLASS", ".shipping-method-next-step-button", "real capture: checkout_03.html; onclick=\"ShippingMethod.save()\"", 1)],
+}
+
+PAYMENT_METHOD_CANDIDATES: Dict[str, List[LocatorCandidate]] = {
+    "cod_option": [LocatorCandidate("ID", "#paymentmethod_0", "real capture: checkout_04.html; value=\"Payments.CashOnDelivery\" (default-checked)", 1)],
+    "radio_group": [LocatorCandidate("NAME", "input[name='paymentmethod']", "real capture: checkout_04.html; real options: CashOnDelivery/CheckMoneyOrder/Manual/PurchaseOrder", 1)],
+    "continue_button": [LocatorCandidate("CLASS", ".payment-method-next-step-button", "real capture: checkout_04.html; onclick=\"PaymentMethod.save()\"", 1)],
+}
+
+PAYMENT_INFO_CANDIDATES: Dict[str, List[LocatorCandidate]] = {
+    "content": [LocatorCandidate("ID", "#checkout-payment-info-load", "real capture: checkout_05.html; real, live-verified this task: Payments.CashOnDelivery renders \"You will pay by COD\" with zero form fields", 1)],
+    "continue_button": [LocatorCandidate("CLASS", ".payment-info-next-step-button", "real capture: checkout_05.html; onclick=\"PaymentInfo.save()\"", 1)],
+}
+
+CONFIRM_ORDER_CANDIDATES: Dict[str, List[LocatorCandidate]] = {
+    "totals": [LocatorCandidate("CLASS", ".total-info", "real capture: checkout_06.html; real Sub-Total/Shipping/Payment method additional fee/Tax/Total breakdown", 1)],
+    "confirm_button": [LocatorCandidate("CLASS", ".confirm-order-next-step-button", "real capture: checkout_06.html; <input class=\"button-1 confirm-order-next-step-button\" onclick=\"ConfirmOrder.save()\" value=\"Confirm\"> -- the real, actual order-creation action", 1)],
+}
+
+ORDER_COMPLETED_CANDIDATES: Dict[str, List[LocatorCandidate]] = {
+    "container": [LocatorCandidate("CLASS", ".order-completed", "real capture: checkout_07.html/checkout_final.html", 1)],
+}
+
 
 def resolve_with_fallback(
     field_name: str,

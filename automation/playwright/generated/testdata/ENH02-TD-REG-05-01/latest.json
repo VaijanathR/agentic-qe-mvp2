@@ -1,9 +1,9 @@
 {
   "artifact_id": "ENH02-TD-REG-05-01",
-  "latest_version": 2,
-  "latest_path": "automation\\playwright\\generated\\testdata\\ENH02-TD-REG-05-01\\v2.json",
-  "content_hash": "72de0cfaa7b87974213530ec0ec98617299b1b0c774a00f95ade58360fb46ab0",
-  "updated_at": "2026-09-15T16:18:52.727706+00:00",
+  "latest_version": 10,
+  "latest_path": "automation\\playwright\\generated\\testdata\\ENH02-TD-REG-05-01\\v10.json",
+  "content_hash": "37c15030711d98165215b1fdc3542bce815351ffcd2ae894a127374765bcdc28",
+  "updated_at": "2026-09-15T18:12:11.981776+00:00",
   "history": [
     {
       "version": 1,
@@ -14,6 +14,46 @@
       "version": 2,
       "path": "automation\\playwright\\generated\\testdata\\ENH02-TD-REG-05-01\\v2.json",
       "generated_at": "2026-09-15T16:18:52.727706+00:00"
+    },
+    {
+      "version": 3,
+      "path": "automation\\playwright\\generated\\testdata\\ENH02-TD-REG-05-01\\v3.json",
+      "generated_at": "2026-09-15T18:00:29.388567+00:00"
+    },
+    {
+      "version": 4,
+      "path": "automation\\playwright\\generated\\testdata\\ENH02-TD-REG-05-01\\v4.json",
+      "generated_at": "2026-09-15T18:02:38.418743+00:00"
+    },
+    {
+      "version": 5,
+      "path": "automation\\playwright\\generated\\testdata\\ENH02-TD-REG-05-01\\v5.json",
+      "generated_at": "2026-09-15T18:04:39.820349+00:00"
+    },
+    {
+      "version": 6,
+      "path": "automation\\playwright\\generated\\testdata\\ENH02-TD-REG-05-01\\v6.json",
+      "generated_at": "2026-09-15T18:05:38.902133+00:00"
+    },
+    {
+      "version": 7,
+      "path": "automation\\playwright\\generated\\testdata\\ENH02-TD-REG-05-01\\v7.json",
+      "generated_at": "2026-09-15T18:06:39.507823+00:00"
+    },
+    {
+      "version": 8,
+      "path": "automation\\playwright\\generated\\testdata\\ENH02-TD-REG-05-01\\v8.json",
+      "generated_at": "2026-09-15T18:09:21.468657+00:00"
+    },
+    {
+      "version": 9,
+      "path": "automation\\playwright\\generated\\testdata\\ENH02-TD-REG-05-01\\v9.json",
+      "generated_at": "2026-09-15T18:11:25.275120+00:00"
+    },
+    {
+      "version": 10,
+      "path": "automation\\playwright\\generated\\testdata\\ENH02-TD-REG-05-01\\v10.json",
+      "generated_at": "2026-09-15T18:12:11.981776+00:00"
     }
   ]
 }

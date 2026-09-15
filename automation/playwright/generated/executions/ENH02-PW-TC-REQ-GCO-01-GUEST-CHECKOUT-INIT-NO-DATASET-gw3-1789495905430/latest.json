@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-GCO-01-GUEST-CHECKOUT-INIT-NO-DATASET-gw3-1789495905430",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-GCO-01-GUEST-CHECKOUT-INIT-NO-DATASET-gw3-1789495905430\\v1.json",
+  "content_hash": "9484f9826d594e7dee1a96e50e9f1de89a1623b2245a278326d62d04bfa313a6",
+  "updated_at": "2026-09-15T18:11:57.192064+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-GCO-01-GUEST-CHECKOUT-INIT-NO-DATASET-gw3-1789495905430\\v1.json",
+      "generated_at": "2026-09-15T18:11:57.192064+00:00"
+    }
+  ]
+}

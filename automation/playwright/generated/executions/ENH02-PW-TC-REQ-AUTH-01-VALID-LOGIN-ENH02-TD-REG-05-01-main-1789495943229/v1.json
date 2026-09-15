@@ -1,0 +1,132 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-AUTH-01-VALID-LOGIN-ENH02-TD-REG-05-01-main-1789495943229",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T18:12:24.680490+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-AUTH-01-VALID-LOGIN",
+    "dataset_id": "ENH02-TD-REG-05-01"
+  },
+  "content_hash": "3ada93d72a4aa0e836004189731cabb1916b05740c68a57e2b314801d8abc179",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-AUTH-01-VALID-LOGIN-ENH02-TD-REG-05-01-main-1789495943229",
+    "requirement_ids": [
+      "REQ-AUTH-01"
+    ],
+    "testcase_id": "ENH02-TC-REQ-AUTH-01-VALID-LOGIN",
+    "dataset_id": "ENH02-TD-REG-05-01",
+    "automation_id": "ENH02-PW-TC-REQ-AUTH-01-VALID-LOGIN",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "main",
+    "start_time": "2026-09-15T18:12:23.229873+00:00",
+    "end_time": "2026-09-15T18:12:24.679534+00:00",
+    "duration_seconds": 1.449661,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "Navigate to login page",
+        "status": "PASS"
+      },
+      {
+        "step_order": 2,
+        "description": "Fill real account email",
+        "status": "PASS",
+        "locator_resolution": {
+          "field_name": "email",
+          "attempted": [
+            {
+              "candidate": {
+                "locator_type": "ID",
+                "expression": "#Email",
+                "source": "live capture: <input id=\"Email\" name=\"Email\" class=\"email\">",
+                "priority": 1,
+                "validation_status": "ACCEPTED"
+              },
+              "outcome": "SUCCESS"
+            }
+          ],
+          "resolved_candidate": {
+            "locator_type": "ID",
+            "expression": "#Email",
+            "source": "live capture: <input id=\"Email\" name=\"Email\" class=\"email\">",
+            "priority": 1,
+            "validation_status": "ACCEPTED"
+          },
+          "used_fallback": false
+        }
+      },
+      {
+        "step_order": 3,
+        "description": "Fill real account password",
+        "status": "PASS",
+        "locator_resolution": {
+          "field_name": "password",
+          "attempted": [
+            {
+              "candidate": {
+                "locator_type": "ID",
+                "expression": "#Password",
+                "source": "live capture: <input id=\"Password\" name=\"Password\" class=\"password\">",
+                "priority": 1,
+                "validation_status": "ACCEPTED"
+              },
+              "outcome": "SUCCESS"
+            }
+          ],
+          "resolved_candidate": {
+            "locator_type": "ID",
+            "expression": "#Password",
+            "source": "live capture: <input id=\"Password\" name=\"Password\" class=\"password\">",
+            "priority": 1,
+            "validation_status": "ACCEPTED"
+          },
+          "used_fallback": false
+        }
+      },
+      {
+        "step_order": 4,
+        "description": "Submit login form",
+        "status": "PASS",
+        "locator_resolution": {
+          "field_name": "login_button",
+          "attempted": [
+            {
+              "candidate": {
+                "locator_type": "CLASS",
+                "expression": ".login-button",
+                "source": "live capture: <input type=\"submit\" class=\"button-1 login-button\" value=\"Log in\">",
+                "priority": 1,
+                "validation_status": "ACCEPTED"
+              },
+              "outcome": "SUCCESS"
+            }
+          ],
+          "resolved_candidate": {
+            "locator_type": "CLASS",
+            "expression": ".login-button",
+            "source": "live capture: <input type=\"submit\" class=\"button-1 login-button\" value=\"Log in\">",
+            "priority": 1,
+            "validation_status": "ACCEPTED"
+          },
+          "used_fallback": false
+        }
+      },
+      {
+        "step_order": 5,
+        "description": "Observe authenticated state",
+        "status": "PASS"
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-AUTH-01-VALID-LOGIN-ENH02-TD-REG-05-01-main-1789495943229\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

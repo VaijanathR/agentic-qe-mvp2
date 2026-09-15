@@ -1,0 +1,86 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-CART-05-PERSISTENCE-ACROSS-LOGIN-ENH02-TD-REG-05-01-main-1789495952325",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T18:12:40.085534+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-CART-05-PERSISTENCE-ACROSS-LOGIN",
+    "dataset_id": "ENH02-TD-REG-05-01"
+  },
+  "content_hash": "43d5919dc2790de4501f528e0c1363153ee1adf223b84261581c13fbcc2fae2f",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-CART-05-PERSISTENCE-ACROSS-LOGIN-ENH02-TD-REG-05-01-main-1789495952325",
+    "requirement_ids": [
+      "REQ-CART-05"
+    ],
+    "testcase_id": "ENH02-TC-REQ-CART-05-PERSISTENCE-ACROSS-LOGIN",
+    "dataset_id": "ENH02-TD-REG-05-01",
+    "automation_id": "ENH02-PW-TC-REQ-CART-05-PERSISTENCE-ACROSS-LOGIN",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "main",
+    "start_time": "2026-09-15T18:12:32.325410+00:00",
+    "end_time": "2026-09-15T18:12:40.084242+00:00",
+    "duration_seconds": 7.758832,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "Log out (become anonymous)",
+        "status": "PASS"
+      },
+      {
+        "step_order": 2,
+        "description": "As anonymous session, add a real product to the cart",
+        "status": "PASS",
+        "locator_resolution": {
+          "field_name": "add_to_cart_button",
+          "attempted": [
+            {
+              "candidate": {
+                "locator_type": "ID",
+                "expression": "#add-to-cart-button-53",
+                "source": "live capture: real add-to-cart id for this product",
+                "priority": 1,
+                "validation_status": "ACCEPTED"
+              },
+              "outcome": "SUCCESS"
+            }
+          ],
+          "resolved_candidate": {
+            "locator_type": "ID",
+            "expression": "#add-to-cart-button-53",
+            "source": "live capture: real add-to-cart id for this product",
+            "priority": 1,
+            "validation_status": "ACCEPTED"
+          },
+          "used_fallback": false
+        }
+      },
+      {
+        "step_order": 3,
+        "description": "Log in with the real account, same session",
+        "status": "PASS"
+      },
+      {
+        "step_order": 4,
+        "description": "Navigate to cart page",
+        "status": "PASS"
+      },
+      {
+        "step_order": 5,
+        "description": "Observe the anonymously added item is still present",
+        "status": "PASS"
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-CART-05-PERSISTENCE-ACROSS-LOGIN-ENH02-TD-REG-05-01-main-1789495952325\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

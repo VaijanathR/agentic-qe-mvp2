@@ -1,0 +1,48 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-OHIST-01-ORDER-APPEARS-IN-HISTORY-NO-DATASET-main-1789495983203",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T18:13:03.698983+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-OHIST-01-ORDER-APPEARS-IN-HISTORY",
+    "dataset_id": "NO-DATASET"
+  },
+  "content_hash": "50588792a9aa852469eec752db9c73d2fa51e43f86a40f8231e7fb70bbbab5e8",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-OHIST-01-ORDER-APPEARS-IN-HISTORY-NO-DATASET-main-1789495983203",
+    "requirement_ids": [
+      "REQ-OHIST-01"
+    ],
+    "testcase_id": "ENH02-TC-REQ-OHIST-01-ORDER-APPEARS-IN-HISTORY",
+    "dataset_id": "NO-DATASET",
+    "automation_id": "ENH02-PW-TC-REQ-OHIST-01-ORDER-APPEARS-IN-HISTORY",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "main",
+    "start_time": "2026-09-15T18:13:03.203640+00:00",
+    "end_time": "2026-09-15T18:13:03.697832+00:00",
+    "duration_seconds": 0.494192,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "Navigate to the Order History page",
+        "status": "PASS"
+      },
+      {
+        "step_order": 2,
+        "description": "Observe the real order number 2387518 is listed",
+        "status": "PASS"
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-OHIST-01-ORDER-APPEARS-IN-HISTORY-NO-DATASET-main-1789495983203\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

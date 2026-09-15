@@ -1,0 +1,76 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-CART-01-ADD-CONFIRMATION-NO-DATASET-gw3-1789495889799",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T18:11:34.463294+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-CART-01-ADD-CONFIRMATION",
+    "dataset_id": "NO-DATASET"
+  },
+  "content_hash": "1e4a18e1607f46a4e861bf676816c8aa98d7e05a183bc7a957f408493e4f3ce5",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-CART-01-ADD-CONFIRMATION-NO-DATASET-gw3-1789495889799",
+    "requirement_ids": [
+      "REQ-CART-01"
+    ],
+    "testcase_id": "ENH02-TC-REQ-CART-01-ADD-CONFIRMATION",
+    "dataset_id": "NO-DATASET",
+    "automation_id": "ENH02-PW-TC-REQ-CART-01-ADD-CONFIRMATION",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "gw3",
+    "start_time": "2026-09-15T18:11:29.799837+00:00",
+    "end_time": "2026-09-15T18:11:34.461491+00:00",
+    "duration_seconds": 4.661654,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "Navigate to '3rd Album'",
+        "status": "PASS"
+      },
+      {
+        "step_order": 2,
+        "description": "Add to Cart",
+        "status": "PASS",
+        "locator_resolution": {
+          "field_name": "add_to_cart_button",
+          "attempted": [
+            {
+              "candidate": {
+                "locator_type": "ID",
+                "expression": "#add-to-cart-button-53",
+                "source": "live capture: real add-to-cart id for this product",
+                "priority": 1,
+                "validation_status": "ACCEPTED"
+              },
+              "outcome": "SUCCESS"
+            }
+          ],
+          "resolved_candidate": {
+            "locator_type": "ID",
+            "expression": "#add-to-cart-button-53",
+            "source": "live capture: real add-to-cart id for this product",
+            "priority": 1,
+            "validation_status": "ACCEPTED"
+          },
+          "used_fallback": false
+        }
+      },
+      {
+        "step_order": 3,
+        "description": "Observe success notice and incremented cart count",
+        "status": "PASS"
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-CART-01-ADD-CONFIRMATION-NO-DATASET-gw3-1789495889799\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

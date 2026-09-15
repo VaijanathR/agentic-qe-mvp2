@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-ACCT-01-ACCOUNT-PAGES-ENH02-TD-REG-05-01-main-1789495949436",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-ACCT-01-ACCOUNT-PAGES-ENH02-TD-REG-05-01-main-1789495949436\\v1.json",
+  "content_hash": "9b2e4512c27650419b542d96dd78c1bbd8b6a662016e79c22816e71de1c41507",
+  "updated_at": "2026-09-15T18:12:32.324500+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-ACCT-01-ACCOUNT-PAGES-ENH02-TD-REG-05-01-main-1789495949436\\v1.json",
+      "generated_at": "2026-09-15T18:12:32.324500+00:00"
+    }
+  ]
+}

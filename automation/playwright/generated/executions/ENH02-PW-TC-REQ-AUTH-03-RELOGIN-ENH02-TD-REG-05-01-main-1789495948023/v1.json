@@ -1,0 +1,53 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-AUTH-03-RELOGIN-ENH02-TD-REG-05-01-main-1789495948023",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T18:12:29.434340+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-AUTH-03-RELOGIN",
+    "dataset_id": "ENH02-TD-REG-05-01"
+  },
+  "content_hash": "a9bafe7a792d838a845000f4bd73625624f1a86143e376982b38bb9e8d174cbe",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-AUTH-03-RELOGIN-ENH02-TD-REG-05-01-main-1789495948023",
+    "requirement_ids": [
+      "REQ-AUTH-03"
+    ],
+    "testcase_id": "ENH02-TC-REQ-AUTH-03-RELOGIN",
+    "dataset_id": "ENH02-TD-REG-05-01",
+    "automation_id": "ENH02-PW-TC-REQ-AUTH-03-RELOGIN",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "main",
+    "start_time": "2026-09-15T18:12:28.023297+00:00",
+    "end_time": "2026-09-15T18:12:29.432594+00:00",
+    "duration_seconds": 1.409297,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "Navigate to login page (session already logged out)",
+        "status": "PASS"
+      },
+      {
+        "step_order": 2,
+        "description": "Log in again with the same real account",
+        "status": "PASS"
+      },
+      {
+        "step_order": 3,
+        "description": "Observe authenticated state",
+        "status": "PASS"
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-AUTH-03-RELOGIN-ENH02-TD-REG-05-01-main-1789495948023\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

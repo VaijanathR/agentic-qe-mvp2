@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-TD-ACO-01-01",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\testdata\\ENH02-TD-ACO-01-01\\v1.json",
+  "content_hash": "5e1c6012295a0fc17aad4ff3d06c8be0c2ba7e79a703a033a3c44018e7dfa7b5",
+  "updated_at": "2026-09-15T18:00:29.391086+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\testdata\\ENH02-TD-ACO-01-01\\v1.json",
+      "generated_at": "2026-09-15T18:00:29.391086+00:00"
+    }
+  ]
+}
