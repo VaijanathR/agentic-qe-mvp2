@@ -1,0 +1,50 @@
+{
+  "artifact_id": "PW-MECHANISM-CHECK-01",
+  "artifact_version": 1,
+  "generated_at": "2026-09-14T19:06:00.222867+00:00",
+  "generator": "batch2-mechanism-check",
+  "provenance": {},
+  "content_hash": "62696288b009c7a5bcec384aa4c40d7eeb196b9781378e604e367ef131a261aa",
+  "payload": {
+    "validation_status": "ACCEPTED",
+    "notes": [
+      "DISCLOSED_SYNTHETIC_MECHANISM_FIXTURE"
+    ],
+    "automation_id": "PW-MECHANISM-CHECK-01",
+    "testcase_id": "TC-MECHANISM-CHECK-01",
+    "requirement_ids": [
+      "REQ-WISH-01"
+    ],
+    "test_data_set_id": "TD-MECHANISM-CHECK-01",
+    "journey_id": "J-05",
+    "scenario_type": "POSITIVE",
+    "browser_intent": "chromium-headless",
+    "preconditions": [],
+    "steps": [
+      {
+        "step_order": 1,
+        "action_type": "NAVIGATE",
+        "locator": null,
+        "input_mapping": null,
+        "synchronization_strategy": "WAIT_FOR_NETWORK_IDLE"
+      }
+    ],
+    "assertions": [
+      {
+        "assertion_type": "BUSINESS_REQUIRED",
+        "condition": "The home page loads",
+        "source": "testcase:TC-MECHANISM-CHECK-01.expected_result",
+        "counts_toward_coverage": true
+      }
+    ],
+    "evidence_requirements": [],
+    "failure_handling_metadata": {},
+    "source_attribution": [
+      {
+        "requirement_id": "REQ-WISH-01",
+        "note": "DISCLOSED SYNTHETIC MECHANISM FIXTURE"
+      }
+    ],
+    "generation_metadata": {}
+  }
+}

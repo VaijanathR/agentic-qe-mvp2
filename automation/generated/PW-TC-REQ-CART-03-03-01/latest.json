@@ -1,0 +1,19 @@
+{
+  "artifact_id": "PW-TC-REQ-CART-03-03-01",
+  "latest_version": 2,
+  "latest_path": "automation\\generated\\PW-TC-REQ-CART-03-03-01\\v2.json",
+  "content_hash": "a34d6dca5c335c3970d5b5737eaf34ce2866fa957db18acfcbdc66b7dfcb9290",
+  "updated_at": "2026-09-14T18:15:51.253603+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\generated\\PW-TC-REQ-CART-03-03-01\\v1.json",
+      "generated_at": "2026-09-14T18:15:51.252364+00:00"
+    },
+    {
+      "version": 2,
+      "path": "automation\\generated\\PW-TC-REQ-CART-03-03-01\\v2.json",
+      "generated_at": "2026-09-14T18:15:51.253603+00:00"
+    }
+  ]
+}

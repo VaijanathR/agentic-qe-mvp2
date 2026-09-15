@@ -1,0 +1,14 @@
+{
+  "artifact_id": "PW-MECHANISM-CHECK-01",
+  "latest_version": 1,
+  "latest_path": "automation\\generated\\PW-MECHANISM-CHECK-01\\v1.json",
+  "content_hash": "62696288b009c7a5bcec384aa4c40d7eeb196b9781378e604e367ef131a261aa",
+  "updated_at": "2026-09-14T19:06:00.222867+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\generated\\PW-MECHANISM-CHECK-01\\v1.json",
+      "generated_at": "2026-09-14T19:06:00.222867+00:00"
+    }
+  ]
+}

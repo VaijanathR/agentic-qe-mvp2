@@ -1,0 +1,39 @@
+{
+  "artifact_id": "PW-TC-REQ-REG-01-01-01",
+  "latest_version": 6,
+  "latest_path": "automation\\generated\\PW-TC-REQ-REG-01-01-01\\v6.json",
+  "content_hash": "31a65aefbe81c580cb17d4e18f84aaafa48fdade1cf18227eeb82e2e7e3a5ccf",
+  "updated_at": "2026-09-14T18:15:51.229350+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\generated\\PW-TC-REQ-REG-01-01-01\\v1.json",
+      "generated_at": "2026-09-14T18:15:51.221950+00:00"
+    },
+    {
+      "version": 2,
+      "path": "automation\\generated\\PW-TC-REQ-REG-01-01-01\\v2.json",
+      "generated_at": "2026-09-14T18:15:51.223479+00:00"
+    },
+    {
+      "version": 3,
+      "path": "automation\\generated\\PW-TC-REQ-REG-01-01-01\\v3.json",
+      "generated_at": "2026-09-14T18:15:51.224910+00:00"
+    },
+    {
+      "version": 4,
+      "path": "automation\\generated\\PW-TC-REQ-REG-01-01-01\\v4.json",
+      "generated_at": "2026-09-14T18:15:51.226433+00:00"
+    },
+    {
+      "version": 5,
+      "path": "automation\\generated\\PW-TC-REQ-REG-01-01-01\\v5.json",
+      "generated_at": "2026-09-14T18:15:51.227860+00:00"
+    },
+    {
+      "version": 6,
+      "path": "automation\\generated\\PW-TC-REQ-REG-01-01-01\\v6.json",
+      "generated_at": "2026-09-14T18:15:51.229350+00:00"
+    }
+  ]
+}

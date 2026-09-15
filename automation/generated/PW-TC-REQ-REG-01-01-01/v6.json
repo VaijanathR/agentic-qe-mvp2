@@ -1,0 +1,150 @@
+{
+  "artifact_id": "PW-TC-REQ-REG-01-01-01",
+  "artifact_version": 6,
+  "generated_at": "2026-09-14T18:15:51.229350+00:00",
+  "generator": "stub-deterministic-v1",
+  "provenance": {
+    "batch_id": "CR001-BATCH1-LIVE-01",
+    "checkpoint": "CP-MVP2-05"
+  },
+  "content_hash": "31a65aefbe81c580cb17d4e18f84aaafa48fdade1cf18227eeb82e2e7e3a5ccf",
+  "payload": {
+    "validation_status": "UNSUPPORTED_NEEDS_CLARIFICATION",
+    "notes": [
+      "LOCATOR_UNSUPPORTED:step_2",
+      "LOCATOR_UNSUPPORTED:step_3",
+      "LOCATOR_UNSUPPORTED:step_4",
+      "LOCATOR_UNSUPPORTED:step_5",
+      "LOCATOR_UNSUPPORTED:step_6",
+      "LOCATOR_UNSUPPORTED:step_7"
+    ],
+    "automation_id": "PW-TC-REQ-REG-01-01-01",
+    "testcase_id": "TC-REQ-REG-01-01",
+    "requirement_ids": [
+      "REQ-REG-01"
+    ],
+    "test_data_set_id": "TD-TC-REQ-REG-01-01-06",
+    "journey_id": "J-01",
+    "scenario_type": "POSITIVE",
+    "browser_intent": "chromium-headless",
+    "preconditions": [
+      "Approved requirement REQ-REG-01 is in effect"
+    ],
+    "steps": [
+      {
+        "step_order": 1,
+        "action_type": "NAVIGATE",
+        "locator": null,
+        "input_mapping": null,
+        "synchronization_strategy": "WAIT_FOR_NETWORK_IDLE"
+      },
+      {
+        "step_order": 2,
+        "action_type": "FILL",
+        "locator": {
+          "strategy": "UNSUPPORTED",
+          "value": null,
+          "evidence_source": null,
+          "status": "UNSUPPORTED"
+        },
+        "input_mapping": "first_name",
+        "synchronization_strategy": "WAIT_FOR_VISIBLE"
+      },
+      {
+        "step_order": 3,
+        "action_type": "FILL",
+        "locator": {
+          "strategy": "UNSUPPORTED",
+          "value": null,
+          "evidence_source": null,
+          "status": "UNSUPPORTED"
+        },
+        "input_mapping": "last_name",
+        "synchronization_strategy": "WAIT_FOR_VISIBLE"
+      },
+      {
+        "step_order": 4,
+        "action_type": "FILL",
+        "locator": {
+          "strategy": "UNSUPPORTED",
+          "value": null,
+          "evidence_source": null,
+          "status": "UNSUPPORTED"
+        },
+        "input_mapping": "email",
+        "synchronization_strategy": "WAIT_FOR_VISIBLE"
+      },
+      {
+        "step_order": 5,
+        "action_type": "FILL",
+        "locator": {
+          "strategy": "UNSUPPORTED",
+          "value": null,
+          "evidence_source": null,
+          "status": "UNSUPPORTED"
+        },
+        "input_mapping": "password",
+        "synchronization_strategy": "WAIT_FOR_VISIBLE"
+      },
+      {
+        "step_order": 6,
+        "action_type": "FILL",
+        "locator": {
+          "strategy": "UNSUPPORTED",
+          "value": null,
+          "evidence_source": null,
+          "status": "UNSUPPORTED"
+        },
+        "input_mapping": "confirm_password",
+        "synchronization_strategy": "WAIT_FOR_VISIBLE"
+      },
+      {
+        "step_order": 7,
+        "action_type": "CLICK",
+        "locator": {
+          "strategy": "UNSUPPORTED",
+          "value": null,
+          "evidence_source": null,
+          "status": "UNSUPPORTED"
+        },
+        "input_mapping": null,
+        "synchronization_strategy": "WAIT_FOR_NETWORK_IDLE"
+      }
+    ],
+    "assertions": [
+      {
+        "assertion_type": "BUSINESS_REQUIRED",
+        "condition": "REQ-REG-01: Registration shall require First name, Last name, Email, Password, and Confirm password, rejecting submission with field-specific messages when any are blank\nRationale: Baseline data-quality gate\nEvidence Basis: Empty-form submission returned per-field \"is required\" messages\nAcceptance Criteria: Given all fields blank, when submitted, then all required-field messages show and no account is created\nActor: Guest\nJourney: J-01\nStatus: APPROVED — BASELINED v1.0",
+        "source": "testcase:TC-REQ-REG-01-01.expected_result",
+        "counts_toward_coverage": true
+      },
+      {
+        "assertion_type": "TECHNICAL_USEFUL",
+        "condition": "REQ-REG-01: Registration shall require First name, Last name, Email, Password, and Confirm password, rejecting submission with field-specific messages when any are blank\nRationale: Baseline data-quality gate\nEvidence Basis: Empty-form submission returned per-field \"is required\" messages\nAcceptance Criteria: Given all fields blank, when submitted, then all required-field messages show and no account is created\nActor: Guest\nJourney: J-01\nStatus: APPROVED — BASELINED v1.0",
+        "source": "llm_proposed_step_assertion",
+        "counts_toward_coverage": false
+      }
+    ],
+    "evidence_requirements": [
+      "screenshot",
+      "dom_snapshot"
+    ],
+    "failure_handling_metadata": {
+      "retry": false,
+      "escalate": true
+    },
+    "source_attribution": [
+      {
+        "requirement_id": "REQ-REG-01",
+        "source_document": "requirements/MVP2_SRS_v1.0_APPROVED.md",
+        "source_version": "1.0",
+        "chunk_id": "srs_v1.0__REQ-REG-01"
+      }
+    ],
+    "generation_metadata": {
+      "generator": "stub-deterministic-v1",
+      "generated_at": "2026-09-14T18:15:51.193737+00:00",
+      "test_data_set_id": "TD-TC-REQ-REG-01-01-06"
+    }
+  }
+}

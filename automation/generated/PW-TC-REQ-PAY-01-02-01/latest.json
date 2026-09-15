@@ -1,0 +1,14 @@
+{
+  "artifact_id": "PW-TC-REQ-PAY-01-02-01",
+  "latest_version": 1,
+  "latest_path": "automation\\generated\\PW-TC-REQ-PAY-01-02-01\\v1.json",
+  "content_hash": "90b82b86b4abf4a524e130dc75ca6e13b28afe42725cc4f0697baa30a1e72851",
+  "updated_at": "2026-09-14T18:15:51.245064+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\generated\\PW-TC-REQ-PAY-01-02-01\\v1.json",
+      "generated_at": "2026-09-14T18:15:51.245064+00:00"
+    }
+  ]
+}

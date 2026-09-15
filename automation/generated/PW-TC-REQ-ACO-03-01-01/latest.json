@@ -1,0 +1,19 @@
+{
+  "artifact_id": "PW-TC-REQ-ACO-03-01-01",
+  "latest_version": 2,
+  "latest_path": "automation\\generated\\PW-TC-REQ-ACO-03-01-01\\v2.json",
+  "content_hash": "2b50fc1a66d6f6f9979d101fb8643446fbccabacda2d319d7d9e471358b38da3",
+  "updated_at": "2026-09-14T18:15:51.239188+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\generated\\PW-TC-REQ-ACO-03-01-01\\v1.json",
+      "generated_at": "2026-09-14T18:15:51.237397+00:00"
+    },
+    {
+      "version": 2,
+      "path": "automation\\generated\\PW-TC-REQ-ACO-03-01-01\\v2.json",
+      "generated_at": "2026-09-14T18:15:51.239188+00:00"
+    }
+  ]
+}
