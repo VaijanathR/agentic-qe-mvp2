@@ -8,16 +8,24 @@ helper verbatim -- this module authors no new locators, no new page
 objects, and no competing execution framework. It drives real business
 actions already evidenced for the requirement's real testcase.
 
-Two entry points:
-  - `execute_real(...)`: drives the real, demonstrated business action for
-    a given requirement in REAL_EXECUTION mode -- a genuine, non-mocked
-    Playwright Chromium session against the real SUT.
-  - `execute_controlled_failure(...)`: a CLEARLY-MARKED controlled test
-    failure fixture (sec. 57) -- still a real Playwright session against
-    the real SUT, but asserting against a deliberately non-existent
-    locator, so the resulting real FAIL/ERROR execution log feeds real
-    RCA/Replanning/Governance without ever fabricating a production
-    failure.
+Registered real drivers, one per requirement, each reusing the exact
+real business action already established in the corresponding real
+pytest test file (never a new locator, never a new page object):
+  - REQ-BRW-01 <- `test_enh02_catalog.py::test_books_category_renders_product_grid`
+  - REQ-SRCH-01 <- `test_enh02_catalog.py::test_search_returns_results_for_valid_keyword`
+  - REQ-WISH-01/02/03 <- `test_enh02_wishlist.py::test_wishlist_add_view_and_shareable_url_chain`
+    (a real, in-order chain -- WISH-02/03 require WISH-01's own real
+    add-to-wishlist action to have already run in the SAME page session;
+    the orchestrator's dependency planning, `dependency_planning.py`,
+    independently discovers this same real ordering from the testcases'
+    own precondition text).
+
+Plus `execute_controlled_failure(...)`: a CLEARLY-MARKED controlled test
+failure fixture (sec. 57) -- still a real Playwright session against
+the real SUT, but asserting against a deliberately non-existent
+locator, so the resulting real FAIL/ERROR execution log feeds real
+RCA/Replanning/Governance without ever fabricating a production
+failure.
 
 Only `browser_page`-shaped `(page, browser_version)` tuples are accepted
 (the same fixture shape `automation/playwright/tests/conftest.py`
@@ -26,14 +34,121 @@ browser lifecycle; this module never launches its own browser silently.
 """
 from __future__ import annotations
 
-from typing import Dict, Tuple
+from typing import Callable, Dict, Tuple
 
+from automation.playwright.components.navigation import start_at_home
 from automation.playwright.config import DEFAULT_CONFIG
+from automation.playwright.data_access import load_dataset
 from automation.playwright.logging_ import ExecutionStatus
-from automation.playwright.pages.catalog_pages import CategoryPage
+from automation.playwright.pages.catalog_pages import CategoryPage, ProductPage
+from automation.playwright.pages.search_page import SearchPage
+from automation.playwright.pages.wishlist_page import WishlistPage
 from automation.playwright.tests.enh02_helpers import real_execution
 
 CONTROLLED_FAILURE_MARKER = "CONTROLLED TEST FAILURE"
+
+
+def execute_real_srch01(page, browser_version: str, worker_id: str, orchestration_id: str) -> Dict:
+    """Real, non-mocked execution of REQ-SRCH-01's own already-evidenced
+    business action (search a real, known keyword, observe at least one
+    rendered result)."""
+    dataset = load_dataset("ENH02-TD-SRCH-01-01", required_fields=["search_term"])
+    with real_execution(
+        testcase_id="ENH02-TC-REQ-SRCH-01-VALID-KEYWORD",
+        requirement_ids=["REQ-SRCH-01"],
+        dataset_id=dataset.data_set_id,
+        automation_id="ENH02-PW-TC-REQ-SRCH-01-VALID-KEYWORD",
+        page=page, browser_version=browser_version, worker_id=worker_id,
+        run_label=orchestration_id,
+    ) as (steps, mark):
+        home = start_at_home(page, DEFAULT_CONFIG)
+        steps.append({"step_order": 1, "description": "Navigate to home page", "status": "PASS"})
+        search = SearchPage(page, DEFAULT_CONFIG)
+        resolution = search.search(dataset.fields["search_term"])
+        steps.append({"step_order": 2, "description": f"Search for '{dataset.fields['search_term']}'", "status": "PASS", "locator_resolution": resolution})
+        page.wait_for_timeout(500)
+        has_results = search.has_results()
+        steps.append({"step_order": 3, "description": "Observe at least one result renders", "status": "PASS" if has_results else "FAIL"})
+        mark(ExecutionStatus.PASS if has_results else ExecutionStatus.FAIL, None if has_results else "ASSERTION_FAILURE", None if has_results else "No results rendered")
+        assert has_results, "Real REQ-SRCH-01 execution did not render any results"
+
+    return {"testcase_id": "ENH02-TC-REQ-SRCH-01-VALID-KEYWORD", "automation_id": "ENH02-PW-TC-REQ-SRCH-01-VALID-KEYWORD"}
+
+
+def execute_real_wish01(page, browser_version: str, worker_id: str, orchestration_id: str) -> Dict:
+    """Real, non-mocked execution of REQ-WISH-01's own already-evidenced
+    business action (add a real, eligible product to the wishlist,
+    observe the confirmation). Leaves the session's anonymous wishlist
+    populated for REQ-WISH-02/03's own real, dependent actions."""
+    with real_execution(
+        testcase_id="ENH02-TC-REQ-WISH-01-ADD-TO-WISHLIST",
+        requirement_ids=["REQ-WISH-01"],
+        dataset_id="NO-DATASET",
+        automation_id="ENH02-PW-TC-REQ-WISH-01-ADD-TO-WISHLIST",
+        page=page, browser_version=browser_version, worker_id=worker_id,
+        run_label=orchestration_id,
+    ) as (steps, mark):
+        product = ProductPage(page, DEFAULT_CONFIG)
+        product.open("/album-3")
+        steps.append({"step_order": 1, "description": "Navigate to '3rd Album'", "status": "PASS"})
+        resolution = product.add_to_wishlist()
+        steps.append({"step_order": 2, "description": "Add to wishlist", "status": "PASS" if resolution["resolved_candidate"] else "FAIL", "locator_resolution": resolution})
+        notification = product.notification_text()
+        observed = "added to your wishlist" in notification
+        steps.append({"step_order": 3, "description": "Observe wishlist-add confirmation", "status": "PASS" if observed else "FAIL"})
+        mark(ExecutionStatus.PASS if observed else ExecutionStatus.FAIL, None if observed else "ASSERTION_FAILURE", None if observed else f"notification={notification!r}")
+        assert observed, f"Real REQ-WISH-01 wishlist-add confirmation not observed (notification={notification!r})"
+
+    return {"testcase_id": "ENH02-TC-REQ-WISH-01-ADD-TO-WISHLIST", "automation_id": "ENH02-PW-TC-REQ-WISH-01-ADD-TO-WISHLIST"}
+
+
+def execute_real_wish02(page, browser_version: str, worker_id: str, orchestration_id: str) -> Dict:
+    """Real REQ-WISH-02 -- requires REQ-WISH-01 to have already run in
+    this same page session (its own real precondition; enforced by the
+    orchestrator's dependency planning, never re-run here)."""
+    with real_execution(
+        testcase_id="ENH02-TC-REQ-WISH-02-WISHLIST-PAGE-REFLECTS-ITEM",
+        requirement_ids=["REQ-WISH-02"],
+        dataset_id="NO-DATASET",
+        automation_id="ENH02-PW-TC-REQ-WISH-02-WISHLIST-PAGE-REFLECTS-ITEM",
+        page=page, browser_version=browser_version, worker_id=worker_id,
+        run_label=orchestration_id,
+    ) as (steps, mark):
+        wishlist = WishlistPage(page, DEFAULT_CONFIG)
+        wishlist.open()
+        steps.append({"step_order": 1, "description": "Navigate to wishlist page", "status": "PASS"})
+        has_item = wishlist.has_item()
+        has_price = bool(wishlist.item_price_text())
+        has_remove = wishlist.has_remove_action()
+        has_add_to_cart = wishlist.has_add_to_cart_action()
+        observed = has_item and has_price and has_remove and has_add_to_cart
+        steps.append({"step_order": 2, "description": "Observe item, price, and available actions", "status": "PASS" if observed else "FAIL"})
+        mark(ExecutionStatus.PASS if observed else ExecutionStatus.FAIL, None if observed else "ASSERTION_FAILURE", None if observed else f"item={has_item} price={has_price} remove={has_remove} add_to_cart={has_add_to_cart}")
+        assert observed, "Real REQ-WISH-02 execution: wishlist page did not reflect the added item with price and actions"
+
+    return {"testcase_id": "ENH02-TC-REQ-WISH-02-WISHLIST-PAGE-REFLECTS-ITEM", "automation_id": "ENH02-PW-TC-REQ-WISH-02-WISHLIST-PAGE-REFLECTS-ITEM"}
+
+
+def execute_real_wish03(page, browser_version: str, worker_id: str, orchestration_id: str) -> Dict:
+    """Real REQ-WISH-03 -- requires REQ-WISH-01 to have already run in
+    this same page session (its own real precondition)."""
+    with real_execution(
+        testcase_id="ENH02-TC-REQ-WISH-03-SHAREABLE-URL",
+        requirement_ids=["REQ-WISH-03"],
+        dataset_id="NO-DATASET",
+        automation_id="ENH02-PW-TC-REQ-WISH-03-SHAREABLE-URL",
+        page=page, browser_version=browser_version, worker_id=worker_id,
+        run_label=orchestration_id,
+    ) as (steps, mark):
+        wishlist = WishlistPage(page, DEFAULT_CONFIG)
+        wishlist.open()
+        steps.append({"step_order": 1, "description": "Navigate to (anonymous) wishlist page", "status": "PASS"})
+        has_url = wishlist.has_shareable_url()
+        steps.append({"step_order": 2, "description": "Observe shareable URL displayed", "status": "PASS" if has_url else "FAIL"})
+        mark(ExecutionStatus.PASS if has_url else ExecutionStatus.FAIL, None if has_url else "ASSERTION_FAILURE", None if has_url else "Shareable URL not observed")
+        assert has_url, "Real REQ-WISH-03 execution: anonymous wishlist page did not display a shareable URL"
+
+    return {"testcase_id": "ENH02-TC-REQ-WISH-03-SHAREABLE-URL", "automation_id": "ENH02-PW-TC-REQ-WISH-03-SHAREABLE-URL"}
 
 
 def execute_real_brw01(page, browser_version: str, worker_id: str, orchestration_id: str) -> Dict:
@@ -103,3 +218,28 @@ def execute_controlled_failure(page, browser_version: str, worker_id: str, orche
         assert deliberately_missing, f"{CONTROLLED_FAILURE_MARKER}: this assertion is DESIGNED to fail, to real-exercise RCA/Replanning/Governance"
 
     return {"testcase_id": "ORCH-CONTROLLED-TEST-FAILURE-FIXTURE", "automation_id": "ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE"}
+
+
+#: Real driver registry -- the authoritative list of requirements this
+#: orchestrator can actually drive against the real SUT. A requirement
+#: absent from this dict has no real execution driver yet; the
+#: orchestrator reports that honestly (BLOCKED for REAL_EXECUTION
+#: purposes) rather than silently skipping or fabricating a result.
+REAL_DRIVERS: Dict[str, Callable[..., Dict]] = {
+    "REQ-BRW-01": execute_real_brw01,
+    "REQ-SRCH-01": execute_real_srch01,
+    "REQ-WISH-01": execute_real_wish01,
+    "REQ-WISH-02": execute_real_wish02,
+    "REQ-WISH-03": execute_real_wish03,
+}
+
+
+def has_real_driver(requirement_id: str) -> bool:
+    return requirement_id in REAL_DRIVERS
+
+
+def execute_real(requirement_id: str, page, browser_version: str, worker_id: str, orchestration_id: str) -> Dict:
+    driver = REAL_DRIVERS.get(requirement_id)
+    if driver is None:
+        raise KeyError(f"No real execution driver registered for {requirement_id!r}. Registered: {sorted(REAL_DRIVERS)}")
+    return driver(page, browser_version, worker_id, orchestration_id)

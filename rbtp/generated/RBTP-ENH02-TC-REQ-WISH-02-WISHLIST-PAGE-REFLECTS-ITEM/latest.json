@@ -1,0 +1,14 @@
+{
+  "artifact_id": "RBTP-ENH02-TC-REQ-WISH-02-WISHLIST-PAGE-REFLECTS-ITEM",
+  "latest_version": 1,
+  "latest_path": "rbtp/generated/RBTP-ENH02-TC-REQ-WISH-02-WISHLIST-PAGE-REFLECTS-ITEM/v1.json",
+  "content_hash": "8d4507a45c920a4f65793e7448cb88986f630a23df64cdcfca4db25c792142d4",
+  "updated_at": "2026-09-15T20:28:38.380350+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "rbtp/generated/RBTP-ENH02-TC-REQ-WISH-02-WISHLIST-PAGE-REFLECTS-ITEM/v1.json",
+      "generated_at": "2026-09-15T20:28:38.380350+00:00"
+    }
+  ]
+}

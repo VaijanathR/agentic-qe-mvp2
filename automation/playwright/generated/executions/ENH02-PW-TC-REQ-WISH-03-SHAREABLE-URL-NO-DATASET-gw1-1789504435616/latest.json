@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-WISH-03-SHAREABLE-URL-NO-DATASET-gw1-1789504435616",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-WISH-03-SHAREABLE-URL-NO-DATASET-gw1-1789504435616\\v1.json",
+  "content_hash": "4b7657ce2538b2c431e5c005490244b310cb3e67f29d00d5f152c1fb865a9080",
+  "updated_at": "2026-09-15T20:33:56.163258+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-WISH-03-SHAREABLE-URL-NO-DATASET-gw1-1789504435616\\v1.json",
+      "generated_at": "2026-09-15T20:33:56.163258+00:00"
+    }
+  ]
+}

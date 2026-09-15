@@ -1,0 +1,14 @@
+{
+  "artifact_id": "RBTP-TC-MECHANISM-CHECK-01",
+  "latest_version": 1,
+  "latest_path": "rbtp/generated/RBTP-TC-MECHANISM-CHECK-01/v1.json",
+  "content_hash": "4b415642f56ceaf0d57cf569698991079ab87937c836512379e887870cda085a",
+  "updated_at": "2026-09-15T20:28:38.212225+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "rbtp/generated/RBTP-TC-MECHANISM-CHECK-01/v1.json",
+      "generated_at": "2026-09-15T20:28:38.212225+00:00"
+    }
+  ]
+}

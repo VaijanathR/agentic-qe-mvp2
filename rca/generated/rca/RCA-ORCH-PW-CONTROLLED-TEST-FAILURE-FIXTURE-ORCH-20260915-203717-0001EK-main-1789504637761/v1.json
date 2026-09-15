@@ -1,0 +1,98 @@
+{
+  "artifact_id": "RCA-ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T20:37:20.187569+00:00",
+  "generator": "rca.pipeline.run_cp07_rca (deterministic-only, no LLM)",
+  "provenance": {
+    "execution_id": "ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761",
+    "checkpoint": "CP-MVP2-07"
+  },
+  "content_hash": "e0c234e8c39b917096ceb19c2884c1d1e889aae4a196a78910ac626a796bed9b",
+  "payload": {
+    "rca_id": "RCA-ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761",
+    "execution_id": "ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761",
+    "automation_id": "ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE",
+    "testcase_id": "ORCH-CONTROLLED-TEST-FAILURE-FIXTURE",
+    "requirement_ids": [
+      "REQ-BRW-01"
+    ],
+    "test_data_set_id": "NO-DATASET",
+    "failure_symptom": "execution_id=ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761: overall_status=ERROR; AssertionError('CONTROLLED TEST FAILURE: this assertion is DESIGNED to fail, to real-exercise RCA/Replanning/Governance')",
+    "observed_evidence": {
+      "browser": "chromium",
+      "duration_seconds": 2.385444,
+      "step_results": [
+        {
+          "step_order": 1,
+          "action_type": "ASSERT",
+          "status": "PASS",
+          "observed_result": "CONTROLLED TEST FAILURE: Navigate to the Books category (real, expected to succeed)",
+          "error_information": null
+        },
+        {
+          "step_order": 2,
+          "action_type": "ASSERT",
+          "status": "FAIL",
+          "observed_result": "CONTROLLED TEST FAILURE: assert a deliberately non-existent locator is present (engineered to fail)",
+          "error_information": null
+        },
+        {
+          "step_order": 3,
+          "action_type": "ASSERT",
+          "status": "ERROR",
+          "observed_result": "Unhandled exception",
+          "error_information": "AssertionError('CONTROLLED TEST FAILURE: this assertion is DESIGNED to fail, to real-exercise RCA/Replanning/Governance')"
+        }
+      ],
+      "assertion_results": [
+        {
+          "assertion_type": "BUSINESS_REQUIRED",
+          "condition": "execution final_status == PASS (adapted from ExecutionLogRecord ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761)",
+          "source": "orchestration.execution_result_adapter",
+          "counts_toward_coverage": true,
+          "passed": false,
+          "observed": "ERROR"
+        }
+      ],
+      "evidence_references": [
+        "automation\\playwright\\generated\\evidence\\ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761\\final_state.png"
+      ]
+    },
+    "requirement_testcase_data_context": {
+      "testcase_id": "ORCH-CONTROLLED-TEST-FAILURE-FIXTURE",
+      "requirement_ids": [
+        "REQ-BRW-01"
+      ],
+      "test_data_set_id": "NO-DATASET",
+      "testcase_persisted_and_loadable": false,
+      "testcase_test_steps": null
+    },
+    "historical_evidence": [
+      {
+        "execution_id": "ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-195201-0001Q0-main-1789501921681",
+        "overall_status": "ERROR",
+        "failure_classification": "TOOL_ISSUE"
+      },
+      {
+        "execution_id": "ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203422-00015B-main-1789504462503",
+        "overall_status": "ERROR",
+        "failure_classification": "TOOL_ISSUE"
+      },
+      {
+        "execution_id": "ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203504-0001B6-main-1789504505002",
+        "overall_status": "ERROR",
+        "failure_classification": "TOOL_ISSUE"
+      }
+    ],
+    "agent_inference": "The first failure occurred at step 2 (ASSERT), classified TOOL_ISSUE/BROWSER_LAUNCH_FAILURE. No further deterministic pattern was matched by this module's disclosed heuristics. Of 3 other real, persisted execution(s) of this same testcase lineage (3 of which reached real browser execution and are directly comparable), 3/3 comparable execution(s) share the identical overall_status/failure_classification pattern -- cited as supporting historical evidence only, per sec. 7; it does not override this execution's own current evidence.",
+    "root_cause_hypothesis": "Real, observed TOOL_ISSUE/BROWSER_LAUNCH_FAILURE failure; no further deterministic hypothesis available from this module's disclosed heuristics.",
+    "confidence": "HIGH",
+    "final_rca_classification": "TOOL_ISSUE",
+    "final_rca_subtype": "BROWSER_LAUNCH_FAILURE",
+    "recommended_next_action": "RECOMMENDATION ONLY, NOT AUTHORIZED, NOT IMPLEMENTED: escalate for Human + Di review.",
+    "generation_metadata": {
+      "generator": "deterministic-only (no LLM anywhere in CP-MVP2-07 RCA)",
+      "generated_at": "2026-09-15T20:37:20.186983+00:00"
+    }
+  }
+}

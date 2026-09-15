@@ -1,0 +1,33 @@
+{
+  "artifact_id": "REPLAN-RCA-ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T20:37:20.188906+00:00",
+  "generator": "rca.pipeline.run_cp07_rca (deterministic-only, no LLM)",
+  "provenance": {
+    "rca_id": "RCA-ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761",
+    "checkpoint": "CP-MVP2-07"
+  },
+  "content_hash": "322ef9079c526780af102e38b29f92a07a82369c75137e391a81473caf345b91",
+  "payload": {
+    "replanning_id": "REPLAN-RCA-ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761",
+    "rca_id": "RCA-ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761",
+    "execution_id": "ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761",
+    "decision": "HUMAN_REVIEW_REQUIRED",
+    "reason": "A high-confidence root cause was established, but the only real corrective action (authoring richer, specific testcase content establishing the missing precondition) requires inventing business-step content this checkpoint has no authority to invent (frozen CP-MVP2-07 spec sec. 9 / governing instruction sec. 9). Selecting and authorizing that future work is a Human + Di decision.",
+    "evidence_refs": [
+      "RCA-ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761",
+      "ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761"
+    ],
+    "proposed_change": "RECOMMENDATION ONLY, NOT APPLIED: a future, separately-authorized task should author a specific testcase (e.g. via real, non-stub testcase generation) that includes the precondition-establishing business steps this scenario requires.",
+    "affected_artifacts": [
+      "ORCH-CONTROLLED-TEST-FAILURE-FIXTURE",
+      "ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE"
+    ],
+    "expected_benefit": "Would allow this scenario to reach a genuine, meaningful business-level PASS/FAIL instead of an environment-level TIMEOUT.",
+    "governance_impact": "None to CP-06/CP-07 themselves; would require a new, separately-authorized testcase-generation task, not a specification change.",
+    "human_approval_required": true,
+    "generation_metadata": {
+      "generator": "deterministic-only (no LLM anywhere in CP-MVP2-07 replanning)"
+    }
+  }
+}

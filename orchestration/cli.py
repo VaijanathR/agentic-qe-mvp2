@@ -5,6 +5,9 @@ sec. 49).
 Usage:
     python -m orchestration.cli orchestrate-requirement REQ-BRW-01 --dry-run
     python -m orchestration.cli orchestrate-requirement REQ-BRW-01 --real
+    python -m orchestration.cli orchestrate-batch REQ-BRW-01 REQ-SRCH-01 REQ-WISH-01 --dry-run
+    python -m orchestration.cli orchestrate-batch REQ-BRW-01 REQ-SRCH-01 REQ-WISH-01 --real
+    python -m orchestration.cli resume ORCH-... --real
     python -m orchestration.cli orchestrate-regression REQ-BRW-01
     python -m orchestration.cli orchestrate-testcase REQ-BRW-01
     python -m orchestration.cli orchestrate-performance REQ-BRW-01
@@ -31,7 +34,18 @@ from orchestration.orchestrator import Orchestrator
 
 
 def _print(obj) -> None:
-    print(json.dumps(obj, indent=2, ensure_ascii=False, default=str))
+    """Real bug found and fixed this task: the default Windows console
+    codepage (cp1252) cannot encode every real character this
+    orchestrator's own text can legitimately contain (e.g. a real
+    Unicode arrow in RCA/replanning rationale text) -- `print()`'s
+    default `sys.stdout` then raises `UnicodeEncodeError` and the whole
+    CLI invocation crashes AFTER a real orchestration run has already
+    completed and been persisted, losing only the final printed summary,
+    never any real evidence. Writes UTF-8 bytes directly to the real
+    stdout buffer instead, sidestepping the console codepage entirely."""
+    text = json.dumps(obj, indent=2, ensure_ascii=False, default=str)
+    sys.stdout.buffer.write((text + "\n").encode("utf-8"))
+    sys.stdout.flush()
 
 
 def cmd_orchestrate_requirement(args: argparse.Namespace) -> int:
@@ -61,6 +75,22 @@ def cmd_orchestrate_requirement(args: argparse.Namespace) -> int:
 
     _print(result.to_dict())
     return 0 if result.final_status not in ("BLOCKED",) else 1
+
+
+def cmd_orchestrate_batch(args: argparse.Namespace) -> int:
+    mode = ExecutionMode.REAL_EXECUTION if args.real else ExecutionMode.DRY_RUN
+    orchestrator = Orchestrator()
+    result = orchestrator.run_batch(args.requirement_ids, mode=mode, real_parallel_workers=args.workers, force_full_regression=args.full_regression)
+    _print(result.to_dict())
+    return 0 if result.final_status not in ("BLOCKED",) else 1
+
+
+def cmd_resume(args: argparse.Namespace) -> int:
+    mode = ExecutionMode.REAL_EXECUTION if args.real else ExecutionMode.DRY_RUN
+    orchestrator = Orchestrator()
+    outcome = orchestrator.resume_batch(args.orchestration_id, mode=mode)
+    _print(outcome)
+    return 0 if outcome.get("resumed") is not False or outcome["plan"]["resume_state"] != "NOT_FOUND" else 1
 
 
 def cmd_orchestrate_testcase(args: argparse.Namespace) -> int:
@@ -147,6 +177,19 @@ def build_parser() -> argparse.ArgumentParser:
     p2.add_argument("requirement_id")
     p2.add_argument("--real", action="store_true")
     p2.set_defaults(func=cmd_orchestrate_requirement)
+
+    pb = sub.add_parser("orchestrate-batch")
+    pb.add_argument("requirement_ids", nargs="+", help="One or more requirement IDs to orchestrate together.")
+    pb.add_argument("--real", action="store_true", help="REAL_EXECUTION mode (default: DRY_RUN)")
+    pb.add_argument("--dry-run", action="store_true", help="DRY_RUN mode (default)")
+    pb.add_argument("--workers", type=int, default=2, help="Real local pytest -n worker count for the SAFE_PARALLEL/PREREQUISITE_DEPENDENT group (default 2).")
+    pb.add_argument("--full-regression", action="store_true", help="Force FULL_REGRESSION scope instead of intelligent selection.")
+    pb.set_defaults(func=cmd_orchestrate_batch)
+
+    pr = sub.add_parser("resume")
+    pr.add_argument("orchestration_id")
+    pr.add_argument("--real", action="store_true")
+    pr.set_defaults(func=cmd_resume)
 
     p3 = sub.add_parser("orchestrate-regression")
     p3.add_argument("requirement_id")

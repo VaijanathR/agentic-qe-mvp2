@@ -1,0 +1,14 @@
+{
+  "artifact_id": "RCA-ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761",
+  "latest_version": 1,
+  "latest_path": "rca\\generated\\rca\\RCA-ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761\\v1.json",
+  "content_hash": "e0c234e8c39b917096ceb19c2884c1d1e889aae4a196a78910ac626a796bed9b",
+  "updated_at": "2026-09-15T20:37:20.187569+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "rca\\generated\\rca\\RCA-ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761\\v1.json",
+      "generated_at": "2026-09-15T20:37:20.187569+00:00"
+    }
+  ]
+}

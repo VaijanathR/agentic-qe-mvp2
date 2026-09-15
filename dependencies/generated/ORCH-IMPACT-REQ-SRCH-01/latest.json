@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ORCH-IMPACT-REQ-SRCH-01",
+  "latest_version": 1,
+  "latest_path": "dependencies/generated/ORCH-IMPACT-REQ-SRCH-01/v1.json",
+  "content_hash": "e5cd5d8d566012854bb961ccc3b6cab8858311bc51ad0e0aff2d34f0d4b3f5d9",
+  "updated_at": "2026-09-15T20:28:35.819579+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "dependencies/generated/ORCH-IMPACT-REQ-SRCH-01/v1.json",
+      "generated_at": "2026-09-15T20:28:35.819579+00:00"
+    }
+  ]
+}

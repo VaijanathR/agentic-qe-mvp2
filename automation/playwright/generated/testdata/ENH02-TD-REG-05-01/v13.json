@@ -1,0 +1,33 @@
+{
+  "artifact_id": "ENH02-TD-REG-05-01",
+  "artifact_version": 13,
+  "generated_at": "2026-09-15T20:31:36.020884+00:00",
+  "generator": "automation.playwright.enh02_testdata (Post-MVP2 Enhancement 02)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-REG-05-AUTO-LOGIN"
+  },
+  "content_hash": "737165b771f686a30e9de7e3ee36302abbfca543a84072a4fb741feed814fc49",
+  "payload": {
+    "dataset_id": "ENH02-TD-REG-05-01",
+    "testcase_id": "ENH02-TC-REQ-REG-05-AUTO-LOGIN",
+    "requirement_ids": [
+      "REQ-REG-05",
+      "REQ-REG-04",
+      "REQ-AUTH-01",
+      "REQ-AUTH-02",
+      "REQ-AUTH-03",
+      "REQ-ACCT-01",
+      "REQ-CART-05",
+      "REQ-PWR-01"
+    ],
+    "data_category": "POSITIVE",
+    "purpose": "The one, real, shared account this enhancement creates -- reused read-only by every dependent testcase.",
+    "fields": {
+      "first_name": "Enh02Shared",
+      "last_name": "SyntheticUser",
+      "email": "enh02.shared.1789504296014@example.test",
+      "password": "Enh02-Synthetic-Pw1",
+      "confirm_password": "Enh02-Synthetic-Pw1"
+    }
+  }
+}

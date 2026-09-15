@@ -1,0 +1,14 @@
+{
+  "artifact_id": "RBTP-ENH02-TC-REQ-SRCH-01-VALID-KEYWORD",
+  "latest_version": 1,
+  "latest_path": "rbtp/generated/RBTP-ENH02-TC-REQ-SRCH-01-VALID-KEYWORD/v1.json",
+  "content_hash": "4c612e6697ae4ff446f879d05a19835334af5a3d3a9f4b2fa67192323e40016b",
+  "updated_at": "2026-09-15T20:28:38.019222+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "rbtp/generated/RBTP-ENH02-TC-REQ-SRCH-01-VALID-KEYWORD/v1.json",
+      "generated_at": "2026-09-15T20:28:38.019222+00:00"
+    }
+  ]
+}

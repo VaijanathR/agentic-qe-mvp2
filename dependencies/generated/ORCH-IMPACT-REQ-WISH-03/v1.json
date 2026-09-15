@@ -1,0 +1,135 @@
+{
+  "artifact_id": "ORCH-IMPACT-REQ-WISH-03",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T20:28:36.904404+00:00",
+  "generator": "deterministic-only",
+  "provenance": {
+    "kind": "dependency_reusability_matrix"
+  },
+  "content_hash": "bf8e842d001e50fae689a62b0ee3f005877ebe1a7fc81286a4bf35ba91b42be0",
+  "payload": {
+    "matrix_id": "ORCH-IMPACT-REQ-WISH-03",
+    "testcase_ids": [
+      "ENH02-TC-REQ-ACCT-01-ACCOUNT-PAGES",
+      "ENH02-TC-REQ-ACO-01-AUTHENTICATED-CHECKOUT-COMPLETION",
+      "ENH02-TC-REQ-ACO-02-SAVED-ADDRESS-REUSE",
+      "ENH02-TC-REQ-ACO-03-ADDRESS-FORM-VALIDATION",
+      "ENH02-TC-REQ-AUTH-01-VALID-LOGIN",
+      "ENH02-TC-REQ-AUTH-02-WRONG-PASSWORD",
+      "ENH02-TC-REQ-AUTH-03-RELOGIN",
+      "ENH02-TC-REQ-BRW-01-CATEGORY-GRID",
+      "ENH02-TC-REQ-CART-01-ADD-CONFIRMATION",
+      "ENH02-TC-REQ-CART-02-QUANTITY-UPDATE",
+      "ENH02-TC-REQ-CART-03-ZERO-QUANTITY-REMOVES",
+      "ENH02-TC-REQ-CART-04-EMPTY-CART-STATE",
+      "ENH02-TC-REQ-CART-05-PERSISTENCE-ACROSS-LOGIN",
+      "ENH02-TC-REQ-CFG-01-MANDATORY-ATTRIBUTE",
+      "ENH02-TC-REQ-GCO-01-GUEST-CHECKOUT-INIT",
+      "ENH02-TC-REQ-GCO-02-GUEST-STEP-SEQUENCE",
+      "ENH02-TC-REQ-GCO-03-GUEST-CHECKOUT-COMPLETION",
+      "ENH02-TC-REQ-OHIST-01-ORDER-APPEARS-IN-HISTORY",
+      "ENH02-TC-REQ-PWR-01-RECOVERY-UI",
+      "ENH02-TC-REQ-REG-02-MISMATCH",
+      "ENH02-TC-REQ-REG-03-MALFORMED-EMAIL",
+      "ENH02-TC-REQ-REG-04-DUPLICATE-EMAIL",
+      "ENH02-TC-REQ-REG-05-AUTO-LOGIN",
+      "ENH02-TC-REQ-SRCH-01-VALID-KEYWORD",
+      "ENH02-TC-REQ-SRCH-02-NO-RESULTS",
+      "ENH02-TC-REQ-WISH-01-ADD-TO-WISHLIST",
+      "ENH02-TC-REQ-WISH-02-WISHLIST-PAGE-REFLECTS-ITEM",
+      "ENH02-TC-REQ-WISH-03-SHAREABLE-URL"
+    ],
+    "edges": [
+      {
+        "testcase_id": "ENH02-TC-REQ-REG-02-MISMATCH",
+        "related_testcase_id": "ENH02-TC-REQ-REG-03-MALFORMED-EMAIL",
+        "kind": "SHARED_PRECONDITION",
+        "evidence": "identical precondition text: 'the real registration page is reachable.'"
+      },
+      {
+        "testcase_id": "ENH02-TC-REQ-REG-02-MISMATCH",
+        "related_testcase_id": "ENH02-TC-REQ-REG-05-AUTO-LOGIN",
+        "kind": "SHARED_PRECONDITION",
+        "evidence": "identical precondition text: 'the real registration page is reachable.'"
+      },
+      {
+        "testcase_id": "ENH02-TC-REQ-REG-03-MALFORMED-EMAIL",
+        "related_testcase_id": "ENH02-TC-REQ-REG-05-AUTO-LOGIN",
+        "kind": "SHARED_PRECONDITION",
+        "evidence": "identical precondition text: 'the real registration page is reachable.'"
+      },
+      {
+        "testcase_id": "ENH02-TC-REQ-AUTH-02-WRONG-PASSWORD",
+        "related_testcase_id": "ENH02-TC-REQ-REG-04-DUPLICATE-EMAIL",
+        "kind": "SHARED_PRECONDITION",
+        "evidence": "identical precondition text: 'the real account created by enh02-tc-req-reg-05-auto-login already exists.'"
+      },
+      {
+        "testcase_id": "ENH02-TC-REQ-CART-05-PERSISTENCE-ACROSS-LOGIN",
+        "related_testcase_id": "ENH02-TC-REQ-PWR-01-RECOVERY-UI",
+        "kind": "SHARED_PRECONDITION",
+        "evidence": "identical precondition text: 'the real account created by enh02-tc-req-reg-05-auto-login exists.'"
+      },
+      {
+        "testcase_id": "ENH02-TC-REQ-SRCH-01-VALID-KEYWORD",
+        "related_testcase_id": "ENH02-TC-REQ-SRCH-02-NO-RESULTS",
+        "kind": "SHARED_PRECONDITION",
+        "evidence": "identical precondition text: 'the real search page is reachable.'"
+      },
+      {
+        "testcase_id": "ENH02-TC-REQ-ACCT-01-ACCOUNT-PAGES",
+        "related_testcase_id": "ENH02-TC-REQ-ACO-01-AUTHENTICATED-CHECKOUT-COMPLETION",
+        "kind": "SHARED_PRECONDITION",
+        "evidence": "identical precondition text: 'the real account created by enh02-tc-req-reg-05-auto-login exists and is authenticated.'"
+      }
+    ],
+    "reusable_component_candidates": [
+      {
+        "candidate_kind": "SHARED_SETUP_PRECONDITION",
+        "precondition": "the real registration page is reachable.",
+        "testcase_ids": [
+          "ENH02-TC-REQ-REG-02-MISMATCH",
+          "ENH02-TC-REQ-REG-03-MALFORMED-EMAIL",
+          "ENH02-TC-REQ-REG-05-AUTO-LOGIN"
+        ]
+      },
+      {
+        "candidate_kind": "SHARED_SETUP_PRECONDITION",
+        "precondition": "the real account created by enh02-tc-req-reg-05-auto-login already exists.",
+        "testcase_ids": [
+          "ENH02-TC-REQ-AUTH-02-WRONG-PASSWORD",
+          "ENH02-TC-REQ-REG-04-DUPLICATE-EMAIL"
+        ]
+      },
+      {
+        "candidate_kind": "SHARED_SETUP_PRECONDITION",
+        "precondition": "the real account created by enh02-tc-req-reg-05-auto-login exists.",
+        "testcase_ids": [
+          "ENH02-TC-REQ-CART-05-PERSISTENCE-ACROSS-LOGIN",
+          "ENH02-TC-REQ-PWR-01-RECOVERY-UI"
+        ]
+      },
+      {
+        "candidate_kind": "SHARED_SETUP_PRECONDITION",
+        "precondition": "the real search page is reachable.",
+        "testcase_ids": [
+          "ENH02-TC-REQ-SRCH-01-VALID-KEYWORD",
+          "ENH02-TC-REQ-SRCH-02-NO-RESULTS"
+        ]
+      },
+      {
+        "candidate_kind": "SHARED_SETUP_PRECONDITION",
+        "precondition": "the real account created by enh02-tc-req-reg-05-auto-login exists and is authenticated.",
+        "testcase_ids": [
+          "ENH02-TC-REQ-ACCT-01-ACCOUNT-PAGES",
+          "ENH02-TC-REQ-ACO-01-AUTHENTICATED-CHECKOUT-COMPLETION"
+        ]
+      }
+    ],
+    "generation_metadata": {
+      "generated_at": "2026-09-15T20:28:36.896692+00:00",
+      "generator": "deterministic-only (no LLM used anywhere in dependency-matrix generation)",
+      "eligible_testcase_count": 28
+    }
+  }
+}

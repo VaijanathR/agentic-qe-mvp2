@@ -1,0 +1,46 @@
+{
+  "artifact_id": "RBTP-ENH02-TC-REQ-WISH-03-SHAREABLE-URL",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T20:28:38.553047+00:00",
+  "generator": "deterministic-only",
+  "provenance": {
+    "batch_id": "ORCH-RISK-REQ-WISH-03",
+    "checkpoint": "RBTP"
+  },
+  "content_hash": "6c7e7841b364ccf3caf2b5d8571e20a589c9e5e3acdf880712916a13367094f4",
+  "payload": {
+    "validation_status": "ACCEPTED",
+    "notes": [],
+    "rbtp_id": "RBTP-ENH02-TC-REQ-WISH-03-SHAREABLE-URL",
+    "testcase_id": "ENH02-TC-REQ-WISH-03-SHAREABLE-URL",
+    "requirement_ids": [
+      "REQ-WISH-03"
+    ],
+    "business_criticality": "LOW",
+    "risk_likelihood": "UNKNOWN",
+    "change_impact": "UNKNOWN",
+    "defect_history": "UNKNOWN",
+    "dependency_impact": "UNKNOWN",
+    "security_impact": "LOW",
+    "customer_impact": "LOW",
+    "priority": "P3",
+    "execution_recommendation": "INCLUDE_IN_FULL_REGRESSION_ONLY",
+    "risk_rationale": "business_criticality=LOW (testcase.priority='LOW'); security_impact=LOW (requirement evidence text scanned; no security-relevant term matched); customer_impact=LOW (derived from approved journey membership ['J-05'] via the fixed, disclosed journey->customer-impact tier mapping above); risk_likelihood=UNKNOWN (no defect/likelihood data source integrated in MVP2); change_impact=UNKNOWN (no change-history data source integrated in MVP2); defect_history=UNKNOWN (no defect-tracking data source integrated in MVP2); dependency_impact=UNKNOWN (Dependency/Reusability Matrix is computed after RBTP in this pipeline); priority=P3 (deterministically derived from the known factors above); execution_recommendation=INCLUDE_IN_FULL_REGRESSION_ONLY (fixed mapping from priority)",
+    "source_attribution": [
+      {
+        "source": "automation/playwright/enh02_testcases.py",
+        "objective": "Verify REQ-WISH-03: an anonymous user's wishlist page displays a shareable URL, without requiring an account."
+      }
+    ],
+    "generation_metadata": {
+      "deterministic_rationale": "business_criticality=LOW (testcase.priority='LOW'); security_impact=LOW (requirement evidence text scanned; no security-relevant term matched); customer_impact=LOW (derived from approved journey membership ['J-05'] via the fixed, disclosed journey->customer-impact tier mapping above); risk_likelihood=UNKNOWN (no defect/likelihood data source integrated in MVP2); change_impact=UNKNOWN (no change-history data source integrated in MVP2); defect_history=UNKNOWN (no defect-tracking data source integrated in MVP2); dependency_impact=UNKNOWN (Dependency/Reusability Matrix is computed after RBTP in this pipeline); priority=P3 (deterministically derived from the known factors above); execution_recommendation=INCLUDE_IN_FULL_REGRESSION_ONLY (fixed mapping from priority)",
+      "generated_at": "2026-09-15T20:28:38.547166+00:00",
+      "evidence_sources": {
+        "business_criticality": "testcase.priority='LOW'",
+        "security_impact": "requirement evidence text scanned; no security-relevant term matched",
+        "customer_impact": "derived from approved journey membership ['J-05'] via the fixed, disclosed journey->customer-impact tier mapping above"
+      },
+      "generator": "deterministic-only (no LLM narrative requested)"
+    }
+  }
+}

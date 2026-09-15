@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ORCH-IMPACT-REQ-REG-05",
+  "latest_version": 1,
+  "latest_path": "dependencies/generated/ORCH-IMPACT-REQ-REG-05/v1.json",
+  "content_hash": "0e41156e209d0579fcaffabb489cb7bfc59e83ccd990af3c27f4ea9c3f289e1a",
+  "updated_at": "2026-09-15T20:28:37.329059+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "dependencies/generated/ORCH-IMPACT-REQ-REG-05/v1.json",
+      "generated_at": "2026-09-15T20:28:37.329059+00:00"
+    }
+  ]
+}

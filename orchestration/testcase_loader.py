@@ -25,10 +25,30 @@ from testcases.schema import GovernedTestcase, Testcase
 
 _TESTCASE_FIELDS = set(Testcase.__dataclass_fields__.keys())
 
+#: Real bug found and fixed this task: `TC-MECHANISM-CHECK-01` (a much
+#: earlier checkpoint's own historical, git-committed, self-disclosed
+#: fixture -- its own persisted `reasons` field literally says
+#: "DISCLOSED_SYNTHETIC_MECHANISM_FIXTURE" / "not real generated
+#: evidence") happens to reference a real requirement ID
+#: (REQ-WISH-01) as its own `requirement_ids` value. Without this
+#: filter, `load_governed_testcases_for_requirement("REQ-WISH-01")`
+#: would return that synthetic fixture as if it were real Enhancement-02
+#: testcase evidence, and downstream REUSE-priority logic
+#: (`testcase_orchestration.py`) would report it as "reused from the
+#: CP-MVP2-03 persisted corpus" instead of falling through to the real
+#: `ENH02-TC-REQ-WISH-01-ADD-TO-WISHLIST` testcase. Never modifies the
+#: historical artifact itself -- only excludes it from being presented
+#: as real coverage evidence.
+_DISCLOSED_SYNTHETIC_MARKERS = {"DISCLOSED_SYNTHETIC_MECHANISM_FIXTURE"}
+
+
+def _is_disclosed_synthetic_fixture(payload: dict) -> bool:
+    return bool(_DISCLOSED_SYNTHETIC_MARKERS.intersection(payload.get("reasons", [])))
+
 
 def load_governed_testcase(testcase_id: str) -> Optional[GovernedTestcase]:
     payload = safe_load_latest(testcases_persist.BASE_DIR, testcase_id)
-    if payload is None:
+    if payload is None or _is_disclosed_synthetic_fixture(payload):
         return None
     testcase_kwargs = {k: v for k, v in payload.items() if k in _TESTCASE_FIELDS}
     return GovernedTestcase(

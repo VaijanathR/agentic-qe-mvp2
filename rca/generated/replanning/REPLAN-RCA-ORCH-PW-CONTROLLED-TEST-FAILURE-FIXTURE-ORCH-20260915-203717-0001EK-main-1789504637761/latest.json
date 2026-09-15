@@ -1,0 +1,14 @@
+{
+  "artifact_id": "REPLAN-RCA-ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761",
+  "latest_version": 1,
+  "latest_path": "rca\\generated\\replanning\\REPLAN-RCA-ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761\\v1.json",
+  "content_hash": "322ef9079c526780af102e38b29f92a07a82369c75137e391a81473caf345b91",
+  "updated_at": "2026-09-15T20:37:20.188906+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "rca\\generated\\replanning\\REPLAN-RCA-ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761\\v1.json",
+      "generated_at": "2026-09-15T20:37:20.188906+00:00"
+    }
+  ]
+}

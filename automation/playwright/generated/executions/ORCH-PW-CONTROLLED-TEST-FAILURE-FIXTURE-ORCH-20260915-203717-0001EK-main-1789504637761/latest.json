@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761\\v1.json",
+  "content_hash": "d2c2bafd6d2c21607e3c4fd45c5d2fbbccbf9a4e3de6d1f79dbb2ea19efd269b",
+  "updated_at": "2026-09-15T20:37:20.147872+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761\\v1.json",
+      "generated_at": "2026-09-15T20:37:20.147872+00:00"
+    }
+  ]
+}

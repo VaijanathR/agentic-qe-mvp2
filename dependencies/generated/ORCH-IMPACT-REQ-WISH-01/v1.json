@@ -1,0 +1,247 @@
+{
+  "artifact_id": "ORCH-IMPACT-REQ-WISH-01",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T20:28:36.136389+00:00",
+  "generator": "deterministic-only",
+  "provenance": {
+    "kind": "dependency_reusability_matrix"
+  },
+  "content_hash": "09d1636644f88bf0329353b6231639d6640da37d04c18a292460c3f570512ddf",
+  "payload": {
+    "matrix_id": "ORCH-IMPACT-REQ-WISH-01",
+    "testcase_ids": [
+      "TC-MECHANISM-CHECK-01",
+      "TC-REQ-ACO-03-01",
+      "TC-REQ-ACO-03-02",
+      "TC-REQ-CART-03-01",
+      "TC-REQ-CART-03-02",
+      "TC-REQ-CART-03-03",
+      "TC-REQ-PAY-01-01",
+      "TC-REQ-PAY-01-02",
+      "TC-REQ-REG-01-01",
+      "TC-REQ-REG-01-02"
+    ],
+    "edges": [
+      {
+        "testcase_id": "TC-REQ-ACO-03-01",
+        "related_testcase_id": "TC-REQ-ACO-03-02",
+        "kind": "SHARED_JOURNEY",
+        "evidence": "both belong to journey J-01"
+      },
+      {
+        "testcase_id": "TC-REQ-ACO-03-01",
+        "related_testcase_id": "TC-REQ-PAY-01-01",
+        "kind": "SHARED_JOURNEY",
+        "evidence": "both belong to journey J-01"
+      },
+      {
+        "testcase_id": "TC-REQ-ACO-03-01",
+        "related_testcase_id": "TC-REQ-PAY-01-02",
+        "kind": "SHARED_JOURNEY",
+        "evidence": "both belong to journey J-01"
+      },
+      {
+        "testcase_id": "TC-REQ-ACO-03-01",
+        "related_testcase_id": "TC-REQ-REG-01-01",
+        "kind": "SHARED_JOURNEY",
+        "evidence": "both belong to journey J-01"
+      },
+      {
+        "testcase_id": "TC-REQ-ACO-03-01",
+        "related_testcase_id": "TC-REQ-REG-01-02",
+        "kind": "SHARED_JOURNEY",
+        "evidence": "both belong to journey J-01"
+      },
+      {
+        "testcase_id": "TC-REQ-ACO-03-02",
+        "related_testcase_id": "TC-REQ-PAY-01-01",
+        "kind": "SHARED_JOURNEY",
+        "evidence": "both belong to journey J-01"
+      },
+      {
+        "testcase_id": "TC-REQ-ACO-03-02",
+        "related_testcase_id": "TC-REQ-PAY-01-02",
+        "kind": "SHARED_JOURNEY",
+        "evidence": "both belong to journey J-01"
+      },
+      {
+        "testcase_id": "TC-REQ-ACO-03-02",
+        "related_testcase_id": "TC-REQ-REG-01-01",
+        "kind": "SHARED_JOURNEY",
+        "evidence": "both belong to journey J-01"
+      },
+      {
+        "testcase_id": "TC-REQ-ACO-03-02",
+        "related_testcase_id": "TC-REQ-REG-01-02",
+        "kind": "SHARED_JOURNEY",
+        "evidence": "both belong to journey J-01"
+      },
+      {
+        "testcase_id": "TC-REQ-PAY-01-01",
+        "related_testcase_id": "TC-REQ-PAY-01-02",
+        "kind": "SHARED_JOURNEY",
+        "evidence": "both belong to journey J-01"
+      },
+      {
+        "testcase_id": "TC-REQ-PAY-01-01",
+        "related_testcase_id": "TC-REQ-REG-01-01",
+        "kind": "SHARED_JOURNEY",
+        "evidence": "both belong to journey J-01"
+      },
+      {
+        "testcase_id": "TC-REQ-PAY-01-01",
+        "related_testcase_id": "TC-REQ-REG-01-02",
+        "kind": "SHARED_JOURNEY",
+        "evidence": "both belong to journey J-01"
+      },
+      {
+        "testcase_id": "TC-REQ-PAY-01-02",
+        "related_testcase_id": "TC-REQ-REG-01-01",
+        "kind": "SHARED_JOURNEY",
+        "evidence": "both belong to journey J-01"
+      },
+      {
+        "testcase_id": "TC-REQ-PAY-01-02",
+        "related_testcase_id": "TC-REQ-REG-01-02",
+        "kind": "SHARED_JOURNEY",
+        "evidence": "both belong to journey J-01"
+      },
+      {
+        "testcase_id": "TC-REQ-REG-01-01",
+        "related_testcase_id": "TC-REQ-REG-01-02",
+        "kind": "SHARED_JOURNEY",
+        "evidence": "both belong to journey J-01"
+      },
+      {
+        "testcase_id": "TC-REQ-CART-03-01",
+        "related_testcase_id": "TC-REQ-CART-03-02",
+        "kind": "SHARED_JOURNEY",
+        "evidence": "both belong to journey J-04"
+      },
+      {
+        "testcase_id": "TC-REQ-CART-03-01",
+        "related_testcase_id": "TC-REQ-CART-03-03",
+        "kind": "SHARED_JOURNEY",
+        "evidence": "both belong to journey J-04"
+      },
+      {
+        "testcase_id": "TC-REQ-CART-03-02",
+        "related_testcase_id": "TC-REQ-CART-03-03",
+        "kind": "SHARED_JOURNEY",
+        "evidence": "both belong to journey J-04"
+      },
+      {
+        "testcase_id": "TC-REQ-ACO-03-01",
+        "related_testcase_id": "TC-REQ-ACO-03-02",
+        "kind": "SHARED_PRECONDITION",
+        "evidence": "identical precondition text: 'approved requirement req-aco-03 is in effect'"
+      },
+      {
+        "testcase_id": "TC-REQ-CART-03-01",
+        "related_testcase_id": "TC-REQ-CART-03-02",
+        "kind": "SHARED_PRECONDITION",
+        "evidence": "identical precondition text: 'approved requirement req-cart-03 is in effect'"
+      },
+      {
+        "testcase_id": "TC-REQ-CART-03-01",
+        "related_testcase_id": "TC-REQ-CART-03-03",
+        "kind": "SHARED_PRECONDITION",
+        "evidence": "identical precondition text: 'approved requirement req-cart-03 is in effect'"
+      },
+      {
+        "testcase_id": "TC-REQ-CART-03-02",
+        "related_testcase_id": "TC-REQ-CART-03-03",
+        "kind": "SHARED_PRECONDITION",
+        "evidence": "identical precondition text: 'approved requirement req-cart-03 is in effect'"
+      },
+      {
+        "testcase_id": "TC-REQ-PAY-01-01",
+        "related_testcase_id": "TC-REQ-PAY-01-02",
+        "kind": "SHARED_PRECONDITION",
+        "evidence": "identical precondition text: 'approved requirement req-pay-01 is in effect'"
+      },
+      {
+        "testcase_id": "TC-REQ-REG-01-01",
+        "related_testcase_id": "TC-REQ-REG-01-02",
+        "kind": "SHARED_PRECONDITION",
+        "evidence": "identical precondition text: 'approved requirement req-reg-01 is in effect'"
+      },
+      {
+        "testcase_id": "TC-REQ-ACO-03-01",
+        "related_testcase_id": "TC-REQ-ACO-03-02",
+        "kind": "SHARED_REQUIREMENT",
+        "evidence": "both trace to requirement REQ-ACO-03"
+      },
+      {
+        "testcase_id": "TC-REQ-CART-03-01",
+        "related_testcase_id": "TC-REQ-CART-03-02",
+        "kind": "SHARED_REQUIREMENT",
+        "evidence": "both trace to requirement REQ-CART-03"
+      },
+      {
+        "testcase_id": "TC-REQ-CART-03-01",
+        "related_testcase_id": "TC-REQ-CART-03-03",
+        "kind": "SHARED_REQUIREMENT",
+        "evidence": "both trace to requirement REQ-CART-03"
+      },
+      {
+        "testcase_id": "TC-REQ-CART-03-02",
+        "related_testcase_id": "TC-REQ-CART-03-03",
+        "kind": "SHARED_REQUIREMENT",
+        "evidence": "both trace to requirement REQ-CART-03"
+      },
+      {
+        "testcase_id": "TC-REQ-PAY-01-01",
+        "related_testcase_id": "TC-REQ-PAY-01-02",
+        "kind": "SHARED_REQUIREMENT",
+        "evidence": "both trace to requirement REQ-PAY-01"
+      },
+      {
+        "testcase_id": "TC-REQ-REG-01-01",
+        "related_testcase_id": "TC-REQ-REG-01-02",
+        "kind": "SHARED_REQUIREMENT",
+        "evidence": "both trace to requirement REQ-REG-01"
+      }
+    ],
+    "reusable_component_candidates": [
+      {
+        "candidate_kind": "SHARED_SETUP_PRECONDITION",
+        "precondition": "approved requirement req-aco-03 is in effect",
+        "testcase_ids": [
+          "TC-REQ-ACO-03-01",
+          "TC-REQ-ACO-03-02"
+        ]
+      },
+      {
+        "candidate_kind": "SHARED_SETUP_PRECONDITION",
+        "precondition": "approved requirement req-cart-03 is in effect",
+        "testcase_ids": [
+          "TC-REQ-CART-03-01",
+          "TC-REQ-CART-03-02",
+          "TC-REQ-CART-03-03"
+        ]
+      },
+      {
+        "candidate_kind": "SHARED_SETUP_PRECONDITION",
+        "precondition": "approved requirement req-pay-01 is in effect",
+        "testcase_ids": [
+          "TC-REQ-PAY-01-01",
+          "TC-REQ-PAY-01-02"
+        ]
+      },
+      {
+        "candidate_kind": "SHARED_SETUP_PRECONDITION",
+        "precondition": "approved requirement req-reg-01 is in effect",
+        "testcase_ids": [
+          "TC-REQ-REG-01-01",
+          "TC-REQ-REG-01-02"
+        ]
+      }
+    ],
+    "generation_metadata": {
+      "generated_at": "2026-09-15T20:28:36.130054+00:00",
+      "generator": "deterministic-only (no LLM used anywhere in dependency-matrix generation)",
+      "eligible_testcase_count": 10
+    }
+  }
+}

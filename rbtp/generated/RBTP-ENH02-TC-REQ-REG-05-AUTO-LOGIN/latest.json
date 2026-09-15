@@ -1,0 +1,14 @@
+{
+  "artifact_id": "RBTP-ENH02-TC-REQ-REG-05-AUTO-LOGIN",
+  "latest_version": 1,
+  "latest_path": "rbtp/generated/RBTP-ENH02-TC-REQ-REG-05-AUTO-LOGIN/v1.json",
+  "content_hash": "beaaff31c8d9cb0caaec34e1d59f6b835e59ebb9a7d966eb17d7a4a234dd639f",
+  "updated_at": "2026-09-15T20:28:38.719887+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "rbtp/generated/RBTP-ENH02-TC-REQ-REG-05-AUTO-LOGIN/v1.json",
+      "generated_at": "2026-09-15T20:28:38.719887+00:00"
+    }
+  ]
+}

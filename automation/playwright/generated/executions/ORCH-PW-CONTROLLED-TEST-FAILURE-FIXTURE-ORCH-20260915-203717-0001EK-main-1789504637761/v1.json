@@ -1,0 +1,54 @@
+{
+  "artifact_id": "ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T20:37:20.147872+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ORCH-CONTROLLED-TEST-FAILURE-FIXTURE",
+    "dataset_id": "NO-DATASET"
+  },
+  "content_hash": "d2c2bafd6d2c21607e3c4fd45c5d2fbbccbf9a4e3de6d1f79dbb2ea19efd269b",
+  "payload": {
+    "execution_id": "ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761",
+    "requirement_ids": [
+      "REQ-BRW-01"
+    ],
+    "testcase_id": "ORCH-CONTROLLED-TEST-FAILURE-FIXTURE",
+    "dataset_id": "NO-DATASET",
+    "automation_id": "ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "main",
+    "start_time": "2026-09-15T20:37:17.761469+00:00",
+    "end_time": "2026-09-15T20:37:20.146913+00:00",
+    "duration_seconds": 2.385444,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "CONTROLLED TEST FAILURE: Navigate to the Books category (real, expected to succeed)",
+        "status": "PASS"
+      },
+      {
+        "step_order": 2,
+        "description": "CONTROLLED TEST FAILURE: assert a deliberately non-existent locator is present (engineered to fail)",
+        "status": "FAIL"
+      },
+      {
+        "step_order": 3,
+        "description": "Unhandled exception",
+        "status": "ERROR",
+        "error_detail": "AssertionError('CONTROLLED TEST FAILURE: this assertion is DESIGNED to fail, to real-exercise RCA/Replanning/Governance')"
+      }
+    ],
+    "final_status": "ERROR",
+    "failure_category": "TOOL_ISSUE",
+    "error_detail": "AssertionError('CONTROLLED TEST FAILURE: this assertion is DESIGNED to fail, to real-exercise RCA/Replanning/Governance')",
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "artifact_id": "ORCH-IMPACT-REQ-WISH-01",
+  "latest_version": 2,
+  "latest_path": "dependencies\\generated\\ORCH-IMPACT-REQ-WISH-01\\v2.json",
+  "content_hash": "cf19992d6cee9a8d3fa3277fdc69287966d0e9760831b7cbbc5a6f31f14bfff4",
+  "updated_at": "2026-09-15T20:33:07.656422+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "dependencies/generated/ORCH-IMPACT-REQ-WISH-01/v1.json",
+      "generated_at": "2026-09-15T20:28:36.136389+00:00"
+    },
+    {
+      "version": 2,
+      "path": "dependencies\\generated\\ORCH-IMPACT-REQ-WISH-01\\v2.json",
+      "generated_at": "2026-09-15T20:33:07.656422+00:00"
+    }
+  ]
+}

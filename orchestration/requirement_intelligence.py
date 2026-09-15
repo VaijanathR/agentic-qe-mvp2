@@ -78,6 +78,19 @@ def gather(requirement_id: str, kb: Optional[KnowledgeBase] = None) -> Requireme
     chunks = rag_result["results"]
     coverage = _coverage_record(requirement_id)
 
+    # Real bug found and fixed this task: `KnowledgeBase.query()` falls
+    # back to fuzzy LEXICAL matching when `requirement_id` does not match
+    # its own exact-ID regex (e.g. an id with multiple embedded hyphens)
+    # -- that fuzzy mode can return a real chunk that merely mentions
+    # other, unrelated requirement IDs in passing, never claiming to BE
+    # this one. Trusting such a chunk's `text` as "the requirement text"
+    # would misrepresent a nonexistent requirement as real. A chunk only
+    # counts as real evidence FOR this specific requirement_id if either
+    # (a) retrieval ran in real exact-ID mode, or (b) the chunk's own
+    # `requirement_id` field genuinely lists this id.
+    if rag_result["mode"] != "exact_id":
+        chunks = [c for c in chunks if requirement_id in c.get("requirement_id", [])]
+
     if not chunks and coverage is None:
         raise RequirementNotFoundError(
             f"{requirement_id!r} was found in neither the RAG Knowledge Base nor the "

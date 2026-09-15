@@ -34,6 +34,18 @@ def _now_iso() -> str:
     return datetime.datetime.now(datetime.timezone.utc).isoformat()
 
 
+#: Phase M's own explicit minimum-persistence field list (Orchestration
+#: Expansion instruction). Every key defaults to a real, honest empty/
+#: None value -- never fabricated -- and is only ever set by a real
+#: `update_summary()` call from real orchestration code.
+_SUMMARY_FIELDS = (
+    "selected_requirements", "risk", "execution_plan", "testcase_ids",
+    "dataset_ids", "automation_ids", "execution_ids", "evidence_references",
+    "failures", "rca", "replan", "governance_decision", "final_status",
+    "completed_requirement_ids", "pending_requirement_ids",
+)
+
+
 class OrchestrationJournal:
     def __init__(self, orchestration_id: str, initiating_requirement_or_change: str):
         self.orchestration_id = orchestration_id
@@ -42,8 +54,17 @@ class OrchestrationJournal:
         self.entries: List[Dict] = []
         self.current_state: Optional[str] = None
         self.approval_state: Dict = {}
+        self.summary: Dict = {k: None for k in _SUMMARY_FIELDS}
         JOURNAL_ROOT.mkdir(parents=True, exist_ok=True)
         self._path = JOURNAL_ROOT / f"{orchestration_id}.json"
+        self._persist()
+
+    def update_summary(self, **kwargs) -> None:
+        """Phase M: persist the minimum required orchestration-state
+        fields at the top level of the journal (not buried in `entries`),
+        so a resumer (Phase N) can inspect exactly what has and has not
+        completed without replaying every entry."""
+        self.summary.update(kwargs)
         self._persist()
 
     def _persist(self) -> None:
@@ -54,6 +75,7 @@ class OrchestrationJournal:
             "updated_at": _now_iso(),
             "current_state": self.current_state,
             "approval_state": self.approval_state,
+            "summary": self.summary,
             "entries": self.entries,
         }
         self._path.write_text(json.dumps(payload, indent=2, ensure_ascii=False, default=str), encoding="utf-8")
@@ -104,6 +126,7 @@ class OrchestrationJournal:
             "created_at": self.created_at,
             "current_state": self.current_state,
             "approval_state": self.approval_state,
+            "summary": self.summary,
             "entries": self.entries,
         }
 

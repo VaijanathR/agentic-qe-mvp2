@@ -1,0 +1,253 @@
+{
+  "orchestration_id": "ORCH-20260915-203717-0001EK",
+  "initiating_requirement_or_change": "REQ-BRW-01",
+  "created_at": "2026-09-15T20:37:17.627221+00:00",
+  "updated_at": "2026-09-15T20:37:20.254044+00:00",
+  "current_state": "FINAL_REPORT",
+  "approval_state": {},
+  "summary": {
+    "selected_requirements": [
+      "REQ-BRW-01"
+    ],
+    "risk": null,
+    "execution_plan": null,
+    "testcase_ids": null,
+    "dataset_ids": null,
+    "automation_ids": null,
+    "execution_ids": [
+      "ORCH-PW-CONTROLLED-TEST-FAILURE-FIXTURE-ORCH-20260915-203717-0001EK-main-1789504637761"
+    ],
+    "evidence_references": null,
+    "failures": {
+      "REQ-BRW-01": "ERROR"
+    },
+    "rca": {
+      "REQ-BRW-01": "TOOL_ISSUE"
+    },
+    "replan": {
+      "REQ-BRW-01": "RETRY"
+    },
+    "governance_decision": {
+      "REQ-BRW-01": "YELLOW"
+    },
+    "final_status": "ERROR",
+    "completed_requirement_ids": [
+      "REQ-BRW-01"
+    ],
+    "pending_requirement_ids": []
+  },
+  "entries": [
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T20:37:17.629284+00:00",
+      "from_state": null,
+      "to_state": "RECEIVED",
+      "reason": "Orchestration received for REQ-BRW-01 (mode=REAL_EXECUTION)."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T20:37:17.629872+00:00",
+      "from_state": "RECEIVED",
+      "to_state": "UNDERSTANDING",
+      "reason": "Gathering requirement intelligence."
+    },
+    {
+      "kind": "DECISION",
+      "timestamp": "2026-09-15T20:37:17.630871+00:00",
+      "decision_id": "DEC-ORCH-20260915-203717-0001EK-UNDERSTANDING-203717-00023E",
+      "orchestration_id": "ORCH-20260915-203717-0001EK",
+      "stage": "UNDERSTANDING",
+      "input_references": [
+        "REQ-BRW-01"
+      ],
+      "decision": "REQUIREMENT_UNDERSTOOD",
+      "reason": "Disposition=FUNCTIONAL_AND_PERFORMANCE, source=requirements/MVP2_SRS_v1.0_APPROVED.md",
+      "evidence_references": [],
+      "confidence": "HIGH",
+      "risk": "UNKNOWN",
+      "governance_state": "GREEN",
+      "proposed_action": null,
+      "approval_required": false,
+      "next_state": null
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T20:37:17.631446+00:00",
+      "from_state": "UNDERSTANDING",
+      "to_state": "VALIDATED",
+      "reason": "Requirement exists in a real, governed source."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T20:37:17.631974+00:00",
+      "from_state": "VALIDATED",
+      "to_state": "IMPACT_ANALYZED",
+      "reason": "Running dependency/reusability impact analysis."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T20:37:17.653133+00:00",
+      "from_state": "IMPACT_ANALYZED",
+      "to_state": "RISK_ASSESSED",
+      "reason": "Running RBTP risk assessment (deterministic)."
+    },
+    {
+      "kind": "DECISION",
+      "timestamp": "2026-09-15T20:37:17.663834+00:00",
+      "decision_id": "DEC-ORCH-20260915-203717-0001EK-RISK_ASSESSED-203717-0003EL",
+      "orchestration_id": "ORCH-20260915-203717-0001EK",
+      "stage": "RISK_ASSESSED",
+      "input_references": [
+        "REQ-BRW-01"
+      ],
+      "decision": "RISK_ASSESSED",
+      "reason": "corpus_source=Enhancement-02 real testcase corpus (adapted)",
+      "evidence_references": [],
+      "confidence": "HIGH",
+      "risk": "P1",
+      "governance_state": "GREEN",
+      "proposed_action": null,
+      "approval_required": false,
+      "next_state": null
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T20:37:17.664377+00:00",
+      "from_state": "RISK_ASSESSED",
+      "to_state": "TEST_STRATEGY_READY",
+      "reason": "Determining test strategy (covered vs. missing scenario types)."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T20:37:17.672907+00:00",
+      "from_state": "TEST_STRATEGY_READY",
+      "to_state": "TESTCASES_READY",
+      "reason": "Selecting/generating testcases."
+    },
+    {
+      "kind": "DECISION",
+      "timestamp": "2026-09-15T20:37:17.681485+00:00",
+      "decision_id": "DEC-ORCH-20260915-203717-0001EK-TESTCASES_READY-203717-0004TC",
+      "orchestration_id": "ORCH-20260915-203717-0001EK",
+      "stage": "TESTCASES_READY",
+      "input_references": [
+        "REQ-BRW-01"
+      ],
+      "decision": "REUSE",
+      "reason": "corpus_source=Enhancement-02 real testcase corpus (adapted)",
+      "evidence_references": [],
+      "confidence": "UNKNOWN",
+      "risk": "UNKNOWN",
+      "governance_state": "GREEN",
+      "proposed_action": null,
+      "approval_required": false,
+      "next_state": null
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T20:37:17.682049+00:00",
+      "from_state": "TESTCASES_READY",
+      "to_state": "DATA_READY",
+      "reason": "Selecting/generating test data."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T20:37:17.682517+00:00",
+      "from_state": "DATA_READY",
+      "to_state": "TRACEABILITY_VALID",
+      "reason": "Validating Requirement->Testcase->Dataset->Automation->Execution chain."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T20:37:17.759696+00:00",
+      "from_state": "TRACEABILITY_VALID",
+      "to_state": "AUTOMATION_READY",
+      "reason": "Assessing automation readiness."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T20:37:17.760333+00:00",
+      "from_state": "AUTOMATION_READY",
+      "to_state": "EXECUTION_PLANNED",
+      "reason": "Building execution plan."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T20:37:17.760982+00:00",
+      "from_state": "EXECUTION_PLANNED",
+      "to_state": "EXECUTING",
+      "reason": "Real Windows Playwright execution."
+    },
+    {
+      "kind": "NOTE",
+      "timestamp": "2026-09-15T20:37:20.148832+00:00",
+      "note": "Real execution raised (expected, carried forward to RESULT_ANALYZED/RCA): CONTROLLED TEST FAILURE: this assertion is DESIGNED to fail, to real-exercise RCA/Replanning/Governance"
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T20:37:20.165808+00:00",
+      "from_state": "EXECUTING",
+      "to_state": "EVIDENCE_COLLECTED",
+      "reason": "Real evidence persisted."
+    },
+    {
+      "kind": "NOTE",
+      "timestamp": "2026-09-15T20:37:20.166419+00:00",
+      "note": "All 1 referenced evidence path(s) exist on disk."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T20:37:20.166860+00:00",
+      "from_state": "EVIDENCE_COLLECTED",
+      "to_state": "RESULT_ANALYZED",
+      "reason": "Analyzing real execution result."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T20:37:20.167417+00:00",
+      "from_state": "RESULT_ANALYZED",
+      "to_state": "RCA_REQUIRED",
+      "reason": "Real execution status=ERROR -- RCA required."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T20:37:20.194085+00:00",
+      "from_state": "RCA_REQUIRED",
+      "to_state": "RCA_COMPLETE",
+      "reason": "RCA pipeline complete."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T20:37:20.194497+00:00",
+      "from_state": "RCA_COMPLETE",
+      "to_state": "REPLAN_ASSESSED",
+      "reason": "Interpreting replanning + governance outcome."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T20:37:20.195264+00:00",
+      "from_state": "REPLAN_ASSESSED",
+      "to_state": "HUMAN_REVIEW",
+      "reason": "Governance YELLOW: Replanning requires human review: A high-confidence root cause was established, but the only real corrective action (authoring richer, specific testcase content establishing the missing precondition) requires inventing business-step content this checkpoint has no authority to invent (frozen CP-MVP2-07 spec sec. 9 / governing instruction sec. 9). Selecting and authorizing that future work is a Human + Di decision. No automated action is authorized; deferred to Human + Di."
+    },
+    {
+      "kind": "NOTE",
+      "timestamp": "2026-09-15T20:37:20.195618+00:00",
+      "note": "No reexecution authorized without explicit Human + Di approval; proceeding to regression with this failure disclosed."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T20:37:20.195983+00:00",
+      "from_state": "HUMAN_REVIEW",
+      "to_state": "REGRESSION",
+      "reason": "Human review noted; proceeding to regression (no auto-reexecution)."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T20:37:20.201035+00:00",
+      "from_state": "REGRESSION",
+      "to_state": "FINAL_REPORT",
+      "reason": "Orchestration complete."
+    }
+  ]
+}

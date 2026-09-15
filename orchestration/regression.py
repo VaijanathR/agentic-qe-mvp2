@@ -11,14 +11,36 @@ real SUT/browser).
 """
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import Dict, List, Set
 
 
 class RegressionScope:
     TARGETED_REGRESSION = "TARGETED_REGRESSION"
     DEPENDENCY_REGRESSION = "DEPENDENCY_REGRESSION"
     RISK_REGRESSION = "RISK_REGRESSION"
+    FAILURE_HISTORY_REGRESSION = "FAILURE_HISTORY_REGRESSION"
     FULL_REGRESSION = "FULL_REGRESSION"
+
+
+def find_testcases_with_real_failure_history(candidate_testcase_ids: List[str]) -> List[str]:
+    """Real, evidence-based check (Phase H: "historical failure
+    evidence"): scans every real, persisted CP-07 RCA record
+    (`rca/generated/rca/`) for one whose real `testcase_id` matches a
+    candidate and whose real observed evidence shows a non-PASS outcome.
+    Never a guess -- an empty result honestly means no real RCA history
+    exists yet for any candidate."""
+    import rca.persist as rca_persist
+    from orchestration.safe_persistence import safe_load_latest
+
+    if not candidate_testcase_ids:
+        return []
+    candidates: Set[str] = set(candidate_testcase_ids)
+    found: Set[str] = set()
+    for rca_id in rca_persist.list_persisted_rca_ids():
+        record = safe_load_latest(rca_persist.RCA_BASE_DIR, rca_id)
+        if record and record.get("testcase_id") in candidates:
+            found.add(record["testcase_id"])
+    return sorted(found)
 
 
 def select_scope(impact_result: Dict, risk_result: Dict, force_full: bool = False) -> Dict:
@@ -37,7 +59,17 @@ def select_scope(impact_result: Dict, risk_result: Dict, force_full: bool = Fals
         if r.get("priority") in ("P0", "P1")
     ]
 
-    if high_risk_ids:
+    failure_history_ids = find_testcases_with_real_failure_history(sorted(set(direct) | set(indirect)))
+
+    if failure_history_ids:
+        scope = RegressionScope.FAILURE_HISTORY_REGRESSION
+        testcase_ids = sorted(set(direct) | set(indirect) | set(high_risk_ids) | set(failure_history_ids))
+        explanation = (
+            f"{len(failure_history_ids)} testcase(s) have a real, persisted RCA history "
+            f"({failure_history_ids}) -- included regardless of current risk score, since a real, "
+            "documented past failure is stronger evidence than a risk estimate."
+        )
+    elif high_risk_ids:
         scope = RegressionScope.RISK_REGRESSION
         testcase_ids = sorted(set(direct) | set(indirect) | set(high_risk_ids))
         explanation = (

@@ -24,11 +24,31 @@ retry").
 """
 from __future__ import annotations
 
-from typing import Dict, List
+from typing import Dict, List, Optional
 
 MAX_RETRIES = 1
 
 _RETRYABLE_CATEGORIES = {"ENVIRONMENT_ISSUE", "TOOL_ISSUE"}
+
+
+class ReplanAction:
+    """Orchestration Expansion instruction, Phase K's own vocabulary --
+    a real, disclosed refinement layered on top of CP-07's real
+    `rca.schema.ReplanningDecision` (REPLAN_ALLOWED/REPLAN_NOT_ALLOWED/
+    HUMAN_REVIEW_REQUIRED/GOVERNANCE_BLOCKED), never a second,
+    conflicting authority -- `determine_replan_action()` below always
+    derives the action FROM CP-07's own real decision plus this
+    orchestrator's own bounded retry/dependency evidence, never
+    independently of it."""
+
+    RETRY = "RETRY"
+    ALTERNATE_TESTCASE = "ALTERNATE_TESTCASE"
+    ALTERNATE_DATASET = "ALTERNATE_DATASET"
+    PREREQUISITE_ESTABLISHMENT = "PREREQUISITE_ESTABLISHMENT"
+    ENVIRONMENT_RETRY = "ENVIRONMENT_RETRY"
+    HUMAN_REVIEW = "HUMAN_REVIEW"
+    ACTION_DEFERRED = "ACTION_DEFERRED"
+    TERMINAL_FAILURE = "TERMINAL_FAILURE"
 
 
 def retry_decision(failure_classification: str, retry_count_so_far: int) -> Dict:
@@ -48,6 +68,94 @@ def retry_decision(failure_classification: str, retry_count_so_far: int) -> Dict
         "retry_allowed": True,
         "reason": f"failure_classification={failure_classification!r} is a transient-infrastructure class; "
                   f"retry {retry_count_so_far + 1}/{MAX_RETRIES} authorized.",
+    }
+
+
+def determine_replan_action(
+    *,
+    rca_replanning_decision: str,
+    rca_confidence: str,
+    failure_classification: Optional[str],
+    retry_count_so_far: int = 0,
+    prerequisite_missing: bool = False,
+    alternate_dataset_available: bool = False,
+) -> Dict:
+    """Derives one real `ReplanAction` from CP-07's own real replanning
+    decision (`rca.schema.ReplanningDecision`) plus this orchestrator's
+    own bounded retry policy and dependency evidence -- never overrides
+    CP-07's decision, only refines its presentation into the Phase K
+    vocabulary. Every result states why, what changes, what remains
+    unchanged, and whether approval is required (Phase K's own
+    requirement)."""
+    from rca.schema import ReplanningDecision
+
+    if rca_replanning_decision == ReplanningDecision.GOVERNANCE_BLOCKED:
+        return {
+            "action": ReplanAction.TERMINAL_FAILURE,
+            "why": "CP-07 governance itself is BLOCKED for this failure (e.g. a LOCATOR_FAILURE, whose only "
+                   "automated remedy is the still-unauthorized CR-002) -- no automated recovery path exists.",
+            "what_changes": "Nothing -- no automated action is taken.",
+            "what_remains_unchanged": "Requirement, expected result, testcase, test data, automation.",
+            "approval_required": True,
+        }
+
+    if rca_replanning_decision == ReplanningDecision.REPLAN_NOT_ALLOWED:
+        return {
+            "action": ReplanAction.TERMINAL_FAILURE if failure_classification not in (None,) and failure_classification not in _RETRYABLE_CATEGORIES else ReplanAction.ACTION_DEFERRED,
+            "why": "Execution PASSED (REPLAN_NOT_ALLOWED) -- there is nothing to replan." if failure_classification is None else "Real failure exists but CP-07 found nothing to replan for it.",
+            "what_changes": "Nothing.",
+            "what_remains_unchanged": "Everything.",
+            "approval_required": False,
+        }
+
+    if prerequisite_missing:
+        return {
+            "action": ReplanAction.PREREQUISITE_ESTABLISHMENT,
+            "why": "Dependency planning (orchestration.dependency_planning) found a real, disclosed prerequisite "
+                   "requirement that has not yet run in this orchestration.",
+            "what_changes": "Execution order -- the prerequisite requirement is scheduled first.",
+            "what_remains_unchanged": "Requirement, expected result, testcase, test data, automation.",
+            "approval_required": False,
+        }
+
+    retry = retry_decision(failure_classification or "", retry_count_so_far)
+    if retry["retry_allowed"]:
+        action = ReplanAction.ENVIRONMENT_RETRY if failure_classification == "ENVIRONMENT_ISSUE" else ReplanAction.RETRY
+        return {
+            "action": action,
+            "why": retry["reason"],
+            "what_changes": "The same real testcase/dataset/automation is re-executed once more.",
+            "what_remains_unchanged": "Requirement, expected result, testcase content, test data, automation code.",
+            "approval_required": False,
+        }
+
+    if alternate_dataset_available:
+        return {
+            "action": ReplanAction.ALTERNATE_DATASET,
+            "why": "A real, alternate governed dataset exists for the same testcase (One Testcase -> Multiple "
+                   "Datasets); the failure may be dataset-specific.",
+            "what_changes": "The dataset used for re-execution.",
+            "what_remains_unchanged": "Requirement, expected result, testcase, automation.",
+            "approval_required": True,
+        }
+
+    if rca_confidence != "HIGH" or rca_replanning_decision == ReplanningDecision.HUMAN_REVIEW_REQUIRED:
+        return {
+            "action": ReplanAction.HUMAN_REVIEW,
+            "why": f"RCA confidence is {rca_confidence!r} and/or CP-07 itself returned HUMAN_REVIEW_REQUIRED -- "
+                   "insufficient certainty for any automated action.",
+            "what_changes": "Nothing automatically -- a human decision is requested.",
+            "what_remains_unchanged": "Everything, pending that decision.",
+            "approval_required": True,
+        }
+
+    return {
+        "action": ReplanAction.ACTION_DEFERRED,
+        "why": "A high-confidence root cause exists but the only real corrective action (e.g. authoring richer "
+               "testcase content) requires content this orchestrator has no authority to invent.",
+        "what_changes": "Nothing in this run.",
+        "what_remains_unchanged": "Everything -- deferred to a future, separately-authorized task.",
+        "approval_required": True,
     }
 
 
