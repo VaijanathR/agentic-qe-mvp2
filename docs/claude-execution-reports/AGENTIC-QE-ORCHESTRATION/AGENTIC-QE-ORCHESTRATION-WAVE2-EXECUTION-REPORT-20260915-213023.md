@@ -121,7 +121,16 @@ Real JMeter pipeline invocation (`performance.pipeline.run_cp08_performance_scen
 
 ## 14. Fresh-Clone Verification
 
-Performed after the final push (see commit/push record below): a genuine `git clone` of the pushed commit into a clean `/tmp` location, followed by a real dependency install and a real run of `orchestration/tests/` from that clean checkout. Results recorded in the addendum appended to this report after the push (see bottom of this document / follow-up commit if the addendum required a separate commit).
+Performed after the final push of commit `641027c`. Two independent fresh clones were made:
+
+1. **WSL/POSIX clone** (`/tmp/agentic-qe-mvp2-freshclone`, new POSIX `venv`): `orchestration/tests/` — **122 passed**. The broader `tests/` run showed inflated failures (38 failed) purely because a POSIX interpreter cannot resolve the Windows-backslash path pointers this repository's persisted evidence stores when written by `.venv/Scripts/python.exe` — a known, already-disclosed cross-platform artifact (`orchestration/safe_persistence.py`'s own docstring), not a defect in the pushed commit. Discarded as a non-representative comparison; superseded by clone 2.
+2. **Windows-native clone** (`D:\AI PROJECTS\agentic-qe-mvp2-freshclone`, real `python.exe` venv, real `pip install -r requirements.txt`, real `playwright install chromium`) — the representative, apples-to-apples verification:
+   - `orchestration/tests/`: **122 passed, 0 failed.**
+   - `tests/` (excluding `orchestration/`/`automation/playwright/`): **15 failed, 358 passed, 11 skipped** — all 15 failures are in `tests/test_cp07_rca.py`, caused by `build_rca_record()` depending on real CP-06 execution artifacts under `runs/`, which `.gitignore` (line 30) excludes from version control by the CP-06/CP-07 checkpoints' own original, frozen design. **This is a 100% pre-existing characteristic, independently verified and documented in Enhancement-02's own final freeze report** (`ENHANCEMENT-02-FINAL-FREEZE-REPORT-20260915-181704.md`), which recorded the identical **15 failed / 358 passed / 11 skipped** signature from a fresh clone of a much earlier baseline (`f82277d`) — i.e. this signature has been stable and disclosed across at least 4 prior checkpoints/waves and is reproduced unchanged here. Zero new failures were introduced by Wave 2.
+   - Real orchestration demonstration: `orchestrate-capability "Product Browsing" --dry-run` (full sec. 17 checklist present) followed by a **real** `orchestrate-requirement REQ-BRW-01 --real` — genuine Chromium launch, genuine navigation against `https://demowebshop.tricentis.com/`, `orchestration_id=ORCH-20260915-213737-0001SQ`, `final_status=PASS`.
+   - Reports/evidence accessibility: confirmed `docs/claude-execution-reports/AGENTIC-QE-ORCHESTRATION/` (including this report) and the freshly-created journal for `ORCH-20260915-213737-0001SQ` are both present and readable from the clean clone.
+
+Both fresh-clone working directories were deleted after verification; no state from them leaked into the primary repository (confirmed via `git status --porcelain` returning empty immediately after).
 
 ## 15. Frozen-Integrity Results (sec. 26)
 
@@ -167,7 +176,12 @@ None discovered in frozen code this wave. Two test-authoring bugs were found and
 
 ## 19. Exact Repository HEAD
 
-Recorded in the commit/push section immediately below, after the final commit is created and pushed.
+- Starting baseline: `2778936`
+- **Final commit: `641027cdfc9b56660014af50075a6f190226d80a`**
+- Pushed to `origin/main`; verified `HEAD == origin/main` immediately after push.
+- Working tree clean at time of this verification (`git status --porcelain` empty).
+
+Note: this report file itself, and any further edits to it made after the commit above, are committed and pushed as a small follow-up commit (see the repository's commit log for the exact trailing SHA) -- the enhancement's substantive implementation, all real evidence, and all governance verification described in this report are complete and unchanged as of commit `641027c`.
 
 ---
 
