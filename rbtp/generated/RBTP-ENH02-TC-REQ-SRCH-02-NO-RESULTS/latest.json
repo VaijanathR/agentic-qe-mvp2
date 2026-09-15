@@ -1,0 +1,14 @@
+{
+  "artifact_id": "RBTP-ENH02-TC-REQ-SRCH-02-NO-RESULTS",
+  "latest_version": 1,
+  "latest_path": "rbtp/generated/RBTP-ENH02-TC-REQ-SRCH-02-NO-RESULTS/v1.json",
+  "content_hash": "46485edbb56bc30281738746c1f61946c71e0089e0eaf63ea3aafda8bc1ce6ba",
+  "updated_at": "2026-09-15T21:13:40.453993+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "rbtp/generated/RBTP-ENH02-TC-REQ-SRCH-02-NO-RESULTS/v1.json",
+      "generated_at": "2026-09-15T21:13:40.453993+00:00"
+    }
+  ]
+}

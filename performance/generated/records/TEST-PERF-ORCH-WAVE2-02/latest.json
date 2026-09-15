@@ -1,0 +1,14 @@
+{
+  "artifact_id": "TEST-PERF-ORCH-WAVE2-02",
+  "latest_version": 1,
+  "latest_path": "performance\\generated\\records\\TEST-PERF-ORCH-WAVE2-02\\v1.json",
+  "content_hash": "78282b47388fd3d7c4fe732fe30cf971b9c029166ddaeb4f6b13cb37f6879bf0",
+  "updated_at": "2026-09-15T21:24:47.897652+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "performance\\generated\\records\\TEST-PERF-ORCH-WAVE2-02\\v1.json",
+      "generated_at": "2026-09-15T21:24:47.897652+00:00"
+    }
+  ]
+}

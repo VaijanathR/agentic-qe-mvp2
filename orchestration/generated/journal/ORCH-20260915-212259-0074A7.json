@@ -1,0 +1,183 @@
+{
+  "orchestration_id": "ORCH-20260915-212259-0074A7",
+  "initiating_requirement_or_change": "REQ-BRW-01",
+  "created_at": "2026-09-15T21:22:59.213760+00:00",
+  "updated_at": "2026-09-15T21:22:59.290981+00:00",
+  "current_state": "BLOCKED",
+  "approval_state": {},
+  "summary": {
+    "selected_requirements": [
+      "REQ-BRW-01"
+    ],
+    "risk": null,
+    "execution_plan": null,
+    "testcase_ids": null,
+    "dataset_ids": null,
+    "automation_ids": null,
+    "execution_ids": null,
+    "evidence_references": null,
+    "failures": null,
+    "rca": null,
+    "replan": null,
+    "governance_decision": null,
+    "final_status": null,
+    "completed_requirement_ids": [],
+    "pending_requirement_ids": [
+      "REQ-BRW-01"
+    ]
+  },
+  "entries": [
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:22:59.215052+00:00",
+      "from_state": null,
+      "to_state": "RECEIVED",
+      "reason": "Orchestration received for REQ-BRW-01 (mode=REAL_EXECUTION)."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:22:59.215407+00:00",
+      "from_state": "RECEIVED",
+      "to_state": "UNDERSTANDING",
+      "reason": "Gathering requirement intelligence."
+    },
+    {
+      "kind": "DECISION",
+      "timestamp": "2026-09-15T21:22:59.216077+00:00",
+      "decision_id": "DEC-ORCH-20260915-212259-0074A7-UNDERSTANDING-212259-0075NN",
+      "orchestration_id": "ORCH-20260915-212259-0074A7",
+      "stage": "UNDERSTANDING",
+      "input_references": [
+        "REQ-BRW-01"
+      ],
+      "decision": "REQUIREMENT_UNDERSTOOD",
+      "reason": "Disposition=FUNCTIONAL_AND_PERFORMANCE, source=requirements/MVP2_SRS_v1.0_APPROVED.md",
+      "evidence_references": [],
+      "confidence": "HIGH",
+      "risk": "UNKNOWN",
+      "governance_state": "GREEN",
+      "proposed_action": null,
+      "approval_required": false,
+      "next_state": null,
+      "actor": "orchestrator",
+      "alternatives": []
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:22:59.216510+00:00",
+      "from_state": "UNDERSTANDING",
+      "to_state": "VALIDATED",
+      "reason": "Requirement exists in a real, governed source."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:22:59.216857+00:00",
+      "from_state": "VALIDATED",
+      "to_state": "IMPACT_ANALYZED",
+      "reason": "Running dependency/reusability impact analysis."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:22:59.229894+00:00",
+      "from_state": "IMPACT_ANALYZED",
+      "to_state": "RISK_ASSESSED",
+      "reason": "Running RBTP risk assessment (deterministic)."
+    },
+    {
+      "kind": "DECISION",
+      "timestamp": "2026-09-15T21:22:59.236997+00:00",
+      "decision_id": "DEC-ORCH-20260915-212259-0074A7-RISK_ASSESSED-212259-0076I5",
+      "orchestration_id": "ORCH-20260915-212259-0074A7",
+      "stage": "RISK_ASSESSED",
+      "input_references": [
+        "REQ-BRW-01"
+      ],
+      "decision": "RISK_ASSESSED",
+      "reason": "corpus_source=Enhancement-02 real testcase corpus (adapted)",
+      "evidence_references": [],
+      "confidence": "HIGH",
+      "risk": "P1",
+      "governance_state": "GREEN",
+      "proposed_action": null,
+      "approval_required": false,
+      "next_state": null,
+      "actor": "orchestrator",
+      "alternatives": []
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:22:59.237415+00:00",
+      "from_state": "RISK_ASSESSED",
+      "to_state": "TEST_STRATEGY_READY",
+      "reason": "Determining test strategy (covered vs. missing scenario types)."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:22:59.243371+00:00",
+      "from_state": "TEST_STRATEGY_READY",
+      "to_state": "TESTCASES_READY",
+      "reason": "Selecting/generating testcases."
+    },
+    {
+      "kind": "DECISION",
+      "timestamp": "2026-09-15T21:22:59.248204+00:00",
+      "decision_id": "DEC-ORCH-20260915-212259-0074A7-TESTCASES_READY-212259-0077NZ",
+      "orchestration_id": "ORCH-20260915-212259-0074A7",
+      "stage": "TESTCASES_READY",
+      "input_references": [
+        "REQ-BRW-01"
+      ],
+      "decision": "REUSE",
+      "reason": "corpus_source=Enhancement-02 real testcase corpus (adapted)",
+      "evidence_references": [],
+      "confidence": "UNKNOWN",
+      "risk": "UNKNOWN",
+      "governance_state": "GREEN",
+      "proposed_action": null,
+      "approval_required": false,
+      "next_state": null,
+      "actor": "orchestrator",
+      "alternatives": []
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:22:59.248679+00:00",
+      "from_state": "TESTCASES_READY",
+      "to_state": "DATA_READY",
+      "reason": "Selecting/generating test data."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:22:59.249000+00:00",
+      "from_state": "DATA_READY",
+      "to_state": "TRACEABILITY_VALID",
+      "reason": "Validating Requirement->Testcase->Dataset->Automation->Execution chain."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:22:59.289877+00:00",
+      "from_state": "TRACEABILITY_VALID",
+      "to_state": "AUTOMATION_READY",
+      "reason": "Assessing automation readiness."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:22:59.290282+00:00",
+      "from_state": "AUTOMATION_READY",
+      "to_state": "EXECUTION_PLANNED",
+      "reason": "Building execution plan."
+    },
+    {
+      "kind": "NOTE",
+      "timestamp": "2026-09-15T21:22:59.290667+00:00",
+      "note": "BLOCKED: REAL_EXECUTION mode requires a real (page, browser_version) pair."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:22:59.290972+00:00",
+      "from_state": "EXECUTION_PLANNED",
+      "to_state": "BLOCKED",
+      "reason": "REAL_EXECUTION requested without a real browser page."
+    }
+  ]
+}

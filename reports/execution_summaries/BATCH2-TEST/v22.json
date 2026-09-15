@@ -1,0 +1,42 @@
+{
+  "artifact_id": "BATCH2-TEST",
+  "artifact_version": 22,
+  "generated_at": "2026-09-15T10:31:16.411690+00:00",
+  "generator": "deterministic-only",
+  "provenance": {
+    "kind": "execution_summary"
+  },
+  "content_hash": "31f2d10debdf894c83a11f75a730fdffdf592cdfb8bf09915dd8ac9f7fdcdd98",
+  "payload": {
+    "batch_id": "BATCH2-TEST",
+    "execution_timestamp": "2026-09-15T10:31:16.411137+00:00",
+    "scope": {
+      "testcases_planned": 1,
+      "automation_count": 1
+    },
+    "executed_count": 0,
+    "counts_by_status": {
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_EXECUTED": 2,
+      "ERROR": 0
+    },
+    "testcase_coverage": {
+      "total": 1,
+      "testcase_ids": [
+        "TC-X-01"
+      ]
+    },
+    "requirement_coverage": {
+      "total_requirements_represented": 1,
+      "requirements_with_a_passing_execution": [],
+      "note": "A requirement counts toward coverage here ONLY via a PASS execution result -- never merely because a testcase or automation artifact exists for it."
+    },
+    "evidence_locations": [],
+    "major_failures": [],
+    "limitations": [
+      "INELIGIBLE: {'governance_status': 'UNSUPPORTED_NEEDS_CLARIFICATION'}"
+    ]
+  }
+}

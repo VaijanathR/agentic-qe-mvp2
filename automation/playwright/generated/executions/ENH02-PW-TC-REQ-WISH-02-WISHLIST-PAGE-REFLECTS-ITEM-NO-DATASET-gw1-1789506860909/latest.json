@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-WISH-02-WISHLIST-PAGE-REFLECTS-ITEM-NO-DATASET-gw1-1789506860909",
+  "latest_version": 1,
+  "latest_path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-WISH-02-WISHLIST-PAGE-REFLECTS-ITEM-NO-DATASET-gw1-1789506860909\\v1.json",
+  "content_hash": "3f135845e8efbda4bea410c7aa9062233282bbac10e9d8189cc45fe8f9fb107b",
+  "updated_at": "2026-09-15T21:14:21.661284+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "automation\\playwright\\generated\\executions\\ENH02-PW-TC-REQ-WISH-02-WISHLIST-PAGE-REFLECTS-ITEM-NO-DATASET-gw1-1789506860909\\v1.json",
+      "generated_at": "2026-09-15T21:14:21.661284+00:00"
+    }
+  ]
+}

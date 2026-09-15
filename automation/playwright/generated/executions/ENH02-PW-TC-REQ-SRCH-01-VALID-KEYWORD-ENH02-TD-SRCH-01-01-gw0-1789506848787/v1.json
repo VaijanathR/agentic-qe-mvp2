@@ -1,0 +1,101 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-SRCH-01-VALID-KEYWORD-ENH02-TD-SRCH-01-01-gw0-1789506848787",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T21:14:15.893569+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-SRCH-01-VALID-KEYWORD",
+    "dataset_id": "ENH02-TD-SRCH-01-01"
+  },
+  "content_hash": "b7915749fac6af19ba6577708fa87f07c2368b682e5d81747bbbd2b5bae6f655",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-SRCH-01-VALID-KEYWORD-ENH02-TD-SRCH-01-01-gw0-1789506848787",
+    "requirement_ids": [
+      "REQ-SRCH-01"
+    ],
+    "testcase_id": "ENH02-TC-REQ-SRCH-01-VALID-KEYWORD",
+    "dataset_id": "ENH02-TD-SRCH-01-01",
+    "automation_id": "ENH02-PW-TC-REQ-SRCH-01-VALID-KEYWORD",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "gw0",
+    "start_time": "2026-09-15T21:14:08.787336+00:00",
+    "end_time": "2026-09-15T21:14:15.891983+00:00",
+    "duration_seconds": 7.104647,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "Navigate to home page",
+        "status": "PASS"
+      },
+      {
+        "step_order": 2,
+        "description": "Search for 'book'",
+        "status": "PASS",
+        "locator_resolution": {
+          "search_box": {
+            "field_name": "search_box",
+            "attempted": [
+              {
+                "candidate": {
+                  "locator_type": "ID",
+                  "expression": "#small-searchterms",
+                  "source": "live capture: <input id=\"small-searchterms\" name=\"q\">",
+                  "priority": 1,
+                  "validation_status": "ACCEPTED"
+                },
+                "outcome": "SUCCESS"
+              }
+            ],
+            "resolved_candidate": {
+              "locator_type": "ID",
+              "expression": "#small-searchterms",
+              "source": "live capture: <input id=\"small-searchterms\" name=\"q\">",
+              "priority": 1,
+              "validation_status": "ACCEPTED"
+            },
+            "used_fallback": false
+          },
+          "search_button": {
+            "field_name": "search_button",
+            "attempted": [
+              {
+                "candidate": {
+                  "locator_type": "CLASS",
+                  "expression": ".search-box-button",
+                  "source": "live capture: <input type=\"submit\" class=\"button-1 search-box-button\">",
+                  "priority": 1,
+                  "validation_status": "ACCEPTED"
+                },
+                "outcome": "SUCCESS"
+              }
+            ],
+            "resolved_candidate": {
+              "locator_type": "CLASS",
+              "expression": ".search-box-button",
+              "source": "live capture: <input type=\"submit\" class=\"button-1 search-box-button\">",
+              "priority": 1,
+              "validation_status": "ACCEPTED"
+            },
+            "used_fallback": false
+          }
+        }
+      },
+      {
+        "step_order": 3,
+        "description": "Observe at least one result renders",
+        "status": "PASS"
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-SRCH-01-VALID-KEYWORD-ENH02-TD-SRCH-01-01-gw0-1789506848787\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

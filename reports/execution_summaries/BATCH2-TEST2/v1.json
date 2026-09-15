@@ -1,0 +1,50 @@
+{
+  "artifact_id": "BATCH2-TEST2",
+  "artifact_version": 1,
+  "generated_at": "2026-09-14T19:03:14.403697+00:00",
+  "generator": "deterministic-only",
+  "provenance": {
+    "kind": "execution_summary"
+  },
+  "content_hash": "c00ce1cb69d2e11fb9db544000cfb432eb5a217ece116bf5702e9dcd4d323b08",
+  "payload": {
+    "batch_id": "BATCH2-TEST2",
+    "execution_timestamp": "2026-09-14T19:03:14.403210+00:00",
+    "scope": {
+      "testcases_planned": 1,
+      "automation_count": 9
+    },
+    "executed_count": 0,
+    "counts_by_status": {
+      "PASS": 0,
+      "FAIL": 0,
+      "BLOCKED": 0,
+      "NOT_EXECUTED": 9,
+      "ERROR": 0
+    },
+    "testcase_coverage": {
+      "total": 1,
+      "testcase_ids": [
+        "UNKNOWN"
+      ]
+    },
+    "requirement_coverage": {
+      "total_requirements_represented": 0,
+      "requirements_with_a_passing_execution": [],
+      "note": "A requirement counts toward coverage here ONLY via a PASS execution result -- never merely because a testcase or automation artifact exists for it."
+    },
+    "evidence_locations": [],
+    "major_failures": [],
+    "limitations": [
+      "PERSISTED_AUTOMATION_NOT_FOUND: no persisted artifact exists for automation_id='PW-TC-REQ-ACO-03-01-01'",
+      "PERSISTED_AUTOMATION_NOT_FOUND: no persisted artifact exists for automation_id='PW-TC-REQ-ACO-03-02-01'",
+      "PERSISTED_AUTOMATION_NOT_FOUND: no persisted artifact exists for automation_id='PW-TC-REQ-CART-03-01-01'",
+      "PERSISTED_AUTOMATION_NOT_FOUND: no persisted artifact exists for automation_id='PW-TC-REQ-CART-03-02-01'",
+      "PERSISTED_AUTOMATION_NOT_FOUND: no persisted artifact exists for automation_id='PW-TC-REQ-CART-03-03-01'",
+      "PERSISTED_AUTOMATION_NOT_FOUND: no persisted artifact exists for automation_id='PW-TC-REQ-PAY-01-01-01'",
+      "PERSISTED_AUTOMATION_NOT_FOUND: no persisted artifact exists for automation_id='PW-TC-REQ-PAY-01-02-01'",
+      "PERSISTED_AUTOMATION_NOT_FOUND: no persisted artifact exists for automation_id='PW-TC-REQ-REG-01-01-01'",
+      "PERSISTED_AUTOMATION_NOT_FOUND: no persisted artifact exists for automation_id='PW-TC-REQ-REG-01-02-01'"
+    ]
+  }
+}

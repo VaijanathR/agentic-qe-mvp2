@@ -1,0 +1,176 @@
+{
+  "orchestration_id": "ORCH-20260915-213004-00676M",
+  "initiating_requirement_or_change": "REQ-BRW-01",
+  "created_at": "2026-09-15T21:30:04.822357+00:00",
+  "updated_at": "2026-09-15T21:30:04.902480+00:00",
+  "current_state": "EXECUTION_PLANNED",
+  "approval_state": {},
+  "summary": {
+    "selected_requirements": [
+      "REQ-BRW-01"
+    ],
+    "risk": null,
+    "execution_plan": null,
+    "testcase_ids": null,
+    "dataset_ids": null,
+    "automation_ids": null,
+    "execution_ids": null,
+    "evidence_references": null,
+    "failures": null,
+    "rca": null,
+    "replan": null,
+    "governance_decision": null,
+    "final_status": null,
+    "completed_requirement_ids": [],
+    "pending_requirement_ids": [
+      "REQ-BRW-01"
+    ]
+  },
+  "entries": [
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:30:04.823541+00:00",
+      "from_state": null,
+      "to_state": "RECEIVED",
+      "reason": "Orchestration received for REQ-BRW-01 (mode=DRY_RUN)."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:30:04.823807+00:00",
+      "from_state": "RECEIVED",
+      "to_state": "UNDERSTANDING",
+      "reason": "Gathering requirement intelligence."
+    },
+    {
+      "kind": "DECISION",
+      "timestamp": "2026-09-15T21:30:04.824350+00:00",
+      "decision_id": "DEC-ORCH-20260915-213004-00676M-UNDERSTANDING-213004-006856",
+      "orchestration_id": "ORCH-20260915-213004-00676M",
+      "stage": "UNDERSTANDING",
+      "input_references": [
+        "REQ-BRW-01"
+      ],
+      "decision": "REQUIREMENT_UNDERSTOOD",
+      "reason": "Disposition=FUNCTIONAL_AND_PERFORMANCE, source=requirements/MVP2_SRS_v1.0_APPROVED.md",
+      "evidence_references": [],
+      "confidence": "HIGH",
+      "risk": "UNKNOWN",
+      "governance_state": "GREEN",
+      "proposed_action": null,
+      "approval_required": false,
+      "next_state": null,
+      "actor": "orchestrator",
+      "alternatives": []
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:30:04.824668+00:00",
+      "from_state": "UNDERSTANDING",
+      "to_state": "VALIDATED",
+      "reason": "Requirement exists in a real, governed source."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:30:04.824942+00:00",
+      "from_state": "VALIDATED",
+      "to_state": "IMPACT_ANALYZED",
+      "reason": "Running dependency/reusability impact analysis."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:30:04.835490+00:00",
+      "from_state": "IMPACT_ANALYZED",
+      "to_state": "RISK_ASSESSED",
+      "reason": "Running RBTP risk assessment (deterministic)."
+    },
+    {
+      "kind": "DECISION",
+      "timestamp": "2026-09-15T21:30:04.841363+00:00",
+      "decision_id": "DEC-ORCH-20260915-213004-00676M-RISK_ASSESSED-213004-0069AV",
+      "orchestration_id": "ORCH-20260915-213004-00676M",
+      "stage": "RISK_ASSESSED",
+      "input_references": [
+        "REQ-BRW-01"
+      ],
+      "decision": "RISK_ASSESSED",
+      "reason": "corpus_source=Enhancement-02 real testcase corpus (adapted)",
+      "evidence_references": [],
+      "confidence": "HIGH",
+      "risk": "P1",
+      "governance_state": "GREEN",
+      "proposed_action": null,
+      "approval_required": false,
+      "next_state": null,
+      "actor": "orchestrator",
+      "alternatives": []
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:30:04.841723+00:00",
+      "from_state": "RISK_ASSESSED",
+      "to_state": "TEST_STRATEGY_READY",
+      "reason": "Determining test strategy (covered vs. missing scenario types)."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:30:04.846498+00:00",
+      "from_state": "TEST_STRATEGY_READY",
+      "to_state": "TESTCASES_READY",
+      "reason": "Selecting/generating testcases."
+    },
+    {
+      "kind": "DECISION",
+      "timestamp": "2026-09-15T21:30:04.852660+00:00",
+      "decision_id": "DEC-ORCH-20260915-213004-00676M-TESTCASES_READY-213004-0070QG",
+      "orchestration_id": "ORCH-20260915-213004-00676M",
+      "stage": "TESTCASES_READY",
+      "input_references": [
+        "REQ-BRW-01"
+      ],
+      "decision": "REUSE",
+      "reason": "corpus_source=Enhancement-02 real testcase corpus (adapted)",
+      "evidence_references": [],
+      "confidence": "UNKNOWN",
+      "risk": "UNKNOWN",
+      "governance_state": "GREEN",
+      "proposed_action": null,
+      "approval_required": false,
+      "next_state": null,
+      "actor": "orchestrator",
+      "alternatives": []
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:30:04.853047+00:00",
+      "from_state": "TESTCASES_READY",
+      "to_state": "DATA_READY",
+      "reason": "Selecting/generating test data."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:30:04.853366+00:00",
+      "from_state": "DATA_READY",
+      "to_state": "TRACEABILITY_VALID",
+      "reason": "Validating Requirement->Testcase->Dataset->Automation->Execution chain."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:30:04.901713+00:00",
+      "from_state": "TRACEABILITY_VALID",
+      "to_state": "AUTOMATION_READY",
+      "reason": "Assessing automation readiness."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:30:04.902104+00:00",
+      "from_state": "AUTOMATION_READY",
+      "to_state": "EXECUTION_PLANNED",
+      "reason": "Building execution plan."
+    },
+    {
+      "kind": "NOTE",
+      "timestamp": "2026-09-15T21:30:04.902471+00:00",
+      "note": "DRY_RUN: stopping before EXECUTING -- no SUT interaction performed."
+    }
+  ]
+}

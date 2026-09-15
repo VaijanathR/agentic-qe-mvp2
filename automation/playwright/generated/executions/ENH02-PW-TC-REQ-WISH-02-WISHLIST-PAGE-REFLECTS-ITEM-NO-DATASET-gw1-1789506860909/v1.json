@@ -1,0 +1,48 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-WISH-02-WISHLIST-PAGE-REFLECTS-ITEM-NO-DATASET-gw1-1789506860909",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T21:14:21.661284+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-WISH-02-WISHLIST-PAGE-REFLECTS-ITEM",
+    "dataset_id": "NO-DATASET"
+  },
+  "content_hash": "3f135845e8efbda4bea410c7aa9062233282bbac10e9d8189cc45fe8f9fb107b",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-WISH-02-WISHLIST-PAGE-REFLECTS-ITEM-NO-DATASET-gw1-1789506860909",
+    "requirement_ids": [
+      "REQ-WISH-02"
+    ],
+    "testcase_id": "ENH02-TC-REQ-WISH-02-WISHLIST-PAGE-REFLECTS-ITEM",
+    "dataset_id": "NO-DATASET",
+    "automation_id": "ENH02-PW-TC-REQ-WISH-02-WISHLIST-PAGE-REFLECTS-ITEM",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "gw1",
+    "start_time": "2026-09-15T21:14:20.909759+00:00",
+    "end_time": "2026-09-15T21:14:21.660242+00:00",
+    "duration_seconds": 0.750483,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "Navigate to wishlist page",
+        "status": "PASS"
+      },
+      {
+        "step_order": 2,
+        "description": "Observe item, price, and available actions",
+        "status": "PASS"
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-WISH-02-WISHLIST-PAGE-REFLECTS-ITEM-NO-DATASET-gw1-1789506860909\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

@@ -1,0 +1,46 @@
+{
+  "artifact_id": "RBTP-ENH02-TC-REQ-AUTH-01-VALID-LOGIN",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T21:13:41.124754+00:00",
+  "generator": "deterministic-only",
+  "provenance": {
+    "batch_id": "ORCH-RISK-REQ-AUTH-01",
+    "checkpoint": "RBTP"
+  },
+  "content_hash": "b594c775fc7e601ee5fabdbb57623c90c3bf313e0b73c475f9851ff7162cd9fe",
+  "payload": {
+    "validation_status": "ACCEPTED",
+    "notes": [],
+    "rbtp_id": "RBTP-ENH02-TC-REQ-AUTH-01-VALID-LOGIN",
+    "testcase_id": "ENH02-TC-REQ-AUTH-01-VALID-LOGIN",
+    "requirement_ids": [
+      "REQ-AUTH-01"
+    ],
+    "business_criticality": "HIGH",
+    "risk_likelihood": "UNKNOWN",
+    "change_impact": "UNKNOWN",
+    "defect_history": "UNKNOWN",
+    "dependency_impact": "UNKNOWN",
+    "security_impact": "HIGH",
+    "customer_impact": "HIGH",
+    "priority": "P0",
+    "execution_recommendation": "INCLUDE_IN_SMOKE_AND_REGRESSION",
+    "risk_rationale": "business_criticality=HIGH (testcase.priority='HIGH'); security_impact=HIGH (security-relevant terms matched in requirement evidence text: ['password', 'credential', 'authenticat', 'login']); customer_impact=HIGH (derived from approved journey membership ['J-01', 'J-03'] via the fixed, disclosed journey->customer-impact tier mapping above); risk_likelihood=UNKNOWN (no defect/likelihood data source integrated in MVP2); change_impact=UNKNOWN (no change-history data source integrated in MVP2); defect_history=UNKNOWN (no defect-tracking data source integrated in MVP2); dependency_impact=UNKNOWN (Dependency/Reusability Matrix is computed after RBTP in this pipeline); priority=P0 (deterministically derived from the known factors above); execution_recommendation=INCLUDE_IN_SMOKE_AND_REGRESSION (fixed mapping from priority)",
+    "source_attribution": [
+      {
+        "source": "automation/playwright/enh02_testcases.py",
+        "objective": "Verify REQ-AUTH-01: correct email/password reaches an authenticated state."
+      }
+    ],
+    "generation_metadata": {
+      "deterministic_rationale": "business_criticality=HIGH (testcase.priority='HIGH'); security_impact=HIGH (security-relevant terms matched in requirement evidence text: ['password', 'credential', 'authenticat', 'login']); customer_impact=HIGH (derived from approved journey membership ['J-01', 'J-03'] via the fixed, disclosed journey->customer-impact tier mapping above); risk_likelihood=UNKNOWN (no defect/likelihood data source integrated in MVP2); change_impact=UNKNOWN (no change-history data source integrated in MVP2); defect_history=UNKNOWN (no defect-tracking data source integrated in MVP2); dependency_impact=UNKNOWN (Dependency/Reusability Matrix is computed after RBTP in this pipeline); priority=P0 (deterministically derived from the known factors above); execution_recommendation=INCLUDE_IN_SMOKE_AND_REGRESSION (fixed mapping from priority)",
+      "generated_at": "2026-09-15T21:13:41.118937+00:00",
+      "evidence_sources": {
+        "business_criticality": "testcase.priority='HIGH'",
+        "security_impact": "security-relevant terms matched in requirement evidence text: ['password', 'credential', 'authenticat', 'login']",
+        "customer_impact": "derived from approved journey membership ['J-01', 'J-03'] via the fixed, disclosed journey->customer-impact tier mapping above"
+      },
+      "generator": "deterministic-only (no LLM narrative requested)"
+    }
+  }
+}

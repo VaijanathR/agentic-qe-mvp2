@@ -7,6 +7,8 @@ Usage:
     python -m orchestration.cli orchestrate-requirement REQ-BRW-01 --real
     python -m orchestration.cli orchestrate-batch REQ-BRW-01 REQ-SRCH-01 REQ-WISH-01 --dry-run
     python -m orchestration.cli orchestrate-batch REQ-BRW-01 REQ-SRCH-01 REQ-WISH-01 --real
+    python -m orchestration.cli orchestrate-capability "Wishlist" "Search" --dry-run
+    python -m orchestration.cli orchestrate-capability "Wishlist" "Search" --real
     python -m orchestration.cli resume ORCH-... --real
     python -m orchestration.cli orchestrate-regression REQ-BRW-01
     python -m orchestration.cli orchestrate-testcase REQ-BRW-01
@@ -82,6 +84,20 @@ def cmd_orchestrate_batch(args: argparse.Namespace) -> int:
     orchestrator = Orchestrator()
     result = orchestrator.run_batch(args.requirement_ids, mode=mode, real_parallel_workers=args.workers, force_full_regression=args.full_regression)
     _print(result.to_dict())
+    return 0 if result.final_status not in ("BLOCKED",) else 1
+
+
+def cmd_orchestrate_capability(args: argparse.Namespace) -> int:
+    from orchestration.capability_discovery import discover_requirement_ids
+
+    requirement_ids = discover_requirement_ids(args.capabilities)
+    if not requirement_ids:
+        print(f"No real requirements discovered for capabilities {args.capabilities}", file=sys.stderr)
+        return 1
+    mode = ExecutionMode.REAL_EXECUTION if args.real else ExecutionMode.DRY_RUN
+    orchestrator = Orchestrator()
+    result = orchestrator.run_batch(requirement_ids, mode=mode, real_parallel_workers=args.workers)
+    _print({"capabilities": args.capabilities, "discovered_requirement_ids": requirement_ids, **result.to_dict()})
     return 0 if result.final_status not in ("BLOCKED",) else 1
 
 
@@ -185,6 +201,13 @@ def build_parser() -> argparse.ArgumentParser:
     pb.add_argument("--workers", type=int, default=2, help="Real local pytest -n worker count for the SAFE_PARALLEL/PREREQUISITE_DEPENDENT group (default 2).")
     pb.add_argument("--full-regression", action="store_true", help="Force FULL_REGRESSION scope instead of intelligent selection.")
     pb.set_defaults(func=cmd_orchestrate_batch)
+
+    pc = sub.add_parser("orchestrate-capability")
+    pc.add_argument("capabilities", nargs="+", help="One or more real capability categories to dynamically discover requirements for.")
+    pc.add_argument("--real", action="store_true")
+    pc.add_argument("--dry-run", action="store_true")
+    pc.add_argument("--workers", type=int, default=2)
+    pc.set_defaults(func=cmd_orchestrate_capability)
 
     pr = sub.add_parser("resume")
     pr.add_argument("orchestration_id")

@@ -1,0 +1,14 @@
+{
+  "artifact_id": "PERF-RUN-TEST-BLOCKED-NO-TOOLS",
+  "latest_version": 1,
+  "latest_path": "performance\\generated\\records\\PERF-RUN-TEST-BLOCKED-NO-TOOLS\\v1.json",
+  "content_hash": "4dd71ce5922cf0fc35a0a97cdbf7d47b4bbee0e14b7eb976c8fdfb617fd1dea4",
+  "updated_at": "2026-09-15T18:04:28.715446+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "performance\\generated\\records\\PERF-RUN-TEST-BLOCKED-NO-TOOLS\\v1.json",
+      "generated_at": "2026-09-15T18:04:28.715446+00:00"
+    }
+  ]
+}

@@ -25,10 +25,24 @@ Two responsibilities, kept deliberately separate:
 
 The LLM is never the final authority here (sec. 9): every guard below is
 plain, deterministic Python.
+Wave 2 (instruction sec. 21, "Governance Stress Testing") adds four more
+guards -- #9-12 below -- to close out the full 8-item prohibited-action
+list that section enumerates explicitly (frozen requirement modification
+and evidence fabrication are already covered by guards #1/#5 above;
+unauthorized state mutation and invalid replan are already covered by
+guards #3/#7 above). The four new guards give response-code mutation and
+acceptance-criteria mutation their own explicitly-named guards (both are
+otherwise instances of guard #2's expected-result-immutability pattern,
+but sec. 21 lists them as distinct stress-test items so they get distinct,
+directly-testable entry points), plus two genuinely new checks: the
+Human-Review-boundary-cannot-be-overridden-by-a-replan rule (sec. 13-14),
+and a real `git diff` based silent-baseline-change detector (sec. 21 item
+7, sec. 26).
 """
 from __future__ import annotations
 
 import hashlib
+import subprocess
 from pathlib import Path
 from typing import Dict, List, Optional
 
@@ -296,5 +310,133 @@ def guard_performance_threshold_approved(threshold_source: Optional[str], thresh
             else f"PROHIBITED: a numeric performance threshold ({threshold_value}) was asserted with "
                  f"source {threshold_source!r}, not 'SRS_APPROVED'. Approved MVP2 SRS v1.0 sec. 9.2 "
                  "approves no numeric threshold -- never invent one."
+        ),
+    }
+
+
+# --- 9. No response-code mutation (Wave 2 sec. 21 item 2) --------------------
+
+def guard_no_response_code_mutation(
+    testcase_id: str, original_expected_response_code, proposed_expected_response_code
+) -> Dict:
+    """Stress-test item #2: 'response-code modification'. An expected
+    HTTP/application response code is a specific case of guard #2's
+    expected-result immutability, given its own named entry point because
+    sec. 21 lists it as a distinct attempted violation. Any proposed value
+    that differs from the original, persisted one is rejected -- there is
+    no legitimate in-scope reason for this orchestration layer to change
+    what response code a frozen testcase expects."""
+    passed = proposed_expected_response_code == original_expected_response_code
+    return {
+        "guard": "no_response_code_mutation",
+        "passed": passed,
+        "governance_state": GovernanceState.GREEN if passed else GovernanceState.RED,
+        "rationale": (
+            f"Expected response code for {testcase_id} unchanged."
+            if passed
+            else f"PROHIBITED: an attempt was made to change {testcase_id}'s expected response code "
+                 f"from {original_expected_response_code!r} to {proposed_expected_response_code!r} -- rejected. "
+                 "Rule 2: NEVER CHANGE THE SPECIFICATION TO MAKE THE IMPLEMENTATION PASS."
+        ),
+    }
+
+
+# --- 10. No acceptance-criteria mutation (Wave 2 sec. 21 item 3) -------------
+
+def guard_no_acceptance_criteria_mutation(
+    requirement_id: str, original_acceptance_criteria: str, proposed_acceptance_criteria: str
+) -> Dict:
+    """Stress-test item #3: 'acceptance-criteria modification'. Approved
+    acceptance criteria live inside the frozen Approved SRS text this
+    module already hashes whole-file via `guard_srs_immutable` -- this
+    guard gives the same immutability rule a requirement-scoped, directly
+    testable entry point (sec. 14: 'A replan must NOT... alter approved
+    acceptance criteria'), independent of whether the full-file hash guard
+    also ran in a given call site."""
+    passed = proposed_acceptance_criteria == original_acceptance_criteria
+    return {
+        "guard": "no_acceptance_criteria_mutation",
+        "passed": passed,
+        "governance_state": GovernanceState.GREEN if passed else GovernanceState.RED,
+        "rationale": (
+            f"Acceptance criteria for {requirement_id} unchanged."
+            if passed
+            else f"PROHIBITED: an attempt was made to alter {requirement_id}'s approved acceptance criteria "
+                 "-- rejected. Rule 2: NEVER CHANGE THE SPECIFICATION TO MAKE THE IMPLEMENTATION PASS."
+        ),
+    }
+
+
+# --- 11. Replan must not override an existing Human Review boundary ---------
+
+def guard_replan_does_not_bypass_human_review(
+    existing_human_review_boundary: bool, proposed_replan_action: str
+) -> Dict:
+    """Sec. 13: 'Do not allow a replan to override an existing Human
+    Review boundary.' Sec. 14: 'A replan must NOT... bypass Human
+    Review.' If a prior stage already produced a HUMAN_REVIEW_REQUIRED
+    boundary for this failure, only HUMAN_REVIEW or ACTION_DEFERRED may
+    follow it -- a replan that proposes RETRY/REPLAN/any auto-executing
+    action instead is a silent override and is rejected, regardless of
+    how confident the replanning logic claims to be."""
+    ALLOWED_AFTER_HUMAN_REVIEW = {"HUMAN_REVIEW", "HUMAN_REVIEW_REQUIRED", "ACTION_DEFERRED", "ACTION_DEFERRED_TO_HUMAN"}
+    if not existing_human_review_boundary:
+        return {
+            "guard": "replan_does_not_bypass_human_review",
+            "passed": True,
+            "governance_state": GovernanceState.GREEN,
+            "rationale": "No existing Human Review boundary is in force -- nothing for a replan to override.",
+        }
+    passed = proposed_replan_action in ALLOWED_AFTER_HUMAN_REVIEW
+    return {
+        "guard": "replan_does_not_bypass_human_review",
+        "passed": passed,
+        "governance_state": GovernanceState.GREEN if passed else GovernanceState.RED,
+        "rationale": (
+            f"Existing Human Review boundary preserved -- proposed action {proposed_replan_action!r} "
+            "still routes to a human."
+            if passed
+            else f"PROHIBITED: an existing Human Review boundary is in force, but the replan proposed "
+                 f"{proposed_replan_action!r}, which would auto-execute past it. Sec. 13-14: a replan must "
+                 "never override an existing Human Review boundary. STOP -> REPORT -> HUMAN + DI DECIDE."
+        ),
+    }
+
+
+# --- 12. No silent baseline change (Wave 2 sec. 21 item 7, sec. 26) ---------
+
+def guard_no_silent_baseline_change(baseline_commit: str, protected_paths: List[str]) -> Dict:
+    """Stress-test item #7: 'silent baseline change'. Real, deterministic
+    check: `git diff --quiet <baseline_commit> -- <protected_paths>`
+    against the live working tree, run as a real subprocess against this
+    repository. A nonzero exit code means at least one protected path has
+    drifted from the named frozen baseline -- reported as a governance
+    failure, never silently accepted. `git` itself is the source of
+    truth here, not a hand-rolled hash comparison, so renamed/moved
+    protected files are still caught."""
+    try:
+        proc = subprocess.run(
+            ["git", "diff", "--quiet", baseline_commit, "--", *protected_paths],
+            cwd=REPO_ROOT, capture_output=True, text=True,
+        )
+    except FileNotFoundError as exc:
+        return {
+            "guard": "no_silent_baseline_change",
+            "passed": False,
+            "governance_state": GovernanceState.RED,
+            "rationale": f"Could not run `git diff` to verify baseline integrity: {exc}",
+        }
+    passed = proc.returncode == 0
+    return {
+        "guard": "no_silent_baseline_change",
+        "passed": passed,
+        "governance_state": GovernanceState.GREEN if passed else GovernanceState.RED,
+        "rationale": (
+            f"`git diff --quiet {baseline_commit}` reports zero drift across {len(protected_paths)} "
+            "protected path(s)."
+            if passed
+            else f"PROHIBITED: `git diff {baseline_commit}` reports real drift against a protected "
+                 f"baseline across one or more of {protected_paths}. Sec. 26: report any drift explicitly, "
+                 "never silently. STOP -> REPORT -> HUMAN + DI DECIDE."
         ),
     }

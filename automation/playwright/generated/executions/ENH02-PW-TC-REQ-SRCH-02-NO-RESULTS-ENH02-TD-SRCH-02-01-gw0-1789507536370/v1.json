@@ -1,0 +1,101 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-SRCH-02-NO-RESULTS-ENH02-TD-SRCH-02-01-gw0-1789507536370",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T21:25:41.139297+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-SRCH-02-NO-RESULTS",
+    "dataset_id": "ENH02-TD-SRCH-02-01"
+  },
+  "content_hash": "46d17bcee860fcff3e03ba58398734ed76f113bc6f4c36337f5de9dd09c4fb53",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-SRCH-02-NO-RESULTS-ENH02-TD-SRCH-02-01-gw0-1789507536370",
+    "requirement_ids": [
+      "REQ-SRCH-02"
+    ],
+    "testcase_id": "ENH02-TC-REQ-SRCH-02-NO-RESULTS",
+    "dataset_id": "ENH02-TD-SRCH-02-01",
+    "automation_id": "ENH02-PW-TC-REQ-SRCH-02-NO-RESULTS",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "gw0",
+    "start_time": "2026-09-15T21:25:36.370422+00:00",
+    "end_time": "2026-09-15T21:25:41.137624+00:00",
+    "duration_seconds": 4.767202,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "Navigate to home page",
+        "status": "PASS"
+      },
+      {
+        "step_order": 2,
+        "description": "Search for nonsense keyword",
+        "status": "PASS",
+        "locator_resolution": {
+          "search_box": {
+            "field_name": "search_box",
+            "attempted": [
+              {
+                "candidate": {
+                  "locator_type": "ID",
+                  "expression": "#small-searchterms",
+                  "source": "live capture: <input id=\"small-searchterms\" name=\"q\">",
+                  "priority": 1,
+                  "validation_status": "ACCEPTED"
+                },
+                "outcome": "SUCCESS"
+              }
+            ],
+            "resolved_candidate": {
+              "locator_type": "ID",
+              "expression": "#small-searchterms",
+              "source": "live capture: <input id=\"small-searchterms\" name=\"q\">",
+              "priority": 1,
+              "validation_status": "ACCEPTED"
+            },
+            "used_fallback": false
+          },
+          "search_button": {
+            "field_name": "search_button",
+            "attempted": [
+              {
+                "candidate": {
+                  "locator_type": "CLASS",
+                  "expression": ".search-box-button",
+                  "source": "live capture: <input type=\"submit\" class=\"button-1 search-box-button\">",
+                  "priority": 1,
+                  "validation_status": "ACCEPTED"
+                },
+                "outcome": "SUCCESS"
+              }
+            ],
+            "resolved_candidate": {
+              "locator_type": "CLASS",
+              "expression": ".search-box-button",
+              "source": "live capture: <input type=\"submit\" class=\"button-1 search-box-button\">",
+              "priority": 1,
+              "validation_status": "ACCEPTED"
+            },
+            "used_fallback": false
+          }
+        }
+      },
+      {
+        "step_order": 3,
+        "description": "Observe explicit no-results message",
+        "status": "PASS"
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-SRCH-02-NO-RESULTS-ENH02-TD-SRCH-02-01-gw0-1789507536370\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

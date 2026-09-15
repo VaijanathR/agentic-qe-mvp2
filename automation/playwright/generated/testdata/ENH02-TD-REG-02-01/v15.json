@@ -1,0 +1,26 @@
+{
+  "artifact_id": "ENH02-TD-REG-02-01",
+  "artifact_version": 15,
+  "generated_at": "2026-09-15T21:14:04.488681+00:00",
+  "generator": "automation.playwright.enh02_testdata (Post-MVP2 Enhancement 02)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-REG-02-MISMATCH"
+  },
+  "content_hash": "97aea60cdbf8d952dafff9a3015ee8365026251605d5cf9aac03d1c4af8a5c70",
+  "payload": {
+    "dataset_id": "ENH02-TD-REG-02-01",
+    "testcase_id": "ENH02-TC-REQ-REG-02-MISMATCH",
+    "requirement_ids": [
+      "REQ-REG-02"
+    ],
+    "data_category": "NEGATIVE",
+    "purpose": "Valid identity fields, mismatched passwords",
+    "fields": {
+      "first_name": "Synthetic-FirstName",
+      "last_name": "Synthetic-LastName",
+      "email": "enh02.reg02.1789506844484@example.test",
+      "password": "Synthetic-Pw-One-1",
+      "confirm_password": "Synthetic-Pw-Two-2"
+    }
+  }
+}

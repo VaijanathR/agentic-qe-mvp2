@@ -1,0 +1,48 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-WISH-03-SHAREABLE-URL-NO-DATASET-gw1-1789506861662",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T21:14:22.208468+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-WISH-03-SHAREABLE-URL",
+    "dataset_id": "NO-DATASET"
+  },
+  "content_hash": "9f3a691e96a1b52812121c0b52ab692a7774aa86f40e8fdc718f73972ba12398",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-WISH-03-SHAREABLE-URL-NO-DATASET-gw1-1789506861662",
+    "requirement_ids": [
+      "REQ-WISH-03"
+    ],
+    "testcase_id": "ENH02-TC-REQ-WISH-03-SHAREABLE-URL",
+    "dataset_id": "NO-DATASET",
+    "automation_id": "ENH02-PW-TC-REQ-WISH-03-SHAREABLE-URL",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "gw1",
+    "start_time": "2026-09-15T21:14:21.662236+00:00",
+    "end_time": "2026-09-15T21:14:22.207020+00:00",
+    "duration_seconds": 0.544784,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "Navigate to (anonymous) wishlist page",
+        "status": "PASS"
+      },
+      {
+        "step_order": 2,
+        "description": "Observe shareable URL displayed",
+        "status": "PASS"
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-WISH-03-SHAREABLE-URL-NO-DATASET-gw1-1789506861662\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

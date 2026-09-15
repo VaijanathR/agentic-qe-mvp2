@@ -29,6 +29,13 @@ class DecisionRecord:
     proposed_action: Optional[str] = None
     approval_required: bool = False
     next_state: Optional[str] = None
+    #: Wave 2 instruction sec. 12 additions -- which real agent/actor
+    #: made this decision (see `orchestration/agents.py`), and what real
+    #: alternative outcomes were genuinely available at this decision
+    #: point (never fabricated -- an empty list is honest when only one
+    #: outcome was ever possible).
+    actor: str = "orchestrator"
+    alternatives: List[str] = field(default_factory=list)
     timestamp: str = field(default_factory=lambda: datetime.datetime.now(datetime.timezone.utc).isoformat())
 
     def to_dict(self) -> dict:
@@ -49,6 +56,8 @@ def make_decision(
     proposed_action: Optional[str] = None,
     approval_required: bool = False,
     next_state: Optional[str] = None,
+    actor: str = "orchestrator",
+    alternatives: Optional[List[str]] = None,
 ) -> DecisionRecord:
     return DecisionRecord(
         decision_id=new_decision_id(orchestration_id, stage),
@@ -64,4 +73,6 @@ def make_decision(
         proposed_action=proposed_action,
         approval_required=approval_required,
         next_state=next_state,
+        actor=actor,
+        alternatives=list(alternatives or []),
     )

@@ -1,0 +1,33 @@
+{
+  "artifact_id": "LLMCALL-REQ-WISH-01-1789507314241",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T21:21:54.242935+00:00",
+  "generator": "orchestration.llm_boundary (real LLM call, deterministic governance)",
+  "provenance": {
+    "requirement_id": "REQ-WISH-01"
+  },
+  "content_hash": "8669129df519cbe512abb5d250ecbca417d79518527bcd0b341c9f9babed1bcd",
+  "payload": {
+    "call_id": "LLMCALL-REQ-WISH-01-1789507314241",
+    "requirement_id": "REQ-WISH-01",
+    "requested_scenario_types": [
+      "ALTERNATE"
+    ],
+    "provider_model": "fake-malformed-fixture-v1",
+    "prompt_context_identity": {
+      "requirement_id": "REQ-WISH-01",
+      "scenario_types": [
+        "ALTERNATE"
+      ]
+    },
+    "raw_outcome": "PROVIDER_ERROR",
+    "raw_output_summary": "Fixture: real Claude CLI 'result' text was not valid JSON (markdown-fenced).",
+    "candidate_count": 0,
+    "accepted_candidate_ids": [],
+    "rejected_candidates": [],
+    "confidence": "NOT_APPLICABLE",
+    "deterministic_validation_result": "REJECTED -- real model output failed deterministic parsing/format validation (never silently accepted)",
+    "final_governed_decision": "NO_CANDIDATE -- deterministic validation rejected the real provider response before governance could even evaluate content",
+    "timestamp": "2026-09-15T21:21:54.242206+00:00"
+  }
+}

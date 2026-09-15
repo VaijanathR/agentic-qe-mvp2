@@ -1,0 +1,33 @@
+{
+  "artifact_id": "LLMCALL-REQ-SRCH-01-1789506611117",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T21:10:11.120348+00:00",
+  "generator": "orchestration.llm_boundary (real LLM call, deterministic governance)",
+  "provenance": {
+    "requirement_id": "REQ-SRCH-01"
+  },
+  "content_hash": "359d5067e3049e69fa5908f33730c8e3462733d26c1b27c121210ec1b6073010",
+  "payload": {
+    "call_id": "LLMCALL-REQ-SRCH-01-1789506611117",
+    "requirement_id": "REQ-SRCH-01",
+    "requested_scenario_types": [
+      "ALTERNATE"
+    ],
+    "provider_model": "stub-deterministic-v1",
+    "prompt_context_identity": {
+      "requirement_id": "REQ-SRCH-01",
+      "scenario_types": [
+        "ALTERNATE"
+      ]
+    },
+    "raw_outcome": "SUCCESS",
+    "raw_output_summary": "{'requirement_id': 'REQ-SRCH-01', 'reason': 'NO_JUSTIFIED_SCENARIO', 'detail': \"Governed evidence for REQ-SRCH-01 did not justify any of the requested scenario types ['ALTERNATE'].\"}",
+    "candidate_count": 0,
+    "accepted_candidate_ids": [],
+    "rejected_candidates": [],
+    "confidence": "NOT_APPLICABLE",
+    "deterministic_validation_result": "NOT_APPLICABLE -- requirement itself unsupported (no requirement_context)",
+    "final_governed_decision": "NO_CANDIDATE",
+    "timestamp": "2026-09-15T21:10:11.119572+00:00"
+  }
+}

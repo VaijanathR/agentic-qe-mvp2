@@ -1,0 +1,35 @@
+{
+  "artifact_id": "LLMCALL-TEST-PERSIST-0001",
+  "artifact_version": 11,
+  "generated_at": "2026-09-15T21:30:17.950248+00:00",
+  "generator": "orchestration.llm_boundary (real LLM call, deterministic governance)",
+  "provenance": {
+    "requirement_id": "REQ-SRCH-01"
+  },
+  "content_hash": "b97cfaed42ddbb1c37a4ec3d76531656872f79088d8d471563b88b801eb9e44d",
+  "payload": {
+    "call_id": "LLMCALL-TEST-PERSIST-0001",
+    "requirement_id": "REQ-SRCH-01",
+    "requested_scenario_types": [
+      "POSITIVE"
+    ],
+    "provider_model": "stub-deterministic-v1",
+    "prompt_context_identity": {
+      "requirement_id": "REQ-SRCH-01",
+      "scenario_types": [
+        "POSITIVE"
+      ]
+    },
+    "raw_outcome": "SUCCESS",
+    "raw_output_summary": "1 real candidate(s) returned by the model.",
+    "candidate_count": 1,
+    "accepted_candidate_ids": [
+      "TC-REQ-SRCH-01-01"
+    ],
+    "rejected_candidates": [],
+    "confidence": "HIGH",
+    "deterministic_validation_result": "1/1 candidate(s) ACCEPTED by testcases.validate (frozen, deterministic)",
+    "final_governed_decision": "1 testcase(s) governed ACCEPTED -- eligible for persistence/reuse, never auto-executed by this call.",
+    "timestamp": "2026-09-15T21:30:17.949275+00:00"
+  }
+}

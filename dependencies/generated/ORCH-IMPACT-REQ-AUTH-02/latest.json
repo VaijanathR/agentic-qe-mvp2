@@ -1,0 +1,14 @@
+{
+  "artifact_id": "ORCH-IMPACT-REQ-AUTH-02",
+  "latest_version": 1,
+  "latest_path": "dependencies/generated/ORCH-IMPACT-REQ-AUTH-02/v1.json",
+  "content_hash": "db7f66d9181aa0c26e2190ad9bfa57f20e842b3c4506ee71019adeee4c08f854",
+  "updated_at": "2026-09-15T21:13:39.587175+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "dependencies/generated/ORCH-IMPACT-REQ-AUTH-02/v1.json",
+      "generated_at": "2026-09-15T21:13:39.587175+00:00"
+    }
+  ]
+}

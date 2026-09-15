@@ -1,0 +1,14 @@
+{
+  "artifact_id": "RBTP-ENH02-TC-REQ-AUTH-01-VALID-LOGIN",
+  "latest_version": 1,
+  "latest_path": "rbtp/generated/RBTP-ENH02-TC-REQ-AUTH-01-VALID-LOGIN/v1.json",
+  "content_hash": "b594c775fc7e601ee5fabdbb57623c90c3bf313e0b73c475f9851ff7162cd9fe",
+  "updated_at": "2026-09-15T21:13:41.124754+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "rbtp/generated/RBTP-ENH02-TC-REQ-AUTH-01-VALID-LOGIN/v1.json",
+      "generated_at": "2026-09-15T21:13:41.124754+00:00"
+    }
+  ]
+}

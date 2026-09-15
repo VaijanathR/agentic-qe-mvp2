@@ -1,0 +1,125 @@
+{
+  "orchestration_id": "ORCH-20260915-212445-0020EP",
+  "initiating_requirement_or_change": "REQ-BRW-01",
+  "created_at": "2026-09-15T21:24:45.321071+00:00",
+  "updated_at": "2026-09-15T21:24:45.459533+00:00",
+  "current_state": "EXECUTION_PLANNED",
+  "approval_state": {},
+  "summary": {
+    "selected_requirements": [
+      "REQ-BRW-01"
+    ],
+    "risk": {
+      "REQ-BRW-01": [
+        "P1"
+      ]
+    },
+    "execution_plan": {
+      "SAFE_PARALLEL": [
+        "REQ-BRW-01"
+      ]
+    },
+    "testcase_ids": [
+      "ENH02-TC-REQ-BRW-01-CATEGORY-GRID"
+    ],
+    "dataset_ids": [],
+    "automation_ids": [
+      "ENH02-PW-TC-REQ-BRW-01-CATEGORY-GRID"
+    ],
+    "execution_ids": null,
+    "evidence_references": null,
+    "failures": null,
+    "rca": null,
+    "replan": null,
+    "governance_decision": null,
+    "final_status": "DRY_RUN_COMPLETE",
+    "completed_requirement_ids": [],
+    "pending_requirement_ids": [
+      "REQ-BRW-01"
+    ]
+  },
+  "entries": [
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:24:45.323150+00:00",
+      "from_state": null,
+      "to_state": "RECEIVED",
+      "reason": "Batch orchestration received for ['REQ-BRW-01'] (mode=DRY_RUN)."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:24:45.323718+00:00",
+      "from_state": "RECEIVED",
+      "to_state": "UNDERSTANDING",
+      "reason": "Gathering requirement intelligence for every selected requirement."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:24:45.324720+00:00",
+      "from_state": "UNDERSTANDING",
+      "to_state": "VALIDATED",
+      "reason": "Every selected requirement checked against real RAG + coverage-matrix sources."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:24:45.325326+00:00",
+      "from_state": "VALIDATED",
+      "to_state": "IMPACT_ANALYZED",
+      "reason": "Running dependency/reusability impact analysis for every requirement."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:24:45.344647+00:00",
+      "from_state": "IMPACT_ANALYZED",
+      "to_state": "RISK_ASSESSED",
+      "reason": "Running RBTP risk assessment for every requirement (deterministic)."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:24:45.355737+00:00",
+      "from_state": "RISK_ASSESSED",
+      "to_state": "TEST_STRATEGY_READY",
+      "reason": "Determining test strategy for every requirement."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:24:45.364808+00:00",
+      "from_state": "TEST_STRATEGY_READY",
+      "to_state": "TESTCASES_READY",
+      "reason": "Selecting/generating testcases for every requirement."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:24:45.374898+00:00",
+      "from_state": "TESTCASES_READY",
+      "to_state": "DATA_READY",
+      "reason": "Selecting/generating test data for every testcase."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:24:45.376013+00:00",
+      "from_state": "DATA_READY",
+      "to_state": "TRACEABILITY_VALID",
+      "reason": "Validating traceability chain for every requirement."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:24:45.457026+00:00",
+      "from_state": "TRACEABILITY_VALID",
+      "to_state": "AUTOMATION_READY",
+      "reason": "Assessing automation readiness for every requirement."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:24:45.458092+00:00",
+      "from_state": "AUTOMATION_READY",
+      "to_state": "EXECUTION_PLANNED",
+      "reason": "Building dependency-aware, multi-requirement execution plan."
+    },
+    {
+      "kind": "NOTE",
+      "timestamp": "2026-09-15T21:24:45.459106+00:00",
+      "note": "DRY_RUN: stopping before EXECUTING -- no SUT interaction performed. Plan (PLANNED, not EXECUTED) is fully computed above."
+    }
+  ]
+}

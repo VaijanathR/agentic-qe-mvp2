@@ -242,6 +242,37 @@ class Orchestrator:
             performance_result = performance_execution.execute_real(requirement_id, run_id=f"PERF-{orchestration_id}")
             result.stages["performance"] = performance_result
 
+            if performance_result.get("status") == "BLOCKED":
+                # Sec. 18: a real JMeter/Java-unavailable (or subprocess-
+                # failed) disposition is a real execution failure this
+                # orchestration must carry into the SAME RCA-derived
+                # replanning/governance vocabulary the functional path
+                # uses -- but CP-07's own RCA pipeline is schema-scoped to
+                # Playwright `ExecutionLogRecord`s (rca_orchestration.py's
+                # own docstring), so it is never invoked here on a
+                # `PerformanceRunRecord`; instead this orchestrator
+                # classifies the real, disclosed `capability_result_detail`
+                # deterministically (an unresolved JAVA_HOME/JMETER_EXECUTABLE
+                # or a failed subprocess is always an ENVIRONMENT_ISSUE --
+                # never a fabricated hypothesis) and derives the SAME
+                # bounded replan action a functional ENVIRONMENT_ISSUE
+                # failure would get.
+                perf_replan_action = replanning_orchestration.determine_replan_action(
+                    rca_replanning_decision="HUMAN_REVIEW_REQUIRED",
+                    rca_confidence="HIGH",
+                    failure_classification="ENVIRONMENT_ISSUE",
+                )
+                result.stages["performance_replanning"] = {
+                    "failure_classification": "ENVIRONMENT_ISSUE",
+                    "rationale": performance_result["record"].get("capability_result_detail"),
+                    "replan_action": perf_replan_action,
+                }
+                journal.record_decision(make_decision(
+                    orchestration_id=orchestration_id, stage=state, input_references=[performance_result["record"]["run_id"]],
+                    decision=perf_replan_action["action"], reason=perf_replan_action["why"],
+                    governance_state=GovernanceState.YELLOW, actor="RCAAgent",
+                ).to_dict())
+
         # --- EVIDENCE_COLLECTED ---
         state = self._transition(journal, state, OrchestrationState.EVIDENCE_COLLECTED, "Real evidence persisted.")
         evidence_refs = (execution_log or {}).get("evidence_references", [])
@@ -410,6 +441,43 @@ class Orchestrator:
 
         if mode == ExecutionMode.DRY_RUN:
             journal.record_note("DRY_RUN: stopping before EXECUTING -- no SUT interaction performed. Plan (PLANNED, not EXECUTED) is fully computed above.")
+
+            # Sec. 17: dry-run must EXPLICITLY produce every item in this
+            # checklist -- never leave a reader to reconstruct it from
+            # scattered per-stage fields.
+            has_driver_by_req = {rid: functional_execution.has_real_driver(rid) for rid in requirement_ids}
+            excluded_deferred = []
+            for rid in requirement_ids:
+                c = classifications[rid]
+                if c.category == dependency_planning.ExecutionCategory.EXCLUSIVE:
+                    excluded_deferred.append({"requirement_id": rid, "status": "EXCLUSIVE", "reason": c.reason})
+                elif c.category == dependency_planning.ExecutionCategory.BLOCKED:
+                    excluded_deferred.append({"requirement_id": rid, "status": "BLOCKED", "reason": c.reason})
+                elif not has_driver_by_req[rid]:
+                    excluded_deferred.append({
+                        "requirement_id": rid, "status": "DEFERRED",
+                        "reason": "No real execution driver registered for this requirement in this orchestrator build.",
+                    })
+            cr002 = governance.guard_cr002_not_implemented()
+            result.stages["dry_run_summary"] = {
+                "selected_requirements": list(requirement_ids),
+                "selected_testcases": all_testcase_ids,
+                "datasets": all_dataset_ids,
+                "dependencies": {rid: c.to_dict() for rid, c in classifications.items()},
+                "planned_execution_order": [rid for rid in requirement_ids if rid not in [e["requirement_id"] for e in excluded_deferred]],
+                "parallel_groups": by_category,
+                "expected_resources": {
+                    "automation_ids": all_automation_ids,
+                    "real_drivers_available_for": [rid for rid, has in has_driver_by_req.items() if has],
+                },
+                "excluded_or_deferred": excluded_deferred,
+                "governance_constraints": {
+                    "srs_content_hash": srs_baseline_hash,
+                    "cr002_status": cr002["rationale"],
+                    "performance_threshold_policy": "No approved numeric threshold -- SLA always reported INCONCLUSIVE (Approved SRS sec. 9.2).",
+                },
+            }
+
             result.final_state = state
             result.final_status = "DRY_RUN_COMPLETE"
             journal.update_summary(final_status=result.final_status, pending_requirement_ids=list(requirement_ids))

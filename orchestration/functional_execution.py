@@ -75,6 +75,33 @@ def execute_real_srch01(page, browser_version: str, worker_id: str, orchestratio
     return {"testcase_id": "ENH02-TC-REQ-SRCH-01-VALID-KEYWORD", "automation_id": "ENH02-PW-TC-REQ-SRCH-01-VALID-KEYWORD"}
 
 
+def execute_real_srch02(page, browser_version: str, worker_id: str, orchestration_id: str) -> Dict:
+    """Real, non-mocked execution of REQ-SRCH-02's own already-evidenced
+    business action (search a real, nonsense keyword, observe the
+    explicit no-results message)."""
+    dataset = load_dataset("ENH02-TD-SRCH-02-01", required_fields=["search_term"])
+    with real_execution(
+        testcase_id="ENH02-TC-REQ-SRCH-02-NO-RESULTS",
+        requirement_ids=["REQ-SRCH-02"],
+        dataset_id=dataset.data_set_id,
+        automation_id="ENH02-PW-TC-REQ-SRCH-02-NO-RESULTS",
+        page=page, browser_version=browser_version, worker_id=worker_id,
+        run_label=orchestration_id,
+    ) as (steps, mark):
+        home = start_at_home(page, DEFAULT_CONFIG)
+        steps.append({"step_order": 1, "description": "Navigate to home page", "status": "PASS"})
+        search = SearchPage(page, DEFAULT_CONFIG)
+        resolution = search.search(dataset.fields["search_term"])
+        steps.append({"step_order": 2, "description": "Search for nonsense keyword", "status": "PASS", "locator_resolution": resolution})
+        page.wait_for_timeout(500)
+        shows_message = search.shows_no_results_message()
+        steps.append({"step_order": 3, "description": "Observe explicit no-results message", "status": "PASS" if shows_message else "FAIL"})
+        mark(ExecutionStatus.PASS if shows_message else ExecutionStatus.FAIL, None if shows_message else "ASSERTION_FAILURE", None if shows_message else "No-results message not observed")
+        assert shows_message, "Real REQ-SRCH-02 execution did not show the expected no-results message"
+
+    return {"testcase_id": "ENH02-TC-REQ-SRCH-02-NO-RESULTS", "automation_id": "ENH02-PW-TC-REQ-SRCH-02-NO-RESULTS"}
+
+
 def execute_real_wish01(page, browser_version: str, worker_id: str, orchestration_id: str) -> Dict:
     """Real, non-mocked execution of REQ-WISH-01's own already-evidenced
     business action (add a real, eligible product to the wishlist,
@@ -228,6 +255,7 @@ def execute_controlled_failure(page, browser_version: str, worker_id: str, orche
 REAL_DRIVERS: Dict[str, Callable[..., Dict]] = {
     "REQ-BRW-01": execute_real_brw01,
     "REQ-SRCH-01": execute_real_srch01,
+    "REQ-SRCH-02": execute_real_srch02,
     "REQ-WISH-01": execute_real_wish01,
     "REQ-WISH-02": execute_real_wish02,
     "REQ-WISH-03": execute_real_wish03,

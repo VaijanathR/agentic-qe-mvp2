@@ -1,0 +1,48 @@
+{
+  "artifact_id": "ENH02-PW-TC-REQ-BRW-01-CATEGORY-GRID-ORCH-20260915-212331-0001OL-main-1789507411798",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T21:23:34.244558+00:00",
+  "generator": "automation.playwright (Post-MVP2 Enhancement 01, real, non-mocked execution)",
+  "provenance": {
+    "testcase_id": "ENH02-TC-REQ-BRW-01-CATEGORY-GRID",
+    "dataset_id": "NO-DATASET"
+  },
+  "content_hash": "6af27c98ec3ddbd9cd2d0b9592ec1217792c07c6b8e2e99fbb0e6c6d19185219",
+  "payload": {
+    "execution_id": "ENH02-PW-TC-REQ-BRW-01-CATEGORY-GRID-ORCH-20260915-212331-0001OL-main-1789507411798",
+    "requirement_ids": [
+      "REQ-BRW-01"
+    ],
+    "testcase_id": "ENH02-TC-REQ-BRW-01-CATEGORY-GRID",
+    "dataset_id": "NO-DATASET",
+    "automation_id": "ENH02-PW-TC-REQ-BRW-01-CATEGORY-GRID",
+    "browser": "chromium",
+    "browser_version": "151.0.7922.34",
+    "environment": "Windows",
+    "worker_id": "main",
+    "start_time": "2026-09-15T21:23:31.798214+00:00",
+    "end_time": "2026-09-15T21:23:34.243480+00:00",
+    "duration_seconds": 2.445266,
+    "steps": [
+      {
+        "step_order": 1,
+        "description": "Navigate to the Books top-level category",
+        "status": "PASS"
+      },
+      {
+        "step_order": 2,
+        "description": "Observe the resulting page for a rendered product grid",
+        "status": "PASS"
+      }
+    ],
+    "final_status": "PASS",
+    "failure_category": null,
+    "error_detail": null,
+    "evidence_references": [
+      "automation\\playwright\\generated\\evidence\\ENH02-PW-TC-REQ-BRW-01-CATEGORY-GRID-ORCH-20260915-212331-0001OL-main-1789507411798\\final_state.png"
+    ],
+    "generation_metadata": {
+      "generator": "automation.playwright (Post-MVP2 Enhancement 02)"
+    }
+  }
+}

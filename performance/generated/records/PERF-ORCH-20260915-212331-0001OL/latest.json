@@ -1,0 +1,14 @@
+{
+  "artifact_id": "PERF-ORCH-20260915-212331-0001OL",
+  "latest_version": 1,
+  "latest_path": "performance\\generated\\records\\PERF-ORCH-20260915-212331-0001OL\\v1.json",
+  "content_hash": "395d1256ffad6e4ca3bbd9ef8fe2b131d61894509c40f33f7e48550ae7bd9ddf",
+  "updated_at": "2026-09-15T21:23:34.272804+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "performance\\generated\\records\\PERF-ORCH-20260915-212331-0001OL\\v1.json",
+      "generated_at": "2026-09-15T21:23:34.272804+00:00"
+    }
+  ]
+}

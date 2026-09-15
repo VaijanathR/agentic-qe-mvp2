@@ -1,0 +1,32 @@
+{
+  "artifact_id": "PERF-ORCH-20260915-212331-0001OL",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T21:23:34.272804+00:00",
+  "generator": "performance.pipeline.run_cp08_performance_scenario (real JMeter execution, deterministic parse)",
+  "provenance": {
+    "scenario_id": "PERF-REQ-BRW-01-CATALOG-BROWSE",
+    "checkpoint": "CP-MVP2-08"
+  },
+  "content_hash": "395d1256ffad6e4ca3bbd9ef8fe2b131d61894509c40f33f7e48550ae7bd9ddf",
+  "payload": {
+    "run_id": "PERF-ORCH-20260915-212331-0001OL",
+    "scenario_id": "PERF-REQ-BRW-01-CATALOG-BROWSE",
+    "requirement_ids": [
+      "REQ-BRW-01"
+    ],
+    "jmx_path": "performance\\jmeter\\PERF-REQ-BRW-01-catalog-browse.jmx",
+    "raw_results_path": null,
+    "environment": {
+      "error": "JAVA_HOME/java or JMETER_EXECUTABLE/jmeter could not be resolved"
+    },
+    "aggregate_metrics": null,
+    "sampler_metrics": [],
+    "capability_result": "BLOCKED",
+    "capability_result_detail": "No usable Java and/or JMeter installation could be located via JAVA_HOME/JMETER_EXECUTABLE or PATH. Per frozen spec sec. 9, this is reported as BLOCKED, never fabricated as PASS.",
+    "numeric_sla_result": "INCONCLUSIVE",
+    "numeric_sla_result_detail": "No approved numeric threshold exists to compare against (Approved MVP2 SRS v1.0 sec. 9.2: response-time/throughput/error-rate/baseline-load/concurrency/availability targets are all TBD -- HUMAN/PROJECT TARGET REQUIRING EXPLICIT APPROVAL). This is a standing, pre-existing, already-disclosed open item (SRS sec. 13), not a new blocking discovery made by this checkpoint. INCONCLUSIVE is the honest disposition; it is never converted into PASS merely because the measured numbers look reasonable.",
+    "generation_metadata": {
+      "generator": "performance.pipeline.run_cp08_performance_scenario"
+    }
+  }
+}

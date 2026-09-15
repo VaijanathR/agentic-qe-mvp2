@@ -1,0 +1,14 @@
+{
+  "artifact_id": "RBTP-ENH02-TC-REQ-AUTH-03-RELOGIN",
+  "latest_version": 1,
+  "latest_path": "rbtp/generated/RBTP-ENH02-TC-REQ-AUTH-03-RELOGIN/v1.json",
+  "content_hash": "30442b477863cb8a85ee1c17b654d92256334b729525dd505216b2ba0f6b9677",
+  "updated_at": "2026-09-15T21:13:41.475824+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "rbtp/generated/RBTP-ENH02-TC-REQ-AUTH-03-RELOGIN/v1.json",
+      "generated_at": "2026-09-15T21:13:41.475824+00:00"
+    }
+  ]
+}

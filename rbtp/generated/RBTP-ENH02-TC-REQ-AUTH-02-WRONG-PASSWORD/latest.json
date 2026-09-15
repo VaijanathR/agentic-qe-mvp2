@@ -1,0 +1,14 @@
+{
+  "artifact_id": "RBTP-ENH02-TC-REQ-AUTH-02-WRONG-PASSWORD",
+  "latest_version": 1,
+  "latest_path": "rbtp/generated/RBTP-ENH02-TC-REQ-AUTH-02-WRONG-PASSWORD/v1.json",
+  "content_hash": "e598a7f877b8f492dc0e50a573f06cceef77aa72fbd278b4225e916ebbf4837d",
+  "updated_at": "2026-09-15T21:13:41.296761+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "rbtp/generated/RBTP-ENH02-TC-REQ-AUTH-02-WRONG-PASSWORD/v1.json",
+      "generated_at": "2026-09-15T21:13:41.296761+00:00"
+    }
+  ]
+}

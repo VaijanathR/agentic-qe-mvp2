@@ -1,0 +1,35 @@
+{
+  "artifact_id": "LLMCALL-REQ-BRW-01-1789507817975",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T21:30:17.978660+00:00",
+  "generator": "orchestration.llm_boundary (real LLM call, deterministic governance)",
+  "provenance": {
+    "requirement_id": "REQ-BRW-01"
+  },
+  "content_hash": "b340da7b2ba4b58c0df12368d83ee4ae61391ecb6972587794efd3c9bc38ef99",
+  "payload": {
+    "call_id": "LLMCALL-REQ-BRW-01-1789507817975",
+    "requirement_id": "REQ-BRW-01",
+    "requested_scenario_types": [
+      "POSITIVE"
+    ],
+    "provider_model": "stub-deterministic-v1",
+    "prompt_context_identity": {
+      "requirement_id": "REQ-BRW-01",
+      "scenario_types": [
+        "POSITIVE"
+      ]
+    },
+    "raw_outcome": "SUCCESS",
+    "raw_output_summary": "1 real candidate(s) returned by the model.",
+    "candidate_count": 1,
+    "accepted_candidate_ids": [
+      "TC-REQ-BRW-01-01"
+    ],
+    "rejected_candidates": [],
+    "confidence": "HIGH",
+    "deterministic_validation_result": "1/1 candidate(s) ACCEPTED by testcases.validate (frozen, deterministic)",
+    "final_governed_decision": "1 testcase(s) governed ACCEPTED -- eligible for persistence/reuse, never auto-executed by this call.",
+    "timestamp": "2026-09-15T21:30:17.978021+00:00"
+  }
+}

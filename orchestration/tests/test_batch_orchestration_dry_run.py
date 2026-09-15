@@ -58,3 +58,34 @@ def test_batch_journal_summary_persists_selected_requirements():
 
     journal = load_journal(result.orchestration_id)
     assert journal["summary"]["selected_requirements"] == BATCH
+
+
+def test_batch_dry_run_summary_covers_the_full_sec17_checklist():
+    """Wave 2 sec. 17: dry-run must explicitly produce selected
+    requirements/testcases/datasets/dependencies/planned execution
+    order/parallel groups/expected resources/excluded-deferred
+    items+reasons/governance constraints -- all in one place, never
+    scattered/reconstructed by the reader."""
+    orchestrator = Orchestrator()
+    result = orchestrator.run_batch(BATCH, mode=ExecutionMode.DRY_RUN)
+    summary = result.stages["dry_run_summary"]
+
+    for key in (
+        "selected_requirements", "selected_testcases", "datasets", "dependencies",
+        "planned_execution_order", "parallel_groups", "expected_resources",
+        "excluded_or_deferred", "governance_constraints",
+    ):
+        assert key in summary, f"Missing sec. 17 checklist item: {key}"
+
+    assert summary["selected_requirements"] == BATCH
+    excluded_ids = {e["requirement_id"] for e in summary["excluded_or_deferred"]}
+    assert "REQ-REG-05" in excluded_ids  # EXCLUSIVE
+    assert "REQ-DOES-NOT-EXIST-999" in excluded_ids  # BLOCKED
+    for entry in summary["excluded_or_deferred"]:
+        assert entry["reason"], f"{entry['requirement_id']} excluded/deferred without a reason."
+
+    assert summary["governance_constraints"]["srs_content_hash"]
+    assert "OPEN" in summary["governance_constraints"]["cr002_status"] or "NOT" in summary["governance_constraints"]["cr002_status"].upper()
+
+    # BLOCKED must never appear in the planned execution order.
+    assert "REQ-DOES-NOT-EXIST-999" not in summary["planned_execution_order"]

@@ -1,0 +1,127 @@
+{
+  "orchestration_id": "ORCH-20260915-212448-0079SM",
+  "initiating_requirement_or_change": "REQ-SRCH-01",
+  "created_at": "2026-09-15T21:24:48.281609+00:00",
+  "updated_at": "2026-09-15T21:24:48.376978+00:00",
+  "current_state": "EXECUTION_PLANNED",
+  "approval_state": {},
+  "summary": {
+    "selected_requirements": [
+      "REQ-SRCH-01"
+    ],
+    "risk": {
+      "REQ-SRCH-01": [
+        "P1"
+      ]
+    },
+    "execution_plan": {
+      "SAFE_PARALLEL": [
+        "REQ-SRCH-01"
+      ]
+    },
+    "testcase_ids": [
+      "ENH02-TC-REQ-SRCH-01-VALID-KEYWORD"
+    ],
+    "dataset_ids": [
+      "ENH02-TD-SRCH-01-01"
+    ],
+    "automation_ids": [
+      "ENH02-PW-TC-REQ-SRCH-01-VALID-KEYWORD"
+    ],
+    "execution_ids": null,
+    "evidence_references": null,
+    "failures": null,
+    "rca": null,
+    "replan": null,
+    "governance_decision": null,
+    "final_status": "DRY_RUN_COMPLETE",
+    "completed_requirement_ids": [],
+    "pending_requirement_ids": [
+      "REQ-SRCH-01"
+    ]
+  },
+  "entries": [
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:24:48.283136+00:00",
+      "from_state": null,
+      "to_state": "RECEIVED",
+      "reason": "Batch orchestration received for ['REQ-SRCH-01'] (mode=DRY_RUN)."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:24:48.283449+00:00",
+      "from_state": "RECEIVED",
+      "to_state": "UNDERSTANDING",
+      "reason": "Gathering requirement intelligence for every selected requirement."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:24:48.284037+00:00",
+      "from_state": "UNDERSTANDING",
+      "to_state": "VALIDATED",
+      "reason": "Every selected requirement checked against real RAG + coverage-matrix sources."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:24:48.284359+00:00",
+      "from_state": "VALIDATED",
+      "to_state": "IMPACT_ANALYZED",
+      "reason": "Running dependency/reusability impact analysis for every requirement."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:24:48.295086+00:00",
+      "from_state": "IMPACT_ANALYZED",
+      "to_state": "RISK_ASSESSED",
+      "reason": "Running RBTP risk assessment for every requirement (deterministic)."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:24:48.305664+00:00",
+      "from_state": "RISK_ASSESSED",
+      "to_state": "TEST_STRATEGY_READY",
+      "reason": "Determining test strategy for every requirement."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:24:48.314180+00:00",
+      "from_state": "TEST_STRATEGY_READY",
+      "to_state": "TESTCASES_READY",
+      "reason": "Selecting/generating testcases for every requirement."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:24:48.319827+00:00",
+      "from_state": "TESTCASES_READY",
+      "to_state": "DATA_READY",
+      "reason": "Selecting/generating test data for every testcase."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:24:48.320477+00:00",
+      "from_state": "DATA_READY",
+      "to_state": "TRACEABILITY_VALID",
+      "reason": "Validating traceability chain for every requirement."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:24:48.374598+00:00",
+      "from_state": "TRACEABILITY_VALID",
+      "to_state": "AUTOMATION_READY",
+      "reason": "Assessing automation readiness for every requirement."
+    },
+    {
+      "kind": "STATE_TRANSITION",
+      "timestamp": "2026-09-15T21:24:48.375641+00:00",
+      "from_state": "AUTOMATION_READY",
+      "to_state": "EXECUTION_PLANNED",
+      "reason": "Building dependency-aware, multi-requirement execution plan."
+    },
+    {
+      "kind": "NOTE",
+      "timestamp": "2026-09-15T21:24:48.376618+00:00",
+      "note": "DRY_RUN: stopping before EXECUTING -- no SUT interaction performed. Plan (PLANNED, not EXECUTED) is fully computed above."
+    }
+  ]
+}

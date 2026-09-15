@@ -1,0 +1,14 @@
+{
+  "artifact_id": "LLMCALL-REQ-WISH-01-DEMO-001",
+  "latest_version": 1,
+  "latest_path": "orchestration/generated/llm_calls/LLMCALL-REQ-WISH-01-DEMO-001/v1.json",
+  "content_hash": "527baa6d466b463d697cd5b06f547cb7c11e2023c8711b35f42ee8d84af4ec58",
+  "updated_at": "2026-09-15T21:09:40.189659+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "orchestration/generated/llm_calls/LLMCALL-REQ-WISH-01-DEMO-001/v1.json",
+      "generated_at": "2026-09-15T21:09:40.189659+00:00"
+    }
+  ]
+}

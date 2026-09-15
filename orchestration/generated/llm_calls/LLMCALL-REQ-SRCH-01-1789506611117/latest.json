@@ -1,0 +1,14 @@
+{
+  "artifact_id": "LLMCALL-REQ-SRCH-01-1789506611117",
+  "latest_version": 1,
+  "latest_path": "orchestration\\generated\\llm_calls\\LLMCALL-REQ-SRCH-01-1789506611117\\v1.json",
+  "content_hash": "359d5067e3049e69fa5908f33730c8e3462733d26c1b27c121210ec1b6073010",
+  "updated_at": "2026-09-15T21:10:11.120348+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "orchestration\\generated\\llm_calls\\LLMCALL-REQ-SRCH-01-1789506611117\\v1.json",
+      "generated_at": "2026-09-15T21:10:11.120348+00:00"
+    }
+  ]
+}
