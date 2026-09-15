@@ -2,7 +2,8 @@
 
 **Generated:** 2026-09-15T19:54:38Z
 **Starting commit:** `905c1cb`
-**Final commit:** *(recorded below, after commit)*
+**Final commit:** `21fc35e` (terminal commit on `origin/main` after this
+orchestration work; `git log --oneline -1 origin/main` is authoritative)
 
 ---
 
