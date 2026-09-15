@@ -1,0 +1,14 @@
+{
+  "artifact_id": "RCA-REALISM-SLICE-EXEC-D02",
+  "latest_version": 1,
+  "latest_path": "rca\\generated\\rca\\RCA-REALISM-SLICE-EXEC-D02\\v1.json",
+  "content_hash": "35462dda3e9dc2f8dbee6f4d6cb9d17b8f063196f075d9f9556eb31733b957c2",
+  "updated_at": "2026-09-15T09:15:33.691321+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "rca\\generated\\rca\\RCA-REALISM-SLICE-EXEC-D02\\v1.json",
+      "generated_at": "2026-09-15T09:15:33.691321+00:00"
+    }
+  ]
+}

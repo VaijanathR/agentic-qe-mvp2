@@ -1,0 +1,14 @@
+{
+  "artifact_id": "RCA-MULTI-LOCATOR-VERTICAL-SLICE-EXEC-02",
+  "latest_version": 1,
+  "latest_path": "rca\\generated\\rca\\RCA-MULTI-LOCATOR-VERTICAL-SLICE-EXEC-02\\v1.json",
+  "content_hash": "ad70d36c297f5af8741e0169fd4d5643ca43de3fdc77f50a1c725f2067129157",
+  "updated_at": "2026-09-15T09:15:33.718102+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "rca\\generated\\rca\\RCA-MULTI-LOCATOR-VERTICAL-SLICE-EXEC-02\\v1.json",
+      "generated_at": "2026-09-15T09:15:33.718102+00:00"
+    }
+  ]
+}

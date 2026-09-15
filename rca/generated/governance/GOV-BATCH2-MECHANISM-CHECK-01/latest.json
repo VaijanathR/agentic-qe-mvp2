@@ -1,0 +1,14 @@
+{
+  "artifact_id": "GOV-BATCH2-MECHANISM-CHECK-01",
+  "latest_version": 1,
+  "latest_path": "rca\\generated\\governance\\GOV-BATCH2-MECHANISM-CHECK-01\\v1.json",
+  "content_hash": "4c852ea8c19e6fa25763cd8cbed3e1c4d3388729084c59faf8f4e3c4dfbac6d4",
+  "updated_at": "2026-09-15T09:15:33.751132+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "rca\\generated\\governance\\GOV-BATCH2-MECHANISM-CHECK-01\\v1.json",
+      "generated_at": "2026-09-15T09:15:33.751132+00:00"
+    }
+  ]
+}

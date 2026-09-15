@@ -1,0 +1,14 @@
+{
+  "artifact_id": "REPLAN-RCA-BATCH2-MECHANISM-CHECK-01",
+  "latest_version": 1,
+  "latest_path": "rca\\generated\\replanning\\REPLAN-RCA-BATCH2-MECHANISM-CHECK-01\\v1.json",
+  "content_hash": "43bc0d7cc0de4a689820822e8c9f6a0a83d58e699dde92cdfdbcbf6df444477d",
+  "updated_at": "2026-09-15T09:15:33.745013+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "rca\\generated\\replanning\\REPLAN-RCA-BATCH2-MECHANISM-CHECK-01\\v1.json",
+      "generated_at": "2026-09-15T09:15:33.745013+00:00"
+    }
+  ]
+}

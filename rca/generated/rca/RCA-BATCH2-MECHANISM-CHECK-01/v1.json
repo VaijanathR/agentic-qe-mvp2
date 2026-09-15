@@ -1,0 +1,71 @@
+{
+  "artifact_id": "RCA-BATCH2-MECHANISM-CHECK-01",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T09:15:33.743438+00:00",
+  "generator": "rca.pipeline.run_cp07_rca (deterministic-only, no LLM)",
+  "provenance": {
+    "execution_id": "BATCH2-MECHANISM-CHECK-01",
+    "checkpoint": "CP-MVP2-07"
+  },
+  "content_hash": "549f4ed8e4587edb9ab15fca93a2e0adede7bf4867aacb795ec4cbfd1d746a3c",
+  "payload": {
+    "rca_id": "RCA-BATCH2-MECHANISM-CHECK-01",
+    "execution_id": "BATCH2-MECHANISM-CHECK-01",
+    "automation_id": "PW-MECHANISM-CHECK-01",
+    "testcase_id": "TC-MECHANISM-CHECK-01",
+    "requirement_ids": [
+      "REQ-WISH-01"
+    ],
+    "test_data_set_id": "TD-MECHANISM-CHECK-01",
+    "failure_symptom": "execution_id=BATCH2-MECHANISM-CHECK-01: overall_status=PASS",
+    "observed_evidence": {
+      "browser": "chromium/151.0.7922.34",
+      "duration_seconds": 7.110532,
+      "step_results": [
+        {
+          "step_order": 1,
+          "action_type": "NAVIGATE",
+          "status": "PASS",
+          "observed_result": "navigated to https://demowebshop.tricentis.com/",
+          "error_information": null
+        }
+      ],
+      "assertion_results": [
+        {
+          "assertion_type": "BUSINESS_REQUIRED",
+          "condition": "The home page loads",
+          "source": "testcase:TC-MECHANISM-CHECK-01.expected_result",
+          "counts_toward_coverage": true,
+          "passed": true,
+          "observed": "step sequence completed without failure"
+        }
+      ],
+      "evidence_references": [
+        "runs/cp_mvp2_06/BATCH2-MECHANISM-CHECK-01/execution.log"
+      ]
+    },
+    "requirement_testcase_data_context": {
+      "testcase_id": "TC-MECHANISM-CHECK-01",
+      "requirement_ids": [
+        "REQ-WISH-01"
+      ],
+      "test_data_set_id": "TD-MECHANISM-CHECK-01",
+      "testcase_persisted_and_loadable": true,
+      "testcase_test_steps": [
+        "Navigate to the Demo Web Shop home page"
+      ],
+      "testcase_preconditions": []
+    },
+    "historical_evidence": [],
+    "agent_inference": "No failed step was recorded; no locator/environment inference applies.",
+    "root_cause_hypothesis": "N/A -- execution PASSED; no root cause to establish.",
+    "confidence": "HIGH",
+    "final_rca_classification": null,
+    "final_rca_subtype": null,
+    "recommended_next_action": "No action required.",
+    "generation_metadata": {
+      "generator": "deterministic-only (no LLM anywhere in CP-MVP2-07 RCA)",
+      "generated_at": "2026-09-15T09:15:33.742689+00:00"
+    }
+  }
+}

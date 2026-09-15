@@ -1,0 +1,46 @@
+{
+  "artifact_id": "GOV-BATCH2-MECHANISM-CHECK-01",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T09:15:33.751132+00:00",
+  "generator": "rca.pipeline.run_cp07_rca (deterministic-only, no LLM)",
+  "provenance": {
+    "replanning_id": "REPLAN-RCA-BATCH2-MECHANISM-CHECK-01",
+    "checkpoint": "CP-MVP2-07"
+  },
+  "content_hash": "4c852ea8c19e6fa25763cd8cbed3e1c4d3388729084c59faf8f4e3c4dfbac6d4",
+  "payload": {
+    "governance_id": "GOV-BATCH2-MECHANISM-CHECK-01",
+    "rca_id": "RCA-BATCH2-MECHANISM-CHECK-01",
+    "replanning_id": "REPLAN-RCA-BATCH2-MECHANISM-CHECK-01",
+    "execution_id": "BATCH2-MECHANISM-CHECK-01",
+    "decision": "NO_ACTION_REQUIRED",
+    "cr002_status": "OPEN_NOT_AUTHORIZED",
+    "prohibited_change_guard_passed": true,
+    "prohibited_change_guard_detail": {
+      "passed": true,
+      "checked_paths": [
+        "docs/CP-MVP2-06-SPECIFICATION-v1.0.md",
+        "docs/CP-MVP2-06-FINAL-IMPLEMENTATION-FREEZE-CHECKPOINT.md",
+        "docs/CP-MVP2-07-SPECIFICATION-v1.0.md",
+        "docs/CP-MVP2-07-FINAL-SPECIFICATION-FREEZE-CHECKPOINT.md",
+        "docs/claude-execution-reports/CP-MVP2-06/CP-MVP2-06-GOVERNANCE-CLOSURE-20260914-205228.md",
+        "requirements/MVP2_SRS_v1.0_APPROVED.md",
+        "execution/schema.py",
+        "execution/validate.py",
+        "execution/evidence.py",
+        "execution/engine.py",
+        "execution/pipeline.py",
+        "automation/schema.py",
+        "automation/generate.py",
+        "automation/validate.py",
+        "automation/pipeline.py",
+        "automation/evidence.py"
+      ],
+      "diffs": {}
+    },
+    "rationale": "Replanning decision was REPLAN_NOT_ALLOWED (execution PASSED); no governance action is required.",
+    "generation_metadata": {
+      "generator": "deterministic-only (no LLM anywhere in CP-MVP2-07 governance)"
+    }
+  }
+}

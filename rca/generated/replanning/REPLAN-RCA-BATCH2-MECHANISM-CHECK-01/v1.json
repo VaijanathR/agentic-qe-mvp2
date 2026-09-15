@@ -1,0 +1,30 @@
+{
+  "artifact_id": "REPLAN-RCA-BATCH2-MECHANISM-CHECK-01",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T09:15:33.745013+00:00",
+  "generator": "rca.pipeline.run_cp07_rca (deterministic-only, no LLM)",
+  "provenance": {
+    "rca_id": "RCA-BATCH2-MECHANISM-CHECK-01",
+    "checkpoint": "CP-MVP2-07"
+  },
+  "content_hash": "43bc0d7cc0de4a689820822e8c9f6a0a83d58e699dde92cdfdbcbf6df444477d",
+  "payload": {
+    "replanning_id": "REPLAN-RCA-BATCH2-MECHANISM-CHECK-01",
+    "rca_id": "RCA-BATCH2-MECHANISM-CHECK-01",
+    "execution_id": "BATCH2-MECHANISM-CHECK-01",
+    "decision": "REPLAN_NOT_ALLOWED",
+    "reason": "Execution PASSED; there is nothing to replan.",
+    "evidence_refs": [
+      "RCA-BATCH2-MECHANISM-CHECK-01",
+      "BATCH2-MECHANISM-CHECK-01"
+    ],
+    "proposed_change": null,
+    "affected_artifacts": [],
+    "expected_benefit": null,
+    "governance_impact": "None.",
+    "human_approval_required": false,
+    "generation_metadata": {
+      "generator": "deterministic-only (no LLM anywhere in CP-MVP2-07 replanning)"
+    }
+  }
+}

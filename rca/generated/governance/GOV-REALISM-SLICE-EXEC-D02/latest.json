@@ -1,0 +1,14 @@
+{
+  "artifact_id": "GOV-REALISM-SLICE-EXEC-D02",
+  "latest_version": 1,
+  "latest_path": "rca\\generated\\governance\\GOV-REALISM-SLICE-EXEC-D02\\v1.json",
+  "content_hash": "158c78d900019c50d606fe0237e0ea650f060d6e1e27e74906730ec82f2c6b94",
+  "updated_at": "2026-09-15T09:15:33.698987+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "rca\\generated\\governance\\GOV-REALISM-SLICE-EXEC-D02\\v1.json",
+      "generated_at": "2026-09-15T09:15:33.698987+00:00"
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "artifact_id": "GOV-MULTI-LOCATOR-VERTICAL-SLICE-EXEC-02",
+  "latest_version": 1,
+  "latest_path": "rca\\generated\\governance\\GOV-MULTI-LOCATOR-VERTICAL-SLICE-EXEC-02\\v1.json",
+  "content_hash": "7ee9c7f60747e9aa01a7830be616262deba84b4ea435577d197c6e32d9e26e2d",
+  "updated_at": "2026-09-15T09:15:33.724968+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "rca\\generated\\governance\\GOV-MULTI-LOCATOR-VERTICAL-SLICE-EXEC-02\\v1.json",
+      "generated_at": "2026-09-15T09:15:33.724968+00:00"
+    }
+  ]
+}

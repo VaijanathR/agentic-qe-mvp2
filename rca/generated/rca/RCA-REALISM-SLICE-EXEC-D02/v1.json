@@ -1,0 +1,193 @@
+{
+  "artifact_id": "RCA-REALISM-SLICE-EXEC-D02",
+  "artifact_version": 1,
+  "generated_at": "2026-09-15T09:15:33.691321+00:00",
+  "generator": "rca.pipeline.run_cp07_rca (deterministic-only, no LLM)",
+  "provenance": {
+    "execution_id": "REALISM-SLICE-EXEC-D02",
+    "checkpoint": "CP-MVP2-07"
+  },
+  "content_hash": "35462dda3e9dc2f8dbee6f4d6cb9d17b8f063196f075d9f9556eb31733b957c2",
+  "payload": {
+    "rca_id": "RCA-REALISM-SLICE-EXEC-D02",
+    "execution_id": "REALISM-SLICE-EXEC-D02",
+    "automation_id": "ML-PW-TC-REQ-ACO-03-01-01-D02",
+    "testcase_id": "TC-REQ-ACO-03-01",
+    "requirement_ids": [
+      "REQ-ACO-03"
+    ],
+    "test_data_set_id": "TD-TC-REQ-ACO-03-01-02",
+    "failure_symptom": "execution_id=REALISM-SLICE-EXEC-D02: overall_status=FAIL; Step 2 (FILL) failed: TIMEOUT: Page.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"#BillingNewAddress_FirstName\")\n",
+    "observed_evidence": {
+      "browser": "chromium/151.0.7922.34",
+      "duration_seconds": 33.833879,
+      "step_results": [
+        {
+          "step_order": 1,
+          "action_type": "NAVIGATE",
+          "status": "PASS",
+          "observed_result": "navigated to https://demowebshop.tricentis.com/",
+          "error_information": null
+        },
+        {
+          "step_order": 2,
+          "action_type": "FILL",
+          "status": "FAIL",
+          "observed_result": null,
+          "error_information": "TIMEOUT: Page.fill: Timeout 30000ms exceeded.\nCall log:\n  - waiting for locator(\"#BillingNewAddress_FirstName\")\n"
+        },
+        {
+          "step_order": 3,
+          "action_type": "FILL",
+          "status": "NOT_EXECUTED",
+          "observed_result": "skipped: a prior load-bearing step failed",
+          "error_information": null
+        },
+        {
+          "step_order": 4,
+          "action_type": "FILL",
+          "status": "NOT_EXECUTED",
+          "observed_result": "skipped: a prior load-bearing step failed",
+          "error_information": null
+        },
+        {
+          "step_order": 5,
+          "action_type": "FILL",
+          "status": "NOT_EXECUTED",
+          "observed_result": "skipped: a prior load-bearing step failed",
+          "error_information": null
+        },
+        {
+          "step_order": 6,
+          "action_type": "FILL",
+          "status": "NOT_EXECUTED",
+          "observed_result": "skipped: a prior load-bearing step failed",
+          "error_information": null
+        },
+        {
+          "step_order": 7,
+          "action_type": "FILL",
+          "status": "NOT_EXECUTED",
+          "observed_result": "skipped: a prior load-bearing step failed",
+          "error_information": null
+        },
+        {
+          "step_order": 8,
+          "action_type": "FILL",
+          "status": "NOT_EXECUTED",
+          "observed_result": "skipped: a prior load-bearing step failed",
+          "error_information": null
+        },
+        {
+          "step_order": 9,
+          "action_type": "FILL",
+          "status": "NOT_EXECUTED",
+          "observed_result": "skipped: a prior load-bearing step failed",
+          "error_information": null
+        },
+        {
+          "step_order": 10,
+          "action_type": "FILL",
+          "status": "NOT_EXECUTED",
+          "observed_result": "skipped: a prior load-bearing step failed",
+          "error_information": null
+        },
+        {
+          "step_order": 11,
+          "action_type": "FILL",
+          "status": "NOT_EXECUTED",
+          "observed_result": "skipped: a prior load-bearing step failed",
+          "error_information": null
+        },
+        {
+          "step_order": 12,
+          "action_type": "FILL",
+          "status": "NOT_EXECUTED",
+          "observed_result": "skipped: a prior load-bearing step failed",
+          "error_information": null
+        },
+        {
+          "step_order": 13,
+          "action_type": "CLICK",
+          "status": "NOT_EXECUTED",
+          "observed_result": "skipped: a prior load-bearing step failed",
+          "error_information": null
+        }
+      ],
+      "assertion_results": [
+        {
+          "assertion_type": "BUSINESS_REQUIRED",
+          "condition": "REQ-ACO-03: The Billing/Shipping address form shall require First name, Last name, Email, Country, City, Address 1, Zip/postal code, and Phone number; Company, Address 2, and Fax number shall be optional\nRationale: Ensures sufficient fulfillment data\nEvidence Basis: Required-field markers and matching inline messages observed on the named fields; no such marker on the optional fields\nAcceptance Criteria: Given the address form, when required fields are left blank, then progression to the next step is blocked\nActor: Guest, Authenticated\nJourney: J-01, J-02\nStatus: APPROVED — BASELINED v1.0",
+          "source": "testcase:TC-REQ-ACO-03-01.expected_result",
+          "counts_toward_coverage": true,
+          "passed": false,
+          "observed": "a load-bearing step failed"
+        },
+        {
+          "assertion_type": "TECHNICAL_USEFUL",
+          "condition": "REQ-ACO-03: The Billing/Shipping address form shall require First name, Last name, Email, Country, City, Address 1, Zip/postal code, and Phone number; Company, Address 2, and Fax number shall be optional\nRationale: Ensures sufficient fulfillment data\nEvidence Basis: Required-field markers and matching inline messages observed on the named fields; no such marker on the optional fields\nAcceptance Criteria: Given the address form, when required fields are left blank, then progression to the next step is blocked\nActor: Guest, Authenticated\nJourney: J-01, J-02\nStatus: APPROVED — BASELINED v1.0",
+          "source": "llm_proposed_step_assertion",
+          "counts_toward_coverage": false,
+          "passed": null,
+          "observed": null
+        }
+      ],
+      "evidence_references": [
+        "runs/cp_mvp2_06/REALISM-SLICE-EXEC-D02/execution.log",
+        "runs/cp_mvp2_06/REALISM-SLICE-EXEC-D02/step_2_failure.png"
+      ]
+    },
+    "requirement_testcase_data_context": {
+      "testcase_id": "TC-REQ-ACO-03-01",
+      "requirement_ids": [
+        "REQ-ACO-03"
+      ],
+      "test_data_set_id": "TD-TC-REQ-ACO-03-01-02",
+      "testcase_persisted_and_loadable": true,
+      "testcase_test_steps": [
+        "Perform the action described by the approved requirement.",
+        "Observe the resulting system behavior."
+      ],
+      "testcase_preconditions": [
+        "Approved requirement REQ-ACO-03 is in effect"
+      ]
+    },
+    "historical_evidence": [
+      {
+        "execution_id": "BATCH2-LIVE-01-PW-TC-REQ-ACO-03-01-01-TD-TC-REQ-ACO-03-01-01",
+        "overall_status": "NOT_EXECUTED",
+        "failure_classification": null
+      },
+      {
+        "execution_id": "BATCH2-LIVE-01-PW-TC-REQ-ACO-03-01-01-TD-TC-REQ-ACO-03-01-02",
+        "overall_status": "NOT_EXECUTED",
+        "failure_classification": null
+      },
+      {
+        "execution_id": "CR001-BATCH1-LIVE-01-PW-TC-REQ-ACO-03-01-01",
+        "overall_status": "NOT_EXECUTED",
+        "failure_classification": null
+      },
+      {
+        "execution_id": "MULTI-LOCATOR-VERTICAL-SLICE-EXEC-02",
+        "overall_status": "FAIL",
+        "failure_classification": "ENVIRONMENT_ISSUE"
+      },
+      {
+        "execution_id": "REALISM-SLICE-EXEC-D01",
+        "overall_status": "FAIL",
+        "failure_classification": "ENVIRONMENT_ISSUE"
+      }
+    ],
+    "agent_inference": "The first failure occurred at step 2 (FILL), immediately after a single, successful NAVIGATE step with no intervening business action (e.g. add-to-cart, begin-checkout) that would establish deeper application/page state. This pattern is consistent with the browser being on the SUT's home page when the failing locator was attempted, rather than on the page that locator's real DOM evidence was captured from. Of 5 other real, persisted execution(s) of this same testcase lineage (2 of which reached real browser execution and are directly comparable), 2/2 comparable execution(s) share the identical overall_status/failure_classification pattern -- cited as supporting historical evidence only, per sec. 7; it does not override this execution's own current evidence.",
+    "root_cause_hypothesis": "The failure is attributable to a testcase-content limitation (the persisted testcase's own business steps do not specify the precondition-establishing actions this scenario's real evidenced locators require), not a defect in locator resolution, browser tooling, or the CP-MVP2-06 execution engine.",
+    "confidence": "HIGH",
+    "final_rca_classification": "ENVIRONMENT_ISSUE",
+    "final_rca_subtype": "TIMEOUT",
+    "recommended_next_action": "RECOMMENDATION ONLY, NOT AUTHORIZED, NOT IMPLEMENTED: author a richer, specific testcase (via a future, separately-authorized task) that includes the precondition-establishing business steps this scenario requires; alternatively, a formal Human + Di decision on CR-002 (runtime locator fallback) could be sought, though that would not resolve this specific testcase-content limitation.",
+    "generation_metadata": {
+      "generator": "deterministic-only (no LLM anywhere in CP-MVP2-07 RCA)",
+      "generated_at": "2026-09-15T09:15:33.690587+00:00"
+    }
+  }
+}

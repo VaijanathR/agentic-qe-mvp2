@@ -1,0 +1,14 @@
+{
+  "artifact_id": "REPLAN-RCA-MULTI-LOCATOR-VERTICAL-SLICE-EXEC-02",
+  "latest_version": 1,
+  "latest_path": "rca\\generated\\replanning\\REPLAN-RCA-MULTI-LOCATOR-VERTICAL-SLICE-EXEC-02\\v1.json",
+  "content_hash": "7e7836924721123ed192aed5e0347f51614d1c2632a22e6c117c3df9ef0a819b",
+  "updated_at": "2026-09-15T09:15:33.720360+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "rca\\generated\\replanning\\REPLAN-RCA-MULTI-LOCATOR-VERTICAL-SLICE-EXEC-02\\v1.json",
+      "generated_at": "2026-09-15T09:15:33.720360+00:00"
+    }
+  ]
+}

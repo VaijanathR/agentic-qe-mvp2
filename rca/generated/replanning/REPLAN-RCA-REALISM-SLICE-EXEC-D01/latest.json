@@ -1,0 +1,14 @@
+{
+  "artifact_id": "REPLAN-RCA-REALISM-SLICE-EXEC-D01",
+  "latest_version": 1,
+  "latest_path": "rca\\generated\\replanning\\REPLAN-RCA-REALISM-SLICE-EXEC-D01\\v1.json",
+  "content_hash": "cea1cb8f458c3b88c9f2c4229366212591dc0219cc26dc8cbfb7f57dac06d776",
+  "updated_at": "2026-09-15T09:15:06.355667+00:00",
+  "history": [
+    {
+      "version": 1,
+      "path": "rca\\generated\\replanning\\REPLAN-RCA-REALISM-SLICE-EXEC-D01\\v1.json",
+      "generated_at": "2026-09-15T09:15:06.355667+00:00"
+    }
+  ]
+}
